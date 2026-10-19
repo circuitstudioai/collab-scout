@@ -1,12 +1,13 @@
 /**
- * Qloo API Types
- * Based on Qloo Insights API documentation
+ * App-level Qloo types. Live responses are normalized in map.ts.
  */
+
+export type QlooEntityType = 'brand' | 'place' | 'media' | 'artist' | 'person';
 
 export interface QlooEntity {
   id: string;
   name: string;
-  type: 'brand' | 'place' | 'media' | 'artist' | 'person';
+  type: QlooEntityType;
   category?: string;
   description?: string;
 }
@@ -37,6 +38,7 @@ export interface QlooInsightsResponse {
 }
 
 export interface QlooTag {
+  id?: string;
   tag: string;
   score: number;
   category: string;
@@ -66,16 +68,15 @@ export interface QlooComparisonResponse {
     gender?: string;
     geography?: string;
   };
-  baseline: string; // e.g., "general population"
+  baseline: string;
   metadata: {
     total_results: number;
   };
 }
 
-// API Request Types
 export interface SearchEntitiesRequest {
   query: string;
-  types?: QlooEntity['type'][];
+  types?: QlooEntityType[];
   limit?: number;
 }
 
@@ -85,11 +86,15 @@ export interface GetInsightsRequest {
     gender?: string;
     geography?: string;
   };
+  entity_ids?: string[];
+  tag_ids?: string[];
+  filter_type?: string;
   categories?: string[];
   limit?: number;
 }
 
 export interface GetTagsRequest {
+  query?: string;
   entity_ids?: string[];
   categories?: string[];
   limit?: number;
@@ -102,7 +107,9 @@ export interface CompareAudiencesRequest {
     gender?: string;
     geography?: string;
   };
-  baseline?: string; // defaults to "general population"
+  entity_ids?: string[];
+  baseline_entity_ids?: string[];
+  baseline?: string;
   categories?: string[];
   limit?: number;
 }

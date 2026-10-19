@@ -7,7 +7,7 @@ import { z } from 'zod';
 export const ResearchBriefSchema = z.object({
   id: z.string().optional(),
   title: z.string(),
-  description: z.string(),
+  description: z.string().optional(),
   product_concept: z.string(),
   target_geography: z.string(),
   target_audience: z.object({

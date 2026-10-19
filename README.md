@@ -10,27 +10,26 @@ An AI agent that transforms research briefs into actionable "taste briefs" by le
 
 ## 🎯 What Makes This Qloo-Powered?
 
-This agent uses **four Qloo APIs** to deliver cultural and taste intelligence that traditional market research tools can't provide:
+This agent uses **documented Qloo hackathon endpoints** (GET + `X-Api-Key`, host `https://hackathon.api.qloo.com`). It does **not** call legacy `/recommendations` or `/recs`.
 
-### 1. **Qloo Entity Search** → Brand & Place Resolution
-- Identifies brands, places, media, and cultural entities mentioned in research briefs
-- Resolves them to Qloo's entity IDs for deeper analysis
-- Example: "Lululemon" → `brand_lululemon_001` with full metadata
+### 1. **GET /search** → Brand & Place Resolution
+- Resolves names in the brief to Qloo entity IDs (`query`, `types=urn:entity:brand`, `take`)
+- Example: `Nike` → entity UUID used as `signal.interests.entities`
 
-### 2. **Qloo Insights API** → Audience Affinities
-- Discovers what brands, places, and media a target demographic loves
-- Returns affinity scores (0-100) showing cultural preferences
-- Reveals the taste profile: "25-40 year old urban consumers" → Top brands: Patagonia (87), Lululemon (85), Whole Foods (82)
+### 2. **GET /v2/insights** → Audience Affinities
+- `filter.type=urn:entity:brand` or `urn:entity:place`
+- Signals: `signal.interests.entities`, `signal.location.query`, `signal.demographics.age`
+- Returns scored affinities the brief cites by entity id
 
-### 3. **Qloo Tags API** → Trending Themes & Values
-- Extracts trending cultural themes and lifestyle values
-- Identifies positioning opportunities: sustainability (91), wellness (88), conscious consumer (82)
-- Powers messaging strategy and brand positioning recommendations
+### 3. **GET /v2/tags** (+ taste analysis) → Themes
+- Tag lookup: `GET /v2/tags?filter.query=sustainability`
+- Taste tags: `GET /v2/insights?filter.type=urn:tag&signal.interests.entities=...`
 
-### 4. **Qloo Comparison API** → Audience Differentiation
-- Compares target audience against general population baseline
-- Identifies overindexed preferences (what makes them unique)
-- Example: Target audience is +35 points higher on Patagonia vs. average consumer
+### 4. **GET /v2/analysis/compare** and demographics insights → Differentiation
+- Compare two entity groups: `a.signal.interests.entities` vs `b.signal.interests.entities`
+- Demographic skew: `GET /v2/insights?filter.type=urn:demographics`
+
+Auth header (exactly): `X-Api-Key: <QLOO_API_KEY>` — not a Bearer token.
 
 ### The Intelligence Layer
 
@@ -49,10 +48,10 @@ The agent **synthesizes** Qloo data into:
 ## 🚀 Quick Start
 
 ### Prerequisites
-- Node.js 18+ 
-- npm or yarn
-- OpenAI API key (for agent synthesis)
-- Qloo API key (from the [hackathon developer guide](https://docs.qloo.com/reference/qloo-llm-hackathon-developer-guide))
+- Node.js 18+
+- npm
+- Qloo hackathon API key (live mode) — [developer guide](https://docs.qloo.com/reference/qloo-llm-hackathon-developer-guide)
+- Optional: `GEMINI_API_KEY` for Gemini 2.5 Flash synthesis (canned fallback if unset)
 
 ### Installation
 
@@ -73,29 +72,26 @@ cp .env.example .env.local
 Edit `.env.local`:
 
 ```env
-# Qloo API (required for live mode)
 QLOO_API_KEY=your_hackathon_api_key
-QLOO_BASE_URL=https://hackathon.api.qloo.com
-
-# OpenAI API (required for agent)
-OPENAI_API_KEY=sk-your-openai-key
-
-# Development Mode
-USE_QLOO_MOCK=false  # Set to 'true' to use mocked data
+QLOO_API_URL=https://hackathon.api.qloo.com
+QLOO_USE_MOCK=false
+GEMINI_API_KEY=
 ```
+
+If `QLOO_API_KEY` is missing (or `QLOO_USE_MOCK=true`), the client uses a **labelled mock fallback**. See [docs/SETUP.md](docs/SETUP.md) for Vercel deploy.
 
 ### Run the Demo
 
 ```bash
-# Development server (default port: 3000)
-npm run dev
-
-# Production build
+npm run dev -- --port 43123
+npm test
 npm run build
-npm start
+
+# Live Qloo only (needs QLOO_API_KEY; never prints the key)
+npm run qloo:smoke
 ```
 
-Visit `http://localhost:3000` to see the demo interface with sample research briefs.
+Visit `http://localhost:43123`. Seeded briefs need no login.
 
 ---
 
@@ -109,25 +105,16 @@ Provide a research brief with:
 - Competitor brands (optional)
 - Additional context
 
-### 2. Agent Workflow (Powered by Vercel AI SDK)
-
-The agent uses an **autonomous tool-calling loop** to:
+### 2. Agent workflow
 
 ```
-Step 1: search_entities("Lululemon", types=["brand"])
-  → Resolves to Qloo entity IDs
-
-Step 2: get_insights(audience={age_range: "25-40", geography: "US"})
-  → Discovers top affinities across brands, places, media
-
-Step 3: get_tags(trending_only=true)
-  → Identifies trending themes and cultural values
-
-Step 4: compare_audiences(target={age_range: "25-40"}, baseline="general population")
-  → Finds what makes this audience unique
-
-Step 5: Synthesize
-  → Generates structured taste brief with survey recommendations
+1. GET /search                  resolve competitor / brand names
+2. GET /v2/insights             brand + place affinities (filter.type + signals)
+3. GET /v2/tags and/or
+   GET /v2/insights?filter.type=urn:tag
+4. GET /v2/insights?filter.type=urn:demographics
+   GET /v2/analysis/compare
+5. Gemini 2.5 Flash (or canned fallback) writes the taste brief
 ```
 
 ### 3. Output: Taste Brief + Survey Questions
@@ -203,14 +190,14 @@ GET /api/taste-brief
 
 ## 🧪 Development & Testing
 
-### Mock Mode (No API Key Required)
+### Mock fallback (labelled)
 
-Set `USE_QLOO_MOCK=true` in `.env.local` to use pre-seeded mock data. Perfect for:
-- Development without API keys
-- Testing the agent flow
-- Demo presentations
+The mock client is **not** the default once a key is present. It is used only when:
 
-Mock responses include realistic Qloo data for common queries (Lululemon, Patagonia, Whole Foods, etc.).
+- `QLOO_API_KEY` is unset, or
+- `QLOO_USE_MOCK=true` (legacy alias: `USE_QLOO_MOCK=true`)
+
+Logs say `FALLBACK: using mocked Qloo client`. Hosted demo/judging should run live.
 
 ### Run Tests
 
@@ -244,18 +231,12 @@ market-desk-taste-agent/
 │   │   └── route.ts           # POST endpoint
 │   └── layout.tsx             # Root layout
 ├── lib/
-│   ├── qloo/                  # Qloo API client
-│   │   ├── client.ts          # Main client (supports mock/live)
-│   │   ├── mock.ts            # Mock implementation
-│   │   └── types.ts           # TypeScript types
-│   └── agent/                 # Agent orchestration
-│       ├── orchestrator.ts    # Main agent logic
-│       ├── tools.ts           # Qloo tool definitions
-│       └── schema.ts          # Input/output schemas
-├── seed/
-│   └── sample-briefs.json     # Demo research briefs
+│   ├── qloo/                  # Live GET client + labelled mock fallback
+│   └── agent/                 # Gather → Gemini / canned synthesis
+├── scripts/qloo-smoke.ts      # npm run qloo:smoke
+├── docs/SETUP.md              # Vercel + env for the next agent
+├── seed/sample-briefs.json
 ├── tests/
-│   └── qloo-client.test.ts    # Unit tests
 ├── .env.example               # Environment template
 ├── LICENSE                    # MIT License
 └── README.md                  # This file
@@ -265,13 +246,10 @@ market-desk-taste-agent/
 
 ## 🎨 Tech Stack
 
-- **Framework:** [Next.js 14+](https://nextjs.org/) with App Router
-- **Agent Framework:** [Vercel AI SDK](https://sdk.vercel.ai/) with OpenAI tools
-- **Styling:** [Tailwind CSS](https://tailwindcss.com/)
-- **Type Safety:** TypeScript + Zod schemas
-- **Testing:** Jest + ts-jest
-- **API:** Qloo Insights API (hackathon base URL)
-- **LLM:** OpenAI GPT-4o-mini (cost-optimized)
+- **Framework:** Next.js (App Router) + Tailwind
+- **Qloo:** live GET client (`X-Api-Key`) with in-memory cache, 429 retries, timeouts
+- **LLM:** Gemini 2.5 Flash via `@google/genai` (`GEMINI_API_KEY`), canned fallback
+- **Tests:** Jest (`npm test`) + `npm run qloo:smoke`
 
 ---
 
@@ -308,14 +286,7 @@ market-desk-taste-agent/
 
 ### Vercel (Recommended)
 
-1. Push to GitHub
-2. Import in Vercel
-3. Add environment variables:
-   - `QLOO_API_KEY`
-   - `QLOO_BASE_URL`
-   - `OPENAI_API_KEY`
-   - `USE_QLOO_MOCK=false`
-4. Deploy
+See [docs/SETUP.md](docs/SETUP.md). Required for a live hosted demo: `QLOO_API_KEY`, `QLOO_API_URL=https://hackathon.api.qloo.com`. Optional: `GEMINI_API_KEY`. Do not set `QLOO_USE_MOCK=true` in production.
 
 ### Other Platforms
 
@@ -329,10 +300,9 @@ Works on any Node.js hosting platform that supports Next.js:
 
 ## 📊 Cost Optimization
 
-**Agent Runtime:**
-- Uses GPT-4o-mini ($0.15 per 1M input tokens, $0.60 per 1M output)
-- Average taste brief: ~8,000 tokens → **~$0.005 per generation**
-- Target: ≤$10 total during development
+**Agent runtime:**
+- Gemini 2.5 Flash when `GEMINI_API_KEY` is set; otherwise canned synthesis (no LLM spend)
+- Target: keep model spend ≤ $10 for the hackathon
 
 **Qloo API:**
 - Free tier during hackathon
@@ -342,21 +312,14 @@ Works on any Node.js hosting platform that supports Next.js:
 
 ## 🛣️ Roadmap
 
-### ✅ Completed (M1)
-- [x] Mocked Qloo client
-- [x] Agent framework with Vercel AI SDK
-- [x] API endpoint for Market Desk integration
-- [x] Demo UI with sample briefs
-- [x] Tests passing
-- [x] MIT license and README
+### Done
+- Live Qloo GET client (`X-Api-Key`) with mock fallback, cache, retries
+- Gemini 2.5 Flash synthesis + canned fallback
+- Demo UI, `POST /api/taste-brief`, tests, `npm run qloo:smoke`
 
-### 🔜 Next Steps (Post-Hackathon)
-- [ ] Qloo API key integration (waiting for hackathon key)
-- [ ] Hosted demo deployment (Vercel)
-- [ ] Deep link integration with Market Desk
-- [ ] Export to CSV/PDF
-- [ ] Caching layer for Qloo responses
-- [ ] Advanced filters (custom categories, date ranges)
+### Still human / later
+- Host the demo on Vercel with the real key
+- Devpost submission by Fri Oct 30, 2026, 11:45 PM ET (video not required)
 
 ---
 

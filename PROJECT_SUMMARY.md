@@ -1,6 +1,6 @@
 # Market Desk Taste Agent - Project Summary
 
-**Status**: ✅ Demo Ready  
+**Status**: ✅ Live Qloo client + mock fallback  
 **Built For**: Qloo Agentic Hackathon 2026  
 **License**: MIT (Open Source)  
 **Date**: October 16, 2026  

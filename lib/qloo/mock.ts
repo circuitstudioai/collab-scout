@@ -1,5 +1,7 @@
 /**
- * Mock Qloo API responses for development and testing
+ * FALLBACK mock Qloo responses.
+ * Used only when QLOO_API_KEY is missing or QLOO_USE_MOCK=true.
+ * Not a substitute for live hackathon API calls in production/demo hosting.
  */
 
 import type {

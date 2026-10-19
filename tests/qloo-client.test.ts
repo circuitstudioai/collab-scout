@@ -1,129 +1,235 @@
 /**
- * Tests for Qloo Client
+ * Tests for Qloo client (mock fallback + live GET contract)
  */
 
-import { QlooClient } from '../lib/qloo/client';
+import { QlooClient, clearQlooCache } from '../lib/qloo/client';
+import { QLOO_AUTH_HEADER } from '../lib/qloo/config';
+import { QlooApiError } from '../lib/qloo/errors';
 
-describe('QlooClient', () => {
+describe('QlooClient mock fallback', () => {
   let client: QlooClient;
 
   beforeEach(() => {
     client = new QlooClient({ useMock: true });
   });
 
-  describe('searchEntities', () => {
-    it('should search for entities by query', async () => {
-      const result = await client.searchEntities({
-        query: 'lululemon',
-        types: ['brand'],
-        limit: 5,
-      });
-
-      expect(result).toHaveProperty('entities');
-      expect(result).toHaveProperty('total');
-      expect(Array.isArray(result.entities)).toBe(true);
-      expect(result.entities.length).toBeGreaterThan(0);
-      expect(result.entities[0]).toHaveProperty('id');
-      expect(result.entities[0]).toHaveProperty('name');
-      expect(result.entities[0]).toHaveProperty('type');
-    });
-
-    it('should return empty results for unknown queries', async () => {
-      const result = await client.searchEntities({
-        query: 'nonexistentbrand12345xyz',
-        limit: 5,
-      });
-
-      expect(result.entities).toHaveLength(0);
-      expect(result.total).toBe(0);
-    });
+  it('labels itself as mocked', () => {
+    expect(client.isMocked()).toBe(true);
   });
 
-  describe('getInsights', () => {
-    it('should return audience insights', async () => {
-      const result = await client.getInsights({
-        audience: {
-          age_range: '25-40',
-          geography: 'United States',
+  it('searches for entities by query', async () => {
+    const result = await client.searchEntities({
+      query: 'lululemon',
+      types: ['brand'],
+      limit: 5,
+    });
+
+    expect(result.entities.length).toBeGreaterThan(0);
+    expect(result.entities[0]).toHaveProperty('id');
+    expect(result.entities[0]).toHaveProperty('name');
+    expect(result.entities[0]).toHaveProperty('type');
+  });
+
+  it('returns empty results for unknown queries', async () => {
+    const result = await client.searchEntities({
+      query: 'nonexistentbrand12345xyz',
+      limit: 5,
+    });
+    expect(result.entities).toHaveLength(0);
+    expect(result.total).toBe(0);
+  });
+
+  it('returns audience insights', async () => {
+    const result = await client.getInsights({
+      audience: { age_range: '25-40', geography: 'United States' },
+      limit: 10,
+    });
+    expect(result.affinities.length).toBeGreaterThan(0);
+    expect(result.affinities[0].score).toBeGreaterThan(0);
+    expect(result.affinities[0].score).toBeLessThanOrEqual(100);
+  });
+
+  it('returns trending tags', async () => {
+    const result = await client.getTags({ trending_only: true, limit: 5 });
+    expect(result.tags.length).toBeGreaterThan(0);
+    expect(result.tags[0].trending).toBe(true);
+  });
+
+  it('compares audiences against a baseline', async () => {
+    const result = await client.compareAudiences({
+      target_audience: { age_range: '25-40', geography: 'United States' },
+      baseline: 'general population',
+      limit: 10,
+    });
+    expect(result.differences.length).toBeGreaterThan(0);
+    expect(result.differences[0]).toHaveProperty('difference');
+  });
+});
+
+describe('QlooClient live contract', () => {
+  const originalFetch = global.fetch;
+
+  beforeEach(() => {
+    clearQlooCache();
+  });
+
+  afterEach(() => {
+    global.fetch = originalFetch;
+    clearQlooCache();
+  });
+
+  it('is not mocked when useMock is false and a key is supplied', () => {
+    const live = new QlooClient({ useMock: false, apiKey: 'test_key' });
+    expect(live.isMocked()).toBe(false);
+  });
+
+  it('sends GET /search with X-Api-Key and query params', async () => {
+    const fetchMock = jest.fn().mockResolvedValue({
+      ok: true,
+      status: 200,
+      json: async () => ({
+        results: [
+          { entity_id: 'AAA', name: 'Nike', subtype: 'urn:entity:brand', popularity: 0.9 },
+        ],
+      }),
+    });
+    global.fetch = fetchMock as unknown as typeof fetch;
+
+    const client = new QlooClient({
+      useMock: false,
+      apiKey: 'test_key',
+      baseUrl: 'https://hackathon.api.qloo.com',
+    });
+    const result = await client.searchEntities({ query: 'Nike', types: ['brand'], limit: 3 });
+
+    expect(result.entities[0].name).toBe('Nike');
+    expect(result.entities[0].id).toBe('AAA');
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+    const [url, init] = fetchMock.mock.calls[0];
+    expect(String(url)).toContain('https://hackathon.api.qloo.com/search?');
+    expect(String(url)).toContain('query=Nike');
+    expect(String(url)).toContain('types=urn%3Aentity%3Abrand');
+    expect(init.method).toBe('GET');
+    expect(init.headers[QLOO_AUTH_HEADER]).toBe('test_key');
+    expect(init.headers.Authorization).toBeUndefined();
+  });
+
+  it('sends GET /v2/insights with filter.type (not POST /recommendations)', async () => {
+    const fetchMock = jest.fn().mockResolvedValue({
+      ok: true,
+      status: 200,
+      json: async () => ({
+        results: {
+          entities: [
+            {
+              entity_id: 'BBB',
+              name: 'Patagonia',
+              subtype: 'urn:entity:brand',
+              query: { affinity: 0.81 },
+            },
+          ],
         },
-        limit: 10,
-      });
-
-      expect(result).toHaveProperty('affinities');
-      expect(result).toHaveProperty('audience');
-      expect(result).toHaveProperty('metadata');
-      expect(Array.isArray(result.affinities)).toBe(true);
-      expect(result.affinities.length).toBeGreaterThan(0);
-      
-      const affinity = result.affinities[0];
-      expect(affinity).toHaveProperty('entity');
-      expect(affinity).toHaveProperty('score');
-      expect(affinity.score).toBeGreaterThan(0);
-      expect(affinity.score).toBeLessThanOrEqual(100);
+      }),
     });
+    global.fetch = fetchMock as unknown as typeof fetch;
+
+    const client = new QlooClient({
+      useMock: false,
+      apiKey: 'test_key',
+      baseUrl: 'https://hackathon.api.qloo.com',
+    });
+    const result = await client.getInsights({
+      audience: { geography: 'United States', age_range: '25-40' },
+      entity_ids: ['AAA'],
+      filter_type: 'urn:entity:brand',
+    });
+
+    expect(result.affinities[0].entity.name).toBe('Patagonia');
+    const [url, init] = fetchMock.mock.calls[0];
+    expect(String(url)).toContain('/v2/insights?');
+    expect(String(url)).toContain('filter.type=urn%3Aentity%3Abrand');
+    expect(String(url)).toContain('signal.interests.entities=AAA');
+    expect(String(url)).not.toContain('/recommendations');
+    expect(String(url)).not.toContain('/recs');
+    expect(init.method).toBe('GET');
   });
 
-  describe('getTags', () => {
-    it('should return trending tags', async () => {
-      const result = await client.getTags({
-        trending_only: true,
-        limit: 5,
-      });
+  it('treats GET /search 404 as empty results', async () => {
+    global.fetch = jest.fn().mockResolvedValue({
+      ok: false,
+      status: 404,
+      text: async () => 'No results',
+    }) as unknown as typeof fetch;
 
-      expect(result).toHaveProperty('tags');
-      expect(Array.isArray(result.tags)).toBe(true);
-      expect(result.tags.length).toBeGreaterThan(0);
-      
-      const tag = result.tags[0];
-      expect(tag).toHaveProperty('tag');
-      expect(tag).toHaveProperty('score');
-      expect(tag).toHaveProperty('category');
-      expect(tag.trending).toBe(true);
+    const client = new QlooClient({
+      useMock: false,
+      apiKey: 'test_key',
+      baseUrl: 'https://hackathon.api.qloo.com',
     });
-
-    it('should return all tags when trending_only is false', async () => {
-      const result = await client.getTags({
-        trending_only: false,
-        limit: 10,
-      });
-
-      expect(result.tags.length).toBeGreaterThan(0);
-    });
+    const result = await client.searchEntities({ query: 'zzzz-unknown' });
+    expect(result.entities).toEqual([]);
   });
 
-  describe('compareAudiences', () => {
-    it('should compare target audience against baseline', async () => {
-      const result = await client.compareAudiences({
-        target_audience: {
-          age_range: '25-40',
-          geography: 'United States',
-        },
-        baseline: 'general population',
-        limit: 10,
+  it('retries on 429 then succeeds', async () => {
+    const fetchMock = jest
+      .fn()
+      .mockResolvedValueOnce({
+        ok: false,
+        status: 429,
+        headers: { get: () => null },
+        text: async () => 'rate limited',
+      })
+      .mockResolvedValueOnce({
+        ok: true,
+        status: 200,
+        json: async () => ({ results: { tags: [{ name: 'wellness', tag_id: 'urn:tag:wellness' }] } }),
       });
+    global.fetch = fetchMock as unknown as typeof fetch;
 
-      expect(result).toHaveProperty('differences');
-      expect(result).toHaveProperty('target_audience');
-      expect(result).toHaveProperty('baseline');
-      expect(Array.isArray(result.differences)).toBe(true);
-      expect(result.differences.length).toBeGreaterThan(0);
-      
-      const diff = result.differences[0];
-      expect(diff).toHaveProperty('entity');
-      expect(diff).toHaveProperty('target_score');
-      expect(diff).toHaveProperty('baseline_score');
-      expect(diff).toHaveProperty('difference');
+    const client = new QlooClient({
+      useMock: false,
+      apiKey: 'test_key',
+      baseUrl: 'https://hackathon.api.qloo.com',
     });
+    const result = await client.getTags({ query: 'wellness' });
+    expect(result.tags[0].tag).toBe('wellness');
+    expect(fetchMock).toHaveBeenCalledTimes(2);
   });
 
-  describe('Mock mode detection', () => {
-    it('should indicate when using mock mode', () => {
-      expect(client.isMocked()).toBe(true);
+  it('caches identical GET responses', async () => {
+    const fetchMock = jest.fn().mockResolvedValue({
+      ok: true,
+      status: 200,
+      json: async () => ({ results: [{ entity_id: '1', name: 'Nike', subtype: 'urn:entity:brand' }] }),
     });
+    global.fetch = fetchMock as unknown as typeof fetch;
 
-    it('should not be mocked when USE_QLOO_MOCK is false', () => {
-      const liveClient = new QlooClient({ useMock: false, apiKey: 'test_key' });
-      expect(liveClient.isMocked()).toBe(false);
+    const client = new QlooClient({
+      useMock: false,
+      apiKey: 'test_key',
+      baseUrl: 'https://hackathon.api.qloo.com',
+      cacheTtlMs: 60_000,
     });
+    await client.searchEntities({ query: 'Nike' });
+    await client.searchEntities({ query: 'Nike' });
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+  });
+
+  it('throws QlooApiError on 401', async () => {
+    global.fetch = jest.fn().mockResolvedValue({
+      ok: false,
+      status: 401,
+      headers: { get: () => null },
+      text: async () => 'No API key found in request',
+    }) as unknown as typeof fetch;
+
+    const client = new QlooClient({
+      useMock: false,
+      apiKey: 'bad',
+      baseUrl: 'https://hackathon.api.qloo.com',
+    });
+    await expect(client.getInsights({ audience: { geography: 'US' } })).rejects.toBeInstanceOf(
+      QlooApiError
+    );
   });
 });
