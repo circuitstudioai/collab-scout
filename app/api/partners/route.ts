@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { APP_NAME } from '@/lib/app-config';
-import { PartnerBriefSchema } from '@/lib/agent/schema';
+import { parsePartnerBrief } from '@/lib/agent/schema';
 import { scoutPartners } from '@/lib/agent/orchestrator';
 import { isGeminiConfigured } from '@/lib/agent/gemini';
 import { resolveQlooBaseUrl, shouldUseQlooMock } from '@/lib/qloo/config';
@@ -10,7 +10,7 @@ export const maxDuration = 60;
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const parsed = PartnerBriefSchema.safeParse(body);
+    const parsed = parsePartnerBrief(body);
     if (!parsed.success) {
       return NextResponse.json(
         { error: 'Invalid partner brief', details: parsed.error.issues },
