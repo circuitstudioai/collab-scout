@@ -1,7 +1,8 @@
 import { mapAgeRange, mapGender, popularityToScore, urnToAppType } from '../lib/qloo/map';
-import { extractSearchTerms } from '../lib/agent/gather';
-import { cannedTasteBrief } from '../lib/agent/canned';
+import { searchTermsFor } from '../lib/agent/gather';
+import { cannedPartnerShortlist } from '../lib/agent/canned';
 import { shouldUseQlooMock } from '../lib/qloo/config';
+import type { ScoutSignals } from '../lib/agent/gather';
 
 describe('Qloo parameter mapping', () => {
   it('maps age ranges onto documented demographic buckets', () => {
@@ -27,51 +28,76 @@ describe('Qloo parameter mapping', () => {
   });
 });
 
-describe('gather helpers', () => {
-  it('extracts competitor names as search terms', () => {
-    const terms = extractSearchTerms({
-      title: 'Sustainable Activewear Brand Launch',
-      description: 'test',
-      product_concept: 'Premium apparel next to Lululemon quality',
+describe('scout search terms', () => {
+  it('uses the founder name plus seed brands', () => {
+    const terms = searchTermsFor({
+      brand_name: 'Northline Provisions',
+      category: 'specialty coffee',
+      seed_brands: ['Blue Bottle', 'Stumptown'],
       target_geography: 'United States',
-      competitor_brands: ['Patagonia', 'Allbirds'],
     });
-    expect(terms).toEqual(expect.arrayContaining(['Patagonia', 'Allbirds']));
+    expect(terms).toEqual(['Northline Provisions', 'Blue Bottle', 'Stumptown']);
   });
 });
 
-describe('canned fallback', () => {
-  it('builds a complete taste brief from Qloo signals without Gemini', () => {
-    const brief = cannedTasteBrief(
-      'brief_001',
+describe('canned partner shortlist', () => {
+  it('filters coffee competitors and drafts pitches without Gemini', () => {
+    const signals: ScoutSignals = {
+      seedEntities: [{ id: 'brand_bluebottle_001', name: 'Blue Bottle', type: 'brand', category: 'Coffee' }],
+      brandAffinities: [
+        {
+          entity: { id: 'brand_bluebottle_001', name: 'Blue Bottle', type: 'brand', category: 'Coffee' },
+          score: 84,
+          category: 'Coffee',
+        },
+        {
+          entity: { id: 'brand_starbucks_001', name: 'Starbucks', type: 'brand', category: 'Coffee Shop' },
+          score: 70,
+          category: 'Coffee',
+        },
+        {
+          entity: { id: 'brand_patagonia_001', name: 'Patagonia', type: 'brand', category: 'Outdoor Apparel' },
+          score: 87,
+          category: 'Outdoor Apparel',
+        },
+      ],
+      placeAffinities: [],
+      artistAffinities: [],
+      tags: [{ tag: 'craft', score: 83, category: 'Product', id: 'urn:tag:craft' }],
+      compareNotes: ['Patagonia: target 87 vs baseline 52 (brand_patagonia_001)'],
+      traces: [
+        {
+          id: 'qloo_1',
+          at: new Date().toISOString(),
+          method: 'GET',
+          path: '/search',
+          params: { query: 'Blue Bottle' },
+          summary: 'Resolved Blue Bottle',
+          mocked: true,
+        },
+      ],
+      mocked: true,
+    };
+
+    const shortlist = cannedPartnerShortlist(
+      'run_test',
       {
-        id: 'brief_001',
-        title: 'Sustainable Activewear Brand Launch',
-        description: 'Launch',
-        product_concept: 'Recycled ocean plastic activewear',
+        brand_name: 'Northline Provisions',
+        category: 'specialty coffee',
+        seed_brands: ['Blue Bottle'],
+        exclude_brands: ['Starbucks'],
         target_geography: 'United States',
-        target_audience: { age_range: '25-40' },
-        competitor_brands: ['Lululemon'],
       },
-      {
-        entities: [{ id: 'E1', name: 'Lululemon', type: 'brand', category: 'urn:entity:brand' }],
-        brandAffinities: [
-          { name: 'Patagonia', score: 87, category: 'brand', source: 'E2' },
-        ],
-        placeAffinities: [
-          { name: 'Whole Foods Market', score: 80, category: 'place', source: 'E3' },
-        ],
-        tags: [{ tag: 'sustainability', score: 91, category: 'Values', id: 'urn:tag:sustainability' }],
-        differences: [],
-        sources: ['GET /search', 'GET /v2/insights (filter.type=urn:entity:brand)'],
-        confidence: 0.86,
-        mocked: true,
-      }
+      signals
     );
 
-    expect(brief.suggested_questions.length).toBeGreaterThanOrEqual(6);
-    expect(brief.brand_affinities[0].source).toBe('E2');
-    expect(brief.metadata.data_sources.join(' ')).toContain('/v2/insights');
+    const names = shortlist.partners.map((p) => p.name);
+    expect(names).toContain('Patagonia');
+    expect(names).not.toContain('Blue Bottle');
+    expect(names).not.toContain('Starbucks');
+    expect(shortlist.partners[0].outreach_draft).toMatch(/DRAFT/);
+    expect(shortlist.qloo_trace[0].path).toBe('/search');
+    expect(shortlist.metadata.disclaimer).toMatch(/never sends email/i);
   });
 });
 

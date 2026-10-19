@@ -1,201 +1,146 @@
 /**
- * Canned taste-brief synthesis used when GEMINI_API_KEY is missing
- * or Gemini is unavailable. Built only from collected Qloo signals.
+ * Canned partner shortlist when Gemini is unavailable.
+ * Concepts and pitches are DRAFTS — never sent.
  */
 
-import type { ResearchBrief, TasteBrief } from './schema';
-import type { GatheredQlooData } from './gather';
+import { APP_NAME } from '../app-config';
+import type { PartnerBrief, PartnerCard, PartnerShortlist } from './schema';
+import type { ScoutSignals } from './gather';
+import { filterAndRank, type PartnerCandidate } from './rank';
 
-export function cannedTasteBrief(
-  briefId: string,
-  brief: ResearchBrief,
-  data: GatheredQlooData
-): TasteBrief {
-  const brands = data.brandAffinities.slice(0, 8);
-  const places = data.placeAffinities.slice(0, 6);
-  const tags = data.tags.slice(0, 8);
-  const diffs = data.differences.slice(0, 6);
-  const entities = data.entities;
+const COLLAB_TYPES = [
+  'co-branded drop',
+  'bundle',
+  'pop-up',
+  'giveaway',
+  'content swap',
+] as const;
 
-  const topBrand = brands[0]?.name || entities[0]?.name || 'adjacent premium brands';
-  const topTag = tags[0]?.tag || 'quality and lifestyle fit';
-  const geo = brief.target_geography || 'the target market';
-  const age = brief.target_audience?.age_range || 'the named age band';
+export function candidatesFromSignals(signals: ScoutSignals): PartnerCandidate[] {
+  const rows = [
+    ...signals.brandAffinities,
+    ...signals.placeAffinities,
+    ...signals.artistAffinities,
+  ];
+  return rows.map((a) => ({
+    id: a.entity.id,
+    name: a.entity.name,
+    type: a.entity.type,
+    category: a.entity.category || a.category,
+    score: a.score,
+  }));
+}
 
-  const summary = [
-    `Qloo signals for "${brief.title}" point to a ${age} audience in ${geo} that over-indexes on ${topBrand} and themes around ${topTag}.`,
-    brands.length
-      ? `Top brand affinities include ${brands.slice(0, 3).map((b) => `${b.name} (${b.score})`).join(', ')}.`
-      : 'Brand affinities were thin for this query; survey questions should validate category fit first.',
-    `Use the suggested questions to test whether these cultural affinities convert into purchase intent for: ${brief.product_concept.slice(0, 140)}.`,
-  ].join(' ');
+export function buildPartnerCards(
+  brief: PartnerBrief,
+  signals: ScoutSignals,
+  ranked: PartnerCandidate[]
+): PartnerCard[] {
+  const tagNames = signals.tags.slice(0, 4).map((t) => t.tag);
+  return ranked.slice(0, 8).map((partner, index) => {
+    const collabType = COLLAB_TYPES[index % COLLAB_TYPES.length];
+    const shared = tagNames.length ? tagNames.slice(0, 2).join(' + ') : brief.category;
+    const compare = signals.compareNotes[0];
+    return {
+      id: partner.id || `partner_${index}`,
+      name: partner.name,
+      type: partner.type,
+      category: partner.category,
+      affinity_score: partner.score,
+      why_it_fits: [
+        `Qloo affinity ${partner.score} vs ${brief.brand_name}'s seeds`,
+        tagNames[0] ? `shared tag “${tagNames[0]}”` : 'audience overlap on location/demographics',
+        compare ? `compare: ${compare}` : null,
+      ]
+        .filter(Boolean)
+        .join(' · '),
+      qloo_signal: {
+        entity_id: partner.id,
+        score: partner.score,
+        shared_tags: tagNames,
+        compare_note: compare,
+      },
+      collab_concept: conceptFor(brief, partner, collabType, shared),
+      outreach_draft: pitchFor(brief, partner, collabType, shared),
+    };
+  });
+}
+
+function conceptFor(
+  brief: PartnerBrief,
+  partner: PartnerCandidate,
+  type: (typeof COLLAB_TYPES)[number],
+  shared: string
+): PartnerCard['collab_concept'] {
+  const titles: Record<(typeof COLLAB_TYPES)[number], string> = {
+    'co-branded drop': `${brief.brand_name} × ${partner.name} limited drop`,
+    bundle: `The ${shared} kit: ${brief.brand_name} + ${partner.name}`,
+    'pop-up': `Weekend pop-up with ${partner.name}`,
+    giveaway: `Shared-audience giveaway (draft only)`,
+    'content swap': `Creator swap: ${brief.brand_name} × ${partner.name}`,
+  };
+  const descriptions: Record<(typeof COLLAB_TYPES)[number], string> = {
+    'co-branded drop': `A short-run SKU that pairs ${brief.category} with ${partner.category}, aimed at ${brief.target_geography}.`,
+    bundle: `Retail or DTC bundle that lets each brand keep its margin while sharing checkout traffic.`,
+    'pop-up': `A two-day activation in ${brief.target_geography} using ${partner.name} as the venue or guest brand.`,
+    giveaway: `One joint prize pack. ${APP_NAME} does not contact anyone — you send the draft yourself if you choose.`,
+    'content swap': `Each brand posts one story featuring the other, citing the shared ${shared} audience.`,
+  };
+  return { type, title: titles[type], description: descriptions[type] };
+}
+
+function pitchFor(
+  brief: PartnerBrief,
+  partner: PartnerCandidate,
+  type: (typeof COLLAB_TYPES)[number],
+  shared: string
+): string {
+  return [
+    `DRAFT — do not send from ${APP_NAME}. Copy, edit, and send yourself.`,
+    ``,
+    `Hi ${partner.name} team,`,
+    ``,
+    `I'm reaching out from ${brief.brand_name} (${brief.category}, ${brief.target_geography}).`,
+    `Qloo taste data shows our audiences overlap (affinity ${partner.score}; themes: ${shared}). We're not a competitor — we'd like a complementary ${type}.`,
+    ``,
+    `Concrete idea: ${brief.brand_name} × ${partner.name} ${type} this quarter. Happy to share a one-pager if useful.`,
+    ``,
+    `Thanks,`,
+    `${brief.brand_name}`,
+  ].join('\n');
+}
+
+export function cannedPartnerShortlist(
+  runId: string,
+  brief: PartnerBrief,
+  signals: ScoutSignals
+): PartnerShortlist {
+  const candidates = candidatesFromSignals(signals);
+  const { ranked, dropped } = filterAndRank(candidates, {
+    founderCategory: brief.category,
+    seedNames: [brief.brand_name, ...(brief.seed_brands || [])],
+    seedIds: signals.seedEntities.map((e) => e.id),
+    excludeNames: brief.exclude_brands || [],
+  });
+  const partners = buildPartnerCards(brief, signals, ranked);
+  const top = partners[0];
 
   return {
-    brief_id: briefId,
-    title: `Taste Brief: ${brief.title}`,
+    run_id: runId,
+    title: `Partner shortlist for ${brief.brand_name}`,
     generated_at: new Date().toISOString(),
-    summary,
-    audience_profile: {
-      description: `Consumers in ${geo}${brief.target_audience?.age_range ? `, ages ${brief.target_audience.age_range}` : ''} whose Qloo affinities cluster around ${topBrand} and ${topTag}.`,
-      key_characteristics: [
-        brands[0] ? `High affinity for ${brands[0].name} (Qloo score ${brands[0].score}, ${brands[0].source})` : 'Category still being validated',
-        places[0] ? `Spends time around ${places[0].name}` : `Geography focus: ${geo}`,
-        tags[0] ? `Theme: ${tags[0].tag}` : 'Lifestyle-led shopper',
-        brief.competitor_brands?.length
-          ? `Already considering ${brief.competitor_brands.slice(0, 3).join(', ')}`
-          : 'No named competitors; using category seeds',
-      ],
-    },
-    brand_affinities: brands.map((b) => ({
-      name: b.name,
-      score: b.score,
-      category: b.category,
-      source: b.source,
-    })),
-    place_affinities: places.map((p) => ({
-      name: p.name,
-      score: p.score,
-      category: p.category,
-      source: p.source,
-    })),
-    trending_themes: tags.map((t) => ({
-      tag: t.tag,
-      score: t.score,
-      category: t.category,
-      relevance: t.id
-        ? `Qloo tag ${t.id} scored ${t.score} against the brief's entities`
-        : `Related tag from Qloo Tags Search (score ${t.score})`,
-    })),
-    competitive_insights: brief.competitor_brands?.map((competitor) => {
-      const entity = entities.find((e) =>
-        e.name.toLowerCase().includes(competitor.toLowerCase())
-      );
-      return {
-        competitor,
-        entity_id: entity?.id || 'unresolved',
-        positioning: entity
-          ? `Resolved to Qloo entity ${entity.id}; use as a signal.interests.entities seed`
-          : 'Not resolved in /search; keep as a survey option',
-        audience_overlap: entity ? 0.72 : 0.3,
-      };
-    }),
-    audience_differentiators: diffs.length
-      ? diffs.map((d) => ({
-          dimension: d.entity.name,
-          insight: `${d.entity.name} scores ${d.target_score} vs baseline ${d.baseline_score} (delta ${d.difference})`,
-          score: d.difference,
-          source: d.entity.id,
-        }))
-      : [
-          {
-            dimension: 'Cultural adjacency',
-            insight: `Target over-indexes on ${topBrand} relative to a general-population read of the same category.`,
-            score: brands[0]?.score ? brands[0].score - 50 : 15,
-            source: brands[0]?.source || 'qloo-insights',
-          },
-        ],
-    suggested_questions: buildQuestions(brief, brands, places, tags),
-    positioning_angles: [
-      {
-        angle: `${topTag} without tradeoffs`,
-        description: `Lead with ${topTag} because Qloo tags and affinities cluster there for this audience.`,
-        supporting_data: [
-          tags[0] ? `${tags[0].tag} score ${tags[0].score}` : 'Tag search used lifestyle seeds',
-          brands[0] ? `${brands[0].name} affinity ${brands[0].score}` : 'Need more brand seeds',
-        ],
-      },
-      {
-        angle: `Compete next to ${topBrand}`,
-        description: `Position against the Qloo-adjacent set rather than the entire category.`,
-        supporting_data: brands.slice(0, 3).map((b) => `${b.name} (${b.source})`),
-      },
-      {
-        angle: 'Ask before assuming',
-        description: 'Turn the strongest Qloo entities into survey options so primary research can confirm or reject the taste map.',
-        supporting_data: ['Questions below cite the same entity IDs'],
-      },
-    ],
+    summary: top
+      ? `${brief.brand_name} has complementary taste overlap with ${top.name} (Qloo ${top.affinity_score}) and ${Math.max(partners.length - 1, 0)} other non-competing partners. ${dropped.length} same-category or excluded brands were removed.`
+      : `No complementary partners cleared the competitor filter. Try different seeds or a broader geography.`,
+    founder: brief,
+    partners,
+    filtered_out: dropped.map((d) => ({ name: d.candidate.name, reason: d.reason })),
+    qloo_trace: signals.traces,
     metadata: {
-      qloo_entities_analyzed: entities.length,
-      confidence_score: data.confidence,
-      data_sources: data.sources,
+      qloo_mode: signals.mocked ? 'fallback_mock' : 'live',
+      qloo_entities_resolved: signals.seedEntities.length,
+      synthesis: 'canned_fallback',
+      disclaimer: `${APP_NAME} never sends email or contacts partners. Outreach text is a draft for you to copy.`,
     },
   };
-}
-
-function buildQuestions(
-  brief: ResearchBrief,
-  brands: GatheredQlooData['brandAffinities'],
-  places: GatheredQlooData['placeAffinities'],
-  tags: GatheredQlooData['tags']
-): TasteBrief['suggested_questions'] {
-  const brandNames = brands.slice(0, 4).map((b) => b.name);
-  const competitors = brief.competitor_brands || [];
-  const options = unique([...brandNames, ...competitors]).slice(0, 5);
-  const theme = tags[0]?.tag || 'sustainability';
-  const place = places[0]?.name || 'a grocery or fitness destination you already visit';
-
-  return [
-    {
-      question: `Which of these brands feels closest to how you want ${brief.title} to show up?`,
-      rationale: `Qloo /search and /v2/insights resolved ${options.join(', ') || 'category seeds'} as adjacent entities.`,
-      question_type: 'multiple_choice',
-      options: options.length ? [...options, 'None of these'] : ['Premium', 'Value', 'Specialty', 'None of these'],
-    },
-    {
-      question: `How important is ${theme} when you choose a product like this?`,
-      rationale: `Qloo /v2/tags (or taste analysis via /v2/insights?filter.type=urn:tag) surfaced ${theme}.`,
-      question_type: 'rating_scale',
-      options: ['1 — Not at all', '2', '3', '4', '5 — Essential'],
-    },
-    {
-      question: `Rank these themes from most to least motivating.`,
-      rationale: 'Forces a tradeoff among the highest-scoring Qloo tags.',
-      question_type: 'ranking',
-      options: tags.slice(0, 4).map((t) => t.tag).concat(['Price', 'Convenience']).slice(0, 5),
-    },
-    {
-      question: `In the last 30 days, did you visit or shop at ${place}?`,
-      rationale: places[0]
-        ? `Qloo place affinity for ${places[0].name} (${places[0].source})`
-        : 'Location signal from the brief geography',
-      question_type: 'multiple_choice',
-      options: ['Yes', 'No', 'Not sure'],
-    },
-    {
-      question: 'What would make you switch from your current brand in this category?',
-      rationale: 'Open-ended check that Qloo adjacencies are not just correlational.',
-      question_type: 'open_ended',
-    },
-    {
-      question: `How likely are you to try a new ${brief.title.toLowerCase()} in the next 3 months?`,
-      rationale: 'Intent question to pair with affinity scores before fielding a larger sample.',
-      question_type: 'rating_scale',
-      options: ['1 — Very unlikely', '2', '3', '4', '5 — Very likely'],
-    },
-    {
-      question: 'Which statement sounds most like you?',
-      rationale: 'Identity items mapped from Qloo tags so Market Desk can segment respondents.',
-      question_type: 'multiple_choice',
-      options: [
-        tags[1]?.tag ? `I seek ${tags[1].tag}` : 'I research before I buy',
-        tags[2]?.tag ? `I care about ${tags[2].tag}` : 'I buy what friends recommend',
-        'I mainly optimize for price',
-        'None of these',
-      ],
-    },
-    {
-      question: `If ${competitors[0] || topOrFallback(brandNames)} disappeared, what would you buy instead?`,
-      rationale: 'Substitution question grounded in resolved Qloo competitor entities.',
-      question_type: 'open_ended',
-    },
-  ];
-}
-
-function topOrFallback(names: string[]): string {
-  return names[0] || 'your current brand';
-}
-
-function unique(values: string[]): string[] {
-  return [...new Set(values.filter(Boolean))];
 }

@@ -1,6 +1,6 @@
 /**
- * Qloo tools used by the taste agent.
- * Each tool maps to a documented hackathon endpoint (GET + X-Api-Key).
+ * Qloo tools used by the Collab Scout loop.
+ * Each tool maps to a documented hackathon GET + X-Api-Key.
  */
 
 import { z } from 'zod';

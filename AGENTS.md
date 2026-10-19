@@ -8,36 +8,36 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 <!-- END:nextjs-agent-rules -->
 
-## Market Desk Taste Agent
+## Collab Scout
 
-Public MIT repo for the Qloo Agentic Hackathon. Deploy notes: [docs/SETUP.md](docs/SETUP.md).
+Qloo Agentic Hackathon entry. Name: `APP_NAME` in `lib/app-config.ts`. Deploy: [docs/SETUP.md](docs/SETUP.md). Devpost draft: [docs/devpost-draft.md](docs/devpost-draft.md).
+
+Co-marketing partner agent for consumer brand founders. **Not** a Market Desk / taste-brief / survey tool. Never send email. Never depend on Market Desk.
 
 ### Env
 
-- `QLOO_API_KEY` — hackathon key; header `X-Api-Key` (never Bearer, never commit)
-- `QLOO_API_URL` — default `https://hackathon.api.qloo.com` (alias `QLOO_BASE_URL`)
-- `QLOO_USE_MOCK=true` — labelled mock fallback (also used if the key is missing)
-- `GEMINI_API_KEY` — Gemini 2.5 Flash via `@google/genai`; canned fallback if unset
+- `QLOO_API_KEY` — header `X-Api-Key` (never Bearer, never commit)
+- `QLOO_API_URL` — default `https://hackathon.api.qloo.com`
+- `QLOO_USE_MOCK=true` — labelled mock fallback (also if key missing)
+- `GEMINI_API_KEY` — Gemini 2.5 Flash; canned fallback if unset
 
-### Qloo (follow the developer guide exactly)
+### Qloo
 
-- Host: `https://hackathon.api.qloo.com` only
-- Auth: `X-Api-Key`
-- GET `/search`, GET `/v2/insights`, GET `/v2/tags`, GET `/v2/analysis/compare`
-- Insights is **GET + query string**, not POST JSON
-- Do not call `/recommendations` or `/recs`
-- Cache responses in memory; retry 429; timeout ~15s
+- GET `/search`, `/v2/insights`, `/v2/tags`, `/v2/analysis/compare`
+- Insights is GET + query string
+- No `/recommendations` or `/recs`
+- Cache in memory; retry 429; timeout ~15s
 
 ### Demo
 
-1. `npm install && npm test && npm run build`
-2. `npm run dev -- --port 43123` — no login; pick a seeded brief
-3. Live check: `npm run qloo:smoke` (needs `QLOO_API_KEY`; does not print the key)
-4. Health: `GET /api/taste-brief` → `qloo_mode` should be `live` when the key is set
+1. `npm test && npm run build`
+2. `npm run dev -- --port 43123` — no login; pick a seeded fictional brand
+3. `npm run qloo:smoke` needs a live key; does not print it
+4. Health: `GET /api/partners`
 
 ### Do not
 
 - Hardcode keys
-- Publish/submit Devpost
-- Copy Market Desk private code
-- Add a database or auth unless asked
+- Publish or submit Devpost
+- Reintroduce Market Desk deep links
+- Auto-email partners

@@ -1,97 +1,76 @@
 # Setup and deploy
 
-For another agent (or a human) with Vercel access. Supabase is not required for this app.
+For another agent (or a human) with Vercel access. No database. No auth. No Supabase required.
 
-## What this service is
+## What this is
 
-Market Desk Taste Agent is a Next.js app that:
+**Collab Scout** (`APP_NAME` in `lib/app-config.ts`) finds complementary co-marketing partners from Qloo taste overlap. Demo is no-login. Outreach is draft-only and never sent.
 
-1. Accepts a research brief (`POST /api/taste-brief` or the no-login demo UI).
-2. Calls Qloo (hackathon host only) to resolve brands/places, pull insights, tags, and comparisons.
-3. Synthesizes a taste brief with Gemini 2.5 Flash, or a canned fallback if `GEMINI_API_KEY` is missing.
+1. Founder brief → `POST /api/partners` or `/scout/[id]`
+2. Qloo GET loop (`/search`, `/v2/insights`, `/v2/tags`, `/v2/analysis/compare`)
+3. Competitor filter + affinity rank
+4. Gemini 2.5 Flash or canned collab concepts + pitch drafts
 
-No database. No auth. Seeded briefs live in `seed/sample-briefs.json`.
+Seeded fictional brands: `seed/sample-brands.json`.
 
 ## Environment variables
 
-Set these in Vercel → Project → Settings → Environment Variables (Production + Preview).
-
 | Name | Required | Default | Purpose |
 |---|---|---|---|
-| `QLOO_API_KEY` | Yes for live Qloo | — | Hackathon key. Sent as `X-Api-Key`. Never commit. |
-| `QLOO_API_URL` | No | `https://hackathon.api.qloo.com` | Hackathon base URL only. Staging/prod hosts will 401. |
-| `QLOO_USE_MOCK` | No | unset | `true` forces the labelled mock fallback. Leave false/unset in prod. |
-| `GEMINI_API_KEY` | No | — | Google Gemini key. If missing, synthesis uses the canned fallback. |
-| `QLOO_TIMEOUT_MS` | No | `15000` | Per-request timeout. |
-| `QLOO_CACHE_TTL_MS` | No | `600000` | In-memory response cache TTL (10 min). |
-| `QLOO_MAX_RETRIES` | No | `2` | Retries on 429/5xx. |
+| `QLOO_API_KEY` | Yes for live Qloo | — | Hackathon key. `X-Api-Key`. Never commit. |
+| `QLOO_API_URL` | No | `https://hackathon.api.qloo.com` | Hackathon host only |
+| `QLOO_USE_MOCK` | No | unset | `true` forces labelled mock fallback |
+| `GEMINI_API_KEY` | No | — | Gemini 2.5 Flash; canned fallback if missing |
+| `QLOO_TIMEOUT_MS` | No | `15000` | Per-request timeout |
+| `QLOO_CACHE_TTL_MS` | No | `600000` | In-memory cache TTL |
+| `QLOO_MAX_RETRIES` | No | `2` | 429/5xx retries |
 
-Aliases still honored: `QLOO_BASE_URL` (= `QLOO_API_URL`), `USE_QLOO_MOCK` (= `QLOO_USE_MOCK`).
-
-Do **not** set `OPENAI_API_KEY`. The runtime LLM is Gemini only.
+Aliases: `QLOO_BASE_URL`, `USE_QLOO_MOCK`. Do not set `OPENAI_API_KEY`.
 
 ## Local
 
 ```bash
 cp .env.example .env.local
-# put QLOO_API_KEY and optionally GEMINI_API_KEY in .env.local
 npm install
 npm test
 npm run build
 npm run dev -- --port 43123
-```
-
-Without `QLOO_API_KEY`, the app automatically uses the **labelled mock fallback**. Demo pages still work.
-
-Live smoke (prints status + short summaries, never the key):
-
-```bash
 QLOO_API_KEY=... npm run qloo:smoke
 ```
 
-Requires a real key and `QLOO_USE_MOCK` not `true`.
+No key → mock fallback; demo still works.
 
 ## How Qloo is used
 
-Auth and host from the [hackathon developer guide](https://docs.qloo.com/reference/qloo-llm-hackathon-developer-guide):
-
-- Header: `X-Api-Key: <QLOO_API_KEY>` (not `Authorization: Bearer`)
+- Header: `X-Api-Key`
 - Host: `https://hackathon.api.qloo.com`
-- Method: **GET** with query params (Insights is not POST)
-- Do not call `/recommendations` or `/recs`
+- GET query params only. No `/recommendations` or `/recs`
 
-| Agent step | Endpoint | Typical params |
-|---|---|---|
-| Resolve brands/places | `GET /search` | `query`, `types=urn:entity:brand`, `take` |
-| Audience affinities | `GET /v2/insights` | `filter.type=urn:entity:brand` or `urn:entity:place`, `signal.interests.entities`, `signal.location.query`, `signal.demographics.age`, `take` |
-| Related tags | `GET /v2/tags` | `filter.query`, `take` |
-| Taste tags for entities | `GET /v2/insights` | `filter.type=urn:tag`, `signal.interests.entities` |
-| Demographic skew | `GET /v2/insights` | `filter.type=urn:demographics`, `signal.interests.entities` |
-| Entity-group compare | `GET /v2/analysis/compare` | `a.signal.interests.entities`, `b.signal.interests.entities` |
+| Agent step | Endpoint |
+|---|---|
+| Resolve seeds | `GET /search` |
+| Overlap brands / places / artists | `GET /v2/insights` (`filter.type=urn:entity:brand\|place\|artist`) |
+| Tags | `GET /v2/tags` or `GET /v2/insights?filter.type=urn:tag` |
+| Compare | `GET /v2/analysis/compare` (+ demographics insights) |
 
-## Vercel deploy
+## Vercel
 
-1. Import the Git repo into Vercel (Next.js, default build `npm run build`, output `.next`).
-2. Add the env vars above. `QLOO_API_KEY` is the one that makes the demo live.
-3. Deploy. Confirm `GET /api/taste-brief` returns `qloo_mode: "live"` and the hackathon base URL.
-4. Open `/`, pick a seeded brief, generate a taste brief. No login.
-5. Market Desk can `POST /api/taste-brief` with the research-brief JSON (`lib/agent/schema.ts`).
+1. Import the Git repo (Next.js, `npm run build`).
+2. Set `QLOO_API_KEY` and `QLOO_API_URL=https://hackathon.api.qloo.com`. Optional `GEMINI_API_KEY`. Leave `QLOO_USE_MOCK` unset.
+3. Confirm `GET /api/partners` shows `qloo_mode: "live"`.
+4. Open `/`, pick a seeded fictional brand, run scout. Trace panel must list Qloo GETs.
 
-If `GET /api/taste-brief` shows `qloo_mode: "fallback_mock"`, the key is missing or `QLOO_USE_MOCK=true`.
+## Demo steps (judges)
 
-## Demo steps (judges / no login)
+1. Homepage — three fictional founders (coffee, home scent, ceramics).
+2. Open one → Find complementary partners.
+3. Confirm competitors are filtered, pitches say DRAFT, copy works, local status works.
+4. Open the Qloo-powered trace.
 
-1. Open the hosted homepage.
-2. Choose a seeded brief (e.g. Sustainable Activewear).
-3. Click **Generate Taste Brief**.
-4. Confirm affinities, tags, differentiators, and survey questions cite Qloo entity/tag ids.
-5. Optional: **Send to Market Desk** (deep link) or **Download JSON**.
+## Not in this repo
 
-## What is not in this repo
+- API keys
+- Devpost submit / video
+- Any Market Desk code or deep link
 
-- The Qloo key itself
-- Gemini key
-- Market Desk private code
-- Devpost submission / video
-
-Deadline for the hackathon submission is Fri Oct 30, 2026, 11:45 PM ET. Hosting, video (optional; rules say no video required), and Devpost copy are still human steps.
+Deadline: Fri Oct 30, 2026, 11:45 PM ET.

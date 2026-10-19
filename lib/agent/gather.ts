@@ -1,133 +1,213 @@
 /**
- * Deterministic Qloo gather step. Runs the same four documented endpoints
- * the agent tools expose so a taste brief always has sourced signals.
+ * Agentic Qloo tool loop for Collab Scout.
+ * Each step is a documented GET. Traces are returned for the UI panel.
  */
 
 import { getQlooClient } from '../qloo/client';
-import type { QlooComparisonDifference, QlooEntity, QlooTag } from '../qloo/types';
-import type { ResearchBrief } from './schema';
+import type { QlooAffinity, QlooEntity, QlooTag } from '../qloo/types';
+import type { PartnerBrief, QlooTraceEntry } from './schema';
 
-export interface SourcedAffinity {
-  name: string;
-  score: number;
-  category: string;
-  source: string;
-}
-
-export interface GatheredQlooData {
-  entities: QlooEntity[];
-  brandAffinities: SourcedAffinity[];
-  placeAffinities: SourcedAffinity[];
+export interface ScoutSignals {
+  seedEntities: QlooEntity[];
+  brandAffinities: QlooAffinity[];
+  placeAffinities: QlooAffinity[];
+  artistAffinities: QlooAffinity[];
   tags: QlooTag[];
-  differences: QlooComparisonDifference[];
-  sources: string[];
-  confidence: number;
+  compareNotes: string[];
+  traces: QlooTraceEntry[];
   mocked: boolean;
 }
 
-const NAME_SPLIT = /[,:;]/;
-
-export function extractSearchTerms(brief: ResearchBrief): string[] {
-  const terms = [
-    ...(brief.competitor_brands || []),
-    ...splitNames(brief.title),
-    ...splitNames(brief.product_concept),
-  ];
-  return unique(terms).slice(0, 6);
+function trace(
+  traces: QlooTraceEntry[],
+  path: string,
+  params: Record<string, string>,
+  summary: string,
+  mocked: boolean
+): void {
+  traces.push({
+    id: `qloo_${traces.length + 1}`,
+    at: new Date().toISOString(),
+    method: 'GET',
+    path,
+    params,
+    summary,
+    mocked,
+  });
 }
 
-function splitNames(text: string): string[] {
-  return text
-    .split(NAME_SPLIT)
-    .map((part) => part.trim())
-    .filter((part) => part.length >= 3 && /[A-Z]/.test(part) && part.split(/\s+/).length <= 4);
+export function searchTermsFor(brief: PartnerBrief): string[] {
+  const terms = [brief.brand_name, ...(brief.seed_brands || [])];
+  const seen = new Set<string>();
+  const out: string[] = [];
+  for (const term of terms) {
+    const key = term.toLowerCase().trim();
+    if (!key || seen.has(key)) continue;
+    seen.add(key);
+    out.push(term.trim());
+  }
+  return out.slice(0, 4);
 }
 
-export async function gatherQlooData(brief: ResearchBrief): Promise<GatheredQlooData> {
+export async function runScoutLoop(brief: PartnerBrief): Promise<ScoutSignals> {
   const client = getQlooClient();
-  const sources = new Set<string>();
-  const entities: QlooEntity[] = [];
+  const mocked = client.isMocked();
+  const traces: QlooTraceEntry[] = [];
+  const seedEntities: QlooEntity[] = [];
 
-  for (const term of extractSearchTerms(brief)) {
-    const result = await client.searchEntities({ query: term, limit: 3 });
-    entities.push(...result.entities);
-    if (result.entities.length) {
-      sources.add('GET /search');
-    }
+  for (const query of searchTermsFor(brief)) {
+    const result = await client.searchEntities({
+      query,
+      types: ['brand'],
+      limit: 3,
+    });
+    seedEntities.push(...result.entities);
+    trace(
+      traces,
+      '/search',
+      { query, types: 'urn:entity:brand', take: '3' },
+      result.entities.length
+        ? `Resolved ${result.entities.map((e) => e.name).join(', ')}`
+        : `No entity for “${query}” (fictional names often miss; seeds still work)`,
+      mocked
+    );
   }
 
-  const uniqueEntities = dedupeEntities(entities);
-  const entityIds = uniqueEntities.map((e) => e.id).filter(Boolean).slice(0, 8);
+  const uniqueSeeds = dedupe(seedEntities);
+  const entityIds = uniqueSeeds.map((e) => e.id).filter(Boolean).slice(0, 8);
   const audience = {
-    age_range: brief.target_audience?.age_range,
-    gender: brief.target_audience?.gender,
+    age_range: brief.audience_age,
     geography: brief.target_geography,
   };
 
-  const brandInsights = await client.getInsights({
+  const brands = await client.getInsights({
     audience,
     entity_ids: entityIds,
     filter_type: 'urn:entity:brand',
     categories: ['Brands'],
-    limit: 10,
+    limit: 16,
   });
-  sources.add('GET /v2/insights (filter.type=urn:entity:brand)');
+  trace(
+    traces,
+    '/v2/insights',
+    {
+      'filter.type': 'urn:entity:brand',
+      'signal.interests.entities': entityIds.join(',') || '(location only)',
+      'signal.location.query': brief.target_geography,
+      ...(brief.audience_age ? { 'signal.demographics.age': brief.audience_age } : {}),
+    },
+    `${brands.affinities.length} audience-overlap brands`,
+    mocked
+  );
 
-  const placeInsights = await client.getInsights({
+  const places = await client.getInsights({
     audience,
     entity_ids: entityIds,
     filter_type: 'urn:entity:place',
     categories: ['Places'],
     limit: 8,
   });
-  sources.add('GET /v2/insights (filter.type=urn:entity:place)');
+  trace(
+    traces,
+    '/v2/insights',
+    {
+      'filter.type': 'urn:entity:place',
+      'signal.interests.entities': entityIds.join(',') || '(location only)',
+      'signal.location.query': brief.target_geography,
+    },
+    `${places.affinities.length} venue / place ideas`,
+    mocked
+  );
 
-  const tagQuery = brief.product_concept.split(/\s+/).slice(0, 3).join(' ') || 'lifestyle';
+  const artists = await client.getInsights({
+    audience,
+    entity_ids: entityIds,
+    filter_type: 'urn:entity:artist',
+    categories: ['Artists'],
+    limit: 6,
+  });
+  trace(
+    traces,
+    '/v2/insights',
+    {
+      'filter.type': 'urn:entity:artist',
+      'signal.interests.entities': entityIds.join(',') || '(location only)',
+    },
+    `${artists.affinities.length} artist / talent ideas`,
+    mocked
+  );
+
   const tags = await client.getTags({
-    query: tagQuery,
+    query: brief.category,
     entity_ids: entityIds.slice(0, 4),
     limit: 12,
   });
-  sources.add(entityIds.length ? 'GET /v2/insights (filter.type=urn:tag)' : 'GET /v2/tags');
+  trace(
+    traces,
+    entityIds.length ? '/v2/insights' : '/v2/tags',
+    entityIds.length
+      ? { 'filter.type': 'urn:tag', 'signal.interests.entities': entityIds.slice(0, 4).join(',') }
+      : { 'filter.query': brief.category },
+    `${tags.tags.length} shared / related tags`,
+    mocked
+  );
 
-  const half = Math.ceil(entityIds.length / 2) || 0;
-  const comparison = await client.compareAudiences({
-    target_audience: audience,
-    entity_ids: entityIds.slice(0, half || entityIds.length),
-    baseline_entity_ids: entityIds.slice(half),
-    baseline: 'general population',
-    limit: 12,
-  });
-  if (entityIds.length) {
-    sources.add('GET /v2/insights (filter.type=urn:demographics)');
-  }
-  if (entityIds.length >= 2) {
-    sources.add('GET /v2/analysis/compare');
+  const compareNotes: string[] = [];
+  const partnerIds = brands.affinities
+    .map((a) => a.entity.id)
+    .filter((id) => id && !entityIds.includes(id))
+    .slice(0, 4);
+  if (entityIds.length && partnerIds.length) {
+    const compared = await client.compareAudiences({
+      target_audience: audience,
+      entity_ids: entityIds,
+      baseline_entity_ids: partnerIds,
+      baseline: 'candidate partners',
+      limit: 8,
+    });
+    compareNotes.push(
+      ...compared.differences.slice(0, 4).map(
+        (d) => `${d.entity.name}: target ${d.target_score} vs baseline ${d.baseline_score} (${d.entity.id})`
+      )
+    );
+    trace(
+      traces,
+      '/v2/analysis/compare',
+      {
+        'a.signal.interests.entities': entityIds.join(','),
+        'b.signal.interests.entities': partnerIds.join(','),
+      },
+      compared.differences.length
+        ? `Compared seeds vs ${partnerIds.length} candidate partners`
+        : 'Compare returned no rows',
+      mocked
+    );
+    if (entityIds.length) {
+      traces.push({
+        id: `qloo_${traces.length + 1}`,
+        at: new Date().toISOString(),
+        method: 'GET',
+        path: '/v2/insights',
+        params: { 'filter.type': 'urn:demographics', 'signal.interests.entities': entityIds.join(',') },
+        summary: 'Demographic skew for seed entities (part of compare)',
+        mocked,
+      });
+    }
   }
 
   return {
-    entities: uniqueEntities,
-    brandAffinities: brandInsights.affinities.map((a) => ({
-      name: a.entity.name,
-      score: a.score,
-      category: a.category,
-      source: a.entity.id,
-    })),
-    placeAffinities: placeInsights.affinities.map((a) => ({
-      name: a.entity.name,
-      score: a.score,
-      category: a.category,
-      source: a.entity.id,
-    })),
+    seedEntities: uniqueSeeds,
+    brandAffinities: brands.affinities,
+    placeAffinities: places.affinities,
+    artistAffinities: artists.affinities,
     tags: tags.tags,
-    differences: comparison.differences,
-    sources: Array.from(sources),
-    confidence: brandInsights.metadata.confidence,
-    mocked: client.isMocked(),
+    compareNotes,
+    traces,
+    mocked,
   };
 }
 
-function dedupeEntities(entities: QlooEntity[]): QlooEntity[] {
+function dedupe(entities: QlooEntity[]): QlooEntity[] {
   const seen = new Set<string>();
   const out: QlooEntity[] = [];
   for (const entity of entities) {
@@ -135,18 +215,6 @@ function dedupeEntities(entities: QlooEntity[]): QlooEntity[] {
     if (seen.has(key)) continue;
     seen.add(key);
     out.push(entity);
-  }
-  return out;
-}
-
-function unique(values: string[]): string[] {
-  const seen = new Set<string>();
-  const out: string[] = [];
-  for (const value of values) {
-    const key = value.toLowerCase();
-    if (seen.has(key)) continue;
-    seen.add(key);
-    out.push(value);
   }
   return out;
 }

@@ -1,72 +1,17 @@
-/**
- * API Route: Generate Taste Brief
- * POST /api/taste-brief
- * 
- * Integration endpoint for Market Desk (circuit-analyst.vercel.app)
- */
+import { NextResponse } from 'next/server';
+import { APP_NAME } from '@/lib/app-config';
 
-import { NextRequest, NextResponse } from 'next/server';
-import { ResearchBriefSchema } from '@/lib/agent/schema';
-import { generateTasteBrief } from '@/lib/agent/orchestrator';
-import { resolveQlooBaseUrl, shouldUseQlooMock } from '@/lib/qloo/config';
-import { isGeminiConfigured } from '@/lib/agent/gemini';
-
-export const maxDuration = 60; // Allow up to 60 seconds for generation
-
-export async function POST(request: NextRequest) {
-  try {
-    const body = await request.json();
-    
-    // Validate input
-    const validationResult = ResearchBriefSchema.safeParse(body);
-    if (!validationResult.success) {
-      return NextResponse.json(
-        {
-          error: 'Invalid research brief format',
-          details: validationResult.error.issues,
-        },
-        { status: 400 }
-      );
-    }
-
-    const brief = validationResult.data;
-    console.log('[API] Generating taste brief for:', brief.title);
-
-    // Generate taste brief using agent
-    const tasteBrief = await generateTasteBrief(brief);
-
-    console.log('[API] Taste brief generated successfully');
-
-    return NextResponse.json({
-      success: true,
-      data: tasteBrief,
-    });
-  } catch (error) {
-    console.error('[API] Error generating taste brief:', error);
-    
-    return NextResponse.json(
-      {
-        error: 'Failed to generate taste brief',
-        message: error instanceof Error ? error.message : 'Unknown error',
-      },
-      { status: 500 }
-    );
-  }
+/** Retired Market Desk taste-brief endpoint. */
+export async function GET() {
+  return NextResponse.json(
+    {
+      error: 'gone',
+      message: `${APP_NAME} replaced the taste-brief API. Use POST /api/partners.`,
+    },
+    { status: 410 }
+  );
 }
 
-// Health check endpoint
-export async function GET() {
-  const mock = shouldUseQlooMock();
-  return NextResponse.json({
-    service: 'Market Desk Taste Agent',
-    status: 'operational',
-    version: '1.1.0',
-    qloo_mode: mock ? 'fallback_mock' : 'live',
-    qloo_base_url: resolveQlooBaseUrl(),
-    qloo_auth_header: 'X-Api-Key',
-    gemini: isGeminiConfigured() ? 'gemini-2.5-flash' : 'canned_fallback',
-    endpoints: {
-      generate: 'POST /api/taste-brief',
-    },
-  });
+export async function POST() {
+  return GET();
 }

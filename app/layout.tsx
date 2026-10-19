@@ -13,8 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Market Desk Taste Agent | Qloo-Powered Research Intelligence",
-  description: "Transform research briefs into actionable taste insights using Qloo's cultural intelligence. Generate data-driven survey questions and positioning strategies.",
+  title: "Collab Scout | Qloo-powered co-marketing partners",
+  description:
+    "Find complementary co-marketing partners from Qloo taste overlap. Drafts only — never sends email.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
