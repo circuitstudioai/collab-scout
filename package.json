@@ -1,0 +1,35 @@
+{
+  "name": "collab-scout",
+  "version": "1.0.0",
+  "private": false,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "qloo:smoke": "tsx scripts/qloo-smoke.ts"
+  },
+  "dependencies": {
+    "@google/genai": "^1.30.0",
+    "next": "16.4.2",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@tailwindcss/turbopack": "^4",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.4.2",
+    "jest": "^30.5.2",
+    "tailwindcss": "^4",
+    "ts-jest": "^29.4.15",
+    "tsx": "^4.20.6",
+    "typescript": "^5"
+  }
+}
