@@ -2,9 +2,9 @@
 
 > **Agents, but with taste** — complementary co-marketing partners, powered by [Qloo](https://www.qloo.com/).
 
-Working name lives in `lib/app-config.ts` (`APP_NAME`) so it is easy to rename.
+Canonical repo: [github.com/circuitstudioai/collab-scout](https://github.com/circuitstudioai/collab-scout). Working name lives in `lib/app-config.ts` (`APP_NAME`) so it is easy to rename.
 
-For consumer brand founders. Not a market-research dashboard. **MIT.** Built for the [Qloo Agentic Hackathon](https://qloo.devpost.com/) (deadline Fri Oct 30, 2026, 11:45 PM ET).
+For consumer brand founders. Not a market-research dashboard. **MIT.** Built for the [Qloo Agentic Hackathon](https://qloo.devpost.com/) (deadline Fri Oct 30, 2026, 11:45 PM ET). Hosted on **Vercel**.
 
 ---
 
@@ -62,12 +62,14 @@ QLOO_API_KEY=... npm run qloo:smoke
 
 ## Env
 
+Set these locally in `.env.local`, and on **Vercel** under Project → Settings → Environment Variables (Production + Preview). Gemini is called **directly** from the Next.js server using `GEMINI_API_KEY` — there is no extra Gemini proxy.
+
 | Var | Role |
 |---|---|
-| `QLOO_API_KEY` | Hackathon key → `X-Api-Key` |
-| `QLOO_API_URL` | Default `https://hackathon.api.qloo.com` |
-| `QLOO_USE_MOCK` | `true` forces mock |
+| `QLOO_API_KEY` | Hackathon key → `X-Api-Key` (required for live Qloo) |
 | `GEMINI_API_KEY` | Gemini 2.5 Flash; canned drafts if unset |
+| `QLOO_API_URL` | Default `https://hackathon.api.qloo.com` |
+| `QLOO_USE_MOCK` | `true` forces mock — leave unset on Vercel |
 
 Deploy: [docs/SETUP.md](docs/SETUP.md). Devpost draft: [docs/devpost-draft.md](docs/devpost-draft.md).
 

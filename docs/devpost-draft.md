@@ -2,6 +2,8 @@
 
 Status: draft for Abhishek. Do not submit until he approves. Deadline **Fri Oct 30, 2026, 11:45 PM ET**. Video not required by the official rules.
 
+Public MIT repo: [github.com/circuitstudioai/collab-scout](https://github.com/circuitstudioai/collab-scout). Hosted demo: **Vercel**. Gemini is called directly with `GEMINI_API_KEY` from Vercel env vars (alongside `QLOO_API_KEY`).
+
 Working name: **Collab Scout** (constant: `APP_NAME` in `lib/app-config.ts`). Theme: **Agents, but with taste**.
 
 ## What it does
@@ -42,8 +44,6 @@ The filter is the product idea: last year’s field had many “taste brief / ma
 
 ## What’s next
 
-- Host the demo on Vercel with the live Qloo key (`qloo_mode: live` on `GET /api/partners`)  
-- Optional Gemini key for richer copy  
-- Public MIT repo (human publishes; this draft is not a submission)  
+- Host the demo on Vercel from [circuitstudioai/collab-scout](https://github.com/circuitstudioai/collab-scout) with `QLOO_API_KEY` + `GEMINI_API_KEY` in Vercel env (`qloo_mode: live` on `GET /api/partners`)  
 - Devpost form + optional video  
 - After the hackathon: more partner types, CRM export, still no auto-send

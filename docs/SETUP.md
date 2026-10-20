@@ -1,6 +1,10 @@
 # Setup and deploy
 
-For another agent (or a human) with Vercel access. No database. No auth. No Supabase required.
+Canonical repo: [github.com/circuitstudioai/collab-scout](https://github.com/circuitstudioai/collab-scout).
+
+For another agent (or a human) with **Vercel** access. Import that GitHub repo into Vercel (Next.js). No database. No auth. No Supabase required.
+
+Gemini is called **directly** from the Next.js server using `GEMINI_API_KEY` from Vercel environment variables (same settings page as `QLOO_API_KEY`). There is no Gemini proxy or extra vendor.
 
 ## What this is
 
@@ -55,9 +59,17 @@ No key → mock fallback; demo still works.
 
 ## Vercel
 
-1. Import the Git repo (Next.js, `npm run build`).
-2. Set `QLOO_API_KEY` and `QLOO_API_URL=https://hackathon.api.qloo.com`. Optional `GEMINI_API_KEY`. Leave `QLOO_USE_MOCK` unset.
-3. Confirm `GET /api/partners` shows `qloo_mode: "live"`.
+1. Import [circuitstudioai/collab-scout](https://github.com/circuitstudioai/collab-scout) into Vercel (Next.js, Framework Preset Next.js, build `npm run build`, output `.next`).
+2. In Vercel → Project → Settings → Environment Variables, set at least:
+
+   | Name | Production + Preview |
+   |---|---|
+   | `QLOO_API_KEY` | Hackathon key (required for live Qloo) |
+   | `GEMINI_API_KEY` | Google Gemini key (direct `@google/genai` call; omit to use canned drafts) |
+   | `QLOO_API_URL` | `https://hackathon.api.qloo.com` |
+
+   Leave `QLOO_USE_MOCK` unset (or `false`). Do not set `OPENAI_API_KEY`.
+3. Redeploy after adding env vars. Confirm `GET /api/partners` shows `qloo_mode: "live"` and `gemini: "gemini-2.5-flash"` when both keys are set.
 4. Open `/`, pick a seeded fictional brand, run scout. Trace panel must list Qloo GETs.
 
 ## Demo steps (judges)
