@@ -10,7 +10,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 ## Collab Scout
 
-Qloo Agentic Hackathon entry. Canonical repo: [github.com/circuitstudioai/collab-scout](https://github.com/circuitstudioai/collab-scout). Name: `APP_NAME` in `lib/app-config.ts`. Deploy: [docs/SETUP.md](docs/SETUP.md) (Vercel). Devpost draft: [docs/devpost-draft.md](docs/devpost-draft.md).
+Qloo Agentic Hackathon entry. Canonical repo: [github.com/circuitstudioai/collab-scout](https://github.com/circuitstudioai/collab-scout). Name: `APP_NAME` in `lib/app-config.ts`. Product: [docs/PRD.md](docs/PRD.md). Architecture: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md). Deploy: [docs/SETUP.md](docs/SETUP.md) (Vercel). Devpost draft: [docs/devpost-draft.md](docs/devpost-draft.md).
 
 Co-marketing partner agent for consumer brand founders. **Not** a Market Desk / taste-brief / survey tool. Never send email. Never depend on Market Desk.
 

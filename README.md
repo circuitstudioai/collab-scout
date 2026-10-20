@@ -71,7 +71,7 @@ Set these locally in `.env.local`, and on **Vercel** under Project → Settings 
 | `QLOO_API_URL` | Default `https://hackathon.api.qloo.com` |
 | `QLOO_USE_MOCK` | `true` forces mock — leave unset on Vercel |
 
-Deploy: [docs/SETUP.md](docs/SETUP.md). Devpost draft: [docs/devpost-draft.md](docs/devpost-draft.md).
+Product: [docs/PRD.md](docs/PRD.md). Architecture: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md). Deploy: [docs/SETUP.md](docs/SETUP.md). Devpost draft: [docs/devpost-draft.md](docs/devpost-draft.md).
 
 ## API
 
