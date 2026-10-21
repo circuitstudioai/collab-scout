@@ -25,3 +25,7 @@
 
 
 Meaningful cases covered: over-budget highest affinity excluded; missing rent not inferred; distant evidence rejected; nearest point rather than best score used; ties preserved; invalid coordinates/duplicate IDs rejected; malformed evidence not given a default score; fixed sample never calls network; custom sample refused; missing credentials/upstream errors never fall back; ambiguous reference names rejected; single common heatmap retained through partial dining failure.
+
+## No-ai-slop content pass
+
+App source 8d359a1, public preview https://collab-scout-d1rmwxfks-circuitstudioais-projects.vercel.app . Plain-language content across the homepage, forms, map, results, errors, exported comparison, and submission draft. Calculations and Qloo request parameters unchanged. Full audit: UI_UX_COPY_AUDIT.md; complete edited copy: COPY.md. Browser checks pass with zero axe violations in four tested states and no mobile overflow. Existing sponsor authentication/submission blockers remain unresolved.

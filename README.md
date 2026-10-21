@@ -4,7 +4,7 @@ Compare restaurant locations with Qloo taste evidence, rent constraints, and exp
 
 **Status:** working prototype with a disclosed sample mode. Live sponsor authentication is currently blocked by HTTP 401 (`API keys mismatch`) on the documented hackathon host. Not submitted. No customer validation claimed.
 
-[Public sample preview](https://collab-scout-1b6x4k8zp-circuitstudioais-projects.vercel.app) · [Implementation PR](https://github.com/circuitstudioai/collab-scout/pull/4)
+[Public sample preview](https://collab-scout-d1rmwxfks-circuitstudioais-projects.vercel.app) · [Implementation PR](https://github.com/circuitstudioai/collab-scout/pull/4)
 
 ## Run
 

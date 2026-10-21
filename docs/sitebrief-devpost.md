@@ -44,6 +44,6 @@ We have not interviewed restaurant owners or realtors. The app does not verify a
 - [ ] Live Qloo search, shared map, and nearby restaurant responses verified
 - [x] Public sample preview verified without login; live acceptance remains blocked
 - [x] Public repository, source branch, and visible MIT license
-- [ ] Copy-pass screenshots updated to the tested release
+- [x] Copy-pass screenshots updated to tested app source 8d359a1
 - [ ] Devpost security verification and login completed
 - [ ] Submission receipt and public project URL recorded
