@@ -11,7 +11,7 @@ it('keeps the highest signal out of the shortlist when rent is over budget', () 
   const result=evaluateSites(brief(),cells,[]); expect(recommend(result)).toContain('West Village'); expect(result[2].budget).toBe('over');
 });
 it('does not infer affordability when rent is missing', () => {
-  const b=brief();b.sites.forEach(s=>s.rent=null);expect(recommend(evaluateSites(b,cells,[]))).toContain('No supported shortlist');
+  const b=brief();b.sites.forEach(s=>s.rent=null);expect(recommend(evaluateSites(b,cells,[]))).toContain('No location can be shortlisted');
 });
 it('does not attach distant or missing evidence to a site', () => {
   expect(matchCell(brief().sites[0], [{latitude:0,longitude:0,affinity:.9}]).cell).toBeNull();expect(matchCell(brief().sites[0],[]).cell).toBeNull();
@@ -20,7 +20,7 @@ it('selects the nearest point, not the highest-affinity point',()=>{
   expect(matchCell(brief().sites[0],cells).cell?.affinity).toBe(.8);
 });
 it('handles tied signals without inventing a winner',()=>{
-  const result=evaluateSites(brief(),cells.map(c=>({...c,affinity:.5})),[]);expect(recommend(result)).toContain('share the same taste signal');
+  const result=evaluateSites(brief(),cells.map(c=>({...c,affinity:.5})),[]);expect(recommend(result)).toContain('have the same taste score');
 });
 it('uses geographic distance with longitude and latitude in the correct order',()=>{
   expect(distanceKm(brief().sites[0],brief().sites[0])).toBe(0);expect(distanceKm(brief().sites[0],brief().sites[1])).toBeGreaterThan(1);
@@ -35,16 +35,16 @@ it('returns clearly disclosed sample data without a network call',async()=>{
   const r=await compareSites(brief());expect(r.mode).toBe('sample');expect(r.trace[0].path).toContain('no Qloo calls');expect(mockedGet).not.toHaveBeenCalled();
 });
 it('refuses to fabricate sample evidence for a custom location',async()=>{
-  const b=brief();b.sites[0].latitude=30;await expect(compareSites(b)).rejects.toThrow('unchanged New York');
+  const b=brief();b.sites[0].latitude=30;await expect(compareSites(b)).rejects.toThrow('fixed New York');
 });
 it('never silently falls back when live credentials are missing',async()=>{
   delete process.env.QLOO_API_KEY;await expect(compareSites({...brief(),mode:'live'})).rejects.toThrow('not configured');
 });
 it('never substitutes fixtures for an upstream failure',async()=>{
-  mockedGet.mockRejectedValue(new Error('upstream failed'));await expect(compareSites({...brief(),mode:'live'})).rejects.toThrow('No sample evidence');
+  mockedGet.mockRejectedValue(new Error('upstream failed'));await expect(compareSites({...brief(),mode:'live'})).rejects.toThrow('Qloo did not return');
 });
 it('rejects ambiguous entity resolution',async()=>{
-  mockedGet.mockResolvedValue({results:[{entity_id:'1',name:'Blue Bottle Coffee'},{entity_id:'2',name:'Blue Bottle Coffee'}]});await expect(compareSites({...brief(),mode:'live'})).rejects.toThrow('resolve uniquely');
+  mockedGet.mockResolvedValue({results:[{entity_id:'1',name:'Blue Bottle Coffee'},{entity_id:'2',name:'Blue Bottle Coffee'}]});await expect(compareSites({...brief(),mode:'live'})).rejects.toThrow('single exact match');
 });
 it('uses a single common heatmap and preserves partial context failures',async()=>{
   mockedGet.mockImplementation(async options=>{
@@ -52,5 +52,5 @@ it('uses a single common heatmap and preserves partial context failures',async()
     if(options.params?.['filter.type']==='urn:heatmap')return {results:{heatmap:cells.map(c=>({location:c,query:{affinity:c.affinity}}))}};
     throw new Error('dining unavailable');
   });
-  const r=await compareSites({...brief(),mode:'live'});expect(r.mode).toBe('live');expect(r.sites.every(s=>!s.contextAvailable)).toBe(true);expect(r.trace.filter(t=>t.step==='Map audience affinity')).toHaveLength(1);expect(r.recommendation).toContain('West Village');
+  const r=await compareSites({...brief(),mode:'live'});expect(r.mode).toBe('live');expect(r.sites.every(s=>!s.contextAvailable)).toBe(true);expect(r.trace.filter(t=>t.step==='Get taste scores for the area')).toHaveLength(1);expect(r.recommendation).toContain('West Village');
 });

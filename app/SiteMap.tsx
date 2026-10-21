@@ -16,7 +16,7 @@ export default function SiteMap({ sites, cells, selected }: { sites: Site[]; cel
       const lo = Math.min(...cells.map(c => c.affinity)), hi = Math.max(...cells.map(c => c.affinity));
       cells.slice(0, 4000).forEach(c => {
         const t = hi === lo ? .5 : (c.affinity - lo) / (hi - lo);
-        L.circleMarker([c.latitude, c.longitude], { radius: 5, stroke: false, fillColor: t > .66 ? '#294c34' : t > .33 ? '#8caa50' : '#d7dfb5', fillOpacity: .7 }).addTo(map!).bindTooltip(`Qloo point · raw affinity ${c.affinity.toFixed(3)}`);
+        L.circleMarker([c.latitude, c.longitude], { radius: 5, stroke: false, fillColor: t > .66 ? '#294c34' : t > .33 ? '#8caa50' : '#d7dfb5', fillOpacity: .7 }).addTo(map!).bindTooltip(`Map point · Qloo taste score ${c.affinity.toFixed(3)}`);
       });
       sites.forEach((site, i) => {
         const label = document.createElement('span');
@@ -28,5 +28,5 @@ export default function SiteMap({ sites, cells, selected }: { sites: Site[]; cel
     });
     return () => { cancelled = true; map?.remove(); };
   }, [sites, cells, selected]);
-  return <div className="leaflet-map" ref={container} role="region" aria-label="Candidate locations and returned taste evidence. Use the comparison cards for the same data." />;
+  return <div className="leaflet-map" ref={container} role="region" aria-label="Locations and nearby taste scores. The comparison cards below contain the same scores." />;
 }

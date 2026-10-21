@@ -1,33 +1,49 @@
-# Sitebrief — submission draft (NOT SUBMITTED)
+# Sitebrief submission draft
+
+Not submitted. Live Qloo authentication must work before submission.
 
 ## Tagline
-Compare restaurant sites using taste evidence, rent constraints, and clear next checks.
+Compare restaurant locations by nearby taste scores and monthly rent.
 
 ## Inspiration
-Choosing a restaurant location combines a cultural question—does this concept fit the area?—with practical questions about rent and operations. A generic language model can describe neighborhoods convincingly without establishing any evidence. Sitebrief keeps those questions separate.
+Restaurant owners need to compare locations before committing to a lease. Rent is one part of that decision. Understanding whether a location fits the intended audience needs separate evidence. We built Sitebrief to put those details side by side and show what still needs checking.
 
 ## What it does
-A restaurant founder or commercial realtor enters two or three candidate locations, an intended concept, audience-reference brands or places, and a rent ceiling. The tool resolves the references with Qloo, requests one shared geographic taste heatmap, and attaches the nearest supported evidence to each site. It adds taste-ranked nearby dining context, applies the rent constraint and exports a comparison memo. Unknown rent, unsupported coordinates, ties and partial data failures are visible.
+A restaurant owner or commercial realtor enters 2–3 locations, a monthly rent budget, and brands or places the intended customers might like. Sitebrief uses those names to look up Qloo taste data for the area.
+
+The comparison shows a nearby taste score, the rent entered, and whether that rent fits the budget. Locations with missing rent or map data stay out of the shortlist. A tie stays a tie. Users can review nearby restaurants, inspect the data sources, and download the comparison.
 
 ## How we built it
-Next.js, React, TypeScript, Zod, Leaflet and OpenStreetMap. A server-side agent-callable tool orchestrates documented Qloo GET requests on the hackathon API. Deterministic logic handles constraints and scoring; no language model invents business facts, probabilities or sources. The evidence trace includes the calls and resolved entity IDs. The sample mode is explicitly illustrative and never silently replaces failed live calls.
+The app uses Next.js, React, TypeScript, Zod, Leaflet, and OpenStreetMap. A server-side tool runs the Qloo searches, requests one shared taste map, and looks up nearby restaurants. The tool then checks the rent budget and compares the supported locations. An agent can call the same tool through its published JSON schema.
 
-## What makes it Qloo-powered
-The intended live comparison uses Qloo's cross-domain taste signals and geographic affinity—not a language model's guesses about neighborhood culture. Removing Qloo removes the taste evidence and therefore the supported comparison. Live authentication must pass before this paragraph can be represented as a demonstrated capability.
+Each location uses the nearest returned map point within 2 km. The comparison uses Qloo's original score. No language model assigns scores or writes the recommendation. The app includes a labelled sample and reports live-data failures separately.
 
-## Challenges and lessons
-Taste affinity is not demand, and a few returned venues do not prove an underserved market. We use a shared heatmap basis, a 2 km evidence-distance cutoff, explicit rent checks and an independent-diligence checklist. Reference brands remain audience proxies, not proof of customer interest.
+## How Qloo contributes
+The planned live workflow uses Qloo to connect the chosen brands and places with geographic taste data. The scores and nearby restaurant results provide the comparison's taste information. Without those results, the tool cannot rank locations by taste.
 
-## Validation and limitations
-No customer interviews completed. No claim of market validation, predicted restaurant success, verified leases, complete competition inventory, or revenue estimation. As of October 21, live authentication is blocked by HTTP 401 on the exact hackathon host; the configured key does not establish successful integration. Do not submit this draft until the live workflow passes.
+Live authentication is currently blocked by HTTP 401 on the documented hackathon server. This workflow must pass a real end-to-end test before we describe it as verified.
+
+## What we learned
+A taste score does not tell an owner how many customers will visit. A short restaurant list does not show every competitor. We kept the rent check separate, showed missing data, and added a checklist for the work needed before signing a lease.
+
+## Current limits
+We have not interviewed restaurant owners or realtors. The app does not verify available rentals, rent quotes, foot traffic, population figures, permits, or likely sales. The sample rents, scores, and nearby restaurant entries are made up for the demo. Live API access and human Devpost verification remain unresolved.
 
 ## Testing instructions
-Open the hosted demo. Run the illustrative example. The highest sample taste signal is over budget and must not lead the shortlist. Inspect all three sites on the map, expand the evidence trail and download the memo. Then switch to live inputs and complete a real Qloo run after credentials are fixed. Confirm no synthetic evidence appears if any live call fails.
+1. Open the hosted demo.
+2. Select Compare sample locations.
+3. Check that Williamsburg is over budget, even though it has the highest sample taste score.
+4. Select each location on the map.
+5. Expand View data sources.
+6. Download the comparison.
+7. After API access is fixed, select Use my locations and complete a live comparison.
+8. Confirm that a failed live request shows an error without replacing the result with sample data.
 
 ## Submission gates
-- [ ] Live Qloo search, common heatmap and site-context responses verified
-- [x] Public sample preview verified without login; live acceptance still blocked
-- [x] Public repository, source branch and visible MIT license
-- [x] Desktop and mobile screenshots correspond to tested release 147fe60
-- [ ] Devpost verification/login completed
+
+- [ ] Live Qloo search, shared map, and nearby restaurant responses verified
+- [x] Public sample preview verified without login; live acceptance remains blocked
+- [x] Public repository, source branch, and visible MIT license
+- [ ] Copy-pass screenshots updated to the tested release
+- [ ] Devpost security verification and login completed
 - [ ] Submission receipt and public project URL recorded

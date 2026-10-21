@@ -21,10 +21,10 @@ export function evaluateSites(brief: Brief, cells: Cell[], contexts: { venues: V
 }
 export function recommend(sites: SiteResult[]): string {
   const ranked = sites.filter(s => s.budget === 'within' && s.cell).sort((a, b) => b.cell!.affinity - a.cell!.affinity);
-  if (!ranked.length) return 'No supported shortlist yet. Supply an in-budget rent and a site within 2 km of a returned heatmap point.';
+  if (!ranked.length) return 'No location can be shortlisted yet. Each location needs a rent within your budget and a nearby Qloo score. Check the rents and scores below.';
   if (ranked.length > 1 && ranked[0].cell!.affinity === ranked[1].cell!.affinity)
-    return 'The leading in-budget sites share the same taste signal. Use site visits and verified operating costs to distinguish them.';
-  return `${ranked[0].name} has the strongest nearby taste signal among sites within your stated rent budget. Investigate it first; this is not a lease recommendation.`;
+    return 'The leading locations within your rent budget have the same taste score. Compare lease terms and operating costs to decide which to visit first.';
+  return `Start with ${ranked[0].name}. It has the highest nearby taste score among locations within your rent budget. Check lease terms and operating costs before deciding.`;
 }
 export class SiteError extends Error { constructor(message: string, public status = 422) { super(message); } }
 type Row = Record<string, unknown>;
@@ -45,18 +45,18 @@ export async function compareSites(brief: Brief): Promise<Comparison> {
   if (brief.mode === 'sample') {
     // A fixed, disclosed fixture: never synthesize evidence for custom locations or concepts.
     if (JSON.stringify(brief) !== JSON.stringify(briefSchema.parse(sampleBrief)))
-      throw new SiteError('Sample mode uses the unchanged New York example. Reset the example or choose live analysis.');
+      throw new SiteError('The sample uses fixed New York locations. Choose Reset example to restore them, or use your own locations for a live comparison.');
     cells = [
       { latitude: 40.738, longitude: -74.003, affinity: 0.83 },
       { latitude: 40.7229, longitude: -73.988, affinity: 0.68 },
       { latitude: 40.7096, longitude: -73.961, affinity: 0.91 },
     ];
-    references = [{ id: 'sample-reference', name: 'Blue Bottle Coffee (sample reference)' }];
-    contexts = brief.sites.map((_, i) => ({ available: true, venues: [{ id: `sample-${i}`, name: 'Illustrative nearby café (not a real business)', affinity: null }] }));
-    trace.push({ step: 'Load disclosed sample fixture', path: 'local fixture · no Qloo calls', params: {}, status: 'ok', count: cells.length });
+    references = [{ id: 'sample-reference', name: 'Blue Bottle Coffee (sample)' }];
+    contexts = brief.sites.map((_, i) => ({ available: true, venues: [{ id: `sample-${i}`, name: 'Example café (made up for this sample)', affinity: null }] }));
+    trace.push({ step: 'Load sample comparison', path: 'local fixture · no Qloo calls', params: {}, status: 'ok', count: cells.length });
   } else {
     const apiKey = resolveQlooApiKey();
-    if (!apiKey) throw new SiteError('Live analysis is not configured yet. The owner must add QLOO_API_KEY. Sample mode remains available.', 503);
+    if (!apiKey) throw new SiteError('Live comparisons are not configured yet. Try the sample comparison for now.', 503);
     async function get(step: string, path: string, params: Record<string, string>, resultKey: string) {
       try {
         const raw = await qlooGet({ apiKey, baseUrl: resolveQlooBaseUrl(), path, params, timeoutMs: 8000, maxRetries: 0 });
@@ -65,26 +65,26 @@ export async function compareSites(brief: Brief): Promise<Comparison> {
         return raw;
       } catch {
         trace.push({ step, path, params, status: 'unavailable', count: 0 });
-        throw new SiteError(`${step} could not be completed. No sample evidence was substituted. Try again or use the labelled example.`, 502);
+        throw new SiteError(`Qloo did not return the data for this step. Try again or use the sample comparison.`, 502);
       }
     }
     references = [];
     for (const name of brief.references) {
-      const raw = await get(`Resolve reference: ${name}`, '/search', { query: name, take: '10' }, 'entities');
+      const raw = await get(`Find ${name}`, '/search', { query: name, take: '10' }, 'entities');
       // Search has historically returned either results[] or results.entities[].
       const result = record(raw).results;
       const candidates = Array.isArray(result) ? result.map(record) : rows(raw, 'entities');
       const matches = candidates.filter(r => String(r.name).trim().toLowerCase() === name.trim().toLowerCase() && typeof r.entity_id === 'string');
-      if (matches.length !== 1) throw new SiteError(`“${name}” did not resolve uniquely. Use a more specific, exact Qloo entity name.`);
+      if (matches.length !== 1) throw new SiteError(`We could not find a single exact match for “${name}”. Check the name or choose another brand or place.`);
       references.push({ id: String(matches[0].entity_id), name: String(matches[0].name) });
     }
     const interests = references.map(r => r.id).join(',');
-    const raw = await get('Map audience affinity', '/v2/insights', {
+    const raw = await get('Get taste scores for the area', '/v2/insights', {
       'filter.type': 'urn:heatmap', 'filter.location.query': brief.city,
       'signal.interests.entities': interests, 'signal.interests.tags': 'urn:tag:genre:place:restaurant',
     }, 'heatmap');
     cells = parseCells(raw);
-    if (!cells.length) throw new SiteError('Qloo returned no usable heatmap points for this brief. Try another locality or reference.');
+    if (!cells.length) throw new SiteError('Qloo returned no map scores for this area. Try another city or a different brand or place.');
     contexts = await Promise.all(brief.sites.map(async site => {
       try {
         const result = await get(`Nearby dining: ${site.name}`, '/v2/insights', {
@@ -102,8 +102,8 @@ export async function compareSites(brief: Brief): Promise<Comparison> {
   const sites = evaluateSites(brief, cells, contexts);
   return { mode: brief.mode, createdAt: new Date().toISOString(), brief, references, cells, sites, trace,
     recommendation: recommend(sites), nextSteps: [
-      'Confirm the quoted rent, service charges, lease terms, and permitted restaurant use.',
-      'Observe foot traffic at your intended trading hours. Taste affinity does not measure demand.',
-      'Verify kitchen infrastructure, permits, build-out costs, and break-even sales before choosing a lease.',
+      'Confirm the rent, extra charges, lease terms, and permission to operate a restaurant.',
+      'Visit during your planned opening hours and count passersby. Check whether they are likely customers.',
+      'Check kitchen equipment, permits, renovation costs, and the sales needed to cover your costs.',
     ] };
 }
