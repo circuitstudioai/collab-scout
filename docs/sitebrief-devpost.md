@@ -9,7 +9,7 @@ Compare restaurant locations by nearby taste scores and monthly rent.
 Restaurant owners need to compare locations before committing to a lease. Rent is one part of that decision. Understanding whether a location fits the intended audience needs separate evidence. We built Sitebrief to put those details side by side and show what still needs checking.
 
 ## What it does
-A restaurant owner or commercial realtor enters 2–3 locations, a monthly rent budget, and brands or places the intended customers might like. Sitebrief uses those names to look up Qloo taste data for the area.
+A restaurant owner or commercial realtor enters 2–3 locations, a monthly rent budget, and brands or places the intended customers might like. Users can place locations on the map or enter coordinates directly. Sitebrief uses those names to look up Qloo taste data for the area.
 
 The comparison shows a nearby taste score, the rent entered, and whether that rent fits the budget. Locations with missing rent or map data stay out of the shortlist. A tie stays a tie. Users can review nearby restaurants, inspect the data sources, and download the comparison.
 

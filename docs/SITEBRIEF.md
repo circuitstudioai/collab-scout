@@ -14,7 +14,7 @@ Restaurant founders and commercial realtors comparing two or three candidate sit
 - For each site, match the nearest returned heatmap point within 2 km. No interpolation. Compare raw affinity only within that response. No score exists if evidence is absent or too distant.
 - GET `/v2/insights` with `filter.type=urn:entity:place`, `filter.location=POINT(longitude latitude)`, 1,000 m radius, restaurant tag filter and reference signals. This is a ranked context sample, not a competitor census. Partial failures stay visible.
 - Deterministic decision step filters out over-budget and unknown-rent sites, ranks supported remaining sites by the common heatmap affinity, and returns an explicit tie when appropriate.
-- Interactive map shows candidate sites and returned taste points. Sample mode is fixed and disclosed. No automatic sample fallback after a live failure.
+- Interactive map shows candidate sites and returned taste points. In custom mode users can explicitly place a selected site on the map or enter coordinates directly. Sample mode is fixed and disclosed. No automatic sample fallback after a live failure.
 - Export a plain-text decision memo with inputs, source entity IDs, trace, constraints, method and diligence checklist.
 - No accounts, database, broker contact, outreach, lease signing, payments or paid hosting upgrades.
 
@@ -30,8 +30,8 @@ Historical GeoTaste (2025 grand prize) and public Tasteplot (2026) overlap geogr
 
 ## Acceptance and current blockers
 
-- 44 tests passed (30 inherited + 14 decision/evidence tests); lint passed. Build and browser/production acceptance results are recorded in VALIDATION.md.
-- 2026-10-21: a new QLOO_API_KEY was detected in Vercel Production only and pulled into the ignored local environment for server-side verification. No secret values committed or printed.
+- 50 tests passed (44 existing + 6 synthetic transport cases); lint and production build passed. Build and browser/production acceptance results are recorded in VALIDATION.md.
+- 2026-10-21: a new QLOO_API_KEY was initially detected in Vercel Production only; later metadata includes Preview and Development as well. The Production value was detected and pulled into the ignored local environment for server-side verification. No secret values committed or printed.
 - Direct requests to the exact hackathon host returned HTTP 401 for `/search` and a restaurant-tag heatmap. Latest response reason: `API keys mismatch`. Host is correct, no redirects, surrounding quotes, or internal line breaks. Credential/authentication remains unresolved; endpoint semantics have not been live-verified.
 - Devpost browser stops at Cloudflare security verification. Submission cannot be completed until human verification/login and working live sponsor integration are available.
 - Do not submit a mock-only entry or describe configured credentials as verified integration.

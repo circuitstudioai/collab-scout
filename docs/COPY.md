@@ -37,7 +37,7 @@ Enter 1–3 exact names, separated by commas. These choices describe the audienc
 
 **Locations to compare**
 Use one currency for all rents.
-Paste each location’s latitude and longitude from a map. Leave rent blank if you do not know it.
+Place each location on the map, or enter its latitude and longitude below. Leave rent blank if you do not know it.
 
 For each location: name, latitude, longitude, monthly rent.
 
@@ -152,3 +152,19 @@ Closing custom notice: You supplied the locations and rents. Sitebrief has not v
 ## What changed
 
 Removed the “right corner” and “leap of faith” slogans. Replaced “raw taste affinity” with a defined taste score. Simplified form labels and recovery messages. Kept sample disclosures, score limits, calculation details, source IDs, and the existing decision rules.
+
+## Map placement (custom locations only)
+
+Action: Place selected location on map
+
+Select a location above, then use the button to place it. You can also enter coordinates in the form.
+
+While active: Click or tap the map to place [location name].
+
+Action: Cancel map placement
+
+Confirmation: [Location name] moved. Coordinates updated in the form. Run a new comparison for this location.
+
+Out-of-range input: Choose a location between 85° south and 85° north.
+
+What changed: Added explicit map placement with a cancel action and direct-coordinate alternative. Sample mode remains fixed. Map placement does not imply an address or rental lookup.

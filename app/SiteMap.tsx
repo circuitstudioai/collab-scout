@@ -4,14 +4,21 @@ import type { Map as LeafletMap } from 'leaflet';
 import type { Cell, Site } from '@/lib/sites/schema';
 import 'leaflet/dist/leaflet.css';
 
-export default function SiteMap({ sites, cells, selected }: { sites: Site[]; cells: Cell[]; selected: string }) {
+export default function SiteMap({ sites, cells, selected, placing = false, onPlace }: { sites: Site[]; cells: Cell[]; selected: string; placing?: boolean; onPlace?: (latitude: number, longitude: number) => void }) {
   const container = useRef<HTMLDivElement>(null);
+  const placement = useRef({ placing, onPlace });
+  useEffect(() => { placement.current = { placing, onPlace }; }, [placing, onPlace]);
   useEffect(() => {
     let cancelled = false;
     let map: LeafletMap | undefined;
     import('leaflet').then(L => {
       if (cancelled || !container.current) return;
       map = L.map(container.current, { scrollWheelZoom: false });
+      map.on('click', event => {
+        if (!placement.current.placing) return;
+        const point = event.latlng.wrap();
+        placement.current.onPlace?.(point.lat, point.lng);
+      });
       L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>', maxZoom: 19 }).addTo(map);
       const lo = Math.min(...cells.map(c => c.affinity)), hi = Math.max(...cells.map(c => c.affinity));
       cells.slice(0, 4000).forEach(c => {
@@ -28,5 +35,5 @@ export default function SiteMap({ sites, cells, selected }: { sites: Site[]; cel
     });
     return () => { cancelled = true; map?.remove(); };
   }, [sites, cells, selected]);
-  return <div className="leaflet-map" ref={container} role="region" aria-label="Locations and nearby taste scores. The comparison cards below contain the same scores." />;
+  return <div className={`leaflet-map${placing ? ' placing' : ''}`} ref={container} role="region" aria-label="Locations and nearby taste scores. You can also enter coordinates in the form. The comparison cards below contain the same scores." />;
 }

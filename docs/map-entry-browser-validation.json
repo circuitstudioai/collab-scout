@@ -1,0 +1,17 @@
+{
+  "url": "https://collab-scout-g8wx86hsy-circuitstudioais-projects.vercel.app",
+  "checks": [
+    "Sample mode has no map-placement action",
+    "Only selected B coordinates change; other sites and rents are preserved",
+    "Cancelled placement does not move markers",
+    "Selecting another site disarms placement",
+    "Coordinates remain editable in the form",
+    "Comparison disables placement; a failed request preserves input",
+    "Mobile390 map placement and no horizontal overflow"
+  ],
+  "syntheticNetwork": "Only the failed comparison request is intercepted; no Qloo calls are required.",
+  "desktopAxe": [],
+  "mobileAxe": [],
+  "pageErrors": [],
+  "status": "passed"
+}

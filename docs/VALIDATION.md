@@ -1,6 +1,19 @@
 # Sitebrief validation
 
-2026-10-21 checkpoint.
+2026-10-21 current checkpoint.
+
+- Six Jest suites: **50/50 tests passed**. Six new synthetic transport tests cover complete request construction, two search response shapes, empty reference IDs, HTTP 401, malformed heatmaps and partial dining failures. They do not prove live API compatibility.
+- Lint and local production build pass.
+- Map-based placement is available only for custom locations, requires an explicit action, and preserves other locations, names and rents. Cancelling or selecting another site disarms placement. Direct coordinate inputs remain available.
+- Public preview: https://collab-scout-g8wx86hsy-circuitstudioais-projects.vercel.app . Chromium verified desktop and 390px mobile placement, cancellation, manual entry and failed-request retention. Zero axe WCAG A/AA violations in the two new tested states; no horizontal mobile overflow or page errors. See map-entry-browser-validation.json and screenshots/map-entry-*.png.
+- The failed comparison in this browser check was intercepted with a synthetic HTTP 502; it is not a live-provider acceptance result.
+- Empty exact-match reference IDs are rejected before a generic query could lose the intended audience signal. This bug was reproduced red before the guard fix.
+- Latest environment metadata lists Qloo credentials for Production, Preview and Development. Historical missing-Preview statements below no longer describe current configuration. Presence is not proof of authentication.
+- Abhi supplied a developer key in a private session for a direct test. Its result is pending here; do not copy the key into source, group messages or reports.
+- Main, production and Devpost submission remain unchanged. Judge walkthrough and release gates: JUDGE_CHECKLIST.md.
+
+## Earlier October 21 checkpoint (historical)
+
 
 - Five Jest suites: 44 tests passed, including 14 new decision/evidence tests.
 - Lint: passed with no errors or warnings.

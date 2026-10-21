@@ -74,9 +74,9 @@ export async function compareSites(brief: Brief): Promise<Comparison> {
       // Search has historically returned either results[] or results.entities[].
       const result = record(raw).results;
       const candidates = Array.isArray(result) ? result.map(record) : rows(raw, 'entities');
-      const matches = candidates.filter(r => String(r.name).trim().toLowerCase() === name.trim().toLowerCase() && typeof r.entity_id === 'string');
+      const matches = candidates.filter(r => String(r.name).trim().toLowerCase() === name.trim().toLowerCase() && typeof r.entity_id === 'string' && r.entity_id.trim().length > 0);
       if (matches.length !== 1) throw new SiteError(`We could not find a single exact match for “${name}”. Check the name or choose another brand or place.`);
-      references.push({ id: String(matches[0].entity_id), name: String(matches[0].name) });
+      references.push({ id: String(matches[0].entity_id).trim(), name: String(matches[0].name) });
     }
     const interests = references.map(r => r.id).join(',');
     const raw = await get('Get taste scores for the area', '/v2/insights', {
