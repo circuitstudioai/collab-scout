@@ -1,5 +1,5 @@
 {
-  "url": "http://localhost:3027",
+  "url": "https://collab-scout-fkkog8ktg-circuitstudioais-projects.vercel.app",
   "checks": [
     "Disclosed sample comparison succeeds",
     "Real ambiguous search shows unselected choices with type, address and closed status; mobile has no overflow",

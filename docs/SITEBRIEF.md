@@ -9,7 +9,7 @@ Restaurant founders and commercial realtors comparing two or three candidate sit
 ## Functional scope
 
 - One locality, 1–3 explicitly named audience-reference entities, a monthly rent ceiling, 2–3 candidate coordinates and optional monthly rents.
-- GET `/search` on `https://hackathon.api.qloo.com`, header `X-Api-Key`. Accept only a unique exact-name match with an entity ID; ask for a more specific name otherwise.
+- GET `/search` on `https://hackathon.api.qloo.com`, header `X-Api-Key`. Accept a unique exact-name match or request explicit selection using type, address, closed status and stable entity ID. Revalidate selected IDs against a fresh search; never choose the first ambiguous match.
 - GET `/v2/insights` with `filter.type=urn:heatmap`, `filter.location.query`, `signal.interests.entities` and restaurant tag signal. One common response provides the comparison basis.
 - For each site, match the nearest returned heatmap point within 2 km. No interpolation. Compare raw affinity only within that response. No score exists if evidence is absent or too distant.
 - GET `/v2/insights` with `filter.type=urn:entity:place`, `filter.location=POINT(longitude latitude)`, 1,000 m radius, restaurant tag filter and reference signals. This is a ranked context sample, not a competitor census. Partial failures stay visible.
@@ -30,11 +30,12 @@ Historical GeoTaste (2025 grand prize) and public Tasteplot (2026) overlap geogr
 
 ## Acceptance and current blockers
 
-- 50 tests passed (44 existing + 6 synthetic transport cases); lint and production build passed. Build and browser/production acceptance results are recorded in VALIDATION.md.
-- 2026-10-21: a new QLOO_API_KEY was initially detected in Vercel Production only; later metadata includes Preview and Development as well. The Production value was detected and pulled into the ignored local environment for server-side verification. No secret values committed or printed.
-- Direct requests to the exact hackathon host returned HTTP 401 for `/search` and a restaurant-tag heatmap. Latest response reason: `API keys mismatch`. Host is correct, no redirects, surrounding quotes, or internal line breaks. Credential/authentication remains unresolved; endpoint semantics have not been live-verified.
-- Devpost browser stops at Cloudflare security verification. Submission cannot be completed until human verification/login and working live sponsor integration are available.
-- Do not submit a mock-only entry or describe configured credentials as verified integration.
+- 53 tests, lint and production build pass. Three new regression tests cover ambiguity choices, explicit selection, and stale/forged IDs.
+- Public preview live browser acceptance passed with 1,553 real Qloo map cells, eight nearby restaurants per site, five successful source steps and a downloadable live memo.
+- Desktop and 390px mobile checks passed, with zero axe WCAG A/AA violations in the tested selection/results states and no page errors.
+- The earlier 401 reports are historical. Current authentication works against the hackathon host with the server-side encrypted credential.
+- Devpost still requires human verification. No submission receipt exists. Never describe a published MVP as a submitted entry.
+- Full release evidence: VALIDATION.md and live-browser-validation.json.
 
 ## Source references
 

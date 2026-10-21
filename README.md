@@ -2,9 +2,9 @@
 
 Compare restaurant locations with Qloo taste evidence, rent constraints, and explicit unknowns. Built for the [Qloo Agentic Hackathon](https://qloo.devpost.com/). MIT licensed.
 
-**Status:** working prototype with a disclosed sample mode. Live sponsor authentication is currently blocked by HTTP 401 (`API keys mismatch`) on the documented hackathon host. Not submitted. No customer validation claimed.
+**Status:** live Qloo journey verified on October 21, 2026: search, explicit entity selection, shared heatmap, nearby dining, and exported comparison. Not submitted; Devpost human verification remains blocked. No customer validation claimed.
 
-[Public sample preview](https://collab-scout-d1rmwxfks-circuitstudioais-projects.vercel.app) · [Implementation PR](https://github.com/circuitstudioai/collab-scout/pull/4)
+[Working MVP](https://collab-scout.vercel.app) · [Implementation PR](https://github.com/circuitstudioai/collab-scout/pull/4)
 
 ## Run
 
@@ -20,14 +20,14 @@ Open the homepage and run the fixed sample. Choose **Use my locations** to edit 
 
 ## How the tool works
 
-1. Resolve 1–3 reference entities by exact name.
+1. Resolve 1–3 reference names. If multiple records match, let the user choose a specific record by type and address.
 2. Retrieve a common city heatmap from Qloo.
 3. Match each site to its nearest returned point within 2 km.
 4. Retrieve a taste-ranked sample of dining places within 1 km per site.
 5. Exclude sites with unknown/over-budget rent from the supported shortlist.
 6. Export the comparison with source IDs, trace and next checks.
 
-`POST /api/sites` accepts the schema in `lib/sites/schema.ts`. The endpoint is agent-callable; `GET /api/sites/tool` publishes its function schema. No LLM-generated scores. No fabricated live fallbacks. A Qloo failure is an error, not permission to show sample evidence as live.
+`POST /api/sites` accepts the schema in `lib/sites/schema.ts`. The endpoint is agent-callable; `GET /api/sites/tool` publishes its function schema. If a name needs a choice, HTTP 409 returns `referenceChoice`. Retry with `referenceSelections: [{ query, id }]` after the user chooses. IDs are validated against a fresh Qloo search. No LLM-generated scores. No fabricated live fallbacks. A Qloo failure is an error, not permission to show sample evidence as live.
 
 Taste affinity is not customer count, foot traffic, spending, unmet demand or predicted revenue. Reference entities are proxies for intended audiences. Available property listings, verified rent, zoning and operating costs require other evidence. Gemini is not invoked by this workflow.
 
@@ -39,4 +39,4 @@ Map tiles are supplied by OpenStreetMap under its attribution and usage requirem
 - [Validation evidence and blockers](docs/VALIDATION.md)
 - [Submission copy — not submitted](docs/sitebrief-devpost.md)
 
-This repository retains the preceding Collab Scout code for continuity. Sitebrief owns `/` and `/api/sites`; legacy source and docs are historical, not current product claims. The pivot is isolated on `feature/restaurant-site-comparison`; existing main/production is preserved until the pivot passes its release gates.
+This repository retains the preceding Collab Scout code for continuity. Sitebrief owns `/` and `/api/sites`; legacy source and docs are historical, not current product claims. The Sitebrief release replaces the homepage after the live release gates pass. Legacy Collab Scout routes and fixes are retained.

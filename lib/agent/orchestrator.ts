@@ -2,14 +2,20 @@
  * Collab Scout orchestrator: Qloo tool loop → filter/rank → Gemini or canned drafts.
  */
 
-import { APP_NAME } from '../app-config';
-import { cannedPartnerShortlist } from './canned';
-import { runScoutLoop } from './gather';
-import { generateGeminiText, isGeminiConfigured, parseJsonObject } from './gemini';
-import type { PartnerBrief, PartnerCard, PartnerShortlist } from './schema';
+import { APP_NAME } from "../app-config";
+import { cannedPartnerShortlist } from "./canned";
+import { runScoutLoop } from "./gather";
+import {
+  generateGeminiText,
+  isGeminiConfigured,
+  parseJsonObject,
+} from "./gemini";
+import type { PartnerBrief, PartnerCard, PartnerShortlist } from "./schema";
 
 const SYNTHESIS_INSTRUCTION = `You write co-marketing partner shortlists for consumer brand founders.
 Use ONLY the provided Qloo entities, scores, and tags. Do not invent partners or scores.
+Write direct, specific sentences. Avoid sales jargon, inflated claims, generic flattery, and promises about revenue or interest.
+If data_mode is fallback_mock, label pitches as sample-data drafts and never claim measured audience overlap.
 Every partner must be complementary (not a competitor). Pitches are DRAFTS — never imply they were sent.
 Return ONLY JSON:
 {
@@ -27,8 +33,12 @@ Return ONLY JSON:
   }]
 }`;
 
-export async function scoutPartners(brief: PartnerBrief): Promise<PartnerShortlist> {
-  const runId = brief.id ? `run_${brief.id}_${Date.now()}` : `run_${Date.now()}`;
+export async function scoutPartners(
+  brief: PartnerBrief,
+): Promise<PartnerShortlist> {
+  const runId = brief.id
+    ? `run_${brief.id}_${Date.now()}`
+    : `run_${Date.now()}`;
   console.log(`[${APP_NAME}] Scouting partners for`, brief.brand_name);
 
   const signals = await runScoutLoop(brief);
@@ -44,28 +54,34 @@ export async function scoutPartners(brief: PartnerBrief): Promise<PartnerShortli
       `Founder brief:\n${JSON.stringify(brief)}\n\nRanked complementary partners and Qloo signals:\n${JSON.stringify(
         {
           partners: canned.partners,
+          data_mode: canned.metadata.qloo_mode,
           tags: signals.tags,
           compare: signals.compareNotes,
           filtered_out: canned.filtered_out,
         },
         null,
-        2
+        2,
       )}\nRewrite summary + partner copy. Keep the same partner ids, names, and scores.`,
-      SYNTHESIS_INSTRUCTION
+      SYNTHESIS_INSTRUCTION,
     );
     const parsed = parseJsonObject(structured);
     return mergeGemini(canned, parsed);
   } catch (error) {
     console.warn(
       `[${APP_NAME}] Gemini failed; canned fallback:`,
-      error instanceof Error ? error.message : error
+      error instanceof Error ? error.message : error,
     );
     return canned;
   }
 }
 
-function mergeGemini(canned: PartnerShortlist, parsed: Record<string, unknown>): PartnerShortlist {
-  const incoming = Array.isArray(parsed.partners) ? (parsed.partners as PartnerCard[]) : [];
+function mergeGemini(
+  canned: PartnerShortlist,
+  parsed: Record<string, unknown>,
+): PartnerShortlist {
+  const incoming = Array.isArray(parsed.partners)
+    ? (parsed.partners as PartnerCard[])
+    : [];
   const byId = new Map(incoming.map((p) => [p.id, p]));
   const partners = canned.partners.map((base) => {
     const extra = byId.get(base.id);
@@ -80,8 +96,9 @@ function mergeGemini(canned: PartnerShortlist, parsed: Record<string, unknown>):
 
   return {
     ...canned,
-    summary: typeof parsed.summary === 'string' ? parsed.summary : canned.summary,
+    summary:
+      typeof parsed.summary === "string" ? parsed.summary : canned.summary,
     partners,
-    metadata: { ...canned.metadata, synthesis: 'gemini-2.5-flash' },
+    metadata: { ...canned.metadata, synthesis: "gemini-2.5-flash" },
   };
 }
