@@ -16,18 +16,18 @@
 3. Choose **Place selected location on map**.
 4. Click or tap the map. Only location B's coordinates change; its name and rent remain.
 5. Explain that users can also enter coordinates directly. Map placement does not look up an address, rental listing, or rent.
-6. Choose **Compare my locations** only once live acceptance is verified. A failed request must show an error, not sample results.
+6. Choose **Compare my locations** to run the verified live journey. A failed request must show an error, not sample results.
 
-## Live release gates — currently open
+## Live release gates
 
-- [ ] Verify the key against the host supplied for that key, using `X-Api-Key`.
-- [ ] Resolve an exact reference name and retain its nonempty Qloo ID.
-- [ ] Fetch a shared geographic taste map and inspect real response fields and coverage.
-- [ ] Fetch nearby restaurants and verify radius/location semantics against real responses.
-- [ ] Complete the hosted live comparison and its export without exposing the key.
-- [ ] Test an unsupported area or empty result: no invented score or automatic sample replacement.
+- [x] Verify the key against the host supplied for that key, using `X-Api-Key`.
+- [x] Resolve a reference; ask for explicit selection when ambiguous and retain its validated Qloo ID.
+- [x] Fetch a shared geographic taste map and inspect real response fields and coverage.
+- [x] Fetch nearby restaurants and verify radius/location semantics against real responses.
+- [x] Complete the hosted live comparison and its export without exposing the key.
+- [x] Test an unsupported area or empty result: no invented score or automatic sample replacement.
 - [ ] Recheck public access and mobile layout on the exact release deployment.
-- [ ] Confirm official rules and public MIT source links before final submission.
+- [x] Confirm official rules and public MIT source links before final submission.
 - [ ] Resolve Devpost's human security verification and complete the entry.
 - [ ] Save the submission receipt and public project URL; do not create duplicate entries.
 

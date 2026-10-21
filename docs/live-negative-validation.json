@@ -1,0 +1,10 @@
+{
+  "url": "https://collab-scout-fkkog8ktg-circuitstudioais-projects.vercel.app",
+  "checks": [
+    "Real unsupported coordinates remain unscored and unshortlisted; no sample substitution",
+    "Forged/stale ID requires a fresh explicit choice (409)",
+    "Unrecognized name never auto-selects a fuzzy match or returns fabricated evidence",
+    "Invalid brief rejected (400)"
+  ],
+  "status": "passed"
+}
