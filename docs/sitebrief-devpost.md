@@ -26,8 +26,8 @@ Open the hosted demo. Run the illustrative example. The highest sample taste sig
 
 ## Submission gates
 - [ ] Live Qloo search, common heatmap and site-context responses verified
-- [ ] Public hosted demo verified without login
-- [ ] Public repository, current source and visible MIT license
-- [ ] Screenshots correspond to tested release
+- [x] Public sample preview verified without login; live acceptance still blocked
+- [x] Public repository, source branch and visible MIT license
+- [x] Desktop and mobile screenshots correspond to tested release 147fe60
 - [ ] Devpost verification/login completed
 - [ ] Submission receipt and public project URL recorded
