@@ -1,4 +1,4 @@
-import type { Brief, Cell, Comparison, Site, SiteResult, Trace, Venue } from './schema';
+import type { Brief, Cell, Comparison, Site, SiteResult, Trace, Venue, ReferenceChoice } from './schema';
 import { sampleBrief, briefSchema } from './schema';
 import { qlooGet } from '../qloo/http';
 import { resolveQlooApiKey, resolveQlooBaseUrl } from '../qloo/config';
@@ -26,7 +26,7 @@ export function recommend(sites: SiteResult[]): string {
     return 'The leading locations within your rent budget have the same taste score. Compare lease terms and operating costs to decide which to visit first.';
   return `Start with ${ranked[0].name}. It has the highest nearby taste score among locations within your rent budget. Check lease terms and operating costs before deciding.`;
 }
-export class SiteError extends Error { constructor(message: string, public status = 422) { super(message); } }
+export class SiteError extends Error { constructor(message: string, public status = 422, public referenceChoice?: ReferenceChoice) { super(message); } }
 type Row = Record<string, unknown>;
 const record = (value: unknown): Row => value && typeof value === 'object' ? value as Row : {};
 function rows(raw: unknown, key: string): Row[] { const results = record(raw).results; const list = key === 'entities' && Array.isArray(results) ? results : record(results)[key]; return Array.isArray(list) ? list.map(record) : []; }
@@ -74,9 +74,21 @@ export async function compareSites(brief: Brief): Promise<Comparison> {
       // Search has historically returned either results[] or results.entities[].
       const result = record(raw).results;
       const candidates = Array.isArray(result) ? result.map(record) : rows(raw, 'entities');
-      const matches = candidates.filter(r => String(r.name).trim().toLowerCase() === name.trim().toLowerCase() && typeof r.entity_id === 'string' && r.entity_id.trim().length > 0);
-      if (matches.length !== 1) throw new SiteError(`We could not find a single exact match for “${name}”. Check the name or choose another brand or place.`);
-      references.push({ id: String(matches[0].entity_id).trim(), name: String(matches[0].name) });
+      const valid = candidates.filter(r => typeof r.name === 'string' && typeof r.entity_id === 'string' && r.entity_id.trim().length > 0);
+      const matches = valid.filter(r => String(r.name).trim().toLowerCase() === name.trim().toLowerCase());
+      const selected = brief.referenceSelections?.find(s => s.query === name);
+      const chosen = selected ? valid.find(r => String(r.entity_id).trim() === selected.id) : matches.length === 1 ? matches[0] : undefined;
+      if (!chosen) {
+        if (!valid.length) throw new SiteError(`We could not find a single exact match for “${name}”. Check the name or choose another brand or place.`);
+        const options = [...new Map(valid.map(r => [String(r.entity_id).trim(), r])).values()].map(r => ({
+          id: String(r.entity_id).trim(), name: String(r.name),
+          type: Array.isArray(r.types) ? r.types.filter((t): t is string => typeof t === 'string').map(t => t.replace('urn:entity:', '')).join(', ') : 'Entity',
+          address: typeof record(r.properties).address === 'string' ? String(record(r.properties).address) : 'No address supplied',
+          closed: record(r.properties).is_closed === true,
+        }));
+        throw new SiteError(`Choose the specific brand or place you mean by “${name}”, then compare again.`, 409, { query: name, options });
+      }
+      references.push({ id: String(chosen.entity_id).trim(), name: String(chosen.name) });
     }
     const interests = references.map(r => r.id).join(',');
     const raw = await get('Get taste scores for the area', '/v2/insights', {

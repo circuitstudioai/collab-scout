@@ -8,12 +8,14 @@ export const siteSchema = z.object({
 export const briefSchema = z.object({
   concept: z.string().trim().min(3).max(300), city: z.string().trim().min(2).max(100),
   references: z.array(z.string().trim().min(2).max(100)).min(1).max(3),
+  referenceSelections: z.array(z.object({ query: z.string().trim().min(2).max(100), id: z.string().trim().min(1).max(100) })).max(3).optional(),
   monthlyBudget: z.number().positive().max(1000000),
   sites: z.array(siteSchema).min(2).max(3), mode: z.enum(['sample', 'live']),
 }).superRefine((value, ctx) => {
   if (new Set(value.sites.map(s => s.id)).size !== value.sites.length)
     ctx.addIssue({ code: 'custom', message: 'Each site needs a unique ID.', path: ['sites'] });
 });
+export type ReferenceChoice = { query: string; options: { id: string; name: string; type: string; address: string; closed: boolean }[] };
 export type Brief = z.infer<typeof briefSchema>;
 export type Site = z.infer<typeof siteSchema>;
 export type Cell = { latitude: number; longitude: number; affinity: number };

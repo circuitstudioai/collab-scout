@@ -17,6 +17,6 @@ export async function POST(request: Request) {
     if (!parsed.success) return Response.json({ error: parsed.error.issues.map(i => `${i.path.join('.')}: ${i.message}`).join('; ') }, { status: 400 });
     return Response.json(await compareSites(parsed.data), { headers: { 'Cache-Control': 'no-store' } });
   } catch (error) {
-    return Response.json({ error: error instanceof SiteError ? error.message : 'We could not finish the comparison. Please try again. Sitebrief has not saved your entries.' }, { status: error instanceof SiteError ? error.status : 500 });
+    return Response.json({ referenceChoice: error instanceof SiteError ? error.referenceChoice : undefined, error: error instanceof SiteError ? error.message : 'We could not finish the comparison. Please try again. Sitebrief has not saved your entries.' }, { status: error instanceof SiteError ? error.status : 500 });
   } finally { active--; }
 }
