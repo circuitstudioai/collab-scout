@@ -63,7 +63,9 @@ Run a comparison to see nearby taste scores, check rents against your budget, an
 
 After results: **Nearby restaurants · Within 1 km**
 **Restaurants to review**
-Qloo ranks this selected list using your chosen brands and places. Other competitors may be missing. Check the area in person.
+Live results: Qloo ranks this selected list using your chosen brands and places. Other competitors may be missing. Check the area in person.
+
+Sample results: This example shows where nearby restaurant results will appear. The café below is made up.
 
 Missing results: Nearby restaurants could not be loaded.
 Empty results: No restaurants were found for this search. Check other sources before assuming the area has few competitors.
