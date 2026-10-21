@@ -26,7 +26,7 @@
 - [x] Fetch nearby restaurants and verify radius/location semantics against real responses.
 - [x] Complete the hosted live comparison and its export without exposing the key.
 - [x] Test an unsupported area or empty result: no invented score or automatic sample replacement.
-- [ ] Recheck public access and mobile layout on the exact release deployment.
+- [x] Recheck public access and mobile layout on the exact release deployment.
 - [x] Confirm official rules and public MIT source links before final submission.
 - [ ] Resolve Devpost's human security verification and complete the entry.
 - [ ] Save the submission receipt and public project URL; do not create duplicate entries.

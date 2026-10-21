@@ -19,4 +19,4 @@ Live hosted acceptance proves search, one shared geographic heatmap, nearby rest
 
 Devpost human verification remains the external submission blocker. A published app is not a submitted entry.
 
-Summary: Standards — 0 blocking findings, 1 nonblocking readability observation. Spec — 2 findings fixed; 0 known open functional blockers, subject to final release-deployment verification.
+Summary: Standards — 0 blocking findings, 1 nonblocking readability observation. Spec — 2 findings fixed; 0 known open functional blockers, final production verification passed at https://collab-scout.vercel.app.
