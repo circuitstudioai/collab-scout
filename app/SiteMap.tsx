@@ -20,7 +20,7 @@ export default function SiteMap({ sites, cells, selected }: { sites: Site[]; cel
       });
       sites.forEach((site, i) => {
         const label = document.createElement('span');
-        label.textContent = `${String.fromCharCode(65 + i)} · ${site.name}`;
+        label.textContent = `${String.fromCharCode(65 + i)} · ${site.name.replace(/^[A-C] · /, '')}`;
         L.circleMarker([site.latitude, site.longitude], { radius: site.id === selected ? 13 : 9, color: '#ffffff', weight: 3, fillColor: '#9d462b', fillOpacity: 1 }).addTo(map!).bindTooltip(label, { permanent: true, direction: 'top', offset: [0, -12] });
       });
       const bounds = L.latLngBounds(sites.map(s => [s.latitude, s.longitude] as [number, number]));

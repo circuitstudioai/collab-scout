@@ -47,9 +47,9 @@ export async function compareSites(brief: Brief): Promise<Comparison> {
     if (JSON.stringify(brief) !== JSON.stringify(briefSchema.parse(sampleBrief)))
       throw new SiteError('Sample mode uses the unchanged New York example. Reset the example or choose live analysis.');
     cells = [
-      { latitude: 40.7336, longitude: -74.003, affinity: 0.83 },
-      { latitude: 40.7185, longitude: -73.988, affinity: 0.68 },
-      { latitude: 40.714, longitude: -73.961, affinity: 0.91 },
+      { latitude: 40.738, longitude: -74.003, affinity: 0.83 },
+      { latitude: 40.7229, longitude: -73.988, affinity: 0.68 },
+      { latitude: 40.7096, longitude: -73.961, affinity: 0.91 },
     ];
     references = [{ id: 'sample-reference', name: 'Blue Bottle Coffee (sample reference)' }];
     contexts = brief.sites.map((_, i) => ({ available: true, venues: [{ id: `sample-${i}`, name: 'Illustrative nearby café (not a real business)', affinity: null }] }));
