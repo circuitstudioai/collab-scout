@@ -34,14 +34,16 @@ Photon permits reasonable project usage but has no availability guarantee and ma
 
 ## Validation
 
+Tested public preview: https://collab-scout-ngo6iqv3w-circuitstudioais-projects.vercel.app
+
 - 57/57 tests, lint and production build pass.
 - Four new tests cover coordinate parsing/ranges, invalid input before network calls, fixed-provider requests with city focus, and upstream failure without invented results.
 - Real Toronto browser journey passes: Toronto city selection; Kensington Market and Leslieville lookup; confirmed distinct pins; HTTP 200 live Qloo comparison with 8,363 returned cells; memo download. Counts describe this run, not guaranteed coverage.
-- Real city-change checks invalidate pins/results and retain rents. Empty coordinates are rejected. Synthetic lookup failure checks recovery and retention. Mobile map placement changes only the selected site; cancellation disarms placement.
+- Real city-change checks invalidate pins/results and retain rents. Empty coordinates are rejected. Synthetic lookup failure checks recovery, retention and successful retry. A delayed old-city response cannot restore stale choices or pins. Mobile map placement changes only the selected site; cancellation disarms placement.
 - Axe WCAG A/AA: zero violations in tested desktop/mobile form states. No horizontal overflow at 390px or page errors. This is not a full accessibility certification.
 - Machine-readable report: [location-ux/validation.json](location-ux/validation.json).
 
-The browser verifier is `scripts/verify-location-ux.cjs <URL>`. It requires Playwright Core with Chromium installed, and axe-core. Set `PLAYWRIGHT_MODULE_PATH` and `AXE_SCRIPT_PATH` if those QA dependencies are installed outside this repository. Intercepted failure responses are labelled in the report; the successful comparison uses real APIs.
+The browser verifier is `scripts/verify-location-ux.mjs <URL>`. It requires Playwright Core with Chromium installed, and axe-core. Set `PLAYWRIGHT_MODULE_PATH` and `AXE_SCRIPT_PATH` if those QA dependencies are installed outside this repository. Intercepted failure responses are labelled in the report; the successful comparison uses real APIs.
 
 ## Release status
 
