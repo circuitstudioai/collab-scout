@@ -1,5 +1,15 @@
 # Sitebrief validation — October 21, 2026
 
+## Production acceptance
+
+- Working MVP: https://collab-scout.vercel.app (no account required).
+- PR #4 merged as `1a2362699174d6f87d8ac7788023519947e20c50` on October 21 at 18:13 UTC.
+- Vercel production deployment `dpl_D5eVCrZ8VV7CnpH5ST7hPDkAhrCz` is READY and serves the stable alias.
+- Repeated the entire live browser journey, the two-/three-location UI checks, and real negative cases against the stable production URL. All passed.
+- Live health and agent-tool schema return HTTP 200. The source remains public with a detectable MIT license.
+- Scanned 15 client JavaScript files: the saved server-side Qloo credential is absent. Only .env.example is tracked.
+- These reports test specific requests and browser states, not universal geographic coverage, complete accessibility certification or validated demand.
+
 ## Current release
 
 - Six Jest suites: **53/53 tests passed**. Three new cases reproduce ambiguous choices, explicit ID selection, and forged/stale ID rejection. Synthetic transport tests remain labelled and are separate from real provider acceptance.
