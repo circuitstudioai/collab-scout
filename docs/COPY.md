@@ -8,7 +8,7 @@ For restaurant owners & commercial realtors
 
 **Compare locations for your restaurant.**
 
-Compare nearby taste scores and the rents you enter. Choose which location to investigate first.
+Enter your rent budget and the brands or places your customers might like. Compare locations and choose which one to investigate first.
 
 No account needed · Try the sample
 
