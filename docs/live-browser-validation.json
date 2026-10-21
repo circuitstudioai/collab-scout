@@ -1,0 +1,31 @@
+{
+  "url": "https://collab-scout-q265lmf0h-circuitstudioais-projects.vercel.app",
+  "checks": [
+    "Disclosed sample comparison succeeds",
+    "Real ambiguous search shows unselected choices with type, address and closed status; mobile has no overflow",
+    "Hosted UI completes real search, shared heatmap and dining requests; rent exclusion preserved",
+    "Downloaded live memo includes selected stable ID and source trace"
+  ],
+  "choices": 10,
+  "choiceAxe": [],
+  "selected": {
+    "id": "41632B81-C0BE-4BE2-9A85-C945F6F2F3A6",
+    "name": "Blue Bottle Coffee",
+    "type": "place",
+    "address": "54 W 40th St New York, NY 10018",
+    "closed": false
+  },
+  "live": {
+    "cells": 1553,
+    "restaurants": [
+      8,
+      8,
+      8
+    ],
+    "trace": 5,
+    "recommendation": "Start with A · West Village. It has the highest nearby taste score among locations within your rent budget. Check lease terms and operating costs before deciding."
+  },
+  "mobileAxe": [],
+  "pageErrors": [],
+  "status": "passed"
+}

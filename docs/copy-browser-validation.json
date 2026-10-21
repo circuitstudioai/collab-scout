@@ -1,0 +1,21 @@
+{
+  "base": "https://collab-scout-d1rmwxfks-circuitstudioais-projects.vercel.app",
+  "sample": true,
+  "download": true,
+  "clipboardFailure": true,
+  "mapSelection": true,
+  "mobileOverflow": false,
+  "liveConfigurationError": true,
+  "apiStatuses": [
+    200,
+    422,
+    400,
+    200
+  ],
+  "pageErrors": [],
+  "axeViolations": [],
+  "expandedAudit": [],
+  "mobileAudit": [],
+  "formAudit": [],
+  "failedRequestRetainsEdits": true
+}

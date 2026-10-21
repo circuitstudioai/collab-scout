@@ -1,59 +1,61 @@
-# Collab Scout UI, UX, and copy audit
+# Sitebrief content and clarity pass
 
-Date: 2026-10-20. Baseline: `d1b521ae625fb9eff1e78d7760480a28ca6f6148`.
+Requested by Abhi on 2026-10-21. Scope: the active Sitebrief screen, map labels, generated recommendations/errors, exported comparison, and submission draft. This continues the isolated Sitebrief branch and existing PR #4; it does not merge, promote production, or change the scoring algorithm.
 
-Scope: homepage, custom brief, fictional-brand search, result cards, draft editing/copying, outreach status, and Qloo source inspection. Applied the workspace `frontend-design`, `web-design-guidelines`, `browser-automation`, and `no-ai-slop` skills. Web Interface Guidelines were fetched from the upstream Vercel source on the audit date.
+## Audience and action
 
-## Findings and changes
+Restaurant owners and commercial realtors should understand what they enter, what the score means, and which location to investigate first. Copy must not imply verified customer demand, available rentals, predicted sales, or a successful live Qloo integration.
 
-Locations below refer to the baseline commit, before this PR.
+## Baseline findings
 
-### Homepage and visual hierarchy
+Locations refer to commit 5b66422 before this pass.
 
-- `app/page.tsx:14` - binary contrast: “not another market-research dashboard.” Replace with the specific job: find brand partners and prepare an editable pitch.
-- `app/page.tsx:29` - negative listing / stale context: “Not baby products.” Remove it. Explain fictional examples once.
-- `app/page.tsx:57` - endpoint names dominate the main task flow. Keep technical source details in an expandable result log; explain matching in ordinary language on the homepage.
-- `app/globals.css:25` - Arial overrides the loaded font. Use the existing body font with editorial serif headings, olive/terracotta accents, and a consistent notebook layout.
-- `app/globals.css:15` - automatic dark colors conflict with hardcoded light surfaces. Keep the current design explicitly light.
+| Location | Quoted copy | No-ai-slop pattern / clarity issue | Edit |
+| --- | --- | --- | --- |
+| app/SiteDesk.tsx:35 | “A good concept. The right corner.” | Dramatic fragmentation; generic metaphor; implies correctness | State the task: compare restaurant locations |
+| app/SiteDesk.tsx:43 | “A shortlist, not a leap of faith.” | Binary contrast and fake-profound kicker | Explain the action needed to see results |
+| app/SiteDesk.tsx:45 | “Nearby raw taste affinity” | Undefined technical term | Use Qloo taste score and explain it beside the numbers |
+| app/SiteDesk.tsx:38 | “References are audience proxies” | Internal research terminology | Explain that the chosen names describe an assumed audience |
+| app/SiteDesk.tsx:46 | “Resolved references” | Implementation detail in a label | Use Brands and places found in Qloo; retain IDs in expanded sources |
+| app/SiteDesk.tsx:47 | “Taste is a signal. Not a sales forecast.” | Stacked fragments and rhetorical contrast | Explain scores and limits in complete sentences |
+| lib/sites/compare.ts:59 | “The owner must add QLOO_API_KEY” | Server configuration in an end-user error | Offer the sample comparison as a recovery action |
+| app/SiteDesk.tsx:37 | “Set the brief” | Unclear task label | Describe your restaurant |
+| app/SiteDesk.tsx:48 | “a better-informed shortlist” | Generic closing slogan | Name the product's function |
 
-### Forms and results
+## Changes
 
-- `app/scout/[id]/CustomScoutForm.tsx:28` - silently truncates the fourth reference brand. Reject excess names with a field-focused explanation instead.
-- `app/scout/[id]/CustomScoutForm.tsx:56` - “Continue” does not identify the next step. Use “Review your brief,” preserve inputs, and provide an edit path.
-- `app/scout/[id]/ScoutRunner.tsx:145` - pitches are read-only despite the product requirement for editable outreach. Add labelled draft fields and copy the edited text.
-- `app/scout/[id]/ScoutRunner.tsx:59` - clipboard rejection is unhandled. Show a manual-copy fallback and announce success/failure.
-- `app/scout/[id]/ScoutRunner.tsx:26` - blocked localStorage can break results; run-scoped keys do not restore status on a new search. Handle unavailable storage and scope status to the brand and partner. Old run-specific keys are not migrated.
-- `app/scout/[id]/ScoutRunner.tsx:111` - internal enum/model identifiers are shown as interface copy. Use “Live Qloo data,” “Sample audience data,” and plain draft-source labels.
-- Shared UI - add skip navigation, visible keyboard focus, 44px form targets, reduced-motion handling, long-text wrapping, and announced asynchronous states.
+- Direct headline, plain form labels, coordinate/rent instructions, and specific action buttons.
+- Defined Qloo taste scores without changing values, normalization, distances, rent exclusions, ties, API parameters, or source data.
+- Clear sample notices and a correct pre-comparison map legend.
+- Actionable errors that preserve entered values and avoid exposing server setup instructions.
+- Technical method and source details remain expandable, including the 2 km matching rule and 4,000-point display limit.
+- Plain exported comparison and submission draft. The unverified sponsor integration and lack of customer validation remain disclosed.
+- Added a keyboard skip link and small wrapping/numeric-legibility adjustments for the edited copy.
 
-### Draft copy and uncertainty
+## No-ai-slop self-check
 
-- `lib/agent/canned.ts:84` - unsupported benefit: “lets each brand keep its margin while sharing checkout traffic.” Replace with a proposed gift set and a reminder to agree pricing/fulfillment.
-- `lib/agent/canned.ts:104` - “Qloo taste data shows our audiences overlap” claims research even for mock data. Label sample-data drafts, remove the claim from pitch templates, and keep sample/live labels visible near results.
-- `lib/agent/orchestrator.ts` - instruct synthesis to use direct language, avoid invented commercial outcomes, and retain sample-data uncertainty. This is a prompt improvement, not a guarantee about every future model response.
+Read the complete skill and eval.md. Reviewed the edited screen and submission draft against the checklist. Preserved the product's meaning, named source, sample disclosure, and numerical details. Removed the named slogans, stacked fragments and rhetorical contrasts. Kept necessary factual negatives about sales and missing data. No new statistics, user quotes, validation claims, or features were introduced. Plain text is used for errors and buttons. Full edited copy and What changed: [COPY.md](COPY.md).
 
-## What changed
+## Validation
 
-The homepage now leads with one task and one primary action. Fictional examples have distinct, typographic covers. The search flow keeps source inspection available without making people read API documentation. Drafts are editable, local status is recoverable across searches, and provider/fallback labels do not imply live research.
+Verified app source: 8d359a1. Public preview: https://collab-scout-d1rmwxfks-circuitstudioais-projects.vercel.app .
 
-## Verification
+- 44 existing tests passed during the copy pass. Assertions for changed recommendation/error labels were updated; no business rules changed.
+- Lint passed. Local production build and the final Vercel build passed.
+- Real Chromium checks passed: sample comparison, over-budget exclusion, map selection, downloaded comparison, failed-copy recovery, and preserved budget entries after a live configuration error.
+- Axe WCAG 2/2.1 A/AA: zero violations in populated desktop results, expanded source/method details, 390px mobile results, and the live-form error state. This covers the tested states, not a full accessibility certification.
+- No horizontal overflow at 1440px or 390px. No page errors. The managed-browser DOM also has zero nested `a button` controls and a skip link.
+- Hosted API checks: sample 200; edited sample rejected 422; invalid body rejected 400; published tool schema 200.
+- Sample mode remains explicit. Live Preview still reports missing configuration. The earlier Production key authentication and Devpost security-verification blockers were not changed or retested by this content-only pass.
+- No merge or production promotion. Updated the existing pivot PR rather than starting from old main, so the content pass preserves the authorized Sitebrief build.
 
-- `npm test -- --runInBand`: 30 tests passed, including a sample-data claim regression.
-- `npm run lint`: passed.
-- `npm run build`: passed.
-- Browser checks: excess references rejected, brief edits preserved, actual sample search produces results, edited draft copied, outreach status restored after a new search, denied clipboard access shows a manual alternative.
-- Keyboard skip navigation and visible focus checked; no document-level horizontal overflow on homepage/custom/example routes at 390px.
-- Axe WCAG A/AA: 0 violations on the homepage, custom brief, example brief, and populated sample results with expanded sources. These checks supplement, rather than replace, screen-reader testing.
-- Test searches used local sample data and template drafts. No Qloo or Gemini credentials were loaded; no paid provider calls or outreach were made.
+After screenshots: [desktop](audit-ui/after-desktop.png), [mobile](audit-ui/after-mobile.png).
+Machine-readable browser results: [copy-browser-validation.json](copy-browser-validation.json).
 
-## Visual evidence
+Before screenshots: [desktop](audit-ui/before-desktop.png), [mobile](audit-ui/before-mobile.png).
 
-Before: hosted baseline, 1440px. After: local production build, 1440px and 390px, sample-data mode.
+## References
 
-![Before desktop](audit-ui/before-desktop.png)
-![After desktop](audit-ui/after-desktop.png)
-![After mobile](audit-ui/after-mobile.png)
-
-## Remaining limits
-
-Live Qloo and Gemini generation still require the deployment acceptance checks. This PR does not configure credentials, send messages to partners, add server persistence, or change matching/ranking rules. Unsaved draft edits remain page-local and are labelled as such; browser status storage remains browser-specific.
+- Local no-ai-slop skill: workspace repos/no-ai-slop/skills/no-ai-slop/SKILL.md and eval.md.
+- UI copy audit, browser automation, frontend design, and Web Interface Guidelines skills.
+- Fresh upstream review checklist: https://raw.githubusercontent.com/vercel-labs/web-interface-guidelines/main/command.md
