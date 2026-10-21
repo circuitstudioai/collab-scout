@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { APP_NAME, APP_SLUG } from '@/lib/app-config';
 import type { OutreachStatus, PartnerBrief, PartnerCard, PartnerShortlist } from '@/lib/agent/schema';
 
@@ -18,16 +18,6 @@ export default function ScoutRunner({ brief }: { brief: PartnerBrief }) {
   const [copiedId, setCopiedId] = useState<string | null>(null);
 
   const runKey = shortlist?.run_id || brief.id || 'draft';
-
-  useEffect(() => {
-    if (!shortlist) return;
-    const next: Record<string, OutreachStatus> = {};
-    for (const partner of shortlist.partners) {
-      const saved = window.localStorage.getItem(storageKey(runKey, partner.id));
-      next[partner.id] = (saved as OutreachStatus) || 'none';
-    }
-    setStatuses(next);
-  }, [shortlist, runKey]);
 
   const setStatus = (partnerId: string, status: OutreachStatus) => {
     setStatuses((prev) => ({ ...prev, [partnerId]: status }));
@@ -47,6 +37,14 @@ export default function ScoutRunner({ brief }: { brief: PartnerBrief }) {
       if (!response.ok) {
         throw new Error(payload.message || payload.error || 'Scout failed');
       }
+      const loaded: Record<string, OutreachStatus> = {};
+      for (const partner of (payload.data as PartnerShortlist).partners) {
+        try {
+          const saved = window.localStorage.getItem(storageKey(payload.data.run_id, partner.id));
+          loaded[partner.id] = STATUS_OPTIONS.includes(saved as OutreachStatus) ? saved as OutreachStatus : 'none';
+        } catch { loaded[partner.id] = 'none'; }
+      }
+      setStatuses(loaded);
       setShortlist(payload.data);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Scout failed');
