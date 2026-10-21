@@ -4,7 +4,7 @@ import type { Map as LeafletMap } from 'leaflet';
 import type { Cell, Site } from '@/lib/sites/schema';
 import 'leaflet/dist/leaflet.css';
 
-export default function SiteMap({ sites, cells, selected, placing = false, onPlace }: { sites: Site[]; cells: Cell[]; selected: string; placing?: boolean; onPlace?: (latitude: number, longitude: number) => void }) {
+export default function SiteMap({ sites, cells, selected, center, placing = false, onPlace }: { sites: Site[]; cells: Cell[]; selected: string; center?: { latitude: number; longitude: number }; placing?: boolean; onPlace?: (latitude: number, longitude: number) => void }) {
   const container = useRef<HTMLDivElement>(null);
   const placement = useRef({ placing, onPlace });
   useEffect(() => { placement.current = { placing, onPlace }; }, [placing, onPlace]);
@@ -30,10 +30,13 @@ export default function SiteMap({ sites, cells, selected, placing = false, onPla
         label.textContent = `${String.fromCharCode(65 + i)} · ${site.name.replace(/^[A-C] · /, '')}`;
         L.circleMarker([site.latitude, site.longitude], { radius: site.id === selected ? 13 : 9, color: '#ffffff', weight: 3, fillColor: '#9d462b', fillOpacity: 1 }).addTo(map!).bindTooltip(label, { permanent: true, direction: 'top', offset: [0, -12] });
       });
-      const bounds = L.latLngBounds(sites.map(s => [s.latitude, s.longitude] as [number, number]));
-      map.fitBounds(bounds.pad(.35), { maxZoom: 15 });
+      if (sites.length) {
+        const bounds = L.latLngBounds(sites.map(s => [s.latitude, s.longitude] as [number, number]));
+        map.fitBounds(bounds.pad(.35), { maxZoom: 15 });
+      } else if (center) map.setView([center.latitude, center.longitude], 12);
+      else map.setView([25, 0], 2);
     });
     return () => { cancelled = true; map?.remove(); };
-  }, [sites, cells, selected]);
+  }, [sites, cells, selected, center]);
   return <div className={`leaflet-map${placing ? ' placing' : ''}`} ref={container} role="region" aria-label="Locations and nearby taste scores. You can also enter coordinates in the form. The comparison cards below contain the same scores." />;
 }
