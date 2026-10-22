@@ -1,10 +1,10 @@
 # Sitebrief
 
-Compare restaurant locations with Qloo taste evidence, rent constraints, and explicit unknowns. Built for the [Qloo Agentic Hackathon](https://qloo.devpost.com/). MIT licensed.
+Explore city taste patterns and find areas worth scouting for a restaurant. Candidate-address comparison is available as a secondary workflow. Built for the [Qloo Agentic Hackathon](https://qloo.devpost.com/). MIT licensed.
 
-**Status:** live Qloo journey verified on October 21, 2026: search, explicit entity selection, shared heatmap, nearby dining, and exported comparison. Not submitted; Devpost human verification remains blocked. No customer validation claimed.
+**Review branch:** city-first Field Atlas in [PR #6](https://github.com/circuitstudioai/collab-scout/pull/6). No customer validation claimed. Production is unchanged until review. The entry is not submitted.
 
-[Working MVP](https://collab-scout.vercel.app) · [Implementation PR](https://github.com/circuitstudioai/collab-scout/pull/4)
+City discovery needs a city, a 5/10/20 km radius and explicit audience references; no candidate addresses or rents. It selects separated high-scoring actual Qloo map points and adds nearby-place labels and dining context. Map points are scouting starting points, not predicted demand or available properties.
 
 ## Run
 
@@ -16,9 +16,9 @@ npm run lint
 npm run build
 ```
 
-Open the homepage and run the fixed sample. Choose **Use my locations** to edit the brief and request live evidence. Live analysis requires server-side `QLOO_API_KEY` and `QLOO_API_URL=https://hackathon.api.qloo.com` in `.env.local` or hosting environment. Authentication uses `X-Api-Key`. Never place keys in public environment variables or source files.
+Open the homepage for city discovery. Use **Compare locations** to reach the fixed sample and custom-address comparison at `/compare`. Live analysis requires server-side `QLOO_API_KEY` and `QLOO_API_URL=https://hackathon.api.qloo.com` in `.env.local` or hosting environment. Authentication uses `X-Api-Key`. Never place keys in public environment variables or source files.
 
-## How the tool works
+## Known-address comparison tool
 
 1. Resolve 1–3 reference names. If multiple records match, let the user choose a specific record by type and address.
 2. Retrieve a common city heatmap from Qloo.
@@ -33,10 +33,14 @@ Taste affinity is not customer count, foot traffic, spending, unmet demand or pr
 
 Map tiles are supplied by OpenStreetMap under its attribution and usage requirements. Leaflet code is BSD-2-Clause. The fixed example has illustrative rents and taste signals; its sites are not advertised available properties.
 
+## City discovery tool
+
+`POST /api/explore` accepts the schema in `lib/sites/explore.ts`; `/api/explore/tool` publishes the agent tool definition. The response contains actual city-local cells, up to three separated highlights, source trace and partial-data flags. HTTP 409 requires explicit audience-record selection. Read [the city-first scope and method](docs/CITY_DISCOVERY.md).
+
 ## Scope and evidence
 
 - [Product decision and API assumptions](docs/SITEBRIEF.md)
 - [Validation evidence and blockers](docs/VALIDATION.md)
 - [Submission copy — not submitted](docs/sitebrief-devpost.md)
 
-This repository retains the preceding Collab Scout code for continuity. Sitebrief owns `/` and `/api/sites`; legacy source and docs are historical, not current product claims. The Sitebrief release replaces the homepage after the live release gates pass. Legacy Collab Scout routes and fixes are retained.
+This repository retains the preceding Collab Scout code for continuity. Sitebrief owns `/`, `/api/explore`, `/compare` and `/api/sites`; legacy Collab Scout source and docs are historical, not current product claims. The Sitebrief release replaces the homepage after the live release gates pass. Legacy Collab Scout routes and fixes are retained.

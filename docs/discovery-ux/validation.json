@@ -1,0 +1,162 @@
+{
+  "url": "http://localhost:3034",
+  "checks": [
+    "Primary flow needs neither candidate addresses nor rents",
+    "Real Toronto discovery produces geographically local high-scoring areas without supplied sites",
+    "Scouting list and downloaded notes retain selected areas, source IDs and method limits",
+    "Area cards and map selection agree",
+    "Mobile390 has no overflow; rendered results pass tested axe rules",
+    "Changing search radius clears old highlights and saved selections",
+    "Empty coverage error preserves the brief and never invents an area or sample fallback",
+    "Changing cities removes old pins"
+  ],
+  "network": "Successful exploration uses real Qloo and Photon requests. Only the empty-coverage recovery scenario is intercepted.",
+  "initialAxe": [],
+  "reference": {
+    "id": "41632B81-C0BE-4BE2-9A85-C945F6F2F3A6",
+    "name": "Blue Bottle Coffee",
+    "type": "place",
+    "address": "54 W 40th St New York, NY 10018",
+    "closed": false
+  },
+  "live": {
+    "cells": 4292,
+    "totalReturned": 8363,
+    "separationKm": 2,
+    "areas": [
+      {
+        "name": "Wellington Place",
+        "latitude": 43.647995,
+        "longitude": -79.38652,
+        "affinity": 1,
+        "lowerCount": 4291,
+        "pointCount": 4292,
+        "nearby": 5,
+        "nameAvailable": true,
+        "contextAvailable": true
+      },
+      {
+        "name": "Maple House at Canary Landing",
+        "latitude": 43.65074,
+        "longitude": -79.359055,
+        "affinity": 0.9997608227696724,
+        "lowerCount": 4289,
+        "pointCount": 4292,
+        "nearby": 5,
+        "nameAvailable": true,
+        "contextAvailable": true
+      },
+      {
+        "name": "Casa Loma",
+        "latitude": 43.678207,
+        "longitude": -79.40987,
+        "affinity": 0.9996412341545085,
+        "lowerCount": 4288,
+        "pointCount": 4292,
+        "nearby": 5,
+        "nameAvailable": true,
+        "contextAvailable": true
+      }
+    ],
+    "trace": [
+      {
+        "step": "Find Blue Bottle Coffee",
+        "path": "/search",
+        "params": {
+          "query": "Blue Bottle Coffee",
+          "take": "10"
+        },
+        "status": "ok",
+        "count": 10
+      },
+      {
+        "step": "Map audience taste across the city",
+        "path": "/v2/insights",
+        "params": {
+          "filter.type": "urn:heatmap",
+          "filter.location.query": "Toronto, Ontario, Canada",
+          "signal.interests.entities": "41632B81-C0BE-4BE2-9A85-C945F6F2F3A6",
+          "signal.interests.tags": "urn:tag:genre:place:restaurant"
+        },
+        "status": "ok",
+        "count": 8363
+      },
+      {
+        "step": "Nearby dining for area 3",
+        "path": "/v2/insights",
+        "params": {
+          "filter.type": "urn:entity:place",
+          "filter.location": "POINT(-79.40987 43.678207)",
+          "filter.location.radius": "1000",
+          "filter.tags": "urn:tag:genre:place:restaurant",
+          "signal.interests.entities": "41632B81-C0BE-4BE2-9A85-C945F6F2F3A6",
+          "take": "5"
+        },
+        "status": "ok",
+        "count": 5
+      },
+      {
+        "step": "Nearby dining for area 2",
+        "path": "/v2/insights",
+        "params": {
+          "filter.type": "urn:entity:place",
+          "filter.location": "POINT(-79.359055 43.65074)",
+          "filter.location.radius": "1000",
+          "filter.tags": "urn:tag:genre:place:restaurant",
+          "signal.interests.entities": "41632B81-C0BE-4BE2-9A85-C945F6F2F3A6",
+          "take": "5"
+        },
+        "status": "ok",
+        "count": 5
+      },
+      {
+        "step": "Nearby dining for area 1",
+        "path": "/v2/insights",
+        "params": {
+          "filter.type": "urn:entity:place",
+          "filter.location": "POINT(-79.38652 43.647995)",
+          "filter.location.radius": "1000",
+          "filter.tags": "urn:tag:genre:place:restaurant",
+          "signal.interests.entities": "41632B81-C0BE-4BE2-9A85-C945F6F2F3A6",
+          "take": "5"
+        },
+        "status": "ok",
+        "count": 5
+      },
+      {
+        "step": "Locate area 2 on OpenStreetMap",
+        "path": "Photon /reverse",
+        "params": {
+          "latitude": "43.65074",
+          "longitude": "-79.359055"
+        },
+        "status": "ok",
+        "count": 1
+      },
+      {
+        "step": "Locate area 1 on OpenStreetMap",
+        "path": "Photon /reverse",
+        "params": {
+          "latitude": "43.647995",
+          "longitude": "-79.38652"
+        },
+        "status": "ok",
+        "count": 1
+      },
+      {
+        "step": "Locate area 3 on OpenStreetMap",
+        "path": "Photon /reverse",
+        "params": {
+          "latitude": "43.678207",
+          "longitude": "-79.40987"
+        },
+        "status": "ok",
+        "count": 1
+      }
+    ]
+  },
+  "resultsAxe": [],
+  "mobileAxe": [],
+  "pageErrors": [],
+  "status": "passed"
+}

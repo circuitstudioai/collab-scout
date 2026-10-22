@@ -4,8 +4,10 @@ import type { Map as LeafletMap } from 'leaflet';
 import type { Cell, Site } from '@/lib/sites/schema';
 import 'leaflet/dist/leaflet.css';
 
-export default function SiteMap({ sites, cells, selected, center, placing = false, onPlace }: { sites: Site[]; cells: Cell[]; selected: string; center?: { latitude: number; longitude: number }; placing?: boolean; onPlace?: (latitude: number, longitude: number) => void }) {
+export default function SiteMap({ sites, cells, selected, center, onSelect, placing = false, onPlace }: { sites: Site[]; cells: Cell[]; selected: string; onSelect?: (id:string)=>void; center?: { latitude: number; longitude: number }; placing?: boolean; onPlace?: (latitude: number, longitude: number) => void }) {
   const container = useRef<HTMLDivElement>(null);
+  const selection = useRef(onSelect);
+  useEffect(() => { selection.current = onSelect; }, [onSelect]);
   const placement = useRef({ placing, onPlace });
   useEffect(() => { placement.current = { placing, onPlace }; }, [placing, onPlace]);
   useEffect(() => {
@@ -21,14 +23,15 @@ export default function SiteMap({ sites, cells, selected, center, placing = fals
       });
       L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>', maxZoom: 19 }).addTo(map);
       const lo = Math.min(...cells.map(c => c.affinity)), hi = Math.max(...cells.map(c => c.affinity));
-      cells.slice(0, 4000).forEach(c => {
+      const visibleCells = cells.length > 4000 ? Array.from({length:4000}, (_,i)=>cells[Math.floor(i*cells.length/4000)]) : cells;
+      visibleCells.forEach(c => {
         const t = hi === lo ? .5 : (c.affinity - lo) / (hi - lo);
         L.circleMarker([c.latitude, c.longitude], { radius: 5, stroke: false, fillColor: t > .66 ? '#294c34' : t > .33 ? '#8caa50' : '#d7dfb5', fillOpacity: .7 }).addTo(map!).bindTooltip(`Map point · Qloo taste score ${c.affinity.toFixed(3)}`);
       });
       sites.forEach((site, i) => {
         const label = document.createElement('span');
         label.textContent = `${String.fromCharCode(65 + i)} · ${site.name.replace(/^[A-C] · /, '')}`;
-        L.circleMarker([site.latitude, site.longitude], { radius: site.id === selected ? 13 : 9, color: '#ffffff', weight: 3, fillColor: '#9d462b', fillOpacity: 1 }).addTo(map!).bindTooltip(label, { permanent: true, direction: 'top', offset: [0, -12] });
+        L.circleMarker([site.latitude, site.longitude], { radius: site.id === selected ? 13 : 9, color: '#ffffff', weight: 3, fillColor: '#9d462b', fillOpacity: 1 }).addTo(map!).on('click',()=>selection.current?.(site.id)).bindTooltip(label, { permanent: true, direction: 'top', offset: [0, -12] });
       });
       if (sites.length) {
         const bounds = L.latLngBounds(sites.map(s => [s.latitude, s.longitude] as [number, number]));

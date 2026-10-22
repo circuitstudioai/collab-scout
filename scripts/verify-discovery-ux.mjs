@@ -1,0 +1,30 @@
+import {createRequire} from 'node:module';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+const loadDependency=createRequire(import.meta.url);
+const {chromium}=loadDependency(process.env.PLAYWRIGHT_MODULE_PATH||'playwright-core');
+const browser=await chromium.launch({headless:true,args:['--no-sandbox']});
+const page=await browser.newPage({viewport:{width:1440,height:1000}});
+const report={url:process.argv[2],checks:[],network:'Successful exploration uses real Qloo and Photon requests. Only the empty-coverage recovery scenario is intercepted.'};
+const errors=[];page.on('pageerror',e=>errors.push(e.message));
+try{
+await page.goto(report.url,{waitUntil:'networkidle'});
+assert.equal(await page.getByRole('textbox',{name:/Find location 1/}).count(),0);assert.equal(await page.getByRole('spinbutton').count(),0);report.checks.push('Primary flow needs neither candidate addresses nor rents');
+await page.addScriptTag({path:process.env.AXE_SCRIPT_PATH||loadDependency.resolve('axe-core/axe.min.js')});const axe=()=>page.evaluate(async()=>{const r=await window.axe.run(document,{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21aa']}});return r.violations.map(v=>({id:v.id,nodes:v.nodes.map(n=>n.target)}));});
+report.initialAxe=await axe();assert.deepEqual(report.initialAxe,[]);
+await page.screenshot({path:'docs/discovery-ux/desktop-start.png',fullPage:true});
+await page.getByRole('button',{name:/Try Toronto, Canada/}).click();
+let pending=page.waitForResponse(r=>r.url().endsWith('/api/explore')&&r.request().method()==='POST',{timeout:60000});await page.getByRole('button',{name:/Find areas to scout/}).click();let response=await pending;let data=await response.json();
+if(response.status()===409){const choice=data.referenceChoice.options.find(o=>!o.closed&&/New York/.test(o.address))||data.referenceChoice.options.find(o=>!o.closed)||data.referenceChoice.options[0];await page.getByRole('combobox',{name:/Which Blue Bottle/}).selectOption(choice.id);pending=page.waitForResponse(r=>r.url().endsWith('/api/explore')&&r.request().method()==='POST',{timeout:60000});await page.getByRole('button',{name:/Find areas to scout/}).click();response=await pending;data=await response.json();report.reference=choice;}
+assert.equal(response.status(),200,JSON.stringify(data));assert(data.areas.length>0&&data.areas.length<=3);assert(data.cells.length>0);assert(data.areas.every(a=>a.latitude>43&&a.latitude<44&&a.longitude>-80&&a.longitude<-79));assert(data.areas.every(a=>a.pointCount===data.cells.length));assert(data.areas.every(a=>a.lowerCount<data.cells.length));report.live={cells:data.cells.length,totalReturned:data.totalReturned,separationKm:data.separationKm,areas:data.areas.map(a=>({name:a.name,latitude:a.latitude,longitude:a.longitude,affinity:a.affinity,lowerCount:a.lowerCount,pointCount:a.pointCount,nearby:a.venues.length,nameAvailable:a.nameAvailable,contextAvailable:a.contextAvailable})),trace:data.trace};
+await page.getByRole('heading',{name:'Start your fieldwork here.'}).waitFor();assert.equal(await page.locator('.atlas-area-card').count(),data.areas.length);report.checks.push('Real Toronto discovery produces geographically local high-scoring areas without supplied sites');
+report.resultsAxe=await axe();assert.deepEqual(report.resultsAxe,[]);
+await page.locator('.atlas-area-card').first().getByRole('button',{name:/Save /}).click();assert.equal(await page.getByRole('button',{name:/Download saved areas/}).count(),1);const download=page.waitForEvent('download');await page.getByRole('button',{name:/Download saved areas/}).click();const file=await download;const memo=fs.readFileSync(await file.path(),'utf8');assert(memo.includes('Toronto'));assert(memo.includes(data.references[0].id));assert(memo.includes('not neighborhood averages'));report.checks.push('Scouting list and downloaded notes retain selected areas, source IDs and method limits');
+await page.locator('.atlas-area-card').last().getByRole('button',{name:/Show this area on map/}).click();assert.equal(await page.locator('.atlas-area-card.is-selected h3').innerText(),data.areas.at(-1).name);report.checks.push('Area cards and map selection agree');
+await page.evaluate(()=>window.scrollTo({top:0,behavior:'instant'}));await page.screenshot({path:'docs/discovery-ux/desktop-results.png',fullPage:true});
+await page.setViewportSize({width:390,height:844});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);report.mobileAxe=await axe();assert.deepEqual(report.mobileAxe,[]);await page.screenshot({path:'docs/discovery-ux/mobile-results.png',fullPage:true});report.checks.push('Mobile390 has no overflow; rendered results pass tested axe rules');
+await page.getByRole('button',{name:'20 km',exact:true}).click();assert.equal(await page.locator('.atlas-area-card').count(),0);assert.equal(await page.getByRole('button',{name:/Download saved/}).count(),0);report.checks.push('Changing search radius clears old highlights and saved selections');
+await page.route('**/api/explore',r=>r.fulfill({status:422,contentType:'application/json',body:JSON.stringify({error:'Qloo returned no taste map points within this search radius. Try a wider radius.'})}));await page.getByRole('button',{name:/Find areas to scout/}).click();await page.getByRole('alert').filter({hasText:'no taste map points'}).waitFor();assert.equal(await page.locator('.atlas-area-card').count(),0);assert((await page.getByRole('textbox',{name:'City',exact:true}).inputValue()).includes('Toronto'));report.checks.push('Empty coverage error preserves the brief and never invents an area or sample fallback');await page.unroute('**/api/explore');
+await page.getByRole('textbox',{name:'City',exact:true}).fill('Ottawa');assert.equal(await page.locator('.leaflet-tooltip').count(),0);report.checks.push('Changing cities removes old pins');
+assert.deepEqual(errors,[]);report.pageErrors=errors;report.status='passed';fs.writeFileSync('docs/discovery-ux/validation.json',JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report,null,2));
+}finally{await browser.close();}

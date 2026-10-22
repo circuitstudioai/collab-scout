@@ -1,5 +1,5 @@
 {
-  "url": "https://collab-scout-ngo6iqv3w-circuitstudioais-projects.vercel.app",
+  "url": "http://localhost:3034",
   "checks": [
     "Fixed sample remains functional and disclosed",
     "Custom mode starts with two blank locations, not NYC sample pins",

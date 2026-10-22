@@ -1,3 +1,7 @@
+# Current primary flow: city discovery
+
+Abhi approved city-first exploration on October 21. [CITY_DISCOVERY.md](CITY_DISCOVERY.md) is the source of truth for the primary flow. The comparison requirements below now apply to the secondary `/compare` experience.
+
 # Sitebrief — locked hackathon scope
 
 Decision: Abhi authorized a pivot from Collab Scout on 2026-10-21, including building, publishing, and submitting the working entry. Prior review-only and no-submission instructions are superseded for this work. Collab Scout remains recoverable on main and its existing branches until the new version is ready.
