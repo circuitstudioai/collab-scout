@@ -17,7 +17,7 @@ The app highlights up to three separated high-scoring map points, attaches nearb
 
 The current scope adds exact brand-first recognition, location suggestions as users type, optional existing-outlet distance buffers, explicit rejected-point evidence and a restaurant-specific web research panel. Independent operators, small chains and franchisees use the same flow. Restaurant format, service period and price position guide the separate research; they do not alter Qloo taste scores. See RESTAURANT_EXPANSION.md.
 
-Gemini 2.5 Flash with Google Search is implemented, including inline grounding citations and source links. **Live research is blocked until the saved rejected Gemini credential is replaced and the real request passes.** Do not claim that integration is demonstrated from unit tests or a successful Qloo request.
+Gemini 2.5 Flash with Google Search is implemented, including inline grounding citations and source links. Live research passed after the owner updated the Gemini credential and redeployed. Source links and inline citations come from actual Google grounding metadata; tests of fallback rendering alone are not live evidence.
 
 ## How we built it
 Next.js, React, TypeScript, Zod and Leaflet, with Qloo data and Photon/OpenStreetMap geocoding. Two server-side agent-callable tools publish JSON schemas: city exploration and known-location comparison. Both resolve audience records explicitly, gather real geographic evidence and apply deterministic rules. No language model assigns scores, infers demand or invents locations.

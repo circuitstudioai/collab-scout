@@ -86,3 +86,7 @@ No key → mock fallback; demo still works.
 - Any Market Desk code or deep link
 
 Deadline: Fri Oct 30, 2026, 11:45 PM ET.
+
+## Verify deployed credentials, not redacted downloads
+
+Vercel environment downloads can contain placeholder representations of sensitive values. A local call using such a placeholder does not test the deployed credential. Verify server-side integration on a fresh deployment before reporting an invalid saved key. On October22, a local placeholder probe failed while the freshly deployed research endpoint successfully returned grounded Gemini research. Never print credentials while diagnosing this difference.

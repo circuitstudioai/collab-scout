@@ -16,6 +16,6 @@ Baseline: `12ba419` (last recorded Field Atlas acceptance). Review includes work
 - City/address suggestions are automatic as users type. Exact brands resolve before same-name outlets. True ambiguity offers three visible choices or a more specific input; choosing continues the request.
 - Outlet rules affect the shortlist and rejection evidence. An all-excluded request does not relax the operator rule.
 - Restaurant details inform separate cited research, not fabricated Qloo scores. Research failures preserve live map results.
-- **One release blocker remains:** the saved Gemini credential is rejected by Google. The research implementation and synthetic rendering checks do not prove live AI research. Do not label the complete research demo ready or promote it as verified until a live grounded response passes.
+- **Credential blocker resolved:** after the owner updated the key and redeployed, actual hosted research returned200 with grounded sources and inline citations. Local downloaded placeholders must not be treated as actual deployed credentials. Output review also identified a fictional-brand/business conflation; the prompt now forbids researching or quoting the target concept as if it were an existing business. Research headings and lists render semantically rather than displaying raw Markdown.
 
-Summary: Standards — no remaining blocking finding. Spec — one external verification blocker (Gemini credential); no customer validation claimed.
+Summary: Standards — no remaining blocking finding. Spec — credential blocker resolved on the hosted retry; final updated-code hosted acceptance is required before release. No customer validation claimed.

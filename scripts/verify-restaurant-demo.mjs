@@ -16,7 +16,7 @@ try{
  checks.push('City lookup suggests real locations without a separate search click');
  await page.screenshot({path:'docs/restaurant-demo/start.png',fullPage:true});
  await page.getByText('Restaurant details for local research',{exact:true}).click();
- await page.getByLabel('Restaurant or brand name').fill('Northline Coffee — illustrative demo concept');
+ await page.getByLabel('Restaurant or brand name').fill('Cedar Finch Café — fictional demo concept, no existing menu');
  await page.getByLabel('When will you serve?').selectOption('daytime');
  await page.getByRole('textbox',{name:/Your audience might like/}).fill('Starbucks');
  const run=async()=>{const waiting=page.waitForResponse(r=>r.url().endsWith('/api/explore')&&r.request().method()==='POST',{timeout:60000});await page.getByRole('button',{name:'Find areas to scout'}).click();const response=await waiting;const data=await response.json();assert.equal(response.status(),200,JSON.stringify(data));return data;};
@@ -37,7 +37,7 @@ try{
  checks.push('Operator-supplied illustrative outlet excludes real points before selecting eligible alternatives');
  const waiting=page.waitForResponse(r=>r.url().endsWith('/api/research')&&r.request().method()==='POST',{timeout:60000});
  await page.getByRole('button',{name:'Research this area'}).click();const researchResponse=await waiting;const research=await researchResponse.json();
- let researchStatus;
+ let researchStatus;if(researchResponse.ok())fs.writeFileSync('docs/restaurant-demo/research-example.json',JSON.stringify(research,null,2)+'\n');
  if(researchResponse.ok()){
   assert(research.sources.some(s=>s.url.startsWith('https:')));assert(research.citations.length);await page.locator('.atlas-research-text').waitFor();researchStatus='live grounded research passed';
   checks.push('Live Gemini/Google Search research returns citation-linked evidence');
@@ -65,6 +65,6 @@ try{
  await page.getByLabel('Price position').selectOption('premium');assert.equal(await page.locator('.atlas-area-card').count(),0);assert.equal(await page.locator('.atlas-research').count(),0);
  checks.push('Changing the restaurant brief invalidates old results and research');
  const bad=await page.request.post(base+'/api/research',{data:{}});assert.equal(bad.status(),400);assert.deepEqual(errors,[]);
- const report={url:base,checks,researchStatus,desktopAxe,mobileAxe,pageErrors:errors,cells:data.cells.length,rejected:data.rejectedCount,areas:data.areas.map(a=>({name:a.name,latitude:a.latitude,longitude:a.longitude})),status:researchResponse.ok()?'passed':'core passed; research blocked',scenario:'Restaurant name and existing-outlet scenario are illustrative operator inputs. Qloo, geocoding, exclusion and the research availability check are live. One separately labelled intercepted response tests citation rendering only; it is not live AI evidence.'};
+ const report={url:base,checks,researchStatus,desktopAxe,mobileAxe,pageErrors:errors,cells:data.cells.length,rejected:data.rejectedCount,areas:data.areas.map(a=>({name:a.name,latitude:a.latitude,longitude:a.longitude})),status:researchResponse.ok()?'passed':'core passed; research blocked',scenario:'Restaurant name and existing-outlet scenario are illustrative operator inputs. Qloo, geocoding, exclusion and the research availability check are live. If live research is unavailable, one separately labelled intercepted response tests citation rendering only; it is not live AI evidence.'};
  fs.writeFileSync('docs/restaurant-demo/validation.json',JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report,null,2));
 }finally{await browser.close();}

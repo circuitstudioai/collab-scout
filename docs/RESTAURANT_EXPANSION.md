@@ -28,12 +28,12 @@ On October 22, Abhi chose restaurant scouting with room to expand later and requ
 
 Restaurant-specific inputs remain in the brief schema; geographic selection, provider access and research are separate modules. Another industry would need its own suitability rules, data and acceptance checks. Do not add an unsupported generic industry dropdown.
 
-## Live blocker at implementation
+## Historical credential blocker — resolved October 22
 
-The saved Vercel Gemini credential returned HTTP 400 API_KEY_INVALID on October 22. Qloo search works, including exact brand recognition for Starbucks and Blue Bottle Coffee. Research must remain marked unavailable until the credential is replaced and a real grounded research request passes. Never describe synthetic browser research checks as live verification.
+Earlier hosted research returned503. After Abhi updated the Gemini credential and redeployment, the real hosted endpoint returned200 with provider-grounded source links and the complete browser journey passed. Local Vercel downloads showed a placeholder, so a failed local probe of that placeholder did not test the deployed key. Qloo brand recognition remains verified. Never describe synthetic checks as live research.
 
 ## Hosted core acceptance — October 22
 
 App implementation `d596de2` is hosted at https://collab-scout-b3hwva7ry-circuitstudioais-projects.vercel.app . The restaurant scenario passed nine checks, including one explicitly synthetic inline-citation rendering check. Real Toronto Qloo discovery returned 4,292 local points; the illustrative operator outlet rule excluded 597 and selected eligible alternatives. All-excluded live requests remained empty. The separate address-comparison journey passed 13 checks on the same deployment. Tested desktop/mobile axe violations and page errors: zero.
 
-70 unit/contract tests, lint, types and production builds pass. Research is still blocked: the live hosted request returns503 with no invented report. The complete sourced-research recording remains unverified. Evidence: restaurant-demo/validation.json, location-ux/validation.json and screenshots. Recording plan: restaurant-demo-plan.md.
+70 unit/contract tests, lint, types and production builds pass. The original hosted acceptance below recorded the historical503. The credential-retry deployment subsequently passed the complete live research journey. Final release evidence is recorded in restaurant-demo/validation.json. Evidence: restaurant-demo/validation.json, location-ux/validation.json and screenshots. Recording plan: restaurant-demo-plan.md.

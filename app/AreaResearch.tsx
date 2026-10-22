@@ -3,16 +3,35 @@ import { useEffect, useRef, useState, type ReactNode } from 'react';
 import type { Area, Exploration } from '@/lib/sites/explore';
 import type { ResearchReport } from '@/lib/sites/research';
 function CitedText({report}:{report:ResearchReport}){
- let cursor=0;const parts:ReactNode[]=[];
- for(const [index,citation] of report.citations.entries()){
-  if(citation.end<cursor)continue;
-  parts.push(<span key={`text-${index}`}>{report.text.slice(cursor,citation.end)}</span>);
-  parts.push(<sup key={`cite-${index}`}>{citation.sourceIndices.map(i=><a key={i} href={report.sources[i].url} target="_blank" rel="noreferrer" aria-label={`Source ${i+1}: ${report.sources[i].title}`}>[{i+1}]</a>)}</sup>);
-  cursor=citation.end;
+ const clean=(text:string)=>text.replace(/\*\*|__/g,'');
+ function renderRange(start:number,end:number){
+  let cursor=start;const parts:ReactNode[]=[];
+  for(const [index,citation] of report.citations.entries()){
+   if(citation.end<=start||citation.end>end||citation.end<cursor)continue;
+   parts.push(<span key={`text-${index}`}>{clean(report.text.slice(cursor,citation.end))}</span>);
+   parts.push(<sup key={`cite-${index}`}>{citation.sourceIndices.map(i=><a key={i} href={report.sources[i].url} target="_blank" rel="noreferrer" aria-label={`Source ${i+1}: ${report.sources[i].title}`}>[{i+1}]</a>)}</sup>);
+   cursor=citation.end;
+  }
+  parts.push(<span key="end">{clean(report.text.slice(cursor,end))}</span>);return parts;
  }
- parts.push(<span key="end">{report.text.slice(cursor)}</span>);
- return <div className="atlas-research-text">{parts}</div>;
+ const blocks:ReactNode[]=[];let cursor=0;
+ for(const [index,block] of report.text.split(/\n\s*\n/).entries()){
+  const start=report.text.indexOf(block,cursor);cursor=start+block.length;
+  const heading=block.match(/^#{1,6}\s+/);
+  if(heading){blocks.push(<h3 key={index}>{renderRange(start+heading[0].length,cursor)}</h3>);continue;}
+  if(/^[-*]\s/.test(block)){
+   let lineStart=start;const lines:ReactNode[]=[];
+   for(const [i,line] of block.split('\n').entries()){
+    const begin=lineStart;lineStart+=line.length+1;const prefix=line.match(/^[-*]\s+/)?.[0].length??0;
+    lines.push(<li key={i}>{renderRange(begin+prefix,begin+line.length)}</li>);
+   }
+   blocks.push(<ul key={index}>{lines}</ul>);continue;
+  }
+  blocks.push(<p key={index}>{renderRange(start,cursor)}</p>);
+ }
+ return <div className="atlas-research-text">{blocks}</div>;
 }
+
 export default function AreaResearch({result,area,reports,onReport}:{result:Exploration;area:Area;reports:Record<string,ResearchReport>;onReport:(id:string,report:ResearchReport)=>void}){
  const [busy,setBusy]=useState(false),[error,setError]=useState('');const controller=useRef<AbortController|null>(null);
  const report=reports[area.id];
