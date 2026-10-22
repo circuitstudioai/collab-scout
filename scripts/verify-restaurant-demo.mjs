@@ -14,6 +14,7 @@ try{
  await page.getByRole('list',{name:'City results'}).waitFor({timeout:15000});
  await page.getByRole('list',{name:'City results'}).getByRole('button').first().click();
  checks.push('City lookup suggests real locations without a separate search click');
+ await page.screenshot({path:'docs/restaurant-demo/start.png',fullPage:true});
  await page.getByText('Restaurant details for local research',{exact:true}).click();
  await page.getByLabel('Restaurant or brand name').fill('Northline Coffee — illustrative demo concept');
  await page.getByLabel('When will you serve?').selectOption('daytime');
@@ -64,6 +65,6 @@ try{
  await page.getByLabel('Price position').selectOption('premium');assert.equal(await page.locator('.atlas-area-card').count(),0);assert.equal(await page.locator('.atlas-research').count(),0);
  checks.push('Changing the restaurant brief invalidates old results and research');
  const bad=await page.request.post(base+'/api/research',{data:{}});assert.equal(bad.status(),400);assert.deepEqual(errors,[]);
- const report={url:base,checks,researchStatus,desktopAxe,mobileAxe,pageErrors:errors,cells:data.cells.length,rejected:data.rejectedCount,areas:data.areas.map(a=>({name:a.name,latitude:a.latitude,longitude:a.longitude})),status:researchResponse.ok()?'passed':'core passed; research blocked',scenario:'Restaurant name and existing-outlet scenario are illustrative operator inputs. Qloo, geocoding, exclusion and research requests are live; no intercepted success responses.'};
+ const report={url:base,checks,researchStatus,desktopAxe,mobileAxe,pageErrors:errors,cells:data.cells.length,rejected:data.rejectedCount,areas:data.areas.map(a=>({name:a.name,latitude:a.latitude,longitude:a.longitude})),status:researchResponse.ok()?'passed':'core passed; research blocked',scenario:'Restaurant name and existing-outlet scenario are illustrative operator inputs. Qloo, geocoding, exclusion and the research availability check are live. One separately labelled intercepted response tests citation rendering only; it is not live AI evidence.'};
  fs.writeFileSync('docs/restaurant-demo/validation.json',JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report,null,2));
 }finally{await browser.close();}

@@ -31,3 +31,9 @@ Restaurant-specific inputs remain in the brief schema; geographic selection, pro
 ## Live blocker at implementation
 
 The saved Vercel Gemini credential returned HTTP 400 API_KEY_INVALID on October 22. Qloo search works, including exact brand recognition for Starbucks and Blue Bottle Coffee. Research must remain marked unavailable until the credential is replaced and a real grounded research request passes. Never describe synthetic browser research checks as live verification.
+
+## Hosted core acceptance — October 22
+
+App implementation `d596de2` is hosted at https://collab-scout-b3hwva7ry-circuitstudioais-projects.vercel.app . The restaurant scenario passed nine checks, including one explicitly synthetic inline-citation rendering check. Real Toronto Qloo discovery returned 4,292 local points; the illustrative operator outlet rule excluded 597 and selected eligible alternatives. All-excluded live requests remained empty. The separate address-comparison journey passed 13 checks on the same deployment. Tested desktop/mobile axe violations and page errors: zero.
+
+70 unit/contract tests, lint, types and production builds pass. Research is still blocked: the live hosted request returns503 with no invented report. The complete sourced-research recording remains unverified. Evidence: restaurant-demo/validation.json, location-ux/validation.json and screenshots. Recording plan: restaurant-demo-plan.md.
