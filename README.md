@@ -4,7 +4,7 @@
 
 Independent restaurant operators, small chains and franchise teams use the same flow. No account or candidate property address is needed. No customer validation is claimed.
 
-- **Verified review demo:** https://collab-scout-dmbbpla39-circuitstudioais-projects.vercel.app
+- **Verified review demo:** https://collab-scout-r1bgogxxt-circuitstudioais-projects.vercel.app
 - **Production:** https://collab-scout.vercel.app — unchanged; the new agent is on PR #6, not production.
 - **Source:** https://github.com/circuitstudioai/collab-scout · MIT.
 - **MCP endpoint:** `/api/mcp` — stateless Streamable HTTP, tested separately with the official MCP SDK before claiming client compatibility.
@@ -50,7 +50,7 @@ The canonical example may reuse a real run for 15 minutes on a warm server insta
 Configure an MCP-capable client with this verified review server URL (production is not promoted yet):
 
 ```json
-{"mcpServers":{"sitebrief":{"url":"https://collab-scout-dmbbpla39-circuitstudioais-projects.vercel.app/api/mcp"}}}
+{"mcpServers":{"sitebrief":{"url":"https://collab-scout-r1bgogxxt-circuitstudioais-projects.vercel.app/api/mcp"}}}
 ```
 
 Tools: `explore_restaurant_areas`, `compare_restaurant_sites`, `audience_profile`, `research_restaurant_area`, `scout_restaurant_city`.

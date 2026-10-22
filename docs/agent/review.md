@@ -4,7 +4,7 @@ Baseline: `4d95cd4`. These are separate Standards and Spec **self-review** passe
 
 ## Standards
 
-- Read installed Next route-handler guidance; server-only Qloo/Gemini access. No key values were printed or added to client source. A scan of 146 candidate repository files found no matches for locally available credential values.
+- Read installed Next route-handler guidance; server-only Qloo/Gemini access. No key values were printed or added to client source. A scan of 140 candidate repository files found no matches for locally available credential values.
 - Input validation and allowed tool stages prevent invented tools, forged area IDs and changed operator constraints. Seven model rounds / eight tool calls bound the agent; malformed final output receives bounded validation retries, never fabricated decisions.
 - MCP initializes and calls a real tool with the official SDK. It is stateless Streamable HTTP, read-only, origin-checked for browser callers, and concurrency-limited. No claim of separately testing every branded chat client.
 - PDF download is parsed as a real one-page PDF. Desktop/mobile screenshots were visually inspected; tested axe rules, overflow and page-error checks pass. These are scoped checks, not a universal accessibility certification.
@@ -16,14 +16,14 @@ Baseline: `4d95cd4`. These are separate Standards and Spec **self-review** passe
 - Actual Gemini turns call Qloo exploration, audience profile, venue comparison and cited web research before a structured final interpretation. Real tool events are streamed. Nearby samples are deduplicated; demographic scores are signed reference affinities, not resident percentages.
 - Owner-specified demo: a **new café with an indoor playground**, with three distinct Toronto café references from the returned café-tagged Qloo sample, selected by popularity. Exact place IDs/addresses stay visible. No invented existing outlets, prices or hours.
 - Live reference sample: Dineen Coffee Co., FIKA Cafe and Rooster Coffee House. This is not an exhaustive Toronto leaderboard and does not demonstrate demand from families.
-- Evidence review caught invalid/overlong decisions, same-name overseas menu prices, private-home context and unsupported demographic matching. The final schema, retries, narrowed research context, nearby venue addresses and narrative checks address those known failure modes. Numerical Qloo evidence remains visible separately; local menu prices are explicitly unverified.
+- Evidence review caught invalid/overlong decisions, same-name overseas menu prices, private-home context and unsupported demographic matching. The final schema, retries, narrowed research context, nearby venue addresses and narrative checks address those known failure modes. Numerical Qloo evidence remains visible separately; local menu prices are explicitly unverified. The narrative guard is heuristic, not a semantic fact checker; spelled-out quantities and other research assertions can remain. Inspect the linked sources and do not treat industry guidance as an exact legal/property requirement.
 - Research cites provider grounding sources. Citation presence is not a universal truth guarantee; source geography, freshness, permissions and property suitability still require verification. The model's interpretation is labelled as interpretation.
 - Buyer copy targets restaurant operators, expansion teams and real-estate advisers. No invented customer validation, sales forecasts, study-cost savings or guaranteed completion speed.
 - Completed real runs may be reused for fifteen minutes on a warm server, visibly labelled with original time. This is not durable replay storage or quota protection. Incomplete/invalid decisions are not cached as successful demos.
 
 ## Verification
 
-- 72 tests / 12 suites; lint and production builds pass.
+- 73 tests / 12 suites; lint and production builds pass.
 - `validation.json`: actual complete four-tool agent run, three Qloo-local café references, valid local-contrast candidates, real audience/compare evidence and grounded citations.
 - `ui-validation.json`: hosted one-click result, decision/profile/research, one-page PDF, desktop/mobile accessibility, no overflow/page errors and constraint-change invalidation. Any server cache reuse is labelled; no synthetic transport was used for this acceptance.
 - `../mcp/validation.json`: official MCP SDK initialization, five tools listed and a live Qloo exploration call with automatic Starbucks brand recognition.

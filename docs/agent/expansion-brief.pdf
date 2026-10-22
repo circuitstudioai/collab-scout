@@ -6,16 +6,16 @@
 /Resources 2 0 R
 /MediaBox [0 0 595.2799999999999727 841.8899999999999864]
 /Annots [
-<</Type /Annot /Subtype /Link /Rect [56.6929133858267775 303.2972440944878372 113.1729133858267744 294.0972440944879054] /Border [0 0 0] /A <</S /URI /URI (https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHrBtBGeT4D758D4uvOE12rJI6ALyBsOLvva5BBk38ru5q-xuWnf28LCGMANZ4LIyTrGoXAkRBr4qGG26IrRwNf5Rm4GbbHY-60fO6XZK7xnkKtLGKtxNMCRM7LsdDNQLGT-_Fxad41YLbMvRRGmKIUfh1Bb9hYwLgKdA==) >> >>
-<</Type /Annot /Subtype /Link /Rect [56.6929133858267775 286.2893700787398075 139.3329133858267994 277.0893700787398757] /Border [0 0 0] /A <</S /URI /URI (https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEkFsJxcWafncNfzlfwElfZdQnecmesr72xZ5FEYXoDiCOOZRk8onOrVZzzAMeQ03gc1g_egeFbQFC3YiJxu1ieQkAJ9tUZcUpJ6EQz2ce17UAFyde6155QbUsnkBkqd-CrOdB5_37DkKpZ2PYFESd2Cgse2UC28K8WnbBnuz9gPO1vqQsfelYpRjqvWfUsSCzeVc3d1SNjbBLYuE2Mmfmvi-27rsNKyyoOqAPsXX1XVNqT1Hej7L2YOw==) >> >>
-<</Type /Annot /Subtype /Link /Rect [56.6929133858267775 269.2814960629917778 81.8929133858267875 260.081496062991846] /Border [0 0 0] /A <</S /URI /URI (https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH6e3WHetxj6TWwNb2A4273bGo06996lfgFXZQJRVMKSvQeRBLXUITJI6XqK4RmveLmgKdqFPvPP9sv3p1ogus23j1P5jA7wXSkJ142l70MR3zjYQ-qxFKfPuLxmT_EUghpRYbaJ8c1yDm_vtHAvUB_xWhcnfRbRnH4vw==) >> >>
+<</Type /Annot /Subtype /Link /Rect [56.6929133858267775 290.8248031496060548 148.1329133858267824 281.624803149606123] /Border [0 0 0] /A <</S /URI /URI (https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH_XlXNNHFEE9F9TXMRO74ZRQQCvayIWCqKQLGcnYDEYQb8i-sxjrKGT7QBLdd8f1LiR3FmqPxGKq-f2-fwWA6OgXotytzlC44-yAerav_qY8F4003B3XKUyKjS6nVNGuspsl33OmCfpiSIb0lpI2Bmu3nJKdzdluISz9g4oFcfCb3-iBXCm_K9NytzGpMfHnRQrPlW6xRGtkLaLqcISlF8Tzb0ikv3F0CSGVJwFDgJ) >> >>
+<</Type /Annot /Subtype /Link /Rect [56.6929133858267775 273.8169291338580251 128.2129133858267664 264.6169291338580933] /Border [0 0 0] /A <</S /URI /URI (https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHBwD3o_1ZO2oBjTQr3YODd9sUtEtz4glJmm9l-R7z9G8rBCn_3l8PA1oltLdECzkZXL58gQ4rYFzrUe9qRLZdo3AtDIe4_5TGJv628QOMy5vVlXtaPWcWIp-_x_oYwjUB3i2gS3QUGvkVnW8IS) >> >>
+<</Type /Annot /Subtype /Link /Rect [56.6929133858267775 256.8090551181099954 111.8929133858267733 247.6090551181100636] /Border [0 0 0] /A <</S /URI /URI (https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE2R5IOKwCmVGgWFcHI4nE2p-evmABklIeoJ1tYGZP_dtCosLlw83iB_VNntUa7XcezYSJ_zFcE3splBkKnR118sXnFpvxSq_J8cIC7fqNNHUHpDlEIZsUkhaYeALuCWBozdaQpep8ezEfrLx5SHxv8IB6ZmGS_0Q==) >> >>
 ]
 /Contents 4 0 R
 >>
 endobj
 4 0 obj
 <<
-/Length 3911
+/Length 4038
 >>
 stream
 0.5670000000000001 w
@@ -41,7 +41,7 @@ BT
 56.6929133858267775 721.360866141732231 Td
 (A new café with an indoor playground. Find areas to scout using popular Toronto cafés as audience) Tj
 T* (references.) Tj
-T* (Retrieved 2026-10-22T18:35:00.232Z) Tj
+T* (Retrieved 2026-10-22T18:43:21.522Z) Tj
 ET
 BT
 /F1 9 Tf
@@ -62,40 +62,41 @@ BT
 11.5 TL
 0.125 0.235 0.212 rg
 56.6929133858267775 623.7356692913385814 Td
-(Near Spadina-Fort York: This area shows a high audience percentile and strong affinity with the reference) Tj
-T* (cafés. The local commercial streets like Dundas Street West, Ossington Avenue, and Queen Street West are) Tj
-T* (vibrant and have an established coffee culture, as evidenced by nearby popular venues. There is also a) Tj
-T* (precedent for play cafes in Toronto, suggesting market awareness for this concept.) Tj
+(Near Spadina-Fort York: Area-1, near Spadina-Fort York, demonstrates the highest audience percentile and) Tj
+T* (strong overall affinity compared to the other explored areas. The local venues exhibit high affinity with the) Tj
+T* (reference cafés, suggesting a receptive audience for a new café concept. The area also boasts existing) Tj
+T* (commercial vibrancy and pedestrian activity, which are favorable for a new establishment. Furthermore, the) Tj
+T* (local commercial streets offer diverse café and dining…) Tj
 ET
 BT
 /F1 10 Tf
 11.5 TL
 0.125 0.235 0.212 rg
-56.6929133858267775 562.5073228346456062 Td
-(Trade-off: Establishing a new café with an indoor playground in this area will require navigating complex) Tj
-T* (permitting and zoning regulations, potentially classifying the play area as an "Amusement Establishment.") Tj
-T* (This may necessitate specific commercial general liability insuranc…) Tj
+56.6929133858267775 550.0348818897637102 Td
+(Trade-off: While the area shows strong potential for a café audience, the substantial space and ceiling height) Tj
+T* (requirements for an indoor playground might be challenging to secure in established commercial corridors.) Tj
+T* (Additionally, specific zoning regulations for 'Amusement Estab…) Tj
 ET
 BT
 /F1 10 Tf
 11.5 TL
 0.125 0.235 0.212 rg
-56.6929133858267775 513.7514173228346408 Td
-(Next action: Scout the commercial streets including Dundas Street West, Ossington Avenue, and Queen) Tj
-T* (Street West to assess available commercial spaces for ceiling height and square footage. Confirm zo…) Tj
+56.6929133858267775 501.2789763779526879 Td
+(Next action: Scout the commercial streets near Spadina-Fort York, particularly Dundas Street West and) Tj
+T* (Ossington Avenue, and the Liberty Village area. Focus on identifying commercial spaces with suita…) Tj
 ET
 BT
 /F1 11 Tf
 12.6499999999999986 TL
 0.125 0.235 0.212 rg
-56.6929133858267775 477.4679527559054577 Td
+56.6929133858267775 464.9955118110235617 Td
 (AREAS TO INVESTIGATE) Tj
 ET
 BT
 /F1 9 Tf
 10.3499999999999996 TL
 0.125 0.235 0.212 rg
-56.6929133858267775 452.4096850393700038 Td
+56.6929133858267775 439.9372440944881077 Td
 (Near Spadina-Fort York | 43.6466, -79.4222) Tj
 T* (Affinity 0.975 | Popularity 0.514 | Contrast 55.2 percentile points) Tj
 ET
@@ -103,7 +104,7 @@ BT
 /F1 9 Tf
 10.3499999999999996 TL
 0.125 0.235 0.212 rg
-56.6929133858267775 416.1262204724408207 Td
+56.6929133858267775 403.6537795275589247 Td
 (Near York South-Weston | 43.6686, -79.4634) Tj
 T* (Affinity 0.965 | Popularity 0.527 | Contrast 52.1 percentile points) Tj
 ET
@@ -111,44 +112,44 @@ BT
 /F1 9 Tf
 10.3499999999999996 TL
 0.125 0.235 0.212 rg
-56.6929133858267775 379.8427559055116944 Td
-(Area C | 43.7235, -79.3371) Tj
+56.6929133858267775 367.3703149606297416 Td
+(Near Banbury-Don Mills | 43.7235, -79.3371) Tj
 T* (Affinity 0.988 | Popularity 0.589 | Contrast 51.0 percentile points) Tj
 ET
 BT
 /F1 9 Tf
 10.3499999999999996 TL
 0.125 0.235 0.212 rg
-56.6929133858267775 343.5592913385825113 Td
+56.6929133858267775 331.0868503937006153 Td
 (No existing outlets supplied. Reused real run, not a new live request.) Tj
 ET
 BT
 /F1 10 Tf
 11.5 TL
 0.125 0.235 0.212 rg
-56.6929133858267775 319.7482677165352243 Td
+56.6929133858267775 307.2758267716533283 Td
 (RESEARCH SOURCES \(FULL REPORT IN SCOUTING NOTES\)) Tj
 ET
 BT
 /F1 8 Tf
 9.1999999999999993 TL
 0.125 0.235 0.212 rg
-56.6929133858267775 295.9372440944879372 Td
-(homeindexer.ca) Tj
+56.6929133858267775 283.4648031496060412 Td
+(rlpcommercialtoronto.com) Tj
 ET
 BT
 /F1 8 Tf
 9.1999999999999993 TL
 0.125 0.235 0.212 rg
-56.6929133858267775 278.9293700787399075 Td
-(cushmanwakefield.com) Tj
+56.6929133858267775 266.4569291338580115 Td
+(libertyvillagebia.com) Tj
 ET
 BT
 /F1 8 Tf
 9.1999999999999993 TL
 0.125 0.235 0.212 rg
-56.6929133858267775 261.9214960629918778 Td
-(zolo.ca) Tj
+56.6929133858267775 249.4490551181099818 Td
+(toronto-bia.com) Tj
 ET
 BT
 /F1 8 Tf
@@ -330,7 +331,7 @@ endobj
 19 0 obj
 <<
 /Producer (jsPDF 4.2.1)
-/CreationDate (D:20261022183523-00'00')
+/CreationDate (D:20261022184345-00'00')
 >>
 endobj
 20 0 obj
@@ -344,33 +345,33 @@ endobj
 xref
 0 21
 0000000000 65535 f 
-0000005406 00000 n 
-0000007223 00000 n 
+0000005494 00000 n 
+0000007311 00000 n 
 0000000015 00000 n 
-0000001443 00000 n 
-0000005463 00000 n 
-0000005588 00000 n 
-0000005718 00000 n 
-0000005851 00000 n 
-0000005988 00000 n 
-0000006111 00000 n 
-0000006240 00000 n 
-0000006372 00000 n 
-0000006508 00000 n 
-0000006636 00000 n 
-0000006763 00000 n 
-0000006892 00000 n 
-0000007025 00000 n 
-0000007127 00000 n 
-0000007471 00000 n 
-0000007557 00000 n 
+0000001404 00000 n 
+0000005551 00000 n 
+0000005676 00000 n 
+0000005806 00000 n 
+0000005939 00000 n 
+0000006076 00000 n 
+0000006199 00000 n 
+0000006328 00000 n 
+0000006460 00000 n 
+0000006596 00000 n 
+0000006724 00000 n 
+0000006851 00000 n 
+0000006980 00000 n 
+0000007113 00000 n 
+0000007215 00000 n 
+0000007559 00000 n 
+0000007645 00000 n 
 trailer
 <<
 /Size 21
 /Root 20 0 R
 /Info 19 0 R
-/ID [ <41F2E2BF916F8AB2BE8F01E4DAD1ABDA> <41F2E2BF916F8AB2BE8F01E4DAD1ABDA> ]
+/ID [ <6156401773FD6EF5C4969431DAC38F91> <6156401773FD6EF5C4969431DAC38F91> ]
 >>
 startxref
-7661
+7749
 %%EOF
