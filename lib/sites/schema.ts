@@ -18,9 +18,9 @@ export const briefSchema = z.object({
 export type ReferenceChoice = { query: string; options: { id: string; name: string; type: string; address: string; closed: boolean }[] };
 export type Brief = z.infer<typeof briefSchema>;
 export type Site = z.infer<typeof siteSchema>;
-export type Cell = { latitude: number; longitude: number; affinity: number };
+export type Cell = { latitude: number; longitude: number; affinity: number; popularity?:number; affinityRank?:number; audiencePercentile?:number; popularityPercentile?:number; contrast?:number };
 export type Trace = { step: string; path: string; params: Record<string, string>; status: 'ok' | 'unavailable'; count: number };
-export type Venue = { id: string; name: string; affinity: number | null };
+export type Venue = { id: string; name: string; affinity: number | null; address?:string };
 export type SiteResult = Site & { cell: Cell | null; distance: number | null; venues: Venue[]; contextAvailable: boolean; budget: 'within' | 'over' | 'unknown' };
 export type Comparison = { mode: 'sample' | 'live'; createdAt: string; brief: Brief; references: { id: string; name: string }[]; cells: Cell[]; sites: SiteResult[]; trace: Trace[]; recommendation: string; nextSteps: string[] };
 

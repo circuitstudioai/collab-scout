@@ -1,3 +1,7 @@
+# Current owner-approved agent review
+
+[SCOUT_AGENT.md](SCOUT_AGENT.md) supersedes conflicting historical no-LLM and raw-affinity requirements below. The bounded Gemini scout uses Qloo evidence and Google-grounded research; ranking remains deterministic. The demo is the owner-specified new café with an indoor playground. Keep PR6 unmerged.
+
 # Current restaurant expansion release
 
 The October 22 restaurant expansion scope is defined in [RESTAURANT_EXPANSION.md](RESTAURANT_EXPANSION.md). It supersedes conflicting historical descriptions below, including no-Gemini and mandatory manual entity-selection statements. The primary discovery and secondary address-comparison journeys remain supported.

@@ -17,8 +17,13 @@ function CitedText({report}:{report:ResearchReport}){
  const blocks:ReactNode[]=[];let cursor=0;
  for(const [index,block] of report.text.split(/\n\s*\n/).entries()){
   const start=report.text.indexOf(block,cursor);cursor=start+block.length;
-  const heading=block.match(/^#{1,6}\s+/);
-  if(heading){blocks.push(<h3 key={index}>{renderRange(start+heading[0].length,cursor)}</h3>);continue;}
+  const firstLine=block.split('\n')[0];const heading=firstLine.match(/^#{1,6}\s+/);
+  const knownHeading=/^(Why scout here|Reasons to hesitate|Nearby concepts and published menu prices|Nearby concepts and menu checks|Access and local context|What to check on a visit):?$/i.test(clean(firstLine).trim());
+  if(heading||knownHeading||/^\*\*[^*\n]{1,90}\*\*$/.test(firstLine.trim())){
+   blocks.push(<h3 key={`heading-${index}`}>{renderRange(start+(heading?.[0].length??0),start+firstLine.length)}</h3>);
+   if(firstLine.length<block.length)blocks.push(<p key={`body-${index}`}>{renderRange(start+firstLine.length+1,cursor)}</p>);
+   continue;
+  }
   if(/^[-*]\s/.test(block)){
    let lineStart=start;const lines:ReactNode[]=[];
    for(const [i,line] of block.split('\n').entries()){
@@ -40,13 +45,13 @@ export default function AreaResearch({result,area,reports,onReport}:{result:Expl
   controller.current?.abort();const request=new AbortController();controller.current=request;setBusy(true);setError('');
   const timer=setTimeout(()=>request.abort(),48000);
   try{
-   const response=await fetch('/api/research',{method:'POST',headers:{'Content-Type':'application/json'},signal:request.signal,body:JSON.stringify({brief:result.brief,area:{name:area.name,address:area.address,latitude:area.latitude,longitude:area.longitude,venues:area.venues.map(v=>({name:v.name}))}})});
+   const response=await fetch('/api/research',{method:'POST',headers:{'Content-Type':'application/json'},signal:request.signal,body:JSON.stringify({brief:result.brief,mapEvidence:{affinity:area.affinity,popularity:area.popularity,audiencePercentile:area.audiencePercentile,popularityPercentile:area.popularityPercentile,contrast:area.contrast},area:{name:area.name,address:area.address,latitude:area.latitude,longitude:area.longitude,venues:area.venues.map(v=>({name:v.name,address:v.address}))}})});
    const data=await response.json();if(!response.ok)throw new Error(data.error||'Research could not finish.');
    if(!request.signal.aborted)onReport(area.id,data);
   }catch(e){if(!request.signal.aborted)setError(e instanceof Error?e.message:'Research could not finish.');else if(controller.current===request)setError('Research took too long. Your map is unchanged. Try again.');}
   finally{clearTimeout(timer);if(controller.current===request)setBusy(false);}
  }
- return <section className="atlas-research" aria-labelledby="research-title"><div className="atlas-research-heading"><div><p className="atlas-eyebrow">04 / LOOK BEYOND THE TASTE MAP</p><h2 id="research-title">Should you scout {area.name.replace(/^Near /,'')}?</h2><p>Research for your {result.brief.restaurant?.format.replace('-',' ')??'restaurant'} · {result.brief.restaurant?.pricePosition??'mid-range'} · {result.brief.restaurant?.servicePeriod??'all-day'} service</p></div>{!report&&<button type="button" className="atlas-go" disabled={busy} onClick={research}>{busy?'Researching the area…':'Research this area ↗'}</button>}</div>
+ return <section className="atlas-research" aria-labelledby="research-title"><div className="atlas-research-heading"><div><p className="atlas-eyebrow">04 / LOOK BEYOND THE TASTE MAP</p><h2 id="research-title">Should you scout {area.name.replace(/^Near /,'')}?</h2><p>Research for your {result.brief.restaurant?.format.replace('-',' ')??'restaurant'} · {!result.brief.restaurant?.pricePosition||result.brief.restaurant.pricePosition==='unspecified'?'Price not set':result.brief.restaurant.pricePosition} · {!result.brief.restaurant?.servicePeriod||result.brief.restaurant.servicePeriod==='unspecified'?'Hours not set':`${result.brief.restaurant.servicePeriod} service`}</p></div>{!report&&<button type="button" className="atlas-go" disabled={busy} onClick={research}>{busy?'Researching the area…':'Research this area ↗'}</button>}</div>
  <p className="atlas-help">AI-assisted web research, separate from Qloo taste evidence. Facts link to retrieved sources; interpretation is not a site approval.</p>
  {busy&&<p role="status" className="atlas-working">Searching menus, local context and practical trade-offs. This can take up to 48 seconds.</p>}
  {error&&<p role="alert" className="atlas-error">{error}</p>}

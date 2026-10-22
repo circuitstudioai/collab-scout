@@ -1,23 +1,18 @@
-# Restaurant expansion demo — recording plan
+# Playground café — recording plan
 
-## Recording gate
+Owner-specified scenario: **a new café with an indoor playground**, using popular Toronto cafés as audience references. No existing outlets, prices or opening hours are assumed. PR6 stays unmerged for review.
 
-Record the complete research journey only after a live `/api/research` request succeeds with provider-returned source links and inline grounding citations. A working map is not proof that Gemini works. If the key is still rejected, the core Qloo/outlet-rule demo is recordable, but do not present web research as working.
+## Suggested 90-second story (edit waiting time transparently)
 
-## Suggested 90-second story
+1. **Decision.** “Where should we scout for a new café with an indoor playground in Toronto?” Click **Try the Toronto playground café**. The example runs live the first time; a reused real run is explicitly labelled with its original timestamp.
+2. **Qloo evidence.** Show the actual Toronto café names and addresses automatically selected from the returned café-tagged sample by popularity. These are reference assumptions, not proven family demand or an exhaustive city leaderboard.
+3. **Agent activity.** Show actual tool completions: map audience contrast, audience profile, compare a nearby venue, research an eligible area. The agent receives real tool results before selecting the area to research. No staged animation.
+4. **Decision and trade-off.** Show local affinity-minus-popularity percentile contrast. Explain “unusual relative to this city's returned points,” not probability lift or unmet demand. Do not force an outside-downtown result. Inspect the audience card and distinguish signed demographic scores from resident percentages.
+5. **Practical checks.** Open the cited research. Café taste cannot verify playground suitability, available premises, usable floor area, access or permits. Sources and follow-up visit questions should make those gaps actionable.
+6. **Artifact.** Download the one-page expansion brief and open a source. “A defensible scouting visit, not an instruction to sign a lease.” Full notes retain the detailed sources and request trace.
 
-The restaurant is an illustrative operator scenario, not an actual customer or validated business.
+## Recording gates
 
-1. **0–15s — Decision.** “Where should our next café go? Taste is useful, but we also need to respect our expansion rules.” Choose Toronto and a coffee concept. Enter Starbucks as an audience reference. Explain that it is an audience assumption, not evidence of actual customers.
-2. **15–35s — Discover.** Find areas. Show the automatically recognized Starbucks brand, real Qloo points, separated highlights and inspectable evidence. Do not describe the relative taste rank as a success probability.
-3. **35–55s — Reject.** Add an illustrative existing outlet using location lookup. Keep at least 2 km away. Rerun and open the rejection reasons. Explain that high taste affinity cannot override the operator's distance rule. This is not a customer-overlap or lost-sales forecast.
-4. **55–75s — Investigate.** Select one eligible area. Show live researched trade-offs, menus/access/context and a source link. Distinguish facts, interpretation and unanswered questions. Do not use fabricated research or edit the recording to imply a failed live research request succeeded.
-5. **75–90s — Act.** Save an area and download scouting notes. “This is a visit shortlist—not an instruction to sign a lease.”
+Use the exact hosted preview recorded in `docs/agent/validation.json` and `docs/agent/ui-validation.json`. Require a complete real four-tool run, provider-grounded research citations, structurally valid one-page PDF, and no tested desktop/mobile accessibility errors. UI replay validation must not be described as a new live API test.
 
-## Practical recording notes
-
-- Restaurant format, service period and price position are under “Restaurant details for local research”.
-- The primary flow requires no login, rent quote or candidate address. Existing outlets are optional operator inputs.
-- Let real requests finish. Edit waiting time only if the edit does not change the outcome or imply instantaneous results.
-- Start with a clean tab. Avoid displaying environment panels, credentials or private account pages.
-- Keep the public demo URL and source repository available to judges. Devpost submission remains a separate action; no receipt exists.
+If a provider fails, show that honestly or retry. Never splice failed research into a claimed successful run. Warm-server caching is best-effort, not durable quota protection. Do not open credential/account panels while recording. Production promotion and Devpost submission are separate actions.

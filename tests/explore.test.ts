@@ -35,3 +35,13 @@ it('returns an honest empty shortlist when every returned point breaks the outle
  const result=await exploreCity({...brief(),existingOutlets:[{name:'Existing restaurant',...center}],minimumOutletDistanceKm:2});
  expect(result.areas).toEqual([]);expect(result.rejectedCount).toBe(1);expect(result.eligibleCount).toBe(0);
 });
+it('prefers a strong taste match that outranks its popularity instead of merely the busiest point',()=>{
+ const cells=[{latitude:43.65,longitude:-79.38,affinity:.99,popularity:1},{latitude:43.69,longitude:-79.38,affinity:.8,popularity:.1},{latitude:43.73,longitude:-79.38,affinity:.6,popularity:.8},{latitude:43.77,longitude:-79.38,affinity:.4,popularity:.4},{latitude:43.81,longitude:-79.38,affinity:.1,popularity:.01}];
+ const result=selectAreas(cells,center,20);
+ expect(result.selected[0]).toMatchObject({affinity:.8,popularity:.1,contrast:40});
+ expect(result.rankingMethod).toBe('contrast');
+});
+it('does not call a zero-popularity point a contrast opportunity',()=>{
+ const cells=Array.from({length:10},(_,i)=>({latitude:43.65+i*.01,longitude:-79.38,affinity:1-i*.05,popularity:i===0?0:.1+i*.03}));
+ expect(selectAreas(cells,center,20).selected.every(c=>c.popularity!==0)).toBe(true);
+});

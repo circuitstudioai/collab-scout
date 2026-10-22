@@ -32,7 +32,7 @@ export function parseCells(raw: unknown): Cell[] {
     return typeof p.latitude === 'number' && Number.isFinite(p.latitude) && Math.abs(p.latitude) <= 90 &&
       typeof p.longitude === 'number' && Number.isFinite(p.longitude) && Math.abs(p.longitude) <= 180 &&
       typeof q.affinity === 'number' && Number.isFinite(q.affinity)
-      ? [{ latitude: p.latitude, longitude: p.longitude, affinity: q.affinity }] : [];
+      ? [{ latitude: p.latitude, longitude: p.longitude, affinity: q.affinity, ...(typeof q.popularity==='number'&&Number.isFinite(q.popularity)&&q.popularity>=0?{popularity:q.popularity}:{}),...(typeof q.affinity_rank==='number'&&Number.isFinite(q.affinity_rank)?{affinityRank:q.affinity_rank}:{}) }] : [];
   });
 }
 export async function compareSites(brief: Brief): Promise<Comparison> {

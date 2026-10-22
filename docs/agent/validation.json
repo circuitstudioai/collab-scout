@@ -1,0 +1,340 @@
+{
+  "url": "https://collab-scout-dmbbpla39-circuitstudioais-projects.vercel.app",
+  "status": "passed",
+  "elapsedSeconds": 18.59,
+  "cached": false,
+  "createdAt": "2026-10-22T18:35:12.130Z",
+  "events": [
+    "step",
+    "exploration",
+    "step",
+    "step",
+    "profile",
+    "step",
+    "step",
+    "comparison",
+    "step",
+    "step",
+    "research",
+    "step",
+    "complete"
+  ],
+  "steps": [
+    {
+      "id": "step-1",
+      "tool": "explore_areas",
+      "title": "Mapping audience fit against popularity",
+      "status": "complete",
+      "durationMs": 4946
+    },
+    {
+      "id": "step-2",
+      "tool": "audience_profile",
+      "title": "Reading audience taste and demographic signals",
+      "status": "complete",
+      "durationMs": 353
+    },
+    {
+      "id": "step-3",
+      "tool": "compare_audiences",
+      "title": "Comparing an actual nearby venue’s audience tags",
+      "status": "complete",
+      "durationMs": 62
+    },
+    {
+      "id": "step-4",
+      "tool": "research_area",
+      "title": "Researching the selected area’s practical trade-offs",
+      "status": "complete",
+      "durationMs": 7425
+    }
+  ],
+  "decisionIssues": [],
+  "brief": {
+    "city": "Toronto, Ontario, Canada",
+    "center": {
+      "latitude": 43.6534817,
+      "longitude": -79.3839347
+    },
+    "radiusKm": 10,
+    "concept": "A new café with an indoor playground. Find areas to scout using popular Toronto cafés as audience references.",
+    "references": [
+      "Dineen Coffee Co.",
+      "FIKA Cafe",
+      "Rooster Coffee House"
+    ],
+    "restaurant": {
+      "brandName": "New café with an indoor playground",
+      "format": "cafe",
+      "servicePeriod": "unspecified",
+      "pricePosition": "unspecified"
+    },
+    "existingOutlets": [],
+    "minimumOutletDistanceKm": 0
+  },
+  "references": [
+    {
+      "id": "FAD69E17-B23A-41C8-B25A-EBBEA04F4658",
+      "name": "Dineen Coffee Co.",
+      "resolution": "local-cafe",
+      "address": "140 Yonge St Toronto, ON M5C 1X6 Canada"
+    },
+    {
+      "id": "218AD775-5013-4D5A-84E9-9D308A68AFEF",
+      "name": "FIKA Cafe",
+      "resolution": "local-cafe",
+      "address": "28 Kensington Ave Toronto, ON M5T 2J9 Canada"
+    },
+    {
+      "id": "4A68BC83-0A82-42CC-9A76-2E284F0DD2B9",
+      "name": "Rooster Coffee House",
+      "resolution": "local-cafe",
+      "address": "568 Jarvis St Toronto, ON M4Y 0C1 Canada"
+    }
+  ],
+  "ranking": {
+    "method": "contrast",
+    "popularityCoverage": 0.9920782851817335,
+    "points": 4292,
+    "excluded": 0,
+    "areas": [
+      {
+        "id": "area-1",
+        "name": "Near Spadina–Fort York",
+        "affinity": 0.9745276249701028,
+        "popularity": 0.513872279359005,
+        "contrast": 55.19023015500235,
+        "audiencePercentile": 95.05636449037107,
+        "popularityPercentile": 39.86613433536872
+      },
+      {
+        "id": "area-2",
+        "name": "Near York South–Weston",
+        "affinity": 0.9648409471418321,
+        "popularity": 0.5273857928725185,
+        "contrast": 52.09018318459371,
+        "audiencePercentile": 93.17754814466886,
+        "popularityPercentile": 41.08736496007515
+      },
+      {
+        "id": "area-3",
+        "name": "Area C",
+        "affinity": 0.9881607270987802,
+        "popularity": 0.5893326955273858,
+        "contrast": 50.98637858149366,
+        "audiencePercentile": 97.68670737435416,
+        "popularityPercentile": 46.700328792860496
+      }
+    ]
+  },
+  "audience": {
+    "tags": [
+      {
+        "name": "Coffee shop",
+        "affinity": 0.9976364981515836
+      },
+      {
+        "name": "Cafe",
+        "affinity": 0.9952288322123714
+      },
+      {
+        "name": "French",
+        "affinity": 0.9946095109844512
+      },
+      {
+        "name": "Coffee store",
+        "affinity": 0.9859308647341756
+      },
+      {
+        "name": "Brunch",
+        "affinity": 0.9812687217213488
+      },
+      {
+        "name": "Dessert shop",
+        "affinity": 0.9716537362167319
+      },
+      {
+        "name": "Bakery",
+        "affinity": 0.9674944823638002
+      },
+      {
+        "name": "Canadian",
+        "affinity": 0.9669470692990698
+      }
+    ],
+    "ageSignals": [
+      {
+        "referenceId": "FAD69E17-B23A-41C8-B25A-EBBEA04F4658",
+        "referenceName": "Dineen Coffee Co.",
+        "bands": [
+          {
+            "name": "24_and_younger",
+            "score": 0.053000000000000005
+          },
+          {
+            "name": "25_to_29",
+            "score": 0.049
+          },
+          {
+            "name": "30_to_34",
+            "score": -0.11000000000000001
+          },
+          {
+            "name": "35_to_44",
+            "score": 0.041
+          },
+          {
+            "name": "45_to_54",
+            "score": -0.22699999999999995
+          },
+          {
+            "name": "55_and_older",
+            "score": -0.09600000000000002
+          }
+        ]
+      },
+      {
+        "referenceId": "4A68BC83-0A82-42CC-9A76-2E284F0DD2B9",
+        "referenceName": "Rooster Coffee House",
+        "bands": [
+          {
+            "name": "24_and_younger",
+            "score": 0.029999999999999992
+          },
+          {
+            "name": "25_to_29",
+            "score": -0.022000000000000002
+          },
+          {
+            "name": "30_to_34",
+            "score": -0.11000000000000001
+          },
+          {
+            "name": "35_to_44",
+            "score": 0.229
+          },
+          {
+            "name": "45_to_54",
+            "score": -0.441
+          },
+          {
+            "name": "55_and_older",
+            "score": 0.006999999999999995
+          }
+        ]
+      },
+      {
+        "referenceId": "218AD775-5013-4D5A-84E9-9D308A68AFEF",
+        "referenceName": "FIKA Cafe",
+        "bands": [
+          {
+            "name": "24_and_younger",
+            "score": -0.02
+          },
+          {
+            "name": "25_to_29",
+            "score": -0.01
+          },
+          {
+            "name": "30_to_34",
+            "score": -0.87
+          },
+          {
+            "name": "35_to_44",
+            "score": 0.19
+          },
+          {
+            "name": "45_to_54",
+            "score": 0.12
+          },
+          {
+            "name": "55_and_older",
+            "score": -0.67
+          }
+        ]
+      }
+    ],
+    "relatedBrands": [
+      {
+        "id": "64950A6B-EA57-4DA1-81EE-4F2761082412",
+        "name": "Frank And Oak"
+      },
+      {
+        "id": "B5EFE12E-DDCB-4C20-AFE9-6E72FE6F542E",
+        "name": "Soia & Kyo"
+      },
+      {
+        "id": "431D6036-C28C-4F78-9B1A-A2DAD842872A",
+        "name": "Holt Renfrew"
+      },
+      {
+        "id": "B287C7B0-609F-430D-8F17-D3459EFB8FBA",
+        "name": "Aritzia"
+      },
+      {
+        "id": "700F9C09-6BF2-4AFD-A5AA-CB316504A0E3",
+        "name": "Hudson's Bay"
+      }
+    ]
+  },
+  "comparisons": [
+    {
+      "areaId": "area-1",
+      "venue": "Kitten and the Bear",
+      "shared": [
+        "Sweet",
+        "Vegetarian",
+        "Gluten Free",
+        "Vegan",
+        "Casual",
+        "Average",
+        "Baking",
+        "Place"
+      ],
+      "referenceTags": [
+        "Alcohol",
+        "Cocktails",
+        "Breakfast",
+        "Quick bite",
+        "Place",
+        "Coffee Shop",
+        "Dessert",
+        "Wine"
+      ],
+      "venueTags": [
+        "Bakery",
+        "Restaurant",
+        "Breakfast",
+        "Place",
+        "Coffee",
+        "Bakery",
+        "Gourmet Grocery Store",
+        "Moderately expensive"
+      ],
+      "trace": [
+        {
+          "step": "Compare reference and nearby-venue tags",
+          "path": "/v2/analysis/compare",
+          "params": {
+            "a.signal.interests.entities": "FAD69E17-B23A-41C8-B25A-EBBEA04F4658,218AD775-5013-4D5A-84E9-9D308A68AFEF,4A68BC83-0A82-42CC-9A76-2E284F0DD2B9",
+            "b.signal.interests.entities": "B9FA3F61-388F-474F-B7C6-05FBBDD1B485"
+          },
+          "status": "ok",
+          "count": 39
+        }
+      ]
+    }
+  ],
+  "assessment": {
+    "visitFirst": "area-1",
+    "reason": "This area shows a high audience percentile and strong affinity with the reference cafés. The local commercial streets like Dundas Street West, Ossington Avenue, and Queen Street West are vibrant and have an established coffee culture, as evidenced by nearby popular venues. There is also a precedent for play cafes in Toronto, suggesting market awareness for this concept.",
+    "tradeOff": "Establishing a new café with an indoor playground in this area will require navigating complex permitting and zoning regulations, potentially classifying the play area as an \"Amusement Establishment.\" This may necessitate specific commercial general liability insurance, and a space with sufficient ceiling height and square footage might be challenging to secure.",
+    "nextAction": "Scout the commercial streets including Dundas Street West, Ossington Avenue, and Queen Street West to assess available commercial spaces for ceiling height and square footage. Confirm zoning and permitting requirements for an indoor playground and café with the City of Toronto."
+  },
+  "research": {
+    "area-1": {
+      "sources": 23,
+      "citations": 17
+    }
+  }
+}

@@ -1,3 +1,7 @@
+# Current owner-approved agent review
+
+[SCOUT_AGENT.md](SCOUT_AGENT.md) defines the current Gemini tool loop, city-local ranking, MCP access and playground café demo. It supersedes conflicting earlier flow descriptions below. Keep PR6 unmerged for owner review.
+
 # Restaurant expansion — demo release
 
 ## Authorized direction

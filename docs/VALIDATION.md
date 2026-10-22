@@ -1,3 +1,7 @@
+# Current PR6 agent review — October 22
+
+See `agent/validation.json`, `agent/ui-validation.json` and `mcp/validation.json` for the exact verified preview and current evidence. The owner requested an unmerged review PR; production acceptance below is historical and does not prove the new agent release. Current checks: 72 tests across 12 suites; lint and builds pass. The owner-specified demo is a new café with an indoor playground and live Toronto café references.
+
 # Sitebrief validation — October 21, 2026
 
 ## Production acceptance

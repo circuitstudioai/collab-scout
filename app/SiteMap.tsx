@@ -22,11 +22,12 @@ export default function SiteMap({ sites, cells, selected, center, onSelect, plac
         placement.current.onPlace?.(point.lat, point.lng);
       });
       L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>', maxZoom: 19 }).addTo(map);
-      const lo = Math.min(...cells.map(c => c.affinity)), hi = Math.max(...cells.map(c => c.affinity));
+      const contrast=cells.some(c=>c.contrast!==undefined);const metric=(cell:Cell)=>contrast?(cell.contrast??0):cell.affinity;
+      const lo = Math.min(...cells.map(metric)), hi = Math.max(...cells.map(metric));
       const visibleCells = cells.length > 4000 ? Array.from({length:4000}, (_,i)=>cells[Math.floor(i*cells.length/4000)]) : cells;
       visibleCells.forEach(c => {
-        const t = hi === lo ? .5 : (c.affinity - lo) / (hi - lo);
-        L.circleMarker([c.latitude, c.longitude], { radius: 5, stroke: false, fillColor: t > .66 ? '#294c34' : t > .33 ? '#8caa50' : '#d7dfb5', fillOpacity: .7 }).addTo(map!).bindTooltip(`Map point · Qloo taste score ${c.affinity.toFixed(3)}`);
+        const t = hi === lo ? .5 : (metric(c) - lo) / (hi - lo);
+        L.circleMarker([c.latitude, c.longitude], { radius: 5, stroke: false, fillColor: t > .66 ? '#294c34' : t > .33 ? '#8caa50' : '#d7dfb5', fillOpacity: .7 }).addTo(map!).bindTooltip(contrast?`Map point · contrast ${(c.contrast??0).toFixed(1)} percentile points · Qloo affinity ${c.affinity.toFixed(3)}`:`Map point · Qloo taste score ${c.affinity.toFixed(3)}`);
       });
       sites.forEach((site, i) => {
         const label = document.createElement('span');

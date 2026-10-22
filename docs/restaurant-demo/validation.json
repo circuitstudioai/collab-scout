@@ -1,17 +1,16 @@
 {
-  "url": "https://collab-scout-b3hwva7ry-circuitstudioais-projects.vercel.app",
+  "url": "https://collab-scout-la8s3dvgf-circuitstudioais-projects.vercel.app",
   "checks": [
     "City lookup suggests real locations without a separate search click",
     "Starbucks resolves to its actual Qloo brand without an outlet-selection list",
     "Operator-supplied illustrative outlet excludes real points before selecting eligible alternatives",
-    "Research failure preserves live Qloo evidence and does not invent a research report",
+    "Live Gemini/Google Search research returns citation-linked evidence",
     "Downloaded scouting notes include restaurant inputs, outlet rule, exclusions and Qloo provenance",
     "Desktop/mobile results have no tested axe violations, page errors or 390px overflow",
     "All-excluded live request returns zero areas without relaxing operator constraints",
-    "Synthetic research response verifies inline citation rendering only; not live research evidence",
     "Changing the restaurant brief invalidates old results and research"
   ],
-  "researchStatus": "BLOCKED: live research returned 503; saved Gemini credential rejected by direct Google probe",
+  "researchStatus": "live grounded research passed",
   "desktopAxe": [],
   "mobileAxe": [],
   "pageErrors": [],
@@ -34,6 +33,6 @@
       "longitude": -79.40987
     }
   ],
-  "status": "core passed; research blocked",
+  "status": "passed",
   "scenario": "Restaurant name and existing-outlet scenario are illustrative operator inputs. Qloo, geocoding, exclusion and the research availability check are live. One separately labelled intercepted response tests citation rendering only; it is not live AI evidence."
 }

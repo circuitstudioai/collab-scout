@@ -1,3 +1,7 @@
+# Current owner-approved agent review
+
+[SCOUT_AGENT.md](SCOUT_AGENT.md) defines the current Gemini tool loop, city-local ranking, MCP access and playground café demo. It supersedes conflicting earlier flow descriptions below. Keep PR6 unmerged for owner review.
+
 # Current restaurant expansion release
 
 The October 22 restaurant expansion scope is defined in [RESTAURANT_EXPANSION.md](RESTAURANT_EXPANSION.md). It supersedes conflicting historical descriptions below, including no-Gemini and mandatory manual entity-selection statements. The primary discovery and secondary address-comparison journeys remain supported.

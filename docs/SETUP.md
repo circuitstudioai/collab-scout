@@ -1,3 +1,7 @@
+# Current restaurant setup
+
+See root README and `SCOUT_AGENT.md` for the active restaurant agent, MCP and verification. Set server-only QLOO_API_KEY, QLOO_API_URL and GEMINI_API_KEY, then redeploy. The following Collab Scout setup is historical: its partnership routes, orchestrator and seed product were removed. There is no active canned research fallback.
+
 # Setup and deploy
 
 Canonical repo: [github.com/circuitstudioai/collab-scout](https://github.com/circuitstudioai/collab-scout).
