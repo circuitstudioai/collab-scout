@@ -31,7 +31,20 @@ export default function SiteMap({ sites, cells, selected, center, onSelect, plac
       sites.forEach((site, i) => {
         const label = document.createElement('span');
         label.textContent = `${String.fromCharCode(65 + i)} · ${site.name.replace(/^[A-C] · /, '')}`;
-        L.circleMarker([site.latitude, site.longitude], { radius: site.id === selected ? 13 : 9, color: '#ffffff', weight: 3, fillColor: '#9d462b', fillOpacity: 1 }).addTo(map!).on('click',()=>selection.current?.(site.id)).bindTooltip(label, { permanent: true, direction: 'top', offset: [0, -12] });
+        const marker = L.circleMarker([site.latitude, site.longitude], { radius: site.id === selected ? 13 : 9, color: '#ffffff', weight: 3, fillColor: '#9d462b', fillOpacity: 1 }).addTo(map!).on('click',()=>selection.current?.(site.id)).bindTooltip(label, { permanent: true, direction: 'top', offset: [0, -12] });
+        marker.on('add', () => {
+          const element = marker.getElement();
+          if (!element || !selection.current) return;
+          element.setAttribute('data-site-id', site.id);
+          element.setAttribute('role', 'button');
+          element.setAttribute('tabindex', '0');
+          element.setAttribute('aria-label', `Select ${site.name}`);
+          element.setAttribute('aria-pressed', String(site.id === selected));
+          element.addEventListener('keydown', event => {
+            const key = (event as KeyboardEvent).key;
+            if (key === 'Enter' || key === ' ') { event.preventDefault(); selection.current?.(site.id); }
+          });
+        });
       });
       if (sites.length) {
         const bounds = L.latLngBounds(sites.map(s => [s.latitude, s.longitude] as [number, number]));
