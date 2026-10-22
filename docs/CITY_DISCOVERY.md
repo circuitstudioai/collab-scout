@@ -41,6 +41,8 @@ Audience assumptions, map-point method, local ranking denominator, missing-data 
 
 ## Verification
 
+Hosted acceptance passed on [this exact preview](https://collab-scout-3eidzj8w8-circuitstudioais-projects.vercel.app) at application commit `770a5d6`. Discovery passed 10 browser checks, including pointer and keyboard marker selection; secondary comparison passed all 13 checks. The separately recorded San Francisco API check used the preceding discovery deployment with the same backend.
+
 - 64/64 tests, lint and production build passed.
 - Seven discovery regression cases cover no-site spatial selection, radius filtering, coordinate deduplication, ties, schema bounds, ambiguous audience records, honest missing coverage and partial labeling/dining failures.
 - Real Toronto discovery: 8,363 returned Qloo cells, 4,292 within 10 km; three separated highlights; five nearby dining results per highlight. Provider place labels vary over time. No artificial fixtures were used for the successful API flow.

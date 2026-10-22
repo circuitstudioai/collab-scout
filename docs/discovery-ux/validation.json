@@ -1,10 +1,12 @@
 {
-  "url": "http://localhost:3034",
+  "url": "https://collab-scout-3eidzj8w8-circuitstudioais-projects.vercel.app",
   "checks": [
     "Primary flow needs neither candidate addresses nor rents",
     "Real Toronto discovery produces geographically local high-scoring areas without supplied sites",
     "Scouting list and downloaded notes retain selected areas, source IDs and method limits",
     "Area cards and map selection agree",
+    "Clicking a labelled map marker selects its matching area card",
+    "Keyboard Enter on a map marker selects its matching card",
     "Mobile390 has no overflow; rendered results pass tested axe rules",
     "Changing search radius clears old highlights and saved selections",
     "Empty coverage error preserves the brief and never invents an area or sample fallback",
@@ -25,7 +27,7 @@
     "separationKm": 2,
     "areas": [
       {
-        "name": "Wellington Place",
+        "name": "Near Wellington Place",
         "latitude": 43.647995,
         "longitude": -79.38652,
         "affinity": 1,
@@ -36,7 +38,7 @@
         "contextAvailable": true
       },
       {
-        "name": "Maple House at Canary Landing",
+        "name": "Near Maple House at Canary Landing",
         "latitude": 43.65074,
         "longitude": -79.359055,
         "affinity": 0.9997608227696724,
@@ -47,7 +49,7 @@
         "contextAvailable": true
       },
       {
-        "name": "Casa Loma",
+        "name": "Near Casa Loma",
         "latitude": 43.678207,
         "longitude": -79.40987,
         "affinity": 0.9996412341545085,
@@ -82,11 +84,11 @@
         "count": 8363
       },
       {
-        "step": "Nearby dining for area 3",
+        "step": "Nearby dining for area 2",
         "path": "/v2/insights",
         "params": {
           "filter.type": "urn:entity:place",
-          "filter.location": "POINT(-79.40987 43.678207)",
+          "filter.location": "POINT(-79.359055 43.65074)",
           "filter.location.radius": "1000",
           "filter.tags": "urn:tag:genre:place:restaurant",
           "signal.interests.entities": "41632B81-C0BE-4BE2-9A85-C945F6F2F3A6",
@@ -96,11 +98,11 @@
         "count": 5
       },
       {
-        "step": "Nearby dining for area 2",
+        "step": "Nearby dining for area 3",
         "path": "/v2/insights",
         "params": {
           "filter.type": "urn:entity:place",
-          "filter.location": "POINT(-79.359055 43.65074)",
+          "filter.location": "POINT(-79.40987 43.678207)",
           "filter.location.radius": "1000",
           "filter.tags": "urn:tag:genre:place:restaurant",
           "signal.interests.entities": "41632B81-C0BE-4BE2-9A85-C945F6F2F3A6",
@@ -124,16 +126,6 @@
         "count": 5
       },
       {
-        "step": "Locate area 2 on OpenStreetMap",
-        "path": "Photon /reverse",
-        "params": {
-          "latitude": "43.65074",
-          "longitude": "-79.359055"
-        },
-        "status": "ok",
-        "count": 1
-      },
-      {
         "step": "Locate area 1 on OpenStreetMap",
         "path": "Photon /reverse",
         "params": {
@@ -149,6 +141,16 @@
         "params": {
           "latitude": "43.678207",
           "longitude": "-79.40987"
+        },
+        "status": "ok",
+        "count": 1
+      },
+      {
+        "step": "Locate area 2 on OpenStreetMap",
+        "path": "Photon /reverse",
+        "params": {
+          "latitude": "43.65074",
+          "longitude": "-79.359055"
         },
         "status": "ok",
         "count": 1

@@ -45,7 +45,7 @@ No customer interviews or purchase-intent validation have been completed. Taste 
 - [x] Real Qloo search, map and nearby dining requests verified
 - [x] Public MIT repository and source available
 - [x] Local discovery and secondary-comparison browser checks passed
-- [ ] Exact updated public discovery preview verified after publishing
+- [x] Exact updated public discovery preview verified: https://collab-scout-3eidzj8w8-circuitstudioais-projects.vercel.app (application commit `770a5d6`)
 - [ ] Review complete and release promoted to the stable demo URL
 - [ ] Devpost human verification/login completed
 - [ ] Submission receipt and public project URL recorded

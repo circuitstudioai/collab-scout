@@ -1,0 +1,26 @@
+{
+  "url": "https://collab-scout-fiqb0i8yy-circuitstudioais-projects.vercel.app",
+  "city": "San Francisco, California, United States",
+  "status": 200,
+  "cells": 3885,
+  "areas": [
+    {
+      "name": "Near Civic Center",
+      "latitude": 37.779922,
+      "longitude": -122.418594,
+      "nearby": 5
+    },
+    {
+      "name": "Near Parkside",
+      "latitude": 37.73735,
+      "longitude": -122.485886,
+      "nearby": 5
+    },
+    {
+      "name": "Near 191 Dalewood Way",
+      "latitude": 37.738724,
+      "longitude": -122.45705,
+      "nearby": 5
+    }
+  ]
+}
