@@ -21,3 +21,17 @@ it('returns actual points with named-place and dining failures visible',async()=
  const result=await exploreCity(brief());expect(result.areas[0]).toMatchObject({name:'Area A',nameAvailable:false,contextAvailable:false,lowerCount:0});expect(result.allTied).toBe(true);expect(result.trace.filter(t=>t.step==='Map audience taste across the city')).toHaveLength(1);
 });
 it('fails honestly when no city-local map evidence is available',async()=>{get.mockImplementation(async o=>o.path==='/search'?{results:[{entity_id:'one',name:'Blue Bottle Coffee'}]}:{results:{heatmap:[{location:{latitude:0,longitude:0},query:{affinity:1}}]}});await expect(exploreCity(brief())).rejects.toThrow('No areas have been invented');});
+it('rejects a top taste point inside the operator outlet buffer and selects an eligible alternative',()=>{
+ const outlet={name:'Our existing cafe',...center};
+ const top={...center,affinity:.99};const alternative={latitude:43.69,longitude:-79.38,affinity:.7};
+ const result=selectAreas([top,alternative],center,10,{existingOutlets:[outlet],minimumOutletDistanceKm:2});
+ expect(result.selected).toEqual([alternative]);
+ expect(result.rejected[0]).toMatchObject({...top,outletName:'Our existing cafe',distanceKm:0});
+ expect(result.cells).toHaveLength(2);
+});
+it('returns an honest empty shortlist when every returned point breaks the outlet rule',async()=>{
+ jest.spyOn(globalThis,'fetch').mockResolvedValue(new Response('{}',{status:503}));
+ get.mockImplementation(async o=>o.path==='/search'?{results:[{entity_id:'one',name:'Blue Bottle Coffee'}]}:{results:{heatmap:[{location:center,query:{affinity:.9}}]}});
+ const result=await exploreCity({...brief(),existingOutlets:[{name:'Existing restaurant',...center}],minimumOutletDistanceKm:2});
+ expect(result.areas).toEqual([]);expect(result.rejectedCount).toBe(1);expect(result.eligibleCount).toBe(0);
+});

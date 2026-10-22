@@ -24,16 +24,24 @@ export function createReader(trace: Trace[]) {
 return get;
 }
 export async function resolveReferences(brief: { references: string[]; referenceSelections?: {query:string;id:string}[] }, get: ReturnType<typeof createReader>) {
-    const references: { id: string; name: string }[] = [];
+    const references: { id: string; name: string; resolution:'brand'|'exact'|'selected' }[] = [];
     for (const name of brief.references) {
       const raw = await get(`Find ${name}`, '/search', { query: name, take: '10' }, 'entities');
       // Search has historically returned either results[] or results.entities[].
       const result = record(raw).results;
       const candidates = Array.isArray(result) ? result.map(record) : rows(raw, 'entities');
-      const valid = candidates.filter(r => typeof r.name === 'string' && typeof r.entity_id === 'string' && r.entity_id.trim().length > 0);
-      const matches = valid.filter(r => String(r.name).trim().toLowerCase() === name.trim().toLowerCase());
+      let valid = candidates.filter(r => typeof r.name === 'string' && typeof r.entity_id === 'string' && r.entity_id.trim().length > 0);
+      let matches = valid.filter(r => String(r.name).trim().toLowerCase() === name.trim().toLowerCase());
       const selected = brief.referenceSelections?.find(s => s.query === name);
-      const chosen = selected ? valid.find(r => String(r.entity_id).trim() === selected.id) : matches.length === 1 ? matches[0] : undefined;
+      let exactBrands=matches.filter(r=>Array.isArray(r.types)&&r.types.includes('urn:entity:brand'));
+      if(!selected&&!exactBrands.length&&matches.length>1&&matches.some(r=>Array.isArray(r.types)&&r.types.includes('urn:entity:place'))){
+        try{
+          const brandRaw=await get(`Find the ${name} brand, not an outlet`,'/search',{query:name,types:'urn:entity:brand',take:'5'},'entities');
+          const brandCandidates=rows(brandRaw,'entities').filter(r=>typeof r.entity_id==='string'&&r.entity_id.trim()&&typeof r.name==='string'&&String(r.name).trim().toLowerCase()===name.trim().toLowerCase()&&Array.isArray(r.types)&&r.types.includes('urn:entity:brand'));
+          if(brandCandidates.length===1){valid=[...valid,...brandCandidates];matches=[...matches,...brandCandidates];exactBrands=brandCandidates;}
+        }catch{/* Keep the original evidence and clarify rather than guessing. */}
+      }
+      const chosen = selected ? valid.find(r => String(r.entity_id).trim() === selected.id) : exactBrands.length===1 ? exactBrands[0] : matches.length === 1 ? matches[0] : undefined;
       if (!chosen) {
         if (!valid.length) throw new SiteError(`We could not find a single exact match for “${name}”. Check the name or choose another brand or place.`);
         const options = [...new Map(valid.map(r => [String(r.entity_id).trim(), r])).values()].map(r => ({
@@ -42,9 +50,9 @@ export async function resolveReferences(brief: { references: string[]; reference
           address: typeof record(r.properties).address === 'string' ? String(record(r.properties).address) : 'No address supplied',
           closed: record(r.properties).is_closed === true,
         }));
-        throw new SiteError(`Choose the specific brand or place you mean by “${name}”, then compare again.`, 409, { query: name, options });
+        throw new SiteError(`Choose the specific brand or place you mean by “${name}”, then continue.`, 409, { query: name, options });
       }
-      references.push({ id: String(chosen.entity_id).trim(), name: String(chosen.name) });
+      references.push({ id: String(chosen.entity_id).trim(), name: String(chosen.name), resolution:selected?'selected':exactBrands.length===1?'brand':'exact' });
     }
 
 return references;

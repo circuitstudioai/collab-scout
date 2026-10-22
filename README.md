@@ -1,3 +1,7 @@
+# Current restaurant expansion release
+
+The October 22 restaurant expansion scope is defined in [RESTAURANT_EXPANSION.md](docs/RESTAURANT_EXPANSION.md). It supersedes conflicting historical descriptions below, including no-Gemini and mandatory manual entity-selection statements. The primary discovery and secondary address-comparison journeys remain supported.
+
 # Sitebrief
 
 Explore city taste patterns and find areas worth scouting for a restaurant. Candidate-address comparison is available as a secondary workflow. Built for the [Qloo Agentic Hackathon](https://qloo.devpost.com/). MIT licensed.

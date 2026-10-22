@@ -1,3 +1,7 @@
+# Current restaurant expansion release
+
+The October 22 restaurant expansion scope is defined in [RESTAURANT_EXPANSION.md](RESTAURANT_EXPANSION.md). It supersedes conflicting historical descriptions below, including no-Gemini and mandatory manual entity-selection statements. The primary discovery and secondary address-comparison journeys remain supported.
+
 # Current primary flow: city discovery
 
 Abhi approved city-first exploration on October 21. [CITY_DISCOVERY.md](CITY_DISCOVERY.md) is the source of truth for the primary flow. The comparison requirements below now apply to the secondary `/compare` experience.

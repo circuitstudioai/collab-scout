@@ -1,3 +1,7 @@
+# Current restaurant expansion release
+
+The October 22 restaurant expansion scope is defined in [RESTAURANT_EXPANSION.md](RESTAURANT_EXPANSION.md). It supersedes conflicting historical descriptions below, including no-Gemini and mandatory manual entity-selection statements. The primary discovery and secondary address-comparison journeys remain supported.
+
 # Sitebrief Field Atlas — city-first discovery
 
 ## Authorized goal
