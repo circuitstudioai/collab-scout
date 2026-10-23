@@ -6,13 +6,15 @@ The server locks a stable highest-ranked eligible visit immediately after explor
 
 If selected-area research is unavailable, retain a clearly labelled ranking-only result, or the existing explicitly dated canonical saved reference. Do not substitute another area's citations. Saved reports retain their original time and are rechecked under current guards; an unusable historical report is not promoted to evidence.
 
+Retained local passages must name a supplied nearby venue, with normalized apostrophes for exact label matching. Generic district assertions and dangling pronouns are omitted; source links alone are not local findings. This is a bounded identity/relevance guard, not proof of every source's geography or freshness.
+
 Whole unsupported obligation/licensing sentences are omitted without discarding safe cited passages. Permissions remain unanswered questions for the City and property owner, not inferred approvals. The filter is bounded, not a semantic or legal truth validator.
 
 Failed place-name lookup produces an unnamed map point with its coordinates, not an invented neighbourhood. Active instructions acknowledge PR #8 is merged. Historical receipts remain unchanged, with the old acceptance gap explicitly marked.
 
 ## Verification
 
-Local: 112 tests in 20 suites, lint and build passed. Observed red-to-green regressions cover lower-area research after a rank-one visit, supervision/licensing wording, and unnamed-coordinate labels. Additional tests cover ID/coordinate mismatch, foreign reports in caching/recovery, a model trying to switch the final visit, and current validation of saved research.
+Local: 113 tests in 20 suites, lint and build passed. Observed red-to-green regressions cover lower-area research after a rank-one visit, supervision/licensing wording, and unnamed-coordinate labels. Additional tests cover ID/coordinate mismatch, foreign reports in caching/recovery, a model trying to switch the final visit, and current validation of saved research.
 
 Hosted same-area acceptance and browser/download checks are in progress. This document is not a production acceptance claim.
 
