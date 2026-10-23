@@ -1,34 +1,10 @@
 import {z} from 'zod';
-import type {ResearchReport} from './research-report';
 export const decisionChoiceSchema=z.object({visitFirst:z.string().nullable(),reasonCode:z.enum(['taste-evidence','practical-follow-up']),checkFocus:z.enum(['space-access','permissions','menus','general']),practicalEvidence:z.object({quote:z.string().min(20).max(350),sourceIndex:z.number().int().min(0)}).strict().optional()}).strict();
 export type DecisionChoice=z.infer<typeof decisionChoiceSchema>;
 type RankedArea={id:string;name:string;affinity:number;contrast?:number;venues?:{name:string}[]};
 type Evidence={areas:RankedArea[];rankingMethod:'contrast'|'affinity'};
 export type PracticalEvidence={quote:string;title:string;url:string};
-export function highestRanked(evidence:Evidence){return evidence.areas.find(a=>rankingFact(evidence,a.id).rank===1);}
-/** A lower score needs an exact retained cited passage for that same area, not model-authored rationale. */
-export function practicalEvidence(choice:DecisionChoice,reports:Record<string,ResearchReport>,evidence:Evidence):PracticalEvidence|undefined{
- const proof=choice.practicalEvidence;const report=choice.visitFirst?reports[choice.visitFirst]:undefined;
- if(choice.reasonCode!=='practical-follow-up'||!proof||!report||report.status==='sources-only')return;
- const source=report.sources[proof.sourceIndex];if(!source?.url)return;
- const topics={'space-access':/access|entrance|wheelchair|space|layout|floor|seating|pedestrian|transit|station/i,permissions:/permit|zoning|permission|planning/i,menus:/menu|coffee|food|café|cafe/i,general:/$^/};
- if(!topics[choice.checkFocus].test(proof.quote)||/\?|^(?:check|confirm|verify|ask|inquire|consult|ensure|consider|investigate|visit|assess|contact|obtain|review|determine)\b/i.test(proof.quote))return;
- const area=evidence.areas.find(a=>a.id===choice.visitFirst);if(!area)return;
- const labels=[area.name.replace(/^Near\s+/i,''),...(area.venues??[]).map(v=>v.name)].filter(name=>name.length>=4&&!/^Area\s+[A-Z]$/i.test(name));
- if(!labels.some(name=>proof.quote.toLocaleLowerCase().includes(name.toLocaleLowerCase())))return;
- let start=0;
- for(const citation of report.citations){
-  const quote=report.text.slice(start,citation.end).trim();start=citation.end;
-  if(quote===proof.quote&&citation.sourceIndices.includes(proof.sourceIndex))return {quote,title:source.title,url:source.url};
- }
-}
-export function resolveVisit(choice:DecisionChoice,evidence:Evidence,reports:Record<string,ResearchReport>){
- if(!choice.visitFirst)return {selection:choice,defaulted:false};
- const rank=rankingFact(evidence,choice.visitFirst).rank;
- const proof=practicalEvidence(choice,reports,evidence);
- if(rank>1&&!proof){const top=highestRanked(evidence)!;return {selection:{visitFirst:top.id,reasonCode:'taste-evidence' as const,checkFocus:choice.checkFocus},defaulted:true};}
- return {selection:choice,defaulted:false,proof};
-}
+export function highestRanked<T extends RankedArea>(evidence:{areas:T[];rankingMethod:Evidence['rankingMethod']}){return evidence.areas.find(a=>rankingFact(evidence,a.id).rank===1);}
 /** Only deterministic evidence can produce comparative claims. A model chooses IDs/codes, never these facts. */
 export function rankingFact(evidence:Evidence,id:string){
  const area=evidence.areas.find(a=>a.id===id);if(!area)throw new Error('Choose a returned eligible area.');

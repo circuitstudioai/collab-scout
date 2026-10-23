@@ -2,6 +2,7 @@ import {savedPlaygroundDemo} from '../lib/sites/saved-demo';
 import {POST} from '../app/api/scout/route';
 import {buildDemoBrief} from '../lib/sites/demo-server';
 import {runScout} from '../lib/sites/scout-agent';
+import {researchForVisit,hasCitedVisitResearch} from '../lib/sites/visit-research';
 jest.mock('../lib/sites/demo-server',()=>({buildDemoBrief:jest.fn()}));
 jest.mock('../lib/sites/scout-agent',()=>({runScout:jest.fn()}));
 beforeEach(()=>jest.clearAllMocks());
@@ -9,6 +10,7 @@ it('keeps recorded provenance and only the saved highlights, not a fabricated fu
  const first=savedPlaygroundDemo('live-unavailable');const second=savedPlaygroundDemo('live-incomplete');
  expect(first.cached).toBe(true);expect(first.savedDemo?.recordedAt).toBe(first.createdAt);expect(first.savedDemo!.originalPointCount).toBeGreaterThan(first.exploration.cells.length);expect(first.exploration.cells).toHaveLength(3);expect(first.assessment?.visitFirst).toBeTruthy();
  first.exploration.areas.length=0;expect(second.exploration.areas).toHaveLength(3);
+ expect(hasCitedVisitResearch(second)).toBe(true);expect(researchForVisit(second)?.target?.areaId).toBe(second.assessment?.visitFirst);
 });
 it('returns a visibly saved canonical demo when live audience lookup fails on a cold instance',async()=>{
  jest.mocked(buildDemoBrief).mockRejectedValue(new Error('Provider unavailable'));
@@ -39,6 +41,17 @@ it('keeps live sources-only recovery distinct and does not warm-cache it as succ
   const response=await POST(new Request('http://local/api/scout',{method:'POST',body:JSON.stringify({demo:true})}));
   const events=(await response.text()).split('\n\n').filter(Boolean).map(f=>JSON.parse(f.slice(6)));
   const run=events.find(e=>e.type==='complete').value;expect(run.savedDemo).toBeUndefined();expect(run.cached).toBe(false);
+ }
+ expect(runScout).toHaveBeenCalledTimes(2);
+});
+it('does not treat another area report as a complete canonical run or cache it',async()=>{
+ const prior=savedPlaygroundDemo('live-unavailable');const report=researchForVisit(prior)!;
+ jest.mocked(buildDemoBrief).mockResolvedValue({brief:prior.exploration.brief,evidence:{references:prior.exploration.references,trace:[]}});
+ jest.mocked(runScout).mockResolvedValue({...prior,research:{'area-3':{...report,target:{...report.target!,areaId:'area-3'}}},savedDemo:undefined,cached:false});
+ for(let i=0;i<2;i++){
+  const response=await POST(new Request('http://local/api/scout',{method:'POST',body:JSON.stringify({demo:true})}));
+  const events=(await response.text()).split('\n\n').filter(Boolean).map(f=>JSON.parse(f.slice(6)));
+  const run=events.find(e=>e.type==='complete').value;expect(run.savedDemo?.reason).toBe('live-incomplete');expect(hasCitedVisitResearch(run)).toBe(true);
  }
  expect(runScout).toHaveBeenCalledTimes(2);
 });

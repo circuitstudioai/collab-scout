@@ -1,5 +1,7 @@
 # Cited research and visit-order recovery
 
+> Historical PR #8 receipts. Its old acceptance gate was incomplete: three of the five final runs had research for a different area than the final visit. These files are preserved as recorded, not current release acceptance. See [same-area correction](../final-area-research.md).
+
 ## Result
 
 Research/decision application code tested in five fresh runs at `bb50c4042555d21d31c2fcc01d9c8001381803d2` on:

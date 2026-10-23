@@ -28,3 +28,8 @@ it('preserves unicode and citation alignment across removed sentences',()=>{
  const report=buildResearchReport({text:`Two units are required. ${safe}`,metadata:{groundingChunks:[{web:{uri:'https://example.com/menu'}}],groundingSupports:[{segment:{text:safe,startIndex:23},groundingChunkIndices:[0]}]}});
  expect(report.text).toBe(safe);expect(report.citations[0].end).toBe(safe.length);
 });
+it('removes a supervision obligation while keeping the safe cited local passage',()=>{
+ const unsafe='Operators must ensure parents remain on-site unless licensed.';const safe='The local café publishes a menu.';
+ const report=buildResearchReport({text:`${unsafe} ${safe}`,metadata:{groundingChunks:[{web:{uri:'https://example.com/menu'}}],groundingSupports:[{segment:{text:`${unsafe} ${safe}`},groundingChunkIndices:[0]}]}});
+ expect(report.text).toBe(safe);expect(report.validationRules).toContain('regulatory-claim');expect(report.citations).toEqual([{end:safe.length,sourceIndices:[0]}]);
+});

@@ -4,7 +4,7 @@ import { exploreSchema } from './explore';
 export const researchSchema=z.object({
   brief:exploreSchema,
   mapEvidence:z.object({affinity:z.number(),popularity:z.number().optional(),audiencePercentile:z.number().optional(),popularityPercentile:z.number().optional(),contrast:z.number().optional()}).optional(),
-  area:z.object({name:z.string().min(1).max(150),address:z.string().max(500).nullable(),latitude:z.number().min(-85).max(85),longitude:z.number().min(-180).max(180),venues:z.array(z.object({name:z.string().max(150),address:z.string().max(500).optional()})).max(5)}),
+  area:z.object({id:z.string().min(1).max(40).optional(),name:z.string().min(1).max(150),address:z.string().max(500).nullable(),latitude:z.number().min(-85).max(85),longitude:z.number().min(-180).max(180),venues:z.array(z.object({name:z.string().max(150),address:z.string().max(500).optional()})).max(5)}),
 });
 export type ResearchInput=z.infer<typeof researchSchema>;
 export {buildResearchReport} from './research-report';
@@ -33,6 +33,7 @@ export async function researchArea(input:ResearchInput,signal?:AbortSignal):Prom
   }});
   const metadata=response.candidates?.[0]?.groundingMetadata;
   const report=buildResearchReport({text:response.text,metadata},input.area.venues.map(v=>v.name));
+  report.target={areaId:input.area.id,latitude:input.area.latitude,longitude:input.area.longitude};
   console.info(JSON.stringify({event:'sitebrief.research',requestId,attempt:attempt+1,durationMs:Date.now()-started,status:report.status,sourceCount:report.sources.filter(s=>s.url).length,citationCount:report.citations.length,omittedSentences:report.omittedSentences,validationRules:report.validationRules}));
   if(report.status!=='sources-only')return report;
   linksOnly=report;issue='Return only short, grounded sentences without quantities or regulatory assertions. Previous summary had no safely aligned cited sentences.';

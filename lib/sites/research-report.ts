@@ -1,8 +1,9 @@
 import type {GroundingMetadata} from '@google/genai';
 import {assertNarrativeEvidence} from './evidence-guards';
 
-export type ResearchReport={text:string;createdAt:string;sources:{title:string;url:string}[];citations:{end:number;sourceIndices:number[]}[];queries:string[];searchSuggestionsHtml:string;status?:'cited'|'partial'|'sources-only';notice?:string;omittedSentences?:number;validationRules?:string[]};
-export type ResearchFailureCode='not-configured'|'provider-timeout'|'provider-rate-limit'|'provider-error'|'missing-grounding'|'validation-rejected'|'cancelled';
+export type ResearchTarget={areaId?:string;latitude:number;longitude:number};
+export type ResearchReport={text:string;createdAt:string;sources:{title:string;url:string}[];citations:{end:number;sourceIndices:number[]}[];queries:string[];searchSuggestionsHtml:string;status?:'cited'|'partial'|'sources-only';notice?:string;omittedSentences?:number;validationRules?:string[];target?:ResearchTarget};
+export type ResearchFailureCode='not-configured'|'provider-timeout'|'provider-rate-limit'|'provider-error'|'missing-grounding'|'validation-rejected'|'area-mismatch'|'cancelled';
 const messages:Record<ResearchFailureCode,string>={
  'not-configured':'Web research is not configured. Your Qloo map is unchanged.',
  'provider-timeout':'Web research timed out. Your Qloo map is unchanged; try research again.',
@@ -10,6 +11,7 @@ const messages:Record<ResearchFailureCode,string>={
  'provider-error':'The research provider could not complete this request. Your Qloo map is unchanged.',
  'missing-grounding':'The research returned no usable cited sources. Your Qloo map is unchanged.',
  'validation-rejected':'The research summary did not pass evidence checks. Your Qloo map is unchanged.',
+ 'area-mismatch':'The research did not match the requested map point and was not used. Your Qloo map is unchanged.',
  cancelled:'Research was cancelled. Your Qloo map is unchanged.',
 };
 export class ResearchError extends Error{
@@ -60,4 +62,11 @@ export function buildResearchReport(response:{text?:string;metadata?:GroundingMe
  const status=!citations.length?'sources-only':omitted?'partial':'cited';
  const notice=status==='sources-only'?'Sources to inspect; summary unavailable. These provider-returned links are not validated findings.':status==='partial'?'Some sentences were omitted because evidence checks or citation alignment failed. Only retained cited passages are shown.':undefined;
  return {text,createdAt:new Date().toISOString(),sources,citations,queries:metadata?.webSearchQueries??[],searchSuggestionsHtml:metadata?.searchEntryPoint?.renderedContent??'',status,notice,omittedSentences:omitted,validationRules:[...rules]};
+}
+/** Recheck an existing cited artifact under current guards; this is not new provider retrieval. */
+export function recheckRecordedReport(report:ResearchReport,target:ResearchTarget,verifiedLabels:string[]=[]):ResearchReport{
+ let start=0;
+ const supports=report.citations.map(citation=>{const segment={text:report.text.slice(start,citation.end),startIndex:start};start=citation.end;return {segment,groundingChunkIndices:citation.sourceIndices};});
+ const checked=buildResearchReport({text:report.text,metadata:{groundingChunks:report.sources.map(s=>({web:{title:s.title,uri:s.url}})),groundingSupports:supports,webSearchQueries:report.queries,searchEntryPoint:{renderedContent:report.searchSuggestionsHtml}}},verifiedLabels);
+ return {...checked,createdAt:report.createdAt,target};
 }
