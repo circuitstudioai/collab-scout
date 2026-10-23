@@ -11,7 +11,7 @@ Sitebrief helps restaurant operators, small chains and real-estate advisers deci
 5. Build a scouting brief: real Qloo map evidence, audience profile, nearby-venue comparison and cited web research.
 6. Inspect actual rank/ties, save areas and download a one-page PDF or full notes.
 
-The owner-specified example is a new café with an indoor playground using popular Toronto cafés. Prices, hours and existing outlets are not invented. Reference cafés are selected from Qloo's returned local sample, not an exhaustive city leaderboard or proof of parental demand.
+The lead example is a proposed Blue Bottle expansion into Toronto. A new café with an indoor playground using popular Toronto cafés remains a secondary example. Prices, hours and existing outlets are not invented. Reference cafés are selected from Qloo's returned local sample, not an exhaustive city leaderboard or proof of parental demand.
 
 ## Secondary journey
 
@@ -23,6 +23,6 @@ Audience entities drive Qloo taste signals. Radius, minimum popularity and suppl
 
 ## Boundaries
 
-No measured footfall, available units, rent verification, zoning approval, customer demand or success probabilities are inferred. No accounts, billing, outreach or customer validation are claimed. The current quota limitation is documented in SETUP.md; the owner deferred the separate quota change.
+No measured footfall, available units, rent verification, zoning approval, customer demand or success probabilities are inferred. No accounts, billing, outreach or customer validation are claimed. Shared global usage admission is included in the feature branch; configuration and activation status are documented in SETUP.md. Scout/Maybe verdicts describe scouting priority, not commercial viability. Skip cards show actual failed rules. OSM mapped category counts are descriptive context, not an exhaustive competitor census or unmet demand.
 
 Methods: [SCOUT_AGENT.md](SCOUT_AGENT.md). Architecture: [ARCHITECTURE.md](ARCHITECTURE.md). Recording: [restaurant-demo-plan.md](restaurant-demo-plan.md).

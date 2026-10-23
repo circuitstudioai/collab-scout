@@ -1,3 +1,4 @@
+jest.mock('../lib/sites/quota',()=>({reserveLiveAnalysis:jest.fn(async()=>({remaining:49})),quotaResponse:jest.fn()}));
 import {savedPlaygroundDemo} from '../lib/sites/saved-demo';
 import {POST} from '../app/api/scout/route';
 import {buildDemoBrief} from '../lib/sites/demo-server';
@@ -12,10 +13,9 @@ it('keeps recorded provenance and only the saved highlights, not a fabricated fu
  first.exploration.areas.length=0;expect(second.exploration.areas).toHaveLength(3);
  expect(hasCitedVisitResearch(second)).toBe(true);expect(researchForVisit(second)?.target?.areaId).toBe(second.assessment?.visitFirst);
 });
-it('returns a visibly saved canonical demo when live audience lookup fails on a cold instance',async()=>{
+it('does not recover a failed cold run with a historical saved report below the new quality gate',async()=>{
  jest.mocked(buildDemoBrief).mockRejectedValue(new Error('Provider unavailable'));
- const response=await POST(new Request('http://local/api/scout',{method:'POST',body:JSON.stringify({demo:true})}));const events=(await response.text()).split('\n\n').filter(Boolean).map(f=>JSON.parse(f.slice(6)));const run=events.find(e=>e.type==='complete').value;
- expect(run.savedDemo.reason).toBe('live-unavailable');expect(run.assessment.visitFirst).toBeTruthy();expect(runScout).not.toHaveBeenCalled();
+ const response=await POST(new Request('http://local/api/scout',{method:'POST',body:JSON.stringify({demo:true})}));const events=(await response.text()).split('\n\n').filter(Boolean).map(f=>JSON.parse(f.slice(6)));expect(events.find(e=>e.type==='complete')).toBeUndefined();expect(events.find(e=>e.type==='error').error).toMatch(/saved example/);expect(runScout).not.toHaveBeenCalled();
 });
 it('does not replace a custom request failure with the unrelated saved café',async()=>{
  jest.mocked(runScout).mockRejectedValue(new Error('Provider unavailable'));const brief=savedPlaygroundDemo('live-unavailable').exploration.brief;
@@ -26,7 +26,7 @@ it('rejects extra custom constraints on a canonical demo request',async()=>{
 });
 it('switches an incomplete canonical research run to the dated reference instead of caching it as live',async()=>{
  const prior=savedPlaygroundDemo('live-unavailable');jest.mocked(buildDemoBrief).mockResolvedValue({brief:prior.exploration.brief,evidence:{references:prior.exploration.references,trace:[]}});jest.mocked(runScout).mockResolvedValue({...prior,research:{},cached:false,savedDemo:undefined});
- const response=await POST(new Request('http://local/api/scout',{method:'POST',body:JSON.stringify({demo:true})}));const events=(await response.text()).split('\n\n').filter(Boolean).map(f=>JSON.parse(f.slice(6)));expect(events.find(e=>e.type==='complete').value.savedDemo.reason).toBe('live-incomplete');
+ const response=await POST(new Request('http://local/api/scout',{method:'POST',body:JSON.stringify({demo:true})}));const events=(await response.text()).split('\n\n').filter(Boolean).map(f=>JSON.parse(f.slice(6)));expect(events.find(e=>e.type==='complete').value.savedDemo).toBeUndefined();expect(events.find(e=>e.type==='complete').value.decisionNotice).toMatch(/not cached/);
 });
 it('does not replace a genuine empty live shortlist with old eligible points',async()=>{
  const prior=savedPlaygroundDemo('live-unavailable');jest.mocked(buildDemoBrief).mockResolvedValue({brief:prior.exploration.brief,evidence:{references:prior.exploration.references,trace:[]}});jest.mocked(runScout).mockResolvedValue({...prior,exploration:{...prior.exploration,areas:[]},assessment:null,savedDemo:undefined,cached:false,research:{}});
@@ -51,7 +51,7 @@ it('does not treat another area report as a complete canonical run or cache it',
  for(let i=0;i<2;i++){
   const response=await POST(new Request('http://local/api/scout',{method:'POST',body:JSON.stringify({demo:true})}));
   const events=(await response.text()).split('\n\n').filter(Boolean).map(f=>JSON.parse(f.slice(6)));
-  const run=events.find(e=>e.type==='complete').value;expect(run.savedDemo?.reason).toBe('live-incomplete');expect(hasCitedVisitResearch(run)).toBe(true);
+  const run=events.find(e=>e.type==='complete').value;expect(run.savedDemo).toBeUndefined();expect(run.decisionNotice).toMatch(/not cached/);expect(hasCitedVisitResearch(run)).toBe(false);
  }
  expect(runScout).toHaveBeenCalledTimes(2);
 });

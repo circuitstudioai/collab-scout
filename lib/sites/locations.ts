@@ -15,3 +15,8 @@ export function parseLocations(raw: unknown): LocationMatch[] {
     return [{ areaName, id: `${properties.osm_type ?? 'point'}:${properties.osm_id ?? coordinates.join(',')}`, name: typeof properties.name === 'string' ? properties.name : street || label, label, longitude: coordinates[0], latitude: coordinates[1], kind: typeof properties.type === 'string' ? properties.type : 'place' }];
   }).slice(0, 5);
 }
+
+/** Street label from a supplied place address; never fabricate a neighbourhood or expose a house number. */
+export function streetFromAddress(address:string|undefined|null){
+ return address?.match(/(?:^|,\s*)\s*(?:\d+[\w\s/.-]*?\s+)?([A-Za-z][A-Za-z'’ .-]*?\b(?:Street|St|Avenue|Ave|Road|Rd|Boulevard|Blvd|Drive|Dr|Lane|Ln|Crescent|Cres|Way)\b(?:\s+(?:East|West|North|South|E|W|N|S))?)/i)?.[1]?.trim();
+}

@@ -1,3 +1,4 @@
+jest.mock('../lib/sites/store-counts',()=>({retrieveStoreCounts:jest.fn(async()=>({}))}));
 import {runScout} from '../lib/sites/scout-agent';
 import {exploreCity,type Exploration} from '../lib/sites/explore';
 import {profileAudience,compareAreaAudience} from '../lib/sites/profile';
@@ -18,14 +19,14 @@ beforeEach(()=>{
 });
 function generator(finalId='area-1'){
  let turn=0;return async()=>{const tools=['explore_areas','audience_profile','compare_audiences','research_area'];
-  if(turn<tools.length){const name=tools[turn++];const args=turn>2?{areaId:'area-3'}:{};return {functionCalls:[{name,args}],candidates:[{content:{role:'model',parts:[{functionCall:{name,args}}]}}]} as GenerateContentResponse;}
+  if(turn<tools.length){const name=tools[turn++];const args=turn>2?{areaId:'area-3',...(name==='research_area'?{priorities:['ACCESS','VENUES'],focus:'arrival'}:{})}:{};return {functionCalls:[{name,args}],candidates:[{content:{role:'model',parts:[{functionCall:{name,args}}]}}]} as GenerateContentResponse;}
   return {text:JSON.stringify({visitFirst:finalId,reasonCode:'taste-evidence',checkFocus:'general'})} as GenerateContentResponse;
  };
 }
 it('researches the locked highest-ranked visit even when the model requests a lower area',async()=>{
  const run=await runScout(brief,()=>{},generator());
- expect(researchArea).toHaveBeenCalledWith(expect.objectContaining({area:expect.objectContaining({latitude:top.latitude,longitude:top.longitude})}),undefined);
- expect(Object.keys(run.research)).toEqual([top.id]);expect(run.assessment?.visitFirst).toBe(top.id);
+ expect(researchArea).toHaveBeenCalledWith(expect.objectContaining({area:expect.objectContaining({latitude:top.latitude,longitude:top.longitude})}),undefined,['ACCESS','VENUES']);
+ expect(Object.keys(run.research)).toEqual([top.id]);expect(run.assessment?.visitFirst).toBe(top.id);expect(run.steps.find(s=>s.tool==='research_area')?.notice).toMatch(/ACCESS → VENUES.*arrival/);
 });
 it('cannot switch the final visit after researching the locked point',async()=>{
  const run=await runScout(brief,()=>{},generator('area-3'));
@@ -39,4 +40,8 @@ it('rejects a report whose returned coordinates belong to a different map point'
  expect(run.research).toEqual({});expect(run.assessment?.visitFirst).toBe(top.id);
  expect(run.steps.find(s=>s.tool==='research_area')).toMatchObject({status:'unavailable',failureCode:'area-mismatch'});
  expect(run.decisionNotice).toMatch(/research is unavailable/);
+});
+it('does not silently invent research priorities when the model omits its required choice',async()=>{
+ let turn=0;const generate=async()=>{const names=['explore_areas','audience_profile','compare_audiences','research_area'];if(turn<4){const name=names[turn++];const args=turn>2?{areaId:top.id}:{};return {functionCalls:[{name,args}],candidates:[{content:{role:'model',parts:[{functionCall:{name,args}}]}}]} as GenerateContentResponse;}return {text:JSON.stringify({visitFirst:top.id,reasonCode:'taste-evidence',checkFocus:'general'})} as GenerateContentResponse;};
+ const run=await runScout(brief,()=>{},generate);expect(researchArea).not.toHaveBeenCalled();expect(run.steps.find(s=>s.tool==='research_area')?.status).toBe('unavailable');
 });

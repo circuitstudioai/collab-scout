@@ -1,3 +1,7 @@
+# Current feature branch
+
+See [final feature checkpoint](final-features/README.md). Research isolation passed five fresh runs; integrated quota-enabled and Production acceptance remain blocked. Historical receipts below describe their own commits, not current release readiness.
+
 # Sitebrief validation
 
 ## Same-area research correction

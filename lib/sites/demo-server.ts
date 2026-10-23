@@ -1,9 +1,10 @@
-import {demoBrief} from './demo';
+import {blueBottleBrief,demoBrief} from './demo';
 import {createReader,record,rows,SiteError} from './qloo';
 import {distanceKm} from './compare';
 import type {Trace} from './schema';
 import type {Exploration} from './explore';
-export async function buildDemoBrief(){
+export async function buildDemoBrief(blue=false){
+ if(blue)return {brief:blueBottleBrief,evidence:undefined};
  const trace:Trace[]=[];const get=createReader(trace);
  const raw=await get('Find café-tagged Toronto places; select distinct names by returned popularity','/v2/insights',{'filter.type':'urn:entity:place','filter.location.query':'Toronto','filter.tags':'urn:tag:genre:place:restaurant:cafe','signal.interests.tags':'urn:tag:genre:place:restaurant:cafe',take:'30'},'entities');
  const references=selectDemoReferences(rows(raw,'entities'));

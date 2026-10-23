@@ -33,6 +33,14 @@ Optional hosted-verification tools are Playwright/Chromium, axe-core, pdf-lib an
 
 ## Quota status — deliberately deferred
 
-This PR does not add per-visitor quotas or provision shared storage. Existing per-instance concurrency counters do not stop repeated/distributed use. The approved future allowance is three briefs per visitor daily; shared counter storage, a global allowance, MCP authentication and cross-route enforcement remain a separate change. No paid service or global cap is assumed.
+This feature branch adds a shared global daily live-analysis budget. The default is 50 admitted top-level jobs per UTC day; set a lower or higher limit explicitly if needed. Each agent run is one job with its existing bounded provider/tool budget. Failed jobs still consume admission. Nested tools do not charge again. HTTP exploration, research, live comparison and scouting, plus MCP paid tool calls, all require shared admission. Discovery, fixed sample comparison and qualified cached/saved examples do not make sponsor calls and do not consume the budget.
 
-Future setup: connect a reviewed Redis REST store in Vercel; configure server-only store URL/token, a visitor-signing secret, MCP token and owner-chosen daily ceiling; complete the separate integration; verify denial across instances before deployment. Do not deploy an incomplete gate or claim an in-memory counter provides this protection.
+Required **server-only** variables:
+
+- `SITEBRIEF_REDIS_REST_URL`: dedicated HTTPS Redis REST endpoint.
+- `SITEBRIEF_REDIS_REST_TOKEN`: dedicated store credential.
+- `SITEBRIEF_DAILY_ANALYSIS_LIMIT`: optional integer, defaults to `50`.
+
+A single Redis `EVAL` checks/increments the daily counter atomically and expires it at the next UTC midnight. Preview and Production use separate counter keys. Missing credentials, store errors and invalid replies fail closed before provider work. Never enable an in-memory fallback. Exhaustion returns 429 and a UTC-reset notice. The allowance is global, not a per-visitor promise or monetary spending cap. One caller can exhaust it; no accounts or billing are introduced.
+
+**Configuration status:** no dedicated shared store existed at implementation start. No paid infrastructure or Production settings may be changed without separate authorization. Configure the approved dedicated store in Preview, verify atomic exhaustion/outage behavior, then repeat final hosted acceptance. Production activation and five cold Production runs happen only after an approved merge. Do not reuse another product’s database or secret.

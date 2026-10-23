@@ -1,3 +1,4 @@
+import {reserveLiveAnalysis,QuotaError} from '@/lib/sites/quota';
 import {listMcpTools,callMcpTool,mcpTools} from '@/lib/sites/mcp';
 import {SiteError} from '@/lib/sites/qloo';
 import {z} from 'zod';
@@ -24,7 +25,7 @@ export async function POST(request:Request){
  const name=rpc.params?.name;if(typeof name!=='string'||!mcpTools.some(t=>t.name===name))return error(-32602,'Unknown tool');
  if(active>=2)return result({isError:true,content:[{type:'text',text:'The public demo is busy. Try again shortly.'}]});
  active++;
- try{const output=await callMcpTool(name,rpc.params?.arguments??{});return result({content:[{type:'text',text:JSON.stringify(output)}]});}
- catch(e){return result({isError:true,content:[{type:'text',text:JSON.stringify({error:e instanceof SiteError?e.message:e instanceof z.ZodError?'Invalid tool arguments.':'The evidence tool could not finish.',referenceChoice:e instanceof SiteError?e.referenceChoice:undefined})}]});}
+ try{const args=rpc.params?.arguments??{};const tool=mcpTools.find(t=>t.name===name)!;const input=tool.schema.parse(args);if(!(name==='compare_restaurant_sites'&&'mode' in input&&input.mode==='sample'))await reserveLiveAnalysis();const output=await callMcpTool(name,rpc.params?.arguments??{});return result({content:[{type:'text',text:JSON.stringify(output)}]});}
+ catch(e){return result({isError:true,content:[{type:'text',text:JSON.stringify({error:e instanceof QuotaError?e.message:e instanceof SiteError?e.message:e instanceof z.ZodError?'Invalid tool arguments.':'The evidence tool could not finish.',referenceChoice:e instanceof SiteError?e.referenceChoice:undefined})}]});}
  finally{active--;}
 }

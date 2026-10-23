@@ -1,3 +1,4 @@
+import {reserveLiveAnalysis,quotaResponse} from '@/lib/sites/quota';
 import { briefSchema } from '@/lib/sites/schema';
 import { compareSites, SiteError } from '@/lib/sites/compare';
 export const maxDuration = 60;
@@ -15,8 +16,10 @@ export async function POST(request: Request) {
     try { json = JSON.parse(text); } catch { return Response.json({ error: 'Send a valid JSON brief.' }, { status: 400 }); }
     const parsed = briefSchema.safeParse(json);
     if (!parsed.success) return Response.json({ error: parsed.error.issues.map(i => `${i.path.join('.')}: ${i.message}`).join('; ') }, { status: 400 });
+    if(parsed.data.mode==='live')await reserveLiveAnalysis();
     return Response.json(await compareSites(parsed.data), { headers: { 'Cache-Control': 'no-store' } });
   } catch (error) {
+    const blocked=quotaResponse(error);if(blocked)return blocked;
     return Response.json({ referenceChoice: error instanceof SiteError ? error.referenceChoice : undefined, error: error instanceof SiteError ? error.message : 'We could not finish the comparison. Please try again. Sitebrief has not saved your entries.' }, { status: error instanceof SiteError ? error.status : 500 });
   } finally { active--; }
 }

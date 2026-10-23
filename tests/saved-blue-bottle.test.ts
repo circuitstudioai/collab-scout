@@ -1,0 +1,6 @@
+import {savedBlueBottleDemo} from '../lib/sites/saved-blue-bottle';
+import {hasResearchQuality} from '../lib/sites/structured-research';
+import {researchForVisit} from '../lib/sites/visit-research';
+import {POST} from '../app/api/scout/route';
+it('keeps a compact, qualified Blue Bottle artifact with original date and coordinates',()=>{const run=savedBlueBottleDemo('live-incomplete');expect(hasResearchQuality(researchForVisit(run))).toBe(true);expect(run.savedDemo?.recordedAt).toBe(run.createdAt);expect(run.exploration.cells).toHaveLength(3);expect(run.savedDemo!.originalPointCount).toBeGreaterThan(3);expect(run.exploration.brief.references).toEqual(['Blue Bottle Coffee']);});
+it('returns only a labelled saved example when shared live admission is unconfigured',async()=>{delete process.env.SITEBRIEF_REDIS_REST_URL;delete process.env.SITEBRIEF_REDIS_REST_TOKEN;const response=await POST(new Request('https://local.test/api/scout',{method:'POST',body:JSON.stringify({demo:'blue-bottle'})}));expect(response.status).toBe(200);const frames=(await response.text()).split('\n\n').filter(f=>f.startsWith('data: ')).map(f=>JSON.parse(f.slice(6)));expect(frames[0].value.savedDemo.reason).toBe('live-unavailable');expect(frames[0].value.cached).toBe(true);});
