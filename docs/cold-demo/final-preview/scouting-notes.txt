@@ -78,7 +78,7 @@ Local rank contrast: 50.98637858149366 percentile points
 4193 of 4292 returned local points scored lower.
 Nearby dining: Kitaya Japanese Takeout, Asian Legend, CoCo, Diwan, Sorento Italian Kitchen
 
-METHOD: Highlights are high-scoring returned map points spaced at least 2 km apart, not neighborhood averages. 
+METHOD: Highlights are high-scoring returned map points spaced at least 2 km apart, not neighborhood averages.
 
 TO CHECK: Visit at intended opening hours; count foot traffic; find available properties; obtain actual rents; check permits, lease terms and operating costs.
 
