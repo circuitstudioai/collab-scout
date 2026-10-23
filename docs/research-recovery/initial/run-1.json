@@ -1,0 +1,769 @@
+{
+  "exploration": {
+    "createdAt": "2026-10-23T20:25:10.566Z",
+    "brief": {
+      "city": "Toronto, Ontario, Canada",
+      "center": {
+        "latitude": 43.6534817,
+        "longitude": -79.3839347
+      },
+      "radiusKm": 10,
+      "minimumPopularityPercentile": 20,
+      "concept": "A new café with an indoor playground. Find areas to scout using popular Toronto cafés as audience references.",
+      "references": [
+        "Dineen Coffee Co.",
+        "FIKA Cafe",
+        "Rooster Coffee House"
+      ],
+      "restaurant": {
+        "brandName": "New café with an indoor playground",
+        "format": "cafe",
+        "servicePeriod": "unspecified",
+        "pricePosition": "unspecified"
+      },
+      "existingOutlets": [],
+      "minimumOutletDistanceKm": 0
+    },
+    "references": [
+      {
+        "id": "FAD69E17-B23A-41C8-B25A-EBBEA04F4658",
+        "name": "Dineen Coffee Co.",
+        "resolution": "local-cafe",
+        "address": "140 Yonge St Toronto, ON M5C 1X6 Canada"
+      },
+      {
+        "id": "218AD775-5013-4D5A-84E9-9D308A68AFEF",
+        "name": "FIKA Cafe",
+        "resolution": "local-cafe",
+        "address": "28 Kensington Ave Toronto, ON M5T 2J9 Canada"
+      },
+      {
+        "id": "4A68BC83-0A82-42CC-9A76-2E284F0DD2B9",
+        "name": "Rooster Coffee House",
+        "resolution": "local-cafe",
+        "address": "568 Jarvis St Toronto, ON M4Y 0C1 Canada"
+      }
+    ],
+    "areas": [
+      {
+        "latitude": 43.64662,
+        "longitude": -79.422226,
+        "affinity": 0.9745276249701028,
+        "popularity": 0.513872279359005,
+        "affinityRank": 0.9113755,
+        "audiencePercentile": 95.05636449037107,
+        "popularityPercentile": 39.86613433536872,
+        "contrast": 55.19023015500235,
+        "id": "area-1",
+        "name": "Near Spadina–Fort York",
+        "address": "114 Argyle Street, Spadina–Fort York, Toronto, Ontario, Canada",
+        "nameAvailable": true,
+        "lowerCount": 4081,
+        "pointCount": 4292,
+        "distanceKm": 3.1738852631810763,
+        "venues": [
+          {
+            "id": "B9FA3F61-388F-474F-B7C6-05FBBDD1B485",
+            "name": "Kitten and the Bear",
+            "address": "1414 Dundas St W Toronto, ON M6J 1Y5 Canada",
+            "affinity": 0.9813548765824817
+          },
+          {
+            "id": "AB631C81-ABAB-40ED-80F8-2A5A5503091E",
+            "name": "Mildred's Temple Kitchen",
+            "address": "85 Hanna Ave #104 Toronto, ON M6K 3S3 Canada",
+            "affinity": 0.9689555545961852
+          },
+          {
+            "id": "BAEFE09A-6F5B-48B7-9652-095C8BAE5429",
+            "name": "Good Fork",
+            "address": "1550 Dundas St W Toronto, ON M6K 1T5 Canada",
+            "affinity": 0.9678562203264446
+          },
+          {
+            "id": "F64446EB-EF2F-43E7-9567-6ADFAE98EF7E",
+            "name": "Jimmy's Coffee",
+            "address": "15 Ossington Ave Toronto, ON M6J 2Y8 Canada",
+            "affinity": 0.9646547083721039
+          },
+          {
+            "id": "8B6B678A-252B-4600-9CD4-B1CECDE98F02",
+            "name": "Bang Bang Ice Cream & Bakery",
+            "address": "93A Ossington Ave Toronto, ON M6J 0G1 Canada",
+            "affinity": 0.9644387751014027
+          }
+        ],
+        "contextAvailable": true
+      },
+      {
+        "latitude": 43.668594,
+        "longitude": -79.463425,
+        "affinity": 0.9648409471418321,
+        "popularity": 0.5273857928725185,
+        "affinityRank": 0.8946351875,
+        "audiencePercentile": 93.17754814466886,
+        "popularityPercentile": 41.08736496007515,
+        "contrast": 52.09018318459371,
+        "id": "area-2",
+        "name": "Near York South–Weston",
+        "address": "35 Cawthra Avenue, York South–Weston, Toronto, Ontario, Canada",
+        "nameAvailable": true,
+        "lowerCount": 4001,
+        "pointCount": 4292,
+        "distanceKm": 6.611513441349234,
+        "venues": [
+          {
+            "id": "FDB752F0-E791-46C3-B04B-A308A5E9E679",
+            "name": "The Good Neighbour Espresso Bar",
+            "address": "238 Annette St Toronto, ON M6P 1R1 Canada",
+            "affinity": 0.9400921583622801
+          },
+          {
+            "id": "951F47F7-435C-4D5D-8684-299A4C2504E8",
+            "name": "Mattachioni",
+            "address": "1617 Dupont St Toronto, ON M6P 3S8 Canada",
+            "affinity": 0.9354055604230092
+          },
+          {
+            "id": "F768CFED-823A-41FE-B03D-FA292C122A92",
+            "name": "North of Bombay",
+            "address": "2996 Dundas St W Toronto, ON M6P 1Z3 Canada",
+            "affinity": 0.932097791532842
+          },
+          {
+            "id": "C52A6ECB-9B39-4DEB-A584-021F0E5B2420",
+            "name": "Annette Food Market",
+            "address": "240 Annette St Toronto, ON M6P 1R1 Canada",
+            "affinity": 0.9311239565493664
+          },
+          {
+            "id": "34B53615-1EFE-4C4F-9CE2-1048D2BF6A5F",
+            "name": "Playa Cabana Cantina",
+            "address": "2883 Dundas St W Toronto, ON M6P 1Y9 Canada",
+            "affinity": 0.9234058658792962
+          }
+        ],
+        "contextAvailable": true
+      },
+      {
+        "latitude": 43.723526,
+        "longitude": -79.33708,
+        "affinity": 0.9881607270987802,
+        "popularity": 0.5893326955273858,
+        "affinityRank": 0.9369540000000001,
+        "audiencePercentile": 97.68670737435416,
+        "popularityPercentile": 46.700328792860496,
+        "contrast": 50.98637858149366,
+        "id": "area-3",
+        "name": "Near Banbury-Don Mills",
+        "address": "Wynford Drive, Banbury-Don Mills, Toronto, Ontario, Canada",
+        "nameAvailable": true,
+        "lowerCount": 4193,
+        "pointCount": 4292,
+        "distanceKm": 8.65187924205145,
+        "venues": [
+          {
+            "id": "E3B92DC3-4ADF-4A02-BC24-8A6C55CF70FD",
+            "name": "Kitaya Japanese Takeout",
+            "address": "890 Don Mills Rd. Unit 138-140 North York, ON M3C 1V6 Canada",
+            "affinity": 0.9145793800574651
+          },
+          {
+            "id": "FD9B592E-231C-445F-9F61-CB70365A7C34",
+            "name": "Asian Legend",
+            "address": "900 Don Mills Rd. North York, ON M3C 1V6 Canada",
+            "affinity": 0.8999131654795829
+          },
+          {
+            "id": "6842A752-7FE8-46C1-B47D-A7481558855E",
+            "name": "CoCo",
+            "address": "890 Don Mills Rd. 130 & 132 North York, ON M3C 1V6 Canada",
+            "affinity": 0.8760235098296164
+          },
+          {
+            "id": "E0F967CE-00BF-4220-B1F2-DFC7DD7F27D9",
+            "name": "Diwan",
+            "address": "Aga Khan Museum 77 Wynford Dr North York, ON M3C 1K1 Canada",
+            "affinity": 0.8732478819669466
+          },
+          {
+            "id": "C0D1BAC7-1534-4219-9585-377F177ECA90",
+            "name": "Sorento Italian Kitchen",
+            "address": "900 Don Mills Rd. North York, ON M3C 1V6 Canada",
+            "affinity": 0.8720447585252392
+          }
+        ],
+        "contextAvailable": true
+      }
+    ],
+    "trace": [
+      {
+        "step": "Find café-tagged Toronto places; select distinct names by returned popularity",
+        "path": "/v2/insights",
+        "params": {
+          "filter.type": "urn:entity:place",
+          "filter.location.query": "Toronto",
+          "filter.tags": "urn:tag:genre:place:restaurant:cafe",
+          "signal.interests.tags": "urn:tag:genre:place:restaurant:cafe",
+          "take": "30"
+        },
+        "status": "ok",
+        "count": 30
+      },
+      {
+        "step": "Map audience taste across the city",
+        "path": "/v2/insights",
+        "params": {
+          "filter.type": "urn:heatmap",
+          "filter.location.query": "Toronto, Ontario, Canada",
+          "signal.interests.entities": "FAD69E17-B23A-41C8-B25A-EBBEA04F4658,218AD775-5013-4D5A-84E9-9D308A68AFEF,4A68BC83-0A82-42CC-9A76-2E284F0DD2B9",
+          "signal.interests.tags": "urn:tag:genre:place:restaurant"
+        },
+        "status": "ok",
+        "count": 8363
+      },
+      {
+        "step": "Nearby dining for area 2",
+        "path": "/v2/insights",
+        "params": {
+          "filter.type": "urn:entity:place",
+          "filter.location": "POINT(-79.463425 43.668594)",
+          "filter.location.radius": "1000",
+          "filter.tags": "urn:tag:genre:place:restaurant",
+          "signal.interests.entities": "FAD69E17-B23A-41C8-B25A-EBBEA04F4658,218AD775-5013-4D5A-84E9-9D308A68AFEF,4A68BC83-0A82-42CC-9A76-2E284F0DD2B9",
+          "take": "5"
+        },
+        "status": "ok",
+        "count": 5
+      },
+      {
+        "step": "Nearby dining for area 3",
+        "path": "/v2/insights",
+        "params": {
+          "filter.type": "urn:entity:place",
+          "filter.location": "POINT(-79.33708 43.723526)",
+          "filter.location.radius": "1000",
+          "filter.tags": "urn:tag:genre:place:restaurant",
+          "signal.interests.entities": "FAD69E17-B23A-41C8-B25A-EBBEA04F4658,218AD775-5013-4D5A-84E9-9D308A68AFEF,4A68BC83-0A82-42CC-9A76-2E284F0DD2B9",
+          "take": "5"
+        },
+        "status": "ok",
+        "count": 5
+      },
+      {
+        "step": "Nearby dining for area 1",
+        "path": "/v2/insights",
+        "params": {
+          "filter.type": "urn:entity:place",
+          "filter.location": "POINT(-79.422226 43.64662)",
+          "filter.location.radius": "1000",
+          "filter.tags": "urn:tag:genre:place:restaurant",
+          "signal.interests.entities": "FAD69E17-B23A-41C8-B25A-EBBEA04F4658,218AD775-5013-4D5A-84E9-9D308A68AFEF,4A68BC83-0A82-42CC-9A76-2E284F0DD2B9",
+          "take": "5"
+        },
+        "status": "ok",
+        "count": 5
+      },
+      {
+        "step": "Locate area 3 on OpenStreetMap",
+        "path": "Photon /reverse",
+        "params": {
+          "latitude": "43.723526",
+          "longitude": "-79.33708"
+        },
+        "status": "ok",
+        "count": 1
+      },
+      {
+        "step": "Locate area 2 on OpenStreetMap",
+        "path": "Photon /reverse",
+        "params": {
+          "latitude": "43.668594",
+          "longitude": "-79.463425"
+        },
+        "status": "ok",
+        "count": 1
+      },
+      {
+        "step": "Locate area 1 on OpenStreetMap",
+        "path": "Photon /reverse",
+        "params": {
+          "latitude": "43.64662",
+          "longitude": "-79.422226"
+        },
+        "status": "ok",
+        "count": 1
+      }
+    ],
+    "separationKm": 2,
+    "allTied": false,
+    "totalReturned": 8363,
+    "rejected": [],
+    "rejectedCount": 0,
+    "eligibleCount": 4292,
+    "rankingMethod": "contrast",
+    "popularityCoverage": 0.9920782851817335,
+    "popularityRejectedCount": 885,
+    "screenedCount": 1277,
+    "cellCount": 4292
+  },
+  "profile": {
+    "tags": [
+      {
+        "name": "Coffee shop",
+        "affinity": 0.9976364981515836
+      },
+      {
+        "name": "Cafe",
+        "affinity": 0.9952288322123714
+      },
+      {
+        "name": "French",
+        "affinity": 0.9946095109844512
+      },
+      {
+        "name": "Coffee store",
+        "affinity": 0.9859308647341756
+      },
+      {
+        "name": "Brunch",
+        "affinity": 0.9812687217213488
+      },
+      {
+        "name": "Dessert shop",
+        "affinity": 0.9716537362167319
+      },
+      {
+        "name": "Bakery",
+        "affinity": 0.9674944823638002
+      },
+      {
+        "name": "Canadian",
+        "affinity": 0.9669470692990698
+      }
+    ],
+    "ageSignals": [
+      {
+        "referenceId": "FAD69E17-B23A-41C8-B25A-EBBEA04F4658",
+        "referenceName": "Dineen Coffee Co.",
+        "bands": [
+          {
+            "name": "24_and_younger",
+            "score": 0.053000000000000005
+          },
+          {
+            "name": "25_to_29",
+            "score": 0.049
+          },
+          {
+            "name": "30_to_34",
+            "score": -0.11000000000000001
+          },
+          {
+            "name": "35_to_44",
+            "score": 0.041
+          },
+          {
+            "name": "45_to_54",
+            "score": -0.22699999999999995
+          },
+          {
+            "name": "55_and_older",
+            "score": -0.09600000000000002
+          }
+        ]
+      },
+      {
+        "referenceId": "4A68BC83-0A82-42CC-9A76-2E284F0DD2B9",
+        "referenceName": "Rooster Coffee House",
+        "bands": [
+          {
+            "name": "24_and_younger",
+            "score": 0.029999999999999992
+          },
+          {
+            "name": "25_to_29",
+            "score": -0.022000000000000002
+          },
+          {
+            "name": "30_to_34",
+            "score": -0.11000000000000001
+          },
+          {
+            "name": "35_to_44",
+            "score": 0.229
+          },
+          {
+            "name": "45_to_54",
+            "score": -0.441
+          },
+          {
+            "name": "55_and_older",
+            "score": 0.006999999999999995
+          }
+        ]
+      },
+      {
+        "referenceId": "218AD775-5013-4D5A-84E9-9D308A68AFEF",
+        "referenceName": "FIKA Cafe",
+        "bands": [
+          {
+            "name": "24_and_younger",
+            "score": -0.02
+          },
+          {
+            "name": "25_to_29",
+            "score": -0.01
+          },
+          {
+            "name": "30_to_34",
+            "score": -0.87
+          },
+          {
+            "name": "35_to_44",
+            "score": 0.19
+          },
+          {
+            "name": "45_to_54",
+            "score": 0.12
+          },
+          {
+            "name": "55_and_older",
+            "score": -0.67
+          }
+        ]
+      }
+    ],
+    "relatedBrands": [
+      {
+        "id": "64950A6B-EA57-4DA1-81EE-4F2761082412",
+        "name": "Frank And Oak"
+      },
+      {
+        "id": "B5EFE12E-DDCB-4C20-AFE9-6E72FE6F542E",
+        "name": "Soia & Kyo"
+      },
+      {
+        "id": "431D6036-C28C-4F78-9B1A-A2DAD842872A",
+        "name": "Holt Renfrew"
+      },
+      {
+        "id": "B287C7B0-609F-430D-8F17-D3459EFB8FBA",
+        "name": "Aritzia"
+      },
+      {
+        "id": "700F9C09-6BF2-4AFD-A5AA-CB316504A0E3",
+        "name": "Hudson's Bay"
+      }
+    ],
+    "trace": [
+      {
+        "step": "Read audience taste tags",
+        "path": "/v2/insights",
+        "params": {
+          "filter.type": "urn:tag",
+          "filter.tag.types": "urn:tag:genre:place",
+          "signal.interests.entities": "FAD69E17-B23A-41C8-B25A-EBBEA04F4658,218AD775-5013-4D5A-84E9-9D308A68AFEF,4A68BC83-0A82-42CC-9A76-2E284F0DD2B9",
+          "take": "8"
+        },
+        "status": "ok",
+        "count": 8
+      },
+      {
+        "step": "Read reference demographic affinity",
+        "path": "/v2/insights",
+        "params": {
+          "filter.type": "urn:demographics",
+          "signal.interests.entities": "FAD69E17-B23A-41C8-B25A-EBBEA04F4658,218AD775-5013-4D5A-84E9-9D308A68AFEF,4A68BC83-0A82-42CC-9A76-2E284F0DD2B9"
+        },
+        "status": "ok",
+        "count": 3
+      },
+      {
+        "step": "Find cross-brand audience connections",
+        "path": "/v2/insights",
+        "params": {
+          "filter.type": "urn:entity:brand",
+          "signal.interests.entities": "FAD69E17-B23A-41C8-B25A-EBBEA04F4658,218AD775-5013-4D5A-84E9-9D308A68AFEF,4A68BC83-0A82-42CC-9A76-2E284F0DD2B9",
+          "filter.exclude.entities": "FAD69E17-B23A-41C8-B25A-EBBEA04F4658,218AD775-5013-4D5A-84E9-9D308A68AFEF,4A68BC83-0A82-42CC-9A76-2E284F0DD2B9",
+          "take": "5"
+        },
+        "status": "ok",
+        "count": 5
+      }
+    ],
+    "unavailable": []
+  },
+  "comparisons": [
+    {
+      "areaId": "area-3",
+      "venue": "Kitaya Japanese Takeout",
+      "shared": [
+        "Place",
+        "Restaurant",
+        "Lunch",
+        "Dinner",
+        "Dessert",
+        "Sweet",
+        "Vegetarian",
+        "Gluten Free"
+      ],
+      "referenceTags": [
+        "Alcohol",
+        "Cocktails",
+        "Breakfast",
+        "Quick bite",
+        "Place",
+        "Coffee Shop",
+        "Dessert",
+        "Wine"
+      ],
+      "venueTags": [
+        "Lunch",
+        "Dinner",
+        "Restaurant",
+        "Japanese",
+        "Place",
+        "Dessert",
+        "Japanese Restaurant",
+        "Sushi Takeaway"
+      ],
+      "trace": [
+        {
+          "step": "Compare reference and nearby-venue tags",
+          "path": "/v2/analysis/compare",
+          "params": {
+            "a.signal.interests.entities": "FAD69E17-B23A-41C8-B25A-EBBEA04F4658,218AD775-5013-4D5A-84E9-9D308A68AFEF,4A68BC83-0A82-42CC-9A76-2E284F0DD2B9",
+            "b.signal.interests.entities": "E3B92DC3-4ADF-4A02-BC24-8A6C55CF70FD"
+          },
+          "status": "ok",
+          "count": 13
+        }
+      ]
+    }
+  ],
+  "research": {
+    "area-3": {
+      "text": "This \"lifestyle centre\" is described as a mixed-use development with retail, dining, and entertainment, and is undergoing expansion with new residential units and retail spaces.\n\nRecent zoning changes in Toronto aim to allow small shops and cafes in some residential neighborhoods, but this is subject to specific criteria, such as corner lots, proximity to parks or schools, or abutting commercially zoned lots.\n\nThe proposed concept, which includes an indoor playground, would likely be classified as a \"recreation use\" or \"amusement establishment\" by the city, which has distinct zoning and permitting requirements.\n\nThese types of businesses typically need commercial zoning, and a change of use permit would likely be required if the space was previously for retail or warehouse.\n\nOther cafes with indoor playgrounds in Toronto, such as The Willow Play Cafe and Pinocchio Play Café, offer a mix of cafe items and play areas for children.\n\nKira Kids Cafe also features refreshments and snacks that are nut-free.\n\nThe Shops at Don Mills offers on-site parking in surface lots and a multi-level parkade.\n\nThe area also has public transit routes.\n\nThe Shops at Don Mills is described as a \"lifestyle centre\" with a network of internal streets, creating a pedestrian-friendly atmosphere.\n\nInvestigate the available floor area and ceiling height, as these are critical for an indoor playground.\n\nConfirm the number of exits and washrooms to understand the potential occupant load under the Ontario Building Code and Fire Code.\n\nInquire about the process for obtaining a change-of-use permit, a building permit for any alterations, and a business license for an \"amusement establishment\" from the City of Toronto, as well as health permits if food is served.",
+      "createdAt": "2026-10-23T20:25:19.644Z",
+      "sources": [
+        {
+          "title": "mapcarta.com",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHr-yhL2nELcrw18c-jjxGLljqEmxTpzHrYQnD3XgqyXddrgOStQoIJyQlgGO4XReYmHa5p5h2J2XcYDn-5GgmswfPbJn_RmvJjWrI7OkTu36QbktbGGM08jA=="
+        },
+        {
+          "title": "wikipedia.org",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG4FP5ywVtCtzDyHe6Ah7FjsLctP-VEFrrWA6TtXVFIHDdBKbL-BwkY7ItWGYQ4ymVT935vJoKK_N7rYWbHuRsLGPopkuf75CC2DpbQk4ki6r97rMnCDcwNIcm2PkkEVfOR-sZCWTF3g7VaIg=="
+        },
+        {
+          "title": "cadillacfairview.com",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHDwG-5NUsCiMFaz18qGSKW6qEnJEzQRaJtsxD0ul5KjwGrpQBB5bbtEhMYWsQPPtHedT7eEXNtjFdczK8p0nJ61c1l3vaSH4DQXcezdN7IleWKC_HvDjG01Yv-98HCKBrmpIATZ4wxY8mgG2JYLGLUdnCtaHgSjB9nn2dwdt57"
+        },
+        {
+          "title": "loopnet.ca",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFc0T3CY8L3Gys2NvjoMNbPqlV5Q-9V41Y_ds-dF5VJ0PvHP_BihNVKUf5Ba6xaRblf6x-bJeBLvNlfJ9SQXppc5M2X55BMlLroxjsSm4slBnKZnTj0GoNXpkh5zyULVXrdYZhGrdjdf7WhAH-QqeRB4E7JMUXPW4lsMF5scZ9irZOumJuM"
+        },
+        {
+          "title": "toronto.ca",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQECMpDpTC5izBewhFu60ntfy-UtMWUyH4JHfe8cTDXSciVUAK-tkYwNT5-scHSt7PDIWI4kaM9j1EfWkOG1e5YePirJYloHqF0sacR9QUUsGzOby9yX7HVtorX_kIoqemcpUASquXckMZwhHlIybEuBmn_7ADaozOdcA4Jk65TcC0KBIAuKrdZrr2NRoNdExv-UjIwVlzEjWAUg6WjoxlBC9K8a2bNgwCWaBY_16BhPVrbW5lKW0ZTiJ82KHOY="
+        },
+        {
+          "title": "cbc.ca",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE927jlMtnpFA9M7DHgujcqJLAW-cjvya06HRCgZtPtFYGrt3JoFT-USSd-YKbw56LRyyW7NvCMe489C1vnU-ahkp0Qm_t63BWjNbU3pLL-q3p27JbI-SrFjR7IVDZ9tybIjN6u-I3DxGA5BDlAiMPvSk0G-7ixjYqBcNq8GQ3tds6paCOmTvoQdNtCGw=="
+        },
+        {
+          "title": "citynews.ca",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF3acLM5VBKG-C7TYoEvtyrc8nhbNgLSoIpDQnc6kHqKiC2XIxzdSUo5ZaeZvcL0YTuQA7AdX8T8j9SWwOa8-PpvGd-bLo9UGMIeYVNXrpSfOjbxqfa1_hnEiW-keOTX8daxGeZtvulg-Y40CSSfYhx6Ei37gEPROc0N-frQod59TNOl5kChni7QWmvdlq3_7GZj1S6CxEyLGbGjTnKXX60FWXhVeDPep0="
+        },
+        {
+          "title": "jatindua.com",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHpuzZ_QgQKmesx7J6TI8gycLhSwJEcib-71uKM6Jr05BwibXfOlnHG2nvIvSJgCRwZLVE8lI9Krgc3fgBk-LU9FnzPAW5iHC8csiUMSY7MlYoMTe68OdkBcMqh6ZltcAPIT7tTIEHL3IQUr4w4tlawAQjsTETe5g=="
+        },
+        {
+          "title": "zoningpoint.com",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFybiEwdd3owyUTbhu28etBIXwK1DN5I9OGIN_cdIHJBCo0e32c12fdY-nEkJrerFa4aFoMvEerp6-mpr1ewwa1G6RSSVjatz9bVefjKDQkAGgvCHRO5G1Jqq6yYf9Tkl-jfpdRvbyZRWQ="
+        },
+        {
+          "title": "toronto.ca",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEiG_9JrDIAam1BhMVWOn2G4ZdfA7upPLgysR-Q1Sd_zA_cZME3ugGbFqtr-Yb8ZlF3lIJE4TwL9IWsLSdXiXwW3o2hewF7qj5N7IRUroX441IvJ0_zuOlvee-MFD4rA8EA2hU3M0n2RpG3844MJgDSqyIVU_JWcrvFhrcFv5MWPqWbbNFf8lhEKwI79mKwIhbpv0Nn"
+        },
+        {
+          "title": "thewillowplaycafe.ca",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGGPGIZfrfIE2Kwym23Kspt2inxaIjuH7rDGTVgyyFPfYN6Wx0n_DnXsMZVvzmoyDp81lvt-JJc6xbu0j50i6ZSO97Klum9mKGy1SCTu1EZY1fqldLszGBk1nohfQ=="
+        },
+        {
+          "title": "pinocchioplaycafe.com",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEKq5KPd3jaigPbt42gZK_9_NukG-B-enV4Fu6VVLU04spL3CqJZycy58NLXjvq30UbvlO-dUcnOJPxckHhGdWvM4iuNde-JWQou_C1Way5YqtB5LlA3vhawg=="
+        },
+        {
+          "title": "kirakidscafe.com",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQECBvnxh_q30bTnDDuwreB4kyQ1Dwe99naPT211FC7zPjgUz3Z22Akk17jwavAxMykIgFS8uOo0kCfV2iPGG1FXWTt0RerqnSU32TX7tCjOR_S_q44="
+        },
+        {
+          "title": "pitaya.kids",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEgjh6WpzTmKh08hCWWn366GP8Y-FAQohfBKNEgXf49K2QILeYPGnStGapB8soUjlJbe91W6j01P2kfLzcLT18l-tw154EK8LdjajTFwDAiTRPbTvSJxI0BxWmIfogAC1pZjHdPTP6g2hQOETyS17QIVad81wiyxbSg1ZLrPaah4fSckVF_RsAeHbCH2iV6x0KBpbUXoA=="
+        },
+        {
+          "title": "dcindoorplayground.com",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF0J6B0mrUx1F4N4oxLI3xWxcAFHfDd093QqSqordcvaeoc0SExIojVSMImrzpQEIOhxpWQXVL4NSuALJavmq5k3r-H2QhLmNhKRLqYJDYH542-daIK-q1q4D9bz--QgfAcIiUePg_AjFR_AO-k891o7Qsa9cVfOUuFeNrHKZMt7nhI-FW1ylzKxs81Od_FgVRdqApqu8us6OAj"
+        }
+      ],
+      "citations": [
+        {
+          "end": 177,
+          "sourceIndices": [
+            0,
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "end": 412,
+          "sourceIndices": [
+            4,
+            5,
+            6
+          ]
+        },
+        {
+          "end": 618,
+          "sourceIndices": [
+            7,
+            8,
+            9
+          ]
+        },
+        {
+          "end": 784,
+          "sourceIndices": [
+            7,
+            8
+          ]
+        },
+        {
+          "end": 942,
+          "sourceIndices": [
+            10,
+            11
+          ]
+        },
+        {
+          "end": 1015,
+          "sourceIndices": [
+            12
+          ]
+        },
+        {
+          "end": 1105,
+          "sourceIndices": [
+            1
+          ]
+        },
+        {
+          "end": 1147,
+          "sourceIndices": [
+            3
+          ]
+        },
+        {
+          "end": 1287,
+          "sourceIndices": [
+            1
+          ]
+        },
+        {
+          "end": 1393,
+          "sourceIndices": [
+            13,
+            7
+          ]
+        },
+        {
+          "end": 1525,
+          "sourceIndices": [
+            7
+          ]
+        },
+        {
+          "end": 1756,
+          "sourceIndices": [
+            7,
+            8,
+            14,
+            9
+          ]
+        }
+      ],
+      "queries": [
+        "commercial streets near 43.723526, -79.33708 Toronto",
+        "Don Mills Road commercial establishments Toronto",
+        "cafes with indoor playgrounds Toronto",
+        "zoning for cafes with indoor playgrounds Toronto",
+        "Toronto city planning cafe indoor playground permits"
+      ],
+      "searchSuggestionsHtml": "<style>\n.container {\n  align-items: center;\n  border-radius: 8px;\n  display: flex;\n  font-family: Google Sans, Roboto, sans-serif;\n  font-size: 14px;\n  line-height: 20px;\n  padding: 8px 12px;\n}\n.chip {\n  display: inline-block;\n  border: solid 1px;\n  border-radius: 16px;\n  min-width: 14px;\n  padding: 5px 16px;\n  text-align: center;\n  user-select: none;\n  margin: 0 8px;\n  -webkit-tap-highlight-color: transparent;\n}\n.carousel {\n  overflow: auto;\n  scrollbar-width: none;\n  white-space: nowrap;\n  margin-right: -12px;\n}\n.headline {\n  display: flex;\n  margin-right: 4px;\n}\n.gradient-container {\n  position: relative;\n}\n.gradient {\n  position: absolute;\n  transform: translate(3px, -9px);\n  height: 36px;\n  width: 9px;\n}\n@media (prefers-color-scheme: light) {\n  .container {\n    background-color: #fafafa;\n    box-shadow: 0 0 0 1px #0000000f;\n  }\n  .headline-label {\n    color: #1f1f1f;\n  }\n  .chip {\n    background-color: #ffffff;\n    border-color: #d2d2d2;\n    color: #5e5e5e;\n    text-decoration: none;\n  }\n  .chip:hover {\n    background-color: #f2f2f2;\n  }\n  .chip:focus {\n    background-color: #f2f2f2;\n  }\n  .chip:active {\n    background-color: #d8d8d8;\n    border-color: #b6b6b6;\n  }\n  .logo-dark {\n    display: none;\n  }\n  .gradient {\n    background: linear-gradient(90deg, #fafafa 15%, #fafafa00 100%);\n  }\n}\n@media (prefers-color-scheme: dark) {\n  .container {\n    background-color: #1f1f1f;\n    box-shadow: 0 0 0 1px #ffffff26;\n  }\n  .headline-label {\n    color: #fff;\n  }\n  .chip {\n    background-color: #2c2c2c;\n    border-color: #3c4043;\n    color: #fff;\n    text-decoration: none;\n  }\n  .chip:hover {\n    background-color: #353536;\n  }\n  .chip:focus {\n    background-color: #353536;\n  }\n  .chip:active {\n    background-color: #464849;\n    border-color: #53575b;\n  }\n  .logo-light {\n    display: none;\n  }\n  .gradient {\n    background: linear-gradient(90deg, #1f1f1f 15%, #1f1f1f00 100%);\n  }\n}\n</style>\n<div class=\"container\">\n  <div class=\"headline\">\n    <svg class=\"logo-light\" width=\"18\" height=\"18\" viewBox=\"9 9 35 35\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n      <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M42.8622 27.0064C42.8622 25.7839 42.7525 24.6084 42.5487 23.4799H26.3109V30.1568H35.5897C35.1821 32.3041 33.9596 34.1222 32.1258 35.3448V39.6864H37.7213C40.9814 36.677 42.8622 32.2571 42.8622 27.0064V27.0064Z\" fill=\"#4285F4\"/>\n      <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M26.3109 43.8555C30.9659 43.8555 34.8687 42.3195 37.7213 39.6863L32.1258 35.3447C30.5898 36.3792 28.6306 37.0061 26.3109 37.0061C21.8282 37.0061 18.0195 33.9811 16.6559 29.906H10.9194V34.3573C13.7563 39.9841 19.5712 43.8555 26.3109 43.8555V43.8555Z\" fill=\"#34A853\"/>\n      <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M16.6559 29.8904C16.3111 28.8559 16.1074 27.7588 16.1074 26.6146C16.1074 25.4704 16.3111 24.3733 16.6559 23.3388V18.8875H10.9194C9.74388 21.2072 9.06992 23.8247 9.06992 26.6146C9.06992 29.4045 9.74388 32.022 10.9194 34.3417L15.3864 30.8621L16.6559 29.8904V29.8904Z\" fill=\"#FBBC05\"/>\n      <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M26.3109 16.2386C28.85 16.2386 31.107 17.1164 32.9095 18.8091L37.8466 13.8719C34.853 11.082 30.9659 9.3736 26.3109 9.3736C19.5712 9.3736 13.7563 13.245 10.9194 18.8875L16.6559 23.3388C18.0195 19.2636 21.8282 16.2386 26.3109 16.2386V16.2386Z\" fill=\"#EA4335\"/>\n    </svg>\n    <svg class=\"logo-dark\" width=\"18\" height=\"18\" viewBox=\"0 0 48 48\" xmlns=\"http://www.w3.org/2000/svg\">\n      <circle cx=\"24\" cy=\"23\" fill=\"#FFF\" r=\"22\"/>\n      <path d=\"M33.76 34.26c2.75-2.56 4.49-6.37 4.49-11.26 0-.89-.08-1.84-.29-3H24.01v5.99h8.03c-.4 2.02-1.5 3.56-3.07 4.56v.75l3.91 2.97h.88z\" fill=\"#4285F4\"/>\n      <path d=\"M15.58 25.77A8.845 8.845 0 0 0 24 31.86c1.92 0 3.62-.46 4.97-1.31l4.79 3.71C31.14 36.7 27.65 38 24 38c-5.93 0-11.01-3.4-13.45-8.36l.17-1.01 4.06-2.85h.8z\" fill=\"#34A853\"/>\n      <path d=\"M15.59 20.21a8.864 8.864 0 0 0 0 5.58l-5.03 3.86c-.98-2-1.53-4.25-1.53-6.64 0-2.39.55-4.64 1.53-6.64l1-.22 3.81 2.98.22 1.08z\" fill=\"#FBBC05\"/>\n      <path d=\"M24 14.14c2.11 0 4.02.75 5.52 1.98l4.36-4.36C31.22 9.43 27.81 8 24 8c-5.93 0-11.01 3.4-13.45 8.36l5.03 3.85A8.86 8.86 0 0 1 24 14.14z\" fill=\"#EA4335\"/>\n    </svg>\n    <div class=\"gradient-container\"><div class=\"gradient\"></div></div>\n  </div>\n  <div class=\"carousel\">\n    <a class=\"chip\" href=\"https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGWhHLUQN9YSSgwxzAsBXabsDIZnrxezT0G_PSLxNive8hb7Gmst8vo4BfFZIxZiVU_rYIuG7YAE3VTd46aW8AUA7vfzUHiQJJGPYgRycMVhVW-5ZYQHN0ZqkzDRZPCVy5h15lhRRAhXQqSt1OlC7XTYxh0RJuv8Tg-LRoVQI3guGkB-zqLXBcL_aLz-bcEQA3asVrsToOsClPa-nfkyJSR0NvES0ud8_FwPjtG-yLd8SVGcw==\">zoning for cafes with indoor playgrounds Toronto</a>\n    <a class=\"chip\" href=\"https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFK0q2A9D01vkyKy6Ugf5IayxLqGBzD0vBLhqhYRH2-li2Wd7zXp-474KU0KJH9kyxX-xOaZwDlrbok0dU7bpXIbiCCeYMqEvvgKW2xt_knIzPwJblHzoHFBp3pK1Tp2QKia8aidEn33gBapuKsmP66TWuC7cB4f5h8xU6Z_5qUhL7iDmKpAcElsC7Tl6eatpTfusx-fTMgKU8LXLQt9B9XBZP2hksodoU=\">cafes with indoor playgrounds Toronto</a>\n    <a class=\"chip\" href=\"https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGfxXMsyH2CgnH227f00MHDxNuWrzpUOXClKQ-pLJZ4n-iaxg5hMGo6azkNL6lHcCL0zDpdbs_QGOuH2FGx2OD3e2fytE2ASXeXk-Vc38Ge7TlUO27KOGb0lpPbWzpb6Bo6xQq9wxJhzUyw0UkywtvYwac769M0LGWKJtj2hCcm1p5F5mwsRaMKxug-HGX3-i5i_gxKrLd2Ywe1-PwIrbay5XFP8lUm3784IqCDWkDJ0j2fmeSzcfry\">commercial streets near 43.723526, -79.33708 Toronto</a>\n    <a class=\"chip\" href=\"https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEbfGku2UW51BKGNkIXguqtT6-1No3CU-eCb64G7VmdboU7D_BpUIrithZaENsz5JQoiIrZP8MRxn8BkNHGoKBRstkdNiaB8e5WFp1HFZFbFhDgYGmOixUIQGTLbcnsx_vzbr3BTaq8QPciOwK4w3EiH4AAkE986PXwRIrxT9ow4FvEFjYYHOEbbzadUiaY2UQiEAuoypgnenH_u2jhlIKDNBX8ZSwhaStWtOYfTgOq2pRDuw==\">Don Mills Road commercial establishments Toronto</a>\n    <a class=\"chip\" href=\"https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGLOEt64iq3obljkhN58z1i9BmhGSI8WkfLRJQyB-2ONtGVopLICoDvGp8V37VwEfMTUsQabBIrPNNhrCQXXIIYDfxUAfZi-73mTbT1caDvvmDA-f2UlcTV8i7893N880Yo8jjlgxHbaVdBdsqVajvu-tbZXp_rxXRwjVOGtJCDEn0PDiY7qm4RxpzLbgpMQpJil1xG5YmOisaneocjlcTH_ItmNojomzuRhptX8JIWaSNGfm66M5wO\">Toronto city planning cafe indoor playground permits</a>\n  </div>\n</div>\n",
+      "status": "partial",
+      "notice": "Some sentences were omitted because evidence checks or citation alignment failed. Only retained cited passages are shown.",
+      "omittedSentences": 24,
+      "validationRules": [
+        "ungrounded-sentence"
+      ]
+    }
+  },
+  "assessment": {
+    "visitFirst": "area-3",
+    "reason": "Near Banbury-Don Mills is ranked 3 of 3 by local rank contrast. Visit to investigate the cited practical detail below; this does not change the taste ranking. This is a shortlist comparison, not a business-success forecast.",
+    "tradeOff": "Taste evidence does not establish zoning, permits, lease terms or permission for the proposed use.",
+    "nextAction": "Confirm the proposed use with the city and property owner. Do not treat a map point as an approved unit.",
+    "practicalEvidence": {
+      "quote": "Inquire about the process for obtaining a change-of-use permit, a building permit for any alterations, and a business license for an \"amusement establishment\" from the City of Toronto, as well as health permits if food is served.",
+      "title": "dcindoorplayground.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF0J6B0mrUx1F4N4oxLI3xWxcAFHfDd093QqSqordcvaeoc0SExIojVSMImrzpQEIOhxpWQXVL4NSuALJavmq5k3r-H2QhLmNhKRLqYJDYH542-daIK-q1q4D9bz--QgfAcIiUePg_AjFR_AO-k891o7Qsa9cVfOUuFeNrHKZMt7nhI-FW1ylzKxs81Od_FgVRdqApqu8us6OAj"
+    }
+  },
+  "steps": [
+    {
+      "id": "step-1",
+      "tool": "explore_areas",
+      "title": "Mapping audience fit against popularity",
+      "status": "complete",
+      "durationMs": 4883
+    },
+    {
+      "id": "step-2",
+      "tool": "audience_profile",
+      "title": "Reading audience taste and demographic signals",
+      "status": "complete",
+      "durationMs": 466
+    },
+    {
+      "id": "step-3",
+      "tool": "compare_audiences",
+      "title": "Comparing an actual nearby venue’s audience tags",
+      "status": "complete",
+      "durationMs": 42
+    },
+    {
+      "id": "step-4",
+      "tool": "research_area",
+      "title": "Researching the selected area’s practical trade-offs",
+      "status": "complete",
+      "notice": "Some sentences were omitted because evidence checks or citation alignment failed. Only retained cited passages are shown.",
+      "durationMs": 6602
+    }
+  ],
+  "decisionIssues": [],
+  "selection": {
+    "visitFirst": "area-3",
+    "reasonCode": "practical-follow-up",
+    "checkFocus": "permissions",
+    "practicalEvidence": {
+      "quote": "Inquire about the process for obtaining a change-of-use permit, a building permit for any alterations, and a business license for an \"amusement establishment\" from the City of Toronto, as well as health permits if food is served.",
+      "sourceIndex": 14
+    }
+  },
+  "decisionContract": "structured-v2",
+  "decisionOrigin": "agent",
+  "createdAt": "2026-10-23T20:25:20.827Z"
+}

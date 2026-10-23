@@ -1,0 +1,10 @@
+{
+  "redPreview": "https://collab-scout-fkzbg80ya-circuitstudioais-projects.vercel.app",
+  "redObservation": "Full hosted demo and then sources-only notice fixture reproduced horizontal overflow at viewport width390. Long research notices inherited white-space:nowrap from the tool-duration small element.",
+  "fixCommit": "a467905a5bda7592ff89a4d472d88926d8d7721e",
+  "fix": "Separate flex detail/notice and duration, allow notice wrapping, constrain flex minimum width.",
+  "greenPreview": "https://collab-scout-gzr151629-circuitstudioais-projects.vercel.app",
+  "greenFixtures": "hosted-fixtures/validation.json",
+  "greenEndToEnd": "hosted-demo/ui-validation.json",
+  "backendChangeAfterFiveRunBatch": false
+}

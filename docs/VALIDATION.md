@@ -1,5 +1,9 @@
 # Sitebrief validation
 
+## Cited research and visit-order recovery
+
+PR #8 now also retains safe cited passages, labels sources-only recovery, exposes safe research failures and requires area-specific cited facts for lower-ranked visits. Five fresh uncached runs at application commit `bb50c40` returned live cited research and rank-one visits; all reports were partial, not unfiltered narratives. The final UI at `a467905` also passed hosted desktop/mobile and download checks after correcting a long-notice overflow. Tests/lint/build passed. [Current receipts, exact preview URL, iteration history and limitations](research-recovery/README.md). This PR remains unmerged; production is still the PR #7 release.
+
 ## Cold-start demo recovery review
 
 PR #7 was merged as `94c130c` on October23. Its three-fix preview receipts remain below. The follow-up cold-start branch adds deterministic ranking-only recovery and an explicitly dated saved canonical demo. Current receipts are in [cold-demo](cold-demo/README.md). The follow-up review preview is https://collab-scout-odq1cmq4f-circuitstudioais-projects.vercel.app. It is a separate unmerged review change; quota remains deferred.

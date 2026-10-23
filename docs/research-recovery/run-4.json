@@ -1,0 +1,1074 @@
+{
+  "exploration": {
+    "createdAt": "2026-10-23T20:28:58.951Z",
+    "brief": {
+      "city": "Toronto, Ontario, Canada",
+      "center": {
+        "latitude": 43.65348,
+        "longitude": -79.38393
+      },
+      "radiusKm": 10,
+      "minimumPopularityPercentile": 20,
+      "concept": "A new specialty coffee café",
+      "references": [
+        "Blue Bottle Coffee"
+      ]
+    },
+    "references": [
+      {
+        "id": "22B1BC87-CDFE-4340-86F8-8E0E6E1E6A7D",
+        "name": "Blue Bottle Coffee",
+        "resolution": "brand"
+      }
+    ],
+    "areas": [
+      {
+        "latitude": 43.67546,
+        "longitude": -79.30824,
+        "affinity": 0.8915331260464003,
+        "popularity": 0.28426213824443913,
+        "affinityRank": 0.7059662179484937,
+        "audiencePercentile": 84.30014091122592,
+        "popularityPercentile": 20.150305307656176,
+        "contrast": 64.14983560356976,
+        "id": "area-1",
+        "name": "Near East End-Danforth",
+        "address": "2 Heyworth Crescent, East End-Danforth, Toronto, Ontario, Canada",
+        "nameAvailable": true,
+        "lowerCount": 3618,
+        "pointCount": 4292,
+        "distanceKm": 6.5605936897723165,
+        "venues": [
+          {
+            "id": "CEFAAED0-3362-4A44-A0C6-D1DA121A787D",
+            "name": "Limon Beaches",
+            "address": "1968 Queen St E Toronto, ON M4L 1H8 Canada",
+            "affinity": 0.8263317809645151
+          },
+          {
+            "id": "EA204173-31EA-4C0F-AE4F-5DFDBDA47B92",
+            "name": "Lazy Daisy's Cafe",
+            "address": "1515 Gerrard St E Toronto, ON M4L 2A4 Canada",
+            "affinity": 0.8237892039408043
+          },
+          {
+            "id": "85478D5F-9A65-4D8E-B324-B8E7E234D7B9",
+            "name": "Bodega Henriette",
+            "address": "1801 Gerrard St E Toronto, ON M4L 2B4 Canada",
+            "affinity": 0.8115536178012317
+          },
+          {
+            "id": "70B7D8FB-0F5B-4555-8784-74C5F87451CD",
+            "name": "Bud's Coffee",
+            "address": "1966 1/2 Queen St E Toronto, ON M4L 1H8 Canada",
+            "affinity": 0.8081303724895463
+          },
+          {
+            "id": "00DD0EE5-D52E-4BC4-974D-8206B9F77575",
+            "name": "The Stone Lion",
+            "address": "1958 Queen St E Toronto, ON M4L 1H7 Canada",
+            "affinity": 0.7983915971127942
+          }
+        ],
+        "contextAvailable": true
+      },
+      {
+        "latitude": 43.686447,
+        "longitude": -79.49089,
+        "affinity": 0.893207366658694,
+        "popularity": 0.29347046161205453,
+        "affinityRank": 0.7060029875011153,
+        "audiencePercentile": 84.48802254579614,
+        "popularityPercentile": 20.784405824330673,
+        "contrast": 63.703616721465465,
+        "id": "area-2",
+        "name": "Near Mount Dennis",
+        "address": "3545 Eglinton Avenue West, Mount Dennis, Toronto, Ontario, Canada",
+        "nameAvailable": true,
+        "lowerCount": 3626,
+        "pointCount": 4292,
+        "distanceKm": 9.351301562801785,
+        "venues": [
+          {
+            "id": "3B399783-5E9B-4612-8243-30AB7B462402",
+            "name": "supercoffee",
+            "address": "1148 Weston Rd York, ON M6N 3S4 Canada",
+            "affinity": 0.7814760375596226
+          },
+          {
+            "id": "67F3C9BA-FD37-48D1-99C2-C85500EF18B8",
+            "name": "V's Caribbean Restaurant Inc.",
+            "address": "1221 Weston Rd York, ON M6M 4P7 Canada",
+            "affinity": 0.7520905490431038
+          },
+          {
+            "id": "479C3044-E3A9-4200-B918-E266AF0B013F",
+            "name": "First Class Delites",
+            "address": "1156 Weston Rd York, ON M6M 4P4 Canada",
+            "affinity": 0.7402867013969776
+          },
+          {
+            "id": "56D88B9C-1666-4D0D-975B-3CEA2ABC8554",
+            "name": "The Irish Rose Pub",
+            "address": "1095 Weston Rd York, ON M6N 3S3 Canada",
+            "affinity": 0.7360574022965661
+          },
+          {
+            "id": "8049DC89-6D81-4B43-912A-28E4C4892D01",
+            "name": "KFC",
+            "address": "1300 Weston Rd York, ON M6M 4R4 Canada",
+            "affinity": 0.724814050042129
+          }
+        ],
+        "contextAvailable": true
+      },
+      {
+        "latitude": 43.685074,
+        "longitude": -79.34807,
+        "affinity": 0.8729968906960057,
+        "popularity": 0.33293470461612057,
+        "affinityRank": 0.7055751878984975,
+        "audiencePercentile": 82.70314701737905,
+        "popularityPercentile": 24.048849224988256,
+        "contrast": 58.65429779239079,
+        "id": "area-3",
+        "name": "Near Broadview North",
+        "address": "28 East York Avenue, Broadview North, Toronto, Ontario, Canada",
+        "nameAvailable": true,
+        "lowerCount": 3550,
+        "pointCount": 4292,
+        "distanceKm": 4.545420126174214,
+        "venues": [
+          {
+            "id": "3C1FD51C-7C60-4BC7-9538-842CF5E1C6CA",
+            "name": "SUPERNOVA Coffee",
+            "address": "897 Broadview Ave Toronto, ON M4K 2P9 Canada",
+            "affinity": 0.8357647396809131
+          },
+          {
+            "id": "49F365A7-B6F5-4577-BB5C-E4A839773B7C",
+            "name": "hanamaru market and bento",
+            "address": "862 Pape Ave East York, ON M4K 3T8 Canada",
+            "affinity": 0.823780455327015
+          },
+          {
+            "id": "C238D892-2609-44CB-97D5-87D2CD16A767",
+            "name": "Goat Coffee Co.",
+            "address": "893 Pape Ave East York, ON M4K 3V1 Canada",
+            "affinity": 0.8096699608142509
+          },
+          {
+            "id": "B977A9EA-1CCC-4E4A-A58E-95A387BE50C1",
+            "name": "Dolce Gelato",
+            "address": "414 Danforth Ave Toronto, ON M4K 1P3 Canada",
+            "affinity": 0.8094355105749018
+          },
+          {
+            "id": "A42CED98-2106-4EE6-971B-1F21DCDCDE8B",
+            "name": "Pantheon Restaurant",
+            "address": "407 Danforth Ave Toronto, ON M4K 1P1 Canada",
+            "affinity": 0.8087334806521315
+          }
+        ],
+        "contextAvailable": true
+      }
+    ],
+    "trace": [
+      {
+        "step": "Find Blue Bottle Coffee",
+        "path": "/search",
+        "params": {
+          "query": "Blue Bottle Coffee",
+          "take": "10"
+        },
+        "status": "ok",
+        "count": 10
+      },
+      {
+        "step": "Find the Blue Bottle Coffee brand, not an outlet",
+        "path": "/search",
+        "params": {
+          "query": "Blue Bottle Coffee",
+          "types": "urn:entity:brand",
+          "take": "5"
+        },
+        "status": "ok",
+        "count": 5
+      },
+      {
+        "step": "Map audience taste across the city",
+        "path": "/v2/insights",
+        "params": {
+          "filter.type": "urn:heatmap",
+          "filter.location.query": "Toronto, Ontario, Canada",
+          "signal.interests.entities": "22B1BC87-CDFE-4340-86F8-8E0E6E1E6A7D",
+          "signal.interests.tags": "urn:tag:genre:place:restaurant"
+        },
+        "status": "ok",
+        "count": 8363
+      },
+      {
+        "step": "Nearby dining for area 1",
+        "path": "/v2/insights",
+        "params": {
+          "filter.type": "urn:entity:place",
+          "filter.location": "POINT(-79.30824 43.67546)",
+          "filter.location.radius": "1000",
+          "filter.tags": "urn:tag:genre:place:restaurant",
+          "signal.interests.entities": "22B1BC87-CDFE-4340-86F8-8E0E6E1E6A7D",
+          "take": "5"
+        },
+        "status": "ok",
+        "count": 5
+      },
+      {
+        "step": "Locate area 1 on OpenStreetMap",
+        "path": "Photon /reverse",
+        "params": {
+          "latitude": "43.67546",
+          "longitude": "-79.30824"
+        },
+        "status": "ok",
+        "count": 1
+      },
+      {
+        "step": "Nearby dining for area 2",
+        "path": "/v2/insights",
+        "params": {
+          "filter.type": "urn:entity:place",
+          "filter.location": "POINT(-79.49089 43.686447)",
+          "filter.location.radius": "1000",
+          "filter.tags": "urn:tag:genre:place:restaurant",
+          "signal.interests.entities": "22B1BC87-CDFE-4340-86F8-8E0E6E1E6A7D",
+          "take": "5"
+        },
+        "status": "ok",
+        "count": 5
+      },
+      {
+        "step": "Locate area 2 on OpenStreetMap",
+        "path": "Photon /reverse",
+        "params": {
+          "latitude": "43.686447",
+          "longitude": "-79.49089"
+        },
+        "status": "ok",
+        "count": 1
+      },
+      {
+        "step": "Nearby dining for area 3",
+        "path": "/v2/insights",
+        "params": {
+          "filter.type": "urn:entity:place",
+          "filter.location": "POINT(-79.34807 43.685074)",
+          "filter.location.radius": "1000",
+          "filter.tags": "urn:tag:genre:place:restaurant",
+          "signal.interests.entities": "22B1BC87-CDFE-4340-86F8-8E0E6E1E6A7D",
+          "take": "5"
+        },
+        "status": "ok",
+        "count": 5
+      },
+      {
+        "step": "Locate area 3 on OpenStreetMap",
+        "path": "Photon /reverse",
+        "params": {
+          "latitude": "43.685074",
+          "longitude": "-79.34807"
+        },
+        "status": "ok",
+        "count": 1
+      }
+    ],
+    "separationKm": 2,
+    "allTied": false,
+    "totalReturned": 8363,
+    "rejected": [],
+    "rejectedCount": 0,
+    "eligibleCount": 4292,
+    "rankingMethod": "contrast",
+    "popularityCoverage": 0.9920782851817335,
+    "popularityRejectedCount": 885,
+    "screenedCount": 1257,
+    "cellCount": 4292
+  },
+  "profile": {
+    "tags": [
+      {
+        "name": "Coffee shop",
+        "affinity": 1
+      },
+      {
+        "name": "Cafe",
+        "affinity": 0.9984076433121019
+      },
+      {
+        "name": "French",
+        "affinity": 0.9968152866242038
+      },
+      {
+        "name": "Restaurant",
+        "affinity": 0.9936305732484076
+      },
+      {
+        "name": "Breakfast",
+        "affinity": 0.9920382165605095
+      },
+      {
+        "name": "Coffee store",
+        "affinity": 0.9888535031847133
+      },
+      {
+        "name": "European",
+        "affinity": 0.9872611464968153
+      },
+      {
+        "name": "Brunch",
+        "affinity": 0.9840764331210191
+      }
+    ],
+    "ageSignals": [
+      {
+        "referenceId": "22B1BC87-CDFE-4340-86F8-8E0E6E1E6A7D",
+        "referenceName": "Blue Bottle Coffee",
+        "bands": [
+          {
+            "name": "24_and_younger",
+            "score": -0.04
+          },
+          {
+            "name": "25_to_29",
+            "score": -0.28
+          },
+          {
+            "name": "30_to_34",
+            "score": 0.30000000000000004
+          },
+          {
+            "name": "35_to_44",
+            "score": 0.2
+          },
+          {
+            "name": "45_to_54",
+            "score": -0.56
+          },
+          {
+            "name": "55_and_older",
+            "score": 0.01
+          }
+        ]
+      }
+    ],
+    "relatedBrands": [
+      {
+        "id": "7BD8B696-1DFF-4EE9-80A1-D4F697FD724F",
+        "name": "Maxwell House Coffee"
+      },
+      {
+        "id": "371E7897-B3B4-403A-B5BE-9CBF231A8979",
+        "name": "Verve Coffee Roasters"
+      },
+      {
+        "id": "E6BC1B43-71EA-4CAD-9CF5-BCADD6951F31",
+        "name": "Stumptown Coffee Roasters"
+      },
+      {
+        "id": "A9A2219F-AF51-4A3A-8484-00F5115E3143",
+        "name": "Ninety Plus Coffee"
+      },
+      {
+        "id": "CA3E7F67-1B98-4BFD-AF0A-6A77E40D656B",
+        "name": "Mistobox Coffee"
+      }
+    ],
+    "trace": [
+      {
+        "step": "Read audience taste tags",
+        "path": "/v2/insights",
+        "params": {
+          "filter.type": "urn:tag",
+          "filter.tag.types": "urn:tag:genre:place",
+          "signal.interests.entities": "22B1BC87-CDFE-4340-86F8-8E0E6E1E6A7D",
+          "take": "8"
+        },
+        "status": "ok",
+        "count": 8
+      },
+      {
+        "step": "Read reference demographic affinity",
+        "path": "/v2/insights",
+        "params": {
+          "filter.type": "urn:demographics",
+          "signal.interests.entities": "22B1BC87-CDFE-4340-86F8-8E0E6E1E6A7D"
+        },
+        "status": "ok",
+        "count": 1
+      },
+      {
+        "step": "Find cross-brand audience connections",
+        "path": "/v2/insights",
+        "params": {
+          "filter.type": "urn:entity:brand",
+          "signal.interests.entities": "22B1BC87-CDFE-4340-86F8-8E0E6E1E6A7D",
+          "filter.exclude.entities": "22B1BC87-CDFE-4340-86F8-8E0E6E1E6A7D",
+          "take": "5"
+        },
+        "status": "ok",
+        "count": 5
+      }
+    ],
+    "unavailable": []
+  },
+  "comparisons": [
+    {
+      "areaId": "area-1",
+      "venue": "Limon Beaches",
+      "shared": [],
+      "referenceTags": [
+        "Dining"
+      ],
+      "venueTags": [
+        "Alcohol",
+        "Lunch",
+        "Israeli Restaurant",
+        "Brick-lined",
+        "Private dining room",
+        "Takeout",
+        "Brunch",
+        "Gluten free"
+      ],
+      "trace": [
+        {
+          "step": "Compare reference and nearby-venue tags",
+          "path": "/v2/analysis/compare",
+          "params": {
+            "a.signal.interests.entities": "22B1BC87-CDFE-4340-86F8-8E0E6E1E6A7D",
+            "b.signal.interests.entities": "CEFAAED0-3362-4A44-A0C6-D1DA121A787D"
+          },
+          "status": "ok",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "areaId": "area-2",
+      "venue": "supercoffee",
+      "shared": [],
+      "referenceTags": [
+        "Dining"
+      ],
+      "venueTags": [
+        "Alcohol",
+        "Inexpensive",
+        "Lunch",
+        "Brunch",
+        "LGBTQ+ friendly",
+        "OK to order just coffee",
+        "Restaurant",
+        "Order ahead"
+      ],
+      "trace": [
+        {
+          "step": "Compare reference and nearby-venue tags",
+          "path": "/v2/analysis/compare",
+          "params": {
+            "a.signal.interests.entities": "22B1BC87-CDFE-4340-86F8-8E0E6E1E6A7D",
+            "b.signal.interests.entities": "3B399783-5E9B-4612-8243-30AB7B462402"
+          },
+          "status": "ok",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "areaId": "area-3",
+      "venue": "SUPERNOVA Coffee",
+      "shared": [],
+      "referenceTags": [
+        "Dining"
+      ],
+      "venueTags": [
+        "Inexpensive",
+        "LGBTQ+ friendly",
+        "Restaurant",
+        "Breakfast",
+        "Place",
+        "Coffee Shop",
+        "Dessert",
+        "Coffee"
+      ],
+      "trace": [
+        {
+          "step": "Compare reference and nearby-venue tags",
+          "path": "/v2/analysis/compare",
+          "params": {
+            "a.signal.interests.entities": "22B1BC87-CDFE-4340-86F8-8E0E6E1E6A7D",
+            "b.signal.interests.entities": "3C1FD51C-7C60-4BC7-9538-842CF5E1C6CA"
+          },
+          "status": "ok",
+          "count": 0
+        }
+      ]
+    }
+  ],
+  "research": {
+    "area-1": {
+      "text": "Toronto has a well-established and diverse specialty coffee scene, with numerous independent roasters and cafes.\n\nQueen Street East is described as a dynamic neighborhood with boutiques, cafes, and artistic venues.\n\nGerrard Street East, particularly the \"Little India\" stretch, also features various shops and restaurants.\n\nQueen Street East has several cafes, including Simple Coffee, and Gerrard Street East has cafes like Grinder and Hailed Coffee.\n\nOther notable coffee venues in Toronto include Subtext Coffee Roasters, The Library Specialty Coffee, Pilot Coffee Roasters, and Sam James Coffee Bar, which are known for their specialty coffee.\n\nThe area is served by public transit, with Gerrard Street East having streetcar stops.\n\nQueen Street East is also a major thoroughfare.\n\nThese streets are described as active commercial areas, which would provide visibility and potential foot traffic.",
+      "createdAt": "2026-10-23T20:29:08.737Z",
+      "sources": [
+        {
+          "title": "fltrmagazine.com",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF6gQ0nV_RPy374Ulo9ljWnP-iWajb1GC4hbEV1Va4uZy72gCD_QCuktBt3Slzuck31I_t-zECofhZLsnEnMZ-ry7bhRBW03fpuUDNKIkl9x_f5WjJmSk3-vMGRMLBEBBvnp6C8xxAus4nCvmnrLzEV4CV-mYqIdlKiIPKKKSp-_IPjdQ=="
+        },
+        {
+          "title": "baristamagazine.com",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGQJafAmFchE2Qb-pgTjVmLv--PhKmWnMKSFJ5xA6omzT_5uaC81_rOiuYw9CwvSkVID-cl_b1H_n_8mf1uEeH5RE1er357i8v9W1LnQHMIUgOWOY0AQFJtbGlGwyNRu3Vst1lGeN6_W1dCrUWkLuN6CiQZW9m-ChJEBCrZRppBFKGvU1KeW8IixvO8_uyPFXQW8Q=="
+        },
+        {
+          "title": "chuonthis.ca",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG_IQGgpFaLAEJZtrCzjKOOTO5x7SkmTY4lNcMmv5OfHVszLpv6Xrq-MkXxLTQWZ3REbtVVe4aMEbv-ElPaoaoN6oJvYYTKuzOjRJcbJpwE8r43q8915QZvC7nkh0tBRhxZqry_d0GOehjJgE9VJ1B5SaTWakGeKA=="
+        },
+        {
+          "title": "handluggageonly.co.uk",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFA-Yrc_cLGv1bZOIXo6-DuU1aRzNmKsMJR0sw7OjyNWcERv050Uz9-qMm19dLXwjstu0H2SG2k-rJ4dpjflVm9C9XBHUsZpKMKhzPWOpe14NY_qKkox1oHjWMvvyzBMXyknqw0RcOt84gqZhbl3LBTgheciiTKLz8aI8CZjOwfsA_VCM1EWIiM5co="
+        },
+        {
+          "title": "countriespluscoffees.com",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEBIq1Kn7ee69BiRo0XDHRj_kdefrpaFkoHhhn68tI9ewgMlTjDJFJ1-KBkDnvPDzKkHpnFecLfG5t9z8skNJKoxpZ4FKAnZA09MQpKBgCDGqb-ooDA252YBENG2cJgDc9GVUMOgOUtPmbV9owTwrfyctq6_xwL"
+        },
+        {
+          "title": "ethicallocalmarket.com",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEuIob4Jy97N19sUpLg1tw74mAG-tiKi4aavniO8JogEpRPHpYIPwUaMLRwFExFjU5KD0tF1xMRmXhOAom2j5cioMsSOGQD0n2SlLkizDwAME98WeCI9WpdQFGiPCwAM9mGr2b2C2UvrrlXD3fv7pC46nqCw4bEAjwZMr7pnQ-K5sDOyDKVvTEkPTeXbvw="
+        },
+        {
+          "title": "destinationtoronto.com",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEopBDZyH21UxXShb8hirTJyKw6UnIrCrFH_3hoWnDE_squKHwJZduW6KL4Mq-0lY5l5MzY5AKddFL47MDPQ4kYNzRziBZ9tIfsH5Ad8r0iImaNZVTO0MGhlNmfwmy7CQDX8DvYu4XfD7dwGT62mu7AmI8VqcTS8JaLYziRg9n3kH6Ik46b2-NTHlBs"
+        },
+        {
+          "title": "torontolife.com",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEe3iy3QGIBtVYIvVcJQkEG1MzHCTHwOf8-BKMXRwTA4v28vhJpdx6IHEviTpJ5kXM_BXvwsYc3bBH1e-rqP4iHNWdT9z6VP-YdFjighQUqgO363zjSXVX-EGxA_9yT3XaqPyVnmv5EIsfH-ef2nuAZeyU6-brefoAE8uDou3v6mjiwUT43Q6LTMAkPzGgoeNZnAiyAKJeRCtFt8j2l2FvulvcnAB5Hch4nmg=="
+        },
+        {
+          "title": "destinationtoronto.com",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFz33nTR5lvMHLFQICFSi8UAFDa-pkHUVXvadpVm9iIZ1KT9Xu2zK58mfg2EB1Vqo8ib0akCue4l5SQeg12LD0Wrr1a756AKv7QWCrMIz_xGB8aoBypsSZTTP_aIlM5aQxcsNHL0Ruprxr0IOFgtNaQOpwVrtqwUOGFqD6BgffQESwOWc6sit_Lp6ollfhjOrAOACl_UA=="
+        },
+        {
+          "title": "wtftoronto.com",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGSCzK323MPsCUgtcXVVdatylYTXq2RW9bqQ7KDcZXKZCYBB6xngkr5l6KoZIScoKyRCdG4iDBl94xRKn1S248yWb4tPovyZNYFFD-V2KT6sGLxXmM1JRz02_VvIWnQ30lvWIJBWKh_f5jbx1KB_w1POPIsqQ2pqNRpRvGIzNnS"
+        },
+        {
+          "title": "designlinesmagazine.com",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHftMTiOgiH9q5aGymCjH3zlXlP52uFQUHZgUXlWeLk4vHJM1w9nRQ-fqxtCRjrplLPEiVaaDy0d79P9N7Bk9vtl_pgxxJp-E4YEXKPpi9wvF_WcbuAROrfsnOdE-uCB0QKPtM0fkgIjIuFQS_nLgaKYcztF94L8Q=="
+        }
+      ],
+      "citations": [
+        {
+          "end": 112,
+          "sourceIndices": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "end": 214,
+          "sourceIndices": [
+            5
+          ]
+        },
+        {
+          "end": 322,
+          "sourceIndices": [
+            6,
+            7,
+            8,
+            9
+          ]
+        },
+        {
+          "end": 451,
+          "sourceIndices": [
+            7,
+            8,
+            5
+          ]
+        },
+        {
+          "end": 647,
+          "sourceIndices": [
+            0,
+            1
+          ]
+        },
+        {
+          "end": 735,
+          "sourceIndices": [
+            7
+          ]
+        },
+        {
+          "end": 784,
+          "sourceIndices": [
+            10
+          ]
+        },
+        {
+          "end": 900,
+          "sourceIndices": [
+            10,
+            7,
+            9,
+            5
+          ]
+        }
+      ],
+      "queries": [
+        "commercial streets near 43.67546, -79.30824 Toronto",
+        "Queen Street East Toronto businesses",
+        "Gerrard Street East Toronto businesses",
+        "specialty coffee cafes Toronto"
+      ],
+      "searchSuggestionsHtml": "<style>\n.container {\n  align-items: center;\n  border-radius: 8px;\n  display: flex;\n  font-family: Google Sans, Roboto, sans-serif;\n  font-size: 14px;\n  line-height: 20px;\n  padding: 8px 12px;\n}\n.chip {\n  display: inline-block;\n  border: solid 1px;\n  border-radius: 16px;\n  min-width: 14px;\n  padding: 5px 16px;\n  text-align: center;\n  user-select: none;\n  margin: 0 8px;\n  -webkit-tap-highlight-color: transparent;\n}\n.carousel {\n  overflow: auto;\n  scrollbar-width: none;\n  white-space: nowrap;\n  margin-right: -12px;\n}\n.headline {\n  display: flex;\n  margin-right: 4px;\n}\n.gradient-container {\n  position: relative;\n}\n.gradient {\n  position: absolute;\n  transform: translate(3px, -9px);\n  height: 36px;\n  width: 9px;\n}\n@media (prefers-color-scheme: light) {\n  .container {\n    background-color: #fafafa;\n    box-shadow: 0 0 0 1px #0000000f;\n  }\n  .headline-label {\n    color: #1f1f1f;\n  }\n  .chip {\n    background-color: #ffffff;\n    border-color: #d2d2d2;\n    color: #5e5e5e;\n    text-decoration: none;\n  }\n  .chip:hover {\n    background-color: #f2f2f2;\n  }\n  .chip:focus {\n    background-color: #f2f2f2;\n  }\n  .chip:active {\n    background-color: #d8d8d8;\n    border-color: #b6b6b6;\n  }\n  .logo-dark {\n    display: none;\n  }\n  .gradient {\n    background: linear-gradient(90deg, #fafafa 15%, #fafafa00 100%);\n  }\n}\n@media (prefers-color-scheme: dark) {\n  .container {\n    background-color: #1f1f1f;\n    box-shadow: 0 0 0 1px #ffffff26;\n  }\n  .headline-label {\n    color: #fff;\n  }\n  .chip {\n    background-color: #2c2c2c;\n    border-color: #3c4043;\n    color: #fff;\n    text-decoration: none;\n  }\n  .chip:hover {\n    background-color: #353536;\n  }\n  .chip:focus {\n    background-color: #353536;\n  }\n  .chip:active {\n    background-color: #464849;\n    border-color: #53575b;\n  }\n  .logo-light {\n    display: none;\n  }\n  .gradient {\n    background: linear-gradient(90deg, #1f1f1f 15%, #1f1f1f00 100%);\n  }\n}\n</style>\n<div class=\"container\">\n  <div class=\"headline\">\n    <svg class=\"logo-light\" width=\"18\" height=\"18\" viewBox=\"9 9 35 35\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n      <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M42.8622 27.0064C42.8622 25.7839 42.7525 24.6084 42.5487 23.4799H26.3109V30.1568H35.5897C35.1821 32.3041 33.9596 34.1222 32.1258 35.3448V39.6864H37.7213C40.9814 36.677 42.8622 32.2571 42.8622 27.0064V27.0064Z\" fill=\"#4285F4\"/>\n      <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M26.3109 43.8555C30.9659 43.8555 34.8687 42.3195 37.7213 39.6863L32.1258 35.3447C30.5898 36.3792 28.6306 37.0061 26.3109 37.0061C21.8282 37.0061 18.0195 33.9811 16.6559 29.906H10.9194V34.3573C13.7563 39.9841 19.5712 43.8555 26.3109 43.8555V43.8555Z\" fill=\"#34A853\"/>\n      <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M16.6559 29.8904C16.3111 28.8559 16.1074 27.7588 16.1074 26.6146C16.1074 25.4704 16.3111 24.3733 16.6559 23.3388V18.8875H10.9194C9.74388 21.2072 9.06992 23.8247 9.06992 26.6146C9.06992 29.4045 9.74388 32.022 10.9194 34.3417L15.3864 30.8621L16.6559 29.8904V29.8904Z\" fill=\"#FBBC05\"/>\n      <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M26.3109 16.2386C28.85 16.2386 31.107 17.1164 32.9095 18.8091L37.8466 13.8719C34.853 11.082 30.9659 9.3736 26.3109 9.3736C19.5712 9.3736 13.7563 13.245 10.9194 18.8875L16.6559 23.3388C18.0195 19.2636 21.8282 16.2386 26.3109 16.2386V16.2386Z\" fill=\"#EA4335\"/>\n    </svg>\n    <svg class=\"logo-dark\" width=\"18\" height=\"18\" viewBox=\"0 0 48 48\" xmlns=\"http://www.w3.org/2000/svg\">\n      <circle cx=\"24\" cy=\"23\" fill=\"#FFF\" r=\"22\"/>\n      <path d=\"M33.76 34.26c2.75-2.56 4.49-6.37 4.49-11.26 0-.89-.08-1.84-.29-3H24.01v5.99h8.03c-.4 2.02-1.5 3.56-3.07 4.56v.75l3.91 2.97h.88z\" fill=\"#4285F4\"/>\n      <path d=\"M15.58 25.77A8.845 8.845 0 0 0 24 31.86c1.92 0 3.62-.46 4.97-1.31l4.79 3.71C31.14 36.7 27.65 38 24 38c-5.93 0-11.01-3.4-13.45-8.36l.17-1.01 4.06-2.85h.8z\" fill=\"#34A853\"/>\n      <path d=\"M15.59 20.21a8.864 8.864 0 0 0 0 5.58l-5.03 3.86c-.98-2-1.53-4.25-1.53-6.64 0-2.39.55-4.64 1.53-6.64l1-.22 3.81 2.98.22 1.08z\" fill=\"#FBBC05\"/>\n      <path d=\"M24 14.14c2.11 0 4.02.75 5.52 1.98l4.36-4.36C31.22 9.43 27.81 8 24 8c-5.93 0-11.01 3.4-13.45 8.36l5.03 3.85A8.86 8.86 0 0 1 24 14.14z\" fill=\"#EA4335\"/>\n    </svg>\n    <div class=\"gradient-container\"><div class=\"gradient\"></div></div>\n  </div>\n  <div class=\"carousel\">\n    <a class=\"chip\" href=\"https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH-P8eFPZJ-breaB0_kxk8qLWGE3ACGqTavhucoQ6uRCIPwqYVL8bI_gtFPh0yZthTvkvaucPABkeLtL9MHluBoXcoOcMGry8dcJp0_ci4zPQlOcShbsT3UJ9pYjS8wGb3P8MaBmPmfrNnrGAWOgJV9AoUTNlgkImFaQdBJnfTtFTz5_eKNpt3JvErt5ndXeMPW_bA9s8gYEUo21IWq9Q7-gg==\">specialty coffee cafes Toronto</a>\n    <a class=\"chip\" href=\"https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGw1g6fHYWNd-TlpU4Dd7e6r_Ilj5Is-geqhayx06CYMXYIHXczUx_9Mj4Ose-hN_C6kynpwOc2swoniJNVhTNFCYZB4Pj74NtQxf9kzadcwDZmHaIZIBwD6deTFDuFdVsGp8J6aijx97eqPJWTYoH1CGplidA6EM4qvDV7o7bH6e7Us4j1B9hOMgTSqwtBbC-3lCXvm64ejDN6oWvohmg_EF_yjrDIA2zM\">Gerrard Street East Toronto businesses</a>\n    <a class=\"chip\" href=\"https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFFuit8zA34YUOPIYZ8dlKjqmuOL4xNpPsb-doPQi2zjRsgxqdZnPVBOO4JE-dOHuwxl_pQplSnj2AO0oR0Kv1dX_oFOhpGvqyp029ikS4qUuueSzmAGmNFj31WjD9ynaWbs5B7e_g4eD8fe2uwEmh9UwfPO-afsqN9p_G1VEd7RlNNxHB_Z8hUfTq--xbQihr41dqN-dMlB0joU62pHw9cJvxyBu_7Fg1d5tvW1eBlY9yVtbXecOY=\">commercial streets near 43.67546, -79.30824 Toronto</a>\n    <a class=\"chip\" href=\"https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFp9WjR7jCAVo37Zbz84tXqphJYEnLkFpGyEm7RT1kohGhQmMkP3YqUbxW9ep1ev3oq38jrOExr4egG35L6x4YF2AjofVljzppsal3Lpbn_aR0O7Tyh6sHP2fbVsqwRhrLlVoXo5SG3zeR430rVYh5F5d2yHtCHDcStMKUtswLvi5e_yPlEL83hiMZ5knUpUYZP_EntNj78l-MZTBw9WxH857luHiwS_g==\">Queen Street East Toronto businesses</a>\n  </div>\n</div>\n",
+      "status": "partial",
+      "notice": "Some sentences were omitted because evidence checks or citation alignment failed. Only retained cited passages are shown.",
+      "omittedSentences": 27,
+      "validationRules": [
+        "ungrounded-sentence",
+        "unsupported-market-claim",
+        "numeric-claim"
+      ]
+    },
+    "area-2": {
+      "text": "This location on Weston Road is part of a vibrant commercial artery in the Weston neighborhood, which has a distinct \"small-town charm\" despite being within Toronto.\n\nWeston Road hosts a diverse array of businesses, including stores, services, and professional offices, supported by the Weston Village Business Improvement Area (BIA).\n\nThe area is well-served by public transportation, with numerous TTC bus routes, and the Weston GO Station and Union Pearson Express train providing convenient access to downtown Toronto and Pearson International Airport.\n\nRecent city council changes in Toronto also aim to make it easier for small shops and cafés to open in some neighborhoods, particularly on major streets like Weston Road, which could be a favorable development for a new specialty coffee café.\n\nWhile Weston Road is a commercial hub, a significant portion of its economic activity still comes from auto-related businesses like used car lots and garages.\n\nHigh-speed traffic also characterizes the area, which might impact the pedestrian experience.\n\nAlthough recent zoning changes aim to facilitate café openings, specific property zoning must be verified, as restrictions on size, use, or hours can still apply.\n\nThe Weston GO Station's large surface-level parking lot at the southern end of Weston Road is noted to hinder street life and pedestrian activity.\n\nWhile food and drink establishments exist, the overall business mix on Weston Road shows a relatively smaller percentage of these compared to retail and local services.\n\nToronto generally has a thriving specialty coffee scene with various independent roasters and brewing bars.\n\nThe Weston GO Station and Union Pearson Express also provide regional connectivity.\n\nThe general character of Weston has been described as retaining \"small-town charm.\"\n\nWhile the presence of many auto-related businesses might not immediately align with a specialty coffee shop's typical aesthetic, the ongoing changes and support for local businesses could indicate a shift in the area's commercial focus.\n\nDuring a visit, verify the specific zoning of any potential property on Weston Road to confirm that a specialty coffee café is a permitted use and to understand any restrictions on hours, size, or potential for outdoor seating.",
+      "createdAt": "2026-10-23T20:29:19.009Z",
+      "sources": [
+        {
+          "title": "measuringmainstreets.ca",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGxK6zC9Wa2YUkdFXvSvuo3EjVzvO8A0sSA-j-EyY5Ph7Fu-6_q2KLXHrBi52YA-JXig0aZaQxc8kGAAwG9trmqhJiQLz1NBdGKmVQkEIGCkK_hnikNp3lohLQElqUNnnqkRwoiFS_qjHRBA5FUViq1t7RCXSWb"
+        },
+        {
+          "title": "moovitapp.com",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEAvwycH5Ag1jbua9mVFXXftCYrRidjXMHZkSQaANNpO5QWm8ARJ12TL6kTKkPj0GkHmKntR_wwHLPCEuLFrT7yHub3rIGRa1JSPyb67eAuW60ghfKLaJ_FvK7Sud-M5Ega6yUlLjBL-8QChvm3a-ryGDOqimzy0Oy5vyLbe-SG-1EdkTwsaYwno2jjqGkcYfwV"
+        },
+        {
+          "title": "realtor.ca",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQExvBvJ4i4FZ6fm7QEU_QT4CoOJcxelZ7DcVaCEyRHinS9F115kY_Q4MMPGiXJsZySIz8D5MfEZjFoeQppYNn61ewdry4BkrPqWitbgdrQfFTq_hD6-nPXBJiol-Uq3zpWBxhu4v8fiInes6XKsK9sFwFnF_-KNkw=="
+        },
+        {
+          "title": "ttc.ca",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG2Jn5Q59ZuH1ig2FTpLznhI29VyMqH1xEM7P4S34oLYzxAJ9AXb7SWxxuxuknXJtdDmpEbpOjKt_kCJ_8kX7v272eD-pOwSba1syIWO1fInXckl0O3YMC6WafO1R5w3d9qHvk1bh9u"
+        },
+        {
+          "title": "ttc.ca",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF9hsczUQBXI0U0rM-BJZA0NhW1NFZ2ZwtnVBRz_Q0hjmLqbqA8EqmOKTrZlpQy33ag7SFYNLmxheoxEZABCb-Zh5JNNFNNow7rWCcm505TeJ2BQg_cM3UVwkGdXl-DsGLqTvoVcR27Hw=="
+        },
+        {
+          "title": "ttc.ca",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEMTTwBlfqDLmXmoDdkopTN6aB6tGO33DlNiXIlnVoByFOXADMmv6sBGIkEBZFiHvd6K7wwfjdKAFmCJeitrwpSD9X9BJNaFtZfxqBdo9eA3KxdWBdM4hn0Zz5ow2kpzJpIHVNP_VuIfQ=="
+        },
+        {
+          "title": "torontolife.com",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEkZwMishnQUb5kyplVQLsRqpXD6dNtLQq5gC_hojGaUxxLmatwvgeWxHQL4oAd-eu-6UHQuh8kO_pnyo3w-APHvf0CeiYV0pf1kM3HjL41XbDHyuqDIRMqw0PvskVVNdPugfiuS_-Ppz3kOcDgQAoLE0hHrtTAf7X0ho2UC60mVMMqmlnwXvDfFbqnO09H0RTXNCHBV3HDvfkDiMd4002OOI8="
+        },
+        {
+          "title": "torontosocietyofarchitects.ca",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGs1s9hgYh8Qhwr8vLR69kI_XhnLRQX_CuZ4rRRwDpTirCUKBnb2JZsWJ0hoPU0g-WS4MUyZ8eWeC9yPlGhu09nzWIKu4oEZH5JiGMr8rp-lUUB1xJf8Vm9yfIzKi6kgAQRWEEzTefDWzZku68Y7M2-iEVCVn9RqbHMJukUKxjnmKBkwItFIbLQ3QRO-j14FO-KmkexAq47Uuk9aE-M"
+        },
+        {
+          "title": "toronto.ca",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFr-Tk0Ss52P2t5MvF2t7b-Hiyn6J0i_1E8wckJ-pEM1GILMqwJd2c2GYP0cvs6OQVX8nQUEuGV2c9siCTDOG_VgnB_yi4qijwR53pzl5vS1Iat53wqPbuiaXNdmUdj9JLDSxju_RcNNR4czeutcf085H4PSh_mX1wfeVDLaDAtsUtXwSd_5FHv3fLarCUviZdwcgLpGBiXNyuKtEwVGEpCpeFa9NduhptAUl1NwD7zSH9Po8ao6obEYKAR_5U="
+        },
+        {
+          "title": "spacing.ca",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEGBVLYvoTZU58YQ7PIHNo2SxWzZhfVuipqUo6-jv6WC0Hz1mmIS74bv9KpR6Zm28ZdWm572V2Fkmg4r2AdM0Icx7qwnfZUIZetE2MISrDjI3uydUfU2_HiE8NR0H1EWCPx9jGPbbRQuazG2Slpluzuvy7c6K7TrUYNIDdnbM_V"
+        },
+        {
+          "title": "chirealestate.ca",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE0cort0n0Jdbbw2rmFfwwFZ5q0CWp6V15HSR9Q1ZsH_bXrj54d3OfknNap_owRmCBg3ZD4Zm5lPqvrmqf-IjlGxUu9mf-7gX1UsgbfoAH5CprIWgBFR-hZfVm_ikmMLoFSLtSzsl1zlsHpfTiZI3ESEgGkOA=="
+        },
+        {
+          "title": "fltrmagazine.com",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF1D6kr3RadxM4Dn2ClTXV7Mby9DkM57nUFh62ajIpErf0qgOor0EkPewXfECFrSyZhVSUBH61W0nJavMpwY7L7FpjpxLzMz0K74vb742JceUrjDob_drHEO-ZXP2S8-e0YU0ItuOXL23FMUihNm6PRXjvMD1W0lbp0hbcYzgmv3_338w=="
+        },
+        {
+          "title": "baristamagazine.com",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH4pSIbPi6WDc6v3zSGgRv3obJSj9O_77n8K0m_GN2Vztih-0SZOSt9GHbsBa3RGHaQXKMUweE5414gQc7wFh6_QpFKsulmxGKdrVO8_CaO3Aa-ZVI-YbdY2xQp1mlrIRg6lRP3M_oB01VJtaSOmpEMY2N_XaWG7wdaWc3jhEvMeEOMUH7z5VBs9x_EfPe-31JHZw=="
+        },
+        {
+          "title": "chuonthis.ca",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHfq82Y1GT6eDpLax5ktjV0LMZFhwdZu_AIQ5N-mSsannm4vH9_vm_zhRBeZeyYIGku1hMImY18Rtb4g3FsOkY3WC66m9McOsFIKjPZFX2NgYtGkFRDpF8yxW7qVIJDxUE9graGbNU1KKlzm8lg660laOY97poj_w=="
+        },
+        {
+          "title": "handluggageonly.co.uk",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG3swD1ve19SkMbbuy-7dLUZiUFToUmL3Wo6KAIKaXkZYisjp-XwnUqQggCzcavmhAwFKXgocheFND3_m5dcbtKvaqdpzNmALVMt_-h4yd6HyNJUXB2eDTv25i9NIMWxn71uOEh3BdyIkQBF3NDajL4TWOwdMivXs0PKPQlRV0lyiAzhmfo7L9M7vo="
+        },
+        {
+          "title": "countriespluscoffees.com",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFMHUfEFmodXL9It9vL9a9rS4Hcfth5asE5r_NUl4_OgV4C0NeJEJt0rW60cseiFDmNlNrnKAg78MPYRXRyU6JPaVZ3rSHkHOaQIUsxOJiaSiZxlyZLPnMHmwOYd4LvJ32wsEccD1YGoMbwKt9X90TXooDX7aS7"
+        },
+        {
+          "title": "zoneomics.com",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGJeUo1U2nvENmwWYAVMxIu21JyQZmBT4ZHcvfqygaUouakIukCr8mOcKdLLy_z_fboZK0CDj5dm14vJdLD3u0JwsFPEZWBNP_tTmjZudDXWpzp1Hdi1K86MBCoOHfn0THOXtJGrOEb14yNzVIkkZDpNVRGPA=="
+        },
+        {
+          "title": "zonepass.ca",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFS56eCFLpv6sfNYZwP2tv7Pv5ggxCvGbqh79i-OVqvYi_1xtWgMV15GdT0LxY8yJxIFYmgjiHpwqDUmYtzgCbwxDQA1v0gdfU4FITw6dlR"
+        },
+        {
+          "title": "toronto.ca",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHokxilmDBeDX__4VpCoVXZ9TF4d0l4Gi8iQR-cXQQ37j4NU4GAXP79a1h9tGEB2s0bCYoknzz0FGJLBPmvqdBfoXXAc4_1KtQW0drs2O4nKMj799yrcIPhHlL3KBtIft49yWsIWF2o1cHRfRvlcZEfiXgeesNI_QUcMLRCrQzTSgolBY3tiJaqLNA7KdXW09UfIMeHuRIvyRYo1RBEFyqmdoXJf4EexoR8Xw_4N5q2a4lz8g73kLkZWFW32IBDg2tXQ7YWjqL6kXGmBE5U_ibjfmzsjjpoJ2oX5gLACn_RQA0KlhD6915J_vGZapARmLxMa_VKUFE="
+        },
+        {
+          "title": "toronto.ca",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEmgrjk3BjQOyxC8XNfxdaDWqjy65n1q6PvpJobIkZM4qAMzWPG_j2p6Ujjt9Tv5sBVNSdQSndrL-j6OFcGavYAISYciPp7Rx2bjlBdAMoVo8cZZYcAh7IGa5QSofgdw6cHodV83cBFKOqniC6XWSMRFbSaG6g_hrAwl0dIa_QWM3jh4IVZkG7ZCOfhgfctoKzk1J1Xqcd0phkSieXYjrSE"
+        }
+      ],
+      "citations": [
+        {
+          "end": 165,
+          "sourceIndices": [
+            0
+          ]
+        },
+        {
+          "end": 334,
+          "sourceIndices": [
+            0
+          ]
+        },
+        {
+          "end": 556,
+          "sourceIndices": [
+            1,
+            2,
+            0,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "end": 800,
+          "sourceIndices": [
+            6,
+            7,
+            8
+          ]
+        },
+        {
+          "end": 960,
+          "sourceIndices": [
+            9
+          ]
+        },
+        {
+          "end": 1055,
+          "sourceIndices": [
+            9
+          ]
+        },
+        {
+          "end": 1219,
+          "sourceIndices": [
+            10,
+            8
+          ]
+        },
+        {
+          "end": 1367,
+          "sourceIndices": [
+            0
+          ]
+        },
+        {
+          "end": 1537,
+          "sourceIndices": [
+            0
+          ]
+        },
+        {
+          "end": 1646,
+          "sourceIndices": [
+            11,
+            12,
+            13,
+            14,
+            15
+          ]
+        },
+        {
+          "end": 1731,
+          "sourceIndices": [
+            2,
+            0
+          ]
+        },
+        {
+          "end": 1816,
+          "sourceIndices": [
+            0
+          ]
+        },
+        {
+          "end": 2054,
+          "sourceIndices": [
+            6,
+            9,
+            0,
+            8
+          ]
+        },
+        {
+          "end": 2283,
+          "sourceIndices": [
+            10,
+            8,
+            16,
+            17,
+            18,
+            19
+          ]
+        }
+      ],
+      "queries": [
+        "commercial streets near 43.686447, -79.49089 Toronto",
+        "Weston Road Toronto businesses",
+        "specialty coffee cafes Toronto",
+        "Toronto zoning for cafes",
+        "Weston Road Toronto transit",
+        "Toronto property records commercial zoning"
+      ],
+      "searchSuggestionsHtml": "<style>\n.container {\n  align-items: center;\n  border-radius: 8px;\n  display: flex;\n  font-family: Google Sans, Roboto, sans-serif;\n  font-size: 14px;\n  line-height: 20px;\n  padding: 8px 12px;\n}\n.chip {\n  display: inline-block;\n  border: solid 1px;\n  border-radius: 16px;\n  min-width: 14px;\n  padding: 5px 16px;\n  text-align: center;\n  user-select: none;\n  margin: 0 8px;\n  -webkit-tap-highlight-color: transparent;\n}\n.carousel {\n  overflow: auto;\n  scrollbar-width: none;\n  white-space: nowrap;\n  margin-right: -12px;\n}\n.headline {\n  display: flex;\n  margin-right: 4px;\n}\n.gradient-container {\n  position: relative;\n}\n.gradient {\n  position: absolute;\n  transform: translate(3px, -9px);\n  height: 36px;\n  width: 9px;\n}\n@media (prefers-color-scheme: light) {\n  .container {\n    background-color: #fafafa;\n    box-shadow: 0 0 0 1px #0000000f;\n  }\n  .headline-label {\n    color: #1f1f1f;\n  }\n  .chip {\n    background-color: #ffffff;\n    border-color: #d2d2d2;\n    color: #5e5e5e;\n    text-decoration: none;\n  }\n  .chip:hover {\n    background-color: #f2f2f2;\n  }\n  .chip:focus {\n    background-color: #f2f2f2;\n  }\n  .chip:active {\n    background-color: #d8d8d8;\n    border-color: #b6b6b6;\n  }\n  .logo-dark {\n    display: none;\n  }\n  .gradient {\n    background: linear-gradient(90deg, #fafafa 15%, #fafafa00 100%);\n  }\n}\n@media (prefers-color-scheme: dark) {\n  .container {\n    background-color: #1f1f1f;\n    box-shadow: 0 0 0 1px #ffffff26;\n  }\n  .headline-label {\n    color: #fff;\n  }\n  .chip {\n    background-color: #2c2c2c;\n    border-color: #3c4043;\n    color: #fff;\n    text-decoration: none;\n  }\n  .chip:hover {\n    background-color: #353536;\n  }\n  .chip:focus {\n    background-color: #353536;\n  }\n  .chip:active {\n    background-color: #464849;\n    border-color: #53575b;\n  }\n  .logo-light {\n    display: none;\n  }\n  .gradient {\n    background: linear-gradient(90deg, #1f1f1f 15%, #1f1f1f00 100%);\n  }\n}\n</style>\n<div class=\"container\">\n  <div class=\"headline\">\n    <svg class=\"logo-light\" width=\"18\" height=\"18\" viewBox=\"9 9 35 35\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n      <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M42.8622 27.0064C42.8622 25.7839 42.7525 24.6084 42.5487 23.4799H26.3109V30.1568H35.5897C35.1821 32.3041 33.9596 34.1222 32.1258 35.3448V39.6864H37.7213C40.9814 36.677 42.8622 32.2571 42.8622 27.0064V27.0064Z\" fill=\"#4285F4\"/>\n      <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M26.3109 43.8555C30.9659 43.8555 34.8687 42.3195 37.7213 39.6863L32.1258 35.3447C30.5898 36.3792 28.6306 37.0061 26.3109 37.0061C21.8282 37.0061 18.0195 33.9811 16.6559 29.906H10.9194V34.3573C13.7563 39.9841 19.5712 43.8555 26.3109 43.8555V43.8555Z\" fill=\"#34A853\"/>\n      <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M16.6559 29.8904C16.3111 28.8559 16.1074 27.7588 16.1074 26.6146C16.1074 25.4704 16.3111 24.3733 16.6559 23.3388V18.8875H10.9194C9.74388 21.2072 9.06992 23.8247 9.06992 26.6146C9.06992 29.4045 9.74388 32.022 10.9194 34.3417L15.3864 30.8621L16.6559 29.8904V29.8904Z\" fill=\"#FBBC05\"/>\n      <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M26.3109 16.2386C28.85 16.2386 31.107 17.1164 32.9095 18.8091L37.8466 13.8719C34.853 11.082 30.9659 9.3736 26.3109 9.3736C19.5712 9.3736 13.7563 13.245 10.9194 18.8875L16.6559 23.3388C18.0195 19.2636 21.8282 16.2386 26.3109 16.2386V16.2386Z\" fill=\"#EA4335\"/>\n    </svg>\n    <svg class=\"logo-dark\" width=\"18\" height=\"18\" viewBox=\"0 0 48 48\" xmlns=\"http://www.w3.org/2000/svg\">\n      <circle cx=\"24\" cy=\"23\" fill=\"#FFF\" r=\"22\"/>\n      <path d=\"M33.76 34.26c2.75-2.56 4.49-6.37 4.49-11.26 0-.89-.08-1.84-.29-3H24.01v5.99h8.03c-.4 2.02-1.5 3.56-3.07 4.56v.75l3.91 2.97h.88z\" fill=\"#4285F4\"/>\n      <path d=\"M15.58 25.77A8.845 8.845 0 0 0 24 31.86c1.92 0 3.62-.46 4.97-1.31l4.79 3.71C31.14 36.7 27.65 38 24 38c-5.93 0-11.01-3.4-13.45-8.36l.17-1.01 4.06-2.85h.8z\" fill=\"#34A853\"/>\n      <path d=\"M15.59 20.21a8.864 8.864 0 0 0 0 5.58l-5.03 3.86c-.98-2-1.53-4.25-1.53-6.64 0-2.39.55-4.64 1.53-6.64l1-.22 3.81 2.98.22 1.08z\" fill=\"#FBBC05\"/>\n      <path d=\"M24 14.14c2.11 0 4.02.75 5.52 1.98l4.36-4.36C31.22 9.43 27.81 8 24 8c-5.93 0-11.01 3.4-13.45 8.36l5.03 3.85A8.86 8.86 0 0 1 24 14.14z\" fill=\"#EA4335\"/>\n    </svg>\n    <div class=\"gradient-container\"><div class=\"gradient\"></div></div>\n  </div>\n  <div class=\"carousel\">\n    <a class=\"chip\" href=\"https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFFDXsD_KrVjGkT8Kv8KgRpCNBZPYAQYCQM94jwpsGOf9m7fNNSLE2r1mN22dlWIphAtlenf5_ZEumCngW7jHBqMw2AlKtFEWiJmQy84OyoFAgnxcTNh0olLzG3mtcQadnQveRrmypIeHKPAIio9d1I6-7cRbdMs_G1oJFXQMN-yjNeRTQKFOQqVBPqosaFrsFJ7LBz7ldcWJkKbw==\">Toronto zoning for cafes</a>\n    <a class=\"chip\" href=\"https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFVozY9wRucp1-x3CvaTeUEtCbgP4rbz4xp3Kl2FbpZFY1n_fXYOkpU-_vrQPNpgLz7BW9zvba5cmuMPTBlbdGnky-9VzZ4GrDKE0Uz0OJaQRWhVXsQ5qJDGW4eYCx405s_--liqj1jsbZ6cAlYJP-fRb6yE_qq8P_I7jfB6J0lDLdKHq5_7Pb4TgQGGZFpT5JKXscXdBSLnkYLb5wdOV0r3Q==\">specialty coffee cafes Toronto</a>\n    <a class=\"chip\" href=\"https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHPB-KsoOdVh0XX-izcjDcvIKMLSq6DuzQz0Ai0q73NvVC8Ih6msp_WpaW6znjz17mTCl5nXur9aThkOvBL0anwTmmvZ0cY_82G7P8218ACbDc5oYhF5JT9r7leJbFiwemiu4q1ImJLerevYsq9vHNeRnMP4Or3hfmZshg7rIRCEeiCYgUueVMVtjqDzLNKCZtOdgWC6EWz9pT5ilDyLGqCm7Nq4Veuz3zVlHsK-Z0Z3m123ZVLf5_b\">commercial streets near 43.686447, -79.49089 Toronto</a>\n    <a class=\"chip\" href=\"https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFwSY5Ncvgkww6pU2pNx3RIkeRf-y-HjEmx-mjcFOJ8k6Zenx1F-HerPXkjibhFhGNJGUQ3eTVY1qRHwx_xXeJeYSQouN1e13qEDXZEAOdjbqPRZ5nVzeWKRMRzs6UYypIszPFmHU77VKJA1zwRhTOynJDzbngXLr5ICwu8ViKpPSuDisARJJlrbSqPytFCv0A_rEof4gNHhHQv1xs18_C80g==\">Weston Road Toronto businesses</a>\n    <a class=\"chip\" href=\"https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF_jWA6SBK7Hiudc9zOV-KfvZYYWwtFdUkq0s9xPe-Y8X2QRTYY68fLnMKD2zQY9zZ0bWJw0H1Xbm4TewF0r8-Z6dYYHz4Vgn8zK6_zNwIECqK62UxdgtZ9Qcc01ire17KAkoZf_AOcOSLh6rJQOr6MkqwONLX5BwteaTGcSP78CwQX8Gn-31CKBeU3MN5d0Hdn3FSYTNUjHsYTe7fXEHh8oDZdGNbyNFXjvT3sqQ==\">Toronto property records commercial zoning</a>\n    <a class=\"chip\" href=\"https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHwEUx1OONer8Af4c-w2jaaRXNe-YgGBOdTMaF3ORWICGZMyYVUU26fu1XqaYViyHkar1M82kHBycMAXP9eZBbS5RBrx8yBewv7GBnDY8KEKDEFkYstW0o-z7EM2edoAqM59aEugtxyg0NCZh-rfoSVgC8WvaR5z_VLFaxulRkRsesl8lgoGcmJWWUxF8dyEnQW_-SYGfa-99Umtnd0yg==\">Weston Road Toronto transit</a>\n  </div>\n</div>\n",
+      "status": "partial",
+      "notice": "Some sentences were omitted because evidence checks or citation alignment failed. Only retained cited passages are shown.",
+      "omittedSentences": 17,
+      "validationRules": [
+        "ungrounded-sentence",
+        "numeric-claim"
+      ]
+    },
+    "area-3": {
+      "text": "Recent changes in Toronto's zoning bylaws also allow for small shops and cafés in certain neighborhoods, including Toronto-Danforth and Beaches-East York, which are relevant to this location.\n\nReasons to hesitate:\n\nWhile zoning changes are positive, it's crucial to verify the specific property's zoning classification (e.g., Commercial Residential (CR) or Commercial Local (CL) zones generally allow food service businesses) and any restrictions on size, use, or hours.\n\nSome commercial spaces, like one advertised on Pape Avenue, explicitly state \"No food service\" as a permitted use.\n\nAdditionally, some residential areas, even with new allowances for small shops, may still have restrictions on sit-down cafés or patios, potentially requiring a public approval process.\n\nThe market for specialty coffee in Toronto is also described as diverse and evolving, with many established independent roasters and cafés, suggesting a competitive landscape.\n\nSeveral commercial properties noted are just steps from Pape Subway Station.\n\nThe area around Danforth Avenue is described as a vibrant community with many amenities.\n\nBroadview Avenue is also identified as a busy east-end commercial corridor with good access to TTC streetcar routes.",
+      "createdAt": "2026-10-23T20:29:25.516Z",
+      "sources": [
+        {
+          "title": "keyhomes.ca",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFnjQyoZ8s0EEj5dQ1E3UCs6OBJW-CRDlqKVvuHjC7zSIAEK8JjVRGWDNmdOzBFIvK4EqDeHV2Cz7RjCRIM0kQIcHpoxDP9IQfAyK3xf-H8HJiyRxjPBVI-cXGH-B7s4EFDFfNpL6crgig-W3-z3iWp-gy7PVA9e9gKQSE="
+        },
+        {
+          "title": "torontolife.com",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG4QLxsVrbSB77TE0rCwbVeln-yUXRHIh3foD4oDkD35ynMO3BF0rGSTIb2KO582a0x-D9qFCDqV76LkiTgXNQNjI9f7Y5w0oy3pGtx4_XrqoobDj0T2H-LKzVMk18U0pwB7KixfiYIFJvDMAoWetinv5MAWd-j7RqxDLq6nQhwH4Wu9ccbCgsIPmK7v0W-E8Rz0qXVDJo0ztFk1clm3kS4Rl0="
+        },
+        {
+          "title": "cbc.ca",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEUv4RK5AdguXkxqk-p8_vCxu2IyWIuAiHEddF13f35gLonuAVabAeuHN2b2sdx1nL057cTopX5Q33bB2PkT_TP0nbs3UXN1y7zo9fMhlq2UiB2CLUppgbXwlBw3SvaxOtudSmJbZFgs8dU3ESZ5L6ZxW-E0DJIcwehUOMi36Hl1HhffOEwfsNVjkbhmg=="
+        },
+        {
+          "title": "chirealestate.ca",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE4FSek8AAae8NUe0JIn2ltzYQmAGjAXQvZSnV4MKbUzVXiqwnmOQdiVHHh7li9MJGgVUejAeKlshCDhpTlWOV2yw5ByWR_3FMr_8X2Y6XKXvo51QQFOTDpK3fuEl1AwYclWO1oMvwbUqFFYvMdXuuSOhZ4Vw=="
+        },
+        {
+          "title": "gtacommercialbrokers.com",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF2jxFmX2pTZvV4aKLzI2c5lsABDfhfkLzOHppoAF0hMYWfCRbpsTiPQuQR9t_kE9VISCf75g6itcuk1UfX_OWLMFssMxV_e7ZdY3_hPRyjN8Q3PJFfvToqlEnQdsLkuQg2ZHJ71VyL14xya6Lb1A=="
+        },
+        {
+          "title": "royallepagecommercial.com",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH_bqYMhEtCelwLTBvtIp_J3PV0kBrt2E_K18CWbLnG6C6_tpORf7zVFgW93fGT3ha5Cga7fTGBacXSsbV4Ike8iTf5FF-sGzsGAEUrmJ4e0q2vtpl8XmYVbLeQ4Pg4Y0oXSnf3a2zm3cBDjxsYAcLukD0L5m_qb39jeAMEyBbgwmgg3q5VNB7RNN48BHwWxJvbhPUgYQ=="
+        },
+        {
+          "title": "toronto.ca",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGpW1jm5CbVWpW6_4bcJVSZBCKGJFh3QUyjDpR-GlXbEfI_e3x4Xn0jIMicHpp6kzL5lo_41hozf1ck7sK33mv6FnMwPf3n2zNVYD9_mM7GfZs7boozyfkabXW6GqnTemJEb5rT4h9jRrmSkdQxgc2PU5iRsBDoblyruHwl9DOdNyn0vwQg7oYgsXD7opzn7HOO3ySjV9h_7NWdJnBdM1kZ7RM2z-OacBGI8ehxzwPHKAsnesRx_UXbv9nv-5E="
+        },
+        {
+          "title": "fltrmagazine.com",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGjnOnQhgPN6E05bfTo83riBUXaUEfJsJ3zZL4bsUwcY7m9kIasfkTS8N6NCOpnp2P-9YP4wftDYWpwyazn2W7Y2lM1XW-WatyXtyyePi-Wb-emJvy6hy5boyyZ_hfinPereTI--UvXbN9bEkG481L1ERBdDAQ7Vrb4krfU-ytdbiec2Q=="
+        },
+        {
+          "title": "chuonthis.ca",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE0LZMlWcxW-FkD9IAtue4jjcs3ATnIWEG4rwEug_Hy0jnakt8NiERDBwzSAMj4wiuIp_g-p5dGonVDzBAtHn6ECF5WX1niRXkYmKmtWTBrjFV_-6uT4uDjcms0eOGcxZ14oBi_GE0extIo7JLErbl8yxlUnKyH7g=="
+        },
+        {
+          "title": "shortgirltravels.com",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEYB-KJQLzlEX2uBFheRcdlR76yNkPPBUD1Ekyk_aRGRne4JYQytctWCgl82hojcoMFF7cZRIpT3NiR_NwSJDCpm9CGwCep8ZR4YZ0XupgeWfFetkFSd06WMQJZuyy1xsSymcFl6aOMrdFgZvfxO8X9M0CuupWck1TERC6NB_Q="
+        },
+        {
+          "title": "ichibanselecter.com",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFCUOstiuVI1Q8Pc9VDqT6GW4N_DOQtPEYRz4-wZbgH9C2I24s1B-hP1jL9icLv8DXL9GdX2_CzeweTTACyCacyfW65rwyqirE4ZAYzl-vOa4-zP2fxr0YYSPTNiV5LDquxpc7Sf0bu3_6KmKLIFaRGnbxuPYHEctWH2eweYRX5N4r1z2ic95wpu7R1IIuo6YHN4JZYVfkqt6UOLXYmUNR-U-6lhp4dXe02pij17BgA6jjU1Trdig=="
+        },
+        {
+          "title": "cbmetcom.com",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGP3fs7YDURisQ_Spze-cKOLh525qKEyNIMgEOpxv9tT3FnnMpMXeMOC5W1sABUBMFjsGaWAss47UuGbCWmpJvncx4sMWg7rD0Y_PgkFXm5HhzhR5yw-iObbYXcXM5ZGWCzJXxO4OlXw2ArSUs="
+        },
+        {
+          "title": "cityfeet.com",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGZACBB-N9kaUOtabLfBvEDmx_5Q7tlgAeeV2NnDX6BkjzaxcVbfEyNpEwgr0roM8YHqeb-bDd4OxHlrNr-pAOjnKAudmDx7T6kNc9JsiBdjV21c5xAcrtUAq5k6DwZpAKyNtl-zoBw-Ird8rAWso_UahvUWOeGlbXlyk7jKqbojgOHVrEJOBDycPF6BVNQWQ=="
+        },
+        {
+          "title": "metcomrealty.com",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEOcvUjc-U5Lb_LOqlo9Lt5E69M8oPRU2BjdTJFYEIICcnDr_TYiMNMiBfW3klBDNnIJiW4mDPJbi2X-n5GGMLrgBZqe3GloTlI-yi612BwvNlo5TYehd9aU7bN4J7xz8_Iu9BowbnCa1IxBShVg1L5AHZqZSMuHhrpYOlngE_AXtUqWX-7T_Tmuva6MEZgz51n"
+        },
+        {
+          "title": "citykeyrealty.com",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFRC4J3kir3AQW9nlJbWNZJE3ljfNusQB2BF1fy80Tnl3HX9LTGsd_7g-wg0GIBtj8XmMmsnCU5fZcUnHv4lE10FLzlU0b3Y_ee9op8eGWirkm7uXAbw130QsBI1zotz4ALSLbr_QnW2Cr6TwoLE4b2g7_xAo6qbNU5msKdTuRTRE7JJUQKJ_s9X1A0kmooKupZRyN02K5JNvJgnR2jhfxGG7NcxPGPBAMlVWLPqtca5HwVVgJ3ApOgHTGzLnFzOwqrBT08EY26"
+        }
+      ],
+      "citations": [
+        {
+          "end": 191,
+          "sourceIndices": [
+            1,
+            2
+          ]
+        },
+        {
+          "end": 213,
+          "sourceIndices": [
+            3
+          ]
+        },
+        {
+          "end": 470,
+          "sourceIndices": [
+            3
+          ]
+        },
+        {
+          "end": 586,
+          "sourceIndices": [
+            4,
+            5
+          ]
+        },
+        {
+          "end": 773,
+          "sourceIndices": [
+            6
+          ]
+        },
+        {
+          "end": 950,
+          "sourceIndices": [
+            7,
+            8,
+            9,
+            10
+          ]
+        },
+        {
+          "end": 1028,
+          "sourceIndices": [
+            4,
+            11,
+            12
+          ]
+        },
+        {
+          "end": 1118,
+          "sourceIndices": [
+            13
+          ]
+        },
+        {
+          "end": 1236,
+          "sourceIndices": [
+            14
+          ]
+        }
+      ],
+      "queries": [
+        "commercial streets near 43.685074, -79.34807 Toronto Ontario",
+        "Broadview Avenue Toronto commercial properties",
+        "Pape Avenue Toronto commercial properties",
+        "Danforth Avenue Toronto commercial properties",
+        "specialty coffee cafe Toronto market",
+        "Toronto zoning for cafes"
+      ],
+      "searchSuggestionsHtml": "<style>\n.container {\n  align-items: center;\n  border-radius: 8px;\n  display: flex;\n  font-family: Google Sans, Roboto, sans-serif;\n  font-size: 14px;\n  line-height: 20px;\n  padding: 8px 12px;\n}\n.chip {\n  display: inline-block;\n  border: solid 1px;\n  border-radius: 16px;\n  min-width: 14px;\n  padding: 5px 16px;\n  text-align: center;\n  user-select: none;\n  margin: 0 8px;\n  -webkit-tap-highlight-color: transparent;\n}\n.carousel {\n  overflow: auto;\n  scrollbar-width: none;\n  white-space: nowrap;\n  margin-right: -12px;\n}\n.headline {\n  display: flex;\n  margin-right: 4px;\n}\n.gradient-container {\n  position: relative;\n}\n.gradient {\n  position: absolute;\n  transform: translate(3px, -9px);\n  height: 36px;\n  width: 9px;\n}\n@media (prefers-color-scheme: light) {\n  .container {\n    background-color: #fafafa;\n    box-shadow: 0 0 0 1px #0000000f;\n  }\n  .headline-label {\n    color: #1f1f1f;\n  }\n  .chip {\n    background-color: #ffffff;\n    border-color: #d2d2d2;\n    color: #5e5e5e;\n    text-decoration: none;\n  }\n  .chip:hover {\n    background-color: #f2f2f2;\n  }\n  .chip:focus {\n    background-color: #f2f2f2;\n  }\n  .chip:active {\n    background-color: #d8d8d8;\n    border-color: #b6b6b6;\n  }\n  .logo-dark {\n    display: none;\n  }\n  .gradient {\n    background: linear-gradient(90deg, #fafafa 15%, #fafafa00 100%);\n  }\n}\n@media (prefers-color-scheme: dark) {\n  .container {\n    background-color: #1f1f1f;\n    box-shadow: 0 0 0 1px #ffffff26;\n  }\n  .headline-label {\n    color: #fff;\n  }\n  .chip {\n    background-color: #2c2c2c;\n    border-color: #3c4043;\n    color: #fff;\n    text-decoration: none;\n  }\n  .chip:hover {\n    background-color: #353536;\n  }\n  .chip:focus {\n    background-color: #353536;\n  }\n  .chip:active {\n    background-color: #464849;\n    border-color: #53575b;\n  }\n  .logo-light {\n    display: none;\n  }\n  .gradient {\n    background: linear-gradient(90deg, #1f1f1f 15%, #1f1f1f00 100%);\n  }\n}\n</style>\n<div class=\"container\">\n  <div class=\"headline\">\n    <svg class=\"logo-light\" width=\"18\" height=\"18\" viewBox=\"9 9 35 35\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n      <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M42.8622 27.0064C42.8622 25.7839 42.7525 24.6084 42.5487 23.4799H26.3109V30.1568H35.5897C35.1821 32.3041 33.9596 34.1222 32.1258 35.3448V39.6864H37.7213C40.9814 36.677 42.8622 32.2571 42.8622 27.0064V27.0064Z\" fill=\"#4285F4\"/>\n      <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M26.3109 43.8555C30.9659 43.8555 34.8687 42.3195 37.7213 39.6863L32.1258 35.3447C30.5898 36.3792 28.6306 37.0061 26.3109 37.0061C21.8282 37.0061 18.0195 33.9811 16.6559 29.906H10.9194V34.3573C13.7563 39.9841 19.5712 43.8555 26.3109 43.8555V43.8555Z\" fill=\"#34A853\"/>\n      <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M16.6559 29.8904C16.3111 28.8559 16.1074 27.7588 16.1074 26.6146C16.1074 25.4704 16.3111 24.3733 16.6559 23.3388V18.8875H10.9194C9.74388 21.2072 9.06992 23.8247 9.06992 26.6146C9.06992 29.4045 9.74388 32.022 10.9194 34.3417L15.3864 30.8621L16.6559 29.8904V29.8904Z\" fill=\"#FBBC05\"/>\n      <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M26.3109 16.2386C28.85 16.2386 31.107 17.1164 32.9095 18.8091L37.8466 13.8719C34.853 11.082 30.9659 9.3736 26.3109 9.3736C19.5712 9.3736 13.7563 13.245 10.9194 18.8875L16.6559 23.3388C18.0195 19.2636 21.8282 16.2386 26.3109 16.2386V16.2386Z\" fill=\"#EA4335\"/>\n    </svg>\n    <svg class=\"logo-dark\" width=\"18\" height=\"18\" viewBox=\"0 0 48 48\" xmlns=\"http://www.w3.org/2000/svg\">\n      <circle cx=\"24\" cy=\"23\" fill=\"#FFF\" r=\"22\"/>\n      <path d=\"M33.76 34.26c2.75-2.56 4.49-6.37 4.49-11.26 0-.89-.08-1.84-.29-3H24.01v5.99h8.03c-.4 2.02-1.5 3.56-3.07 4.56v.75l3.91 2.97h.88z\" fill=\"#4285F4\"/>\n      <path d=\"M15.58 25.77A8.845 8.845 0 0 0 24 31.86c1.92 0 3.62-.46 4.97-1.31l4.79 3.71C31.14 36.7 27.65 38 24 38c-5.93 0-11.01-3.4-13.45-8.36l.17-1.01 4.06-2.85h.8z\" fill=\"#34A853\"/>\n      <path d=\"M15.59 20.21a8.864 8.864 0 0 0 0 5.58l-5.03 3.86c-.98-2-1.53-4.25-1.53-6.64 0-2.39.55-4.64 1.53-6.64l1-.22 3.81 2.98.22 1.08z\" fill=\"#FBBC05\"/>\n      <path d=\"M24 14.14c2.11 0 4.02.75 5.52 1.98l4.36-4.36C31.22 9.43 27.81 8 24 8c-5.93 0-11.01 3.4-13.45 8.36l5.03 3.85A8.86 8.86 0 0 1 24 14.14z\" fill=\"#EA4335\"/>\n    </svg>\n    <div class=\"gradient-container\"><div class=\"gradient\"></div></div>\n  </div>\n  <div class=\"carousel\">\n    <a class=\"chip\" href=\"https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE7CWOLCusgYjp2K_9PSRSAZb_Hh3Fhpp7TqvFR8ag6wTZRDZyFaMJnE8r7Zcf2og_JZn4JnhUXjRIlNW5tx6479Q5oRY6jmTxvlTbiUKD3GuJAIUnkobMESmshEJk172QTUBQYsprpzyn63XKUJhTgMwruDKSeR-RtD46bQe4haBiwJniaOzdq8l3tJ-Xg_81kPEGWZ0blcsMctHIRW_9-alldDkkN2Z6fxrlcRHcwLg==\">Danforth Avenue Toronto commercial properties</a>\n    <a class=\"chip\" href=\"https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHUzZlBoTOqj8EsJqJ7Oy3EKHWRC9n2UXnz9btvYMyfc94By83S9e5KlcPtgTqYFyjFg8FGaYTL6KKraBS-JcM7Ic1X2ZH_7XUIjUupsrYMhA_6A1cq6o0u5jqWMXu-xPE4s1Y2ZNYWLYHxrBtdOYY2ysdFXmSZD_v_zdYmFqp4WFYjT-TM-vFnllhVnxUpm4LZrNDnoe011CxJ0Cf2RdhV5keGe-C4-x29Om9U\">Pape Avenue Toronto commercial properties</a>\n    <a class=\"chip\" href=\"https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFZkb-pcoefViTBgU7kH1YIsRybOC0OftnQkfIqQcEhgOhDNDInDKihRWwzObXRv6cjmIvLzO91Mvg96toJoccf37_fnxP0XAhQLejtNuA0bqC88F4LxynNZji4Tf0dQ96qa-GsMUvPxqvKjcw3BJqWj-_qPDm497qeAEd900t2s0HhVzM0ASuRiTBC8jeS2rhPAaKEJEPbtxZwfIZMYItmTm5SwlVG-F5nLPKhweHgWwjWgAdGvdPGoD-OTqeXoNQ=\">commercial streets near 43.685074, -79.34807 Toronto Ontario</a>\n    <a class=\"chip\" href=\"https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGhs5R0kZlgfenoTiZV6twkQNNB14ke_Ou6YruVKt2F8zID-eZ7r75l9uzVvxLci0m9e0ZDn_ExLxAEEQGg7RJRuAz9EiD05yifeIX9OmXt0h6y4a3ZcaPoHTFv6TOIitX5MnolLCQU_cmv_UzmialdbxPxWjOfDzRpM_rknrrm7u9cCZOg-ah-crfh0Z39vjLwVnZqy6Qx-QJ4QibLQaJNBjOh5iuVPWrgsNS_kIC9tG8=\">Broadview Avenue Toronto commercial properties</a>\n    <a class=\"chip\" href=\"https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH3DO-ayi-lb2cTAasqUqqTCWPwJm4K6OLHelk2RpRjAvDGRQLumkADkUUV-r460u7zeddcMAu4mC4zjihe8CCPOOYFKw6ygLoxnvASGDkeDaSZ6hr_NOIafZCzz3QUD7fuPrAC-tFWjueCBXC1BHifUMUcqGpK8q_8wL5GRTaTe4Pd_O-62xS0l-iEtWgKudip23QlFyPN2ynV8uYv7yM3xWI8bg6ifQ==\">specialty coffee cafe Toronto market</a>\n    <a class=\"chip\" href=\"https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFUffnJYJ_WzwiPAiz9QcxFVqILcXr0P_ahSsGGPHXUzbiXk2QCqF4q53w9p3JpEPijuEuJ9jBjSt7zHtWXj8OyRC36BbzlTrypeKZlKuD4Gvd5d0jzlzJ2DwfegNAoawDO7S1rrEZQZHNfguO0qzAhyQRElr41vsRQSAdzzC18duTiQse-fX0AxHIUcZ5vWVjqELDeRkxIEWKktw==\">Toronto zoning for cafes</a>\n  </div>\n</div>\n",
+      "status": "partial",
+      "notice": "Some sentences were omitted because evidence checks or citation alignment failed. Only retained cited passages are shown.",
+      "omittedSentences": 22,
+      "validationRules": [
+        "ungrounded-sentence",
+        "numeric-claim"
+      ]
+    }
+  },
+  "assessment": {
+    "visitFirst": "area-1",
+    "reason": "Near East End-Danforth is ranked 1 of 3 by local rank contrast. Start with this highest-ranked eligible point; verify premises and practical constraints during the visit. This is a shortlist comparison, not a business-success forecast.",
+    "tradeOff": "Taste evidence does not establish demand, rents, available units or commercial suitability.",
+    "nextAction": "Read the cited research and verify premises, access, permissions and operating conditions during a scouting visit."
+  },
+  "steps": [
+    {
+      "id": "step-1",
+      "tool": "explore_areas",
+      "title": "Mapping audience fit against popularity",
+      "status": "complete",
+      "durationMs": 838
+    },
+    {
+      "id": "step-2",
+      "tool": "audience_profile",
+      "title": "Reading audience taste and demographic signals",
+      "status": "complete",
+      "durationMs": 466
+    },
+    {
+      "id": "step-3",
+      "tool": "compare_audiences",
+      "title": "Comparing an actual nearby venue’s audience tags",
+      "status": "complete",
+      "durationMs": 26
+    },
+    {
+      "id": "step-4",
+      "tool": "compare_audiences",
+      "title": "Comparing an actual nearby venue’s audience tags",
+      "status": "complete",
+      "durationMs": 25
+    },
+    {
+      "id": "step-5",
+      "tool": "compare_audiences",
+      "title": "Comparing an actual nearby venue’s audience tags",
+      "status": "complete",
+      "durationMs": 27
+    },
+    {
+      "id": "step-6",
+      "tool": "research_area",
+      "title": "Researching the selected area’s practical trade-offs",
+      "status": "complete",
+      "notice": "Some sentences were omitted because evidence checks or citation alignment failed. Only retained cited passages are shown.",
+      "durationMs": 7100
+    },
+    {
+      "id": "step-7",
+      "tool": "research_area",
+      "title": "Researching the selected area’s practical trade-offs",
+      "status": "complete",
+      "notice": "Some sentences were omitted because evidence checks or citation alignment failed. Only retained cited passages are shown.",
+      "durationMs": 10272
+    },
+    {
+      "id": "step-8",
+      "tool": "research_area",
+      "title": "Researching the selected area’s practical trade-offs",
+      "status": "complete",
+      "notice": "Some sentences were omitted because evidence checks or citation alignment failed. Only retained cited passages are shown.",
+      "durationMs": 6506
+    }
+  ],
+  "decisionIssues": [],
+  "selection": {
+    "visitFirst": "area-1",
+    "reasonCode": "taste-evidence",
+    "checkFocus": "general"
+  },
+  "decisionContract": "structured-v2",
+  "decisionOrigin": "agent",
+  "createdAt": "2026-10-23T20:29:26.332Z"
+}

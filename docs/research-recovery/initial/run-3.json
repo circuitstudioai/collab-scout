@@ -1,0 +1,931 @@
+{
+  "exploration": {
+    "createdAt": "2026-10-23T20:25:38.808Z",
+    "brief": {
+      "city": "Toronto, Ontario, Canada",
+      "center": {
+        "latitude": 43.6534817,
+        "longitude": -79.3839347
+      },
+      "radiusKm": 10,
+      "minimumPopularityPercentile": 20,
+      "concept": "A new café with an indoor playground. Find areas to scout using popular Toronto cafés as audience references.",
+      "references": [
+        "Dineen Coffee Co.",
+        "FIKA Cafe",
+        "Rooster Coffee House"
+      ],
+      "restaurant": {
+        "brandName": "New café with an indoor playground",
+        "format": "cafe",
+        "servicePeriod": "unspecified",
+        "pricePosition": "unspecified"
+      },
+      "existingOutlets": [],
+      "minimumOutletDistanceKm": 0,
+      "referenceSelections": [
+        {
+          "query": "Dineen Coffee Co.",
+          "id": "FAD69E17-B23A-41C8-B25A-EBBEA04F4658"
+        },
+        {
+          "query": "FIKA Cafe",
+          "id": "218AD775-5013-4D5A-84E9-9D308A68AFEF"
+        },
+        {
+          "query": "Rooster Coffee House",
+          "id": "4A68BC83-0A82-42CC-9A76-2E284F0DD2B9"
+        }
+      ]
+    },
+    "references": [
+      {
+        "id": "FAD69E17-B23A-41C8-B25A-EBBEA04F4658",
+        "name": "Dineen Coffee Co.",
+        "resolution": "selected"
+      },
+      {
+        "id": "218AD775-5013-4D5A-84E9-9D308A68AFEF",
+        "name": "FIKA Cafe",
+        "resolution": "selected"
+      },
+      {
+        "id": "4A68BC83-0A82-42CC-9A76-2E284F0DD2B9",
+        "name": "Rooster Coffee House",
+        "resolution": "selected"
+      }
+    ],
+    "areas": [
+      {
+        "latitude": 43.64662,
+        "longitude": -79.422226,
+        "affinity": 0.9745276249701028,
+        "popularity": 0.513872279359005,
+        "affinityRank": 0.9113755,
+        "audiencePercentile": 95.05636449037107,
+        "popularityPercentile": 39.86613433536872,
+        "contrast": 55.19023015500235,
+        "id": "area-1",
+        "name": "Near Spadina–Fort York",
+        "address": "114 Argyle Street, Spadina–Fort York, Toronto, Ontario, Canada",
+        "nameAvailable": true,
+        "lowerCount": 4081,
+        "pointCount": 4292,
+        "distanceKm": 3.1738852631810763,
+        "venues": [
+          {
+            "id": "B9FA3F61-388F-474F-B7C6-05FBBDD1B485",
+            "name": "Kitten and the Bear",
+            "address": "1414 Dundas St W Toronto, ON M6J 1Y5 Canada",
+            "affinity": 0.9813548765824817
+          },
+          {
+            "id": "AB631C81-ABAB-40ED-80F8-2A5A5503091E",
+            "name": "Mildred's Temple Kitchen",
+            "address": "85 Hanna Ave #104 Toronto, ON M6K 3S3 Canada",
+            "affinity": 0.9689555545961852
+          },
+          {
+            "id": "BAEFE09A-6F5B-48B7-9652-095C8BAE5429",
+            "name": "Good Fork",
+            "address": "1550 Dundas St W Toronto, ON M6K 1T5 Canada",
+            "affinity": 0.9678562203264446
+          },
+          {
+            "id": "F64446EB-EF2F-43E7-9567-6ADFAE98EF7E",
+            "name": "Jimmy's Coffee",
+            "address": "15 Ossington Ave Toronto, ON M6J 2Y8 Canada",
+            "affinity": 0.9646547083721039
+          },
+          {
+            "id": "8B6B678A-252B-4600-9CD4-B1CECDE98F02",
+            "name": "Bang Bang Ice Cream & Bakery",
+            "address": "93A Ossington Ave Toronto, ON M6J 0G1 Canada",
+            "affinity": 0.9644387751014027
+          }
+        ],
+        "contextAvailable": true
+      },
+      {
+        "latitude": 43.668594,
+        "longitude": -79.463425,
+        "affinity": 0.9648409471418321,
+        "popularity": 0.5273857928725185,
+        "affinityRank": 0.8946351875,
+        "audiencePercentile": 93.17754814466886,
+        "popularityPercentile": 41.08736496007515,
+        "contrast": 52.09018318459371,
+        "id": "area-2",
+        "name": "Near York South–Weston",
+        "address": "35 Cawthra Avenue, York South–Weston, Toronto, Ontario, Canada",
+        "nameAvailable": true,
+        "lowerCount": 4001,
+        "pointCount": 4292,
+        "distanceKm": 6.611513441349234,
+        "venues": [
+          {
+            "id": "FDB752F0-E791-46C3-B04B-A308A5E9E679",
+            "name": "The Good Neighbour Espresso Bar",
+            "address": "238 Annette St Toronto, ON M6P 1R1 Canada",
+            "affinity": 0.9400921583622801
+          },
+          {
+            "id": "951F47F7-435C-4D5D-8684-299A4C2504E8",
+            "name": "Mattachioni",
+            "address": "1617 Dupont St Toronto, ON M6P 3S8 Canada",
+            "affinity": 0.9354055604230092
+          },
+          {
+            "id": "F768CFED-823A-41FE-B03D-FA292C122A92",
+            "name": "North of Bombay",
+            "address": "2996 Dundas St W Toronto, ON M6P 1Z3 Canada",
+            "affinity": 0.932097791532842
+          },
+          {
+            "id": "C52A6ECB-9B39-4DEB-A584-021F0E5B2420",
+            "name": "Annette Food Market",
+            "address": "240 Annette St Toronto, ON M6P 1R1 Canada",
+            "affinity": 0.9311239565493664
+          },
+          {
+            "id": "34B53615-1EFE-4C4F-9CE2-1048D2BF6A5F",
+            "name": "Playa Cabana Cantina",
+            "address": "2883 Dundas St W Toronto, ON M6P 1Y9 Canada",
+            "affinity": 0.9234058658792962
+          }
+        ],
+        "contextAvailable": true
+      },
+      {
+        "latitude": 43.723526,
+        "longitude": -79.33708,
+        "affinity": 0.9881607270987802,
+        "popularity": 0.5893326955273858,
+        "affinityRank": 0.9369540000000001,
+        "audiencePercentile": 97.68670737435416,
+        "popularityPercentile": 46.700328792860496,
+        "contrast": 50.98637858149366,
+        "id": "area-3",
+        "name": "Near Banbury-Don Mills",
+        "address": "Wynford Drive, Banbury-Don Mills, Toronto, Ontario, Canada",
+        "nameAvailable": true,
+        "lowerCount": 4193,
+        "pointCount": 4292,
+        "distanceKm": 8.65187924205145,
+        "venues": [
+          {
+            "id": "E3B92DC3-4ADF-4A02-BC24-8A6C55CF70FD",
+            "name": "Kitaya Japanese Takeout",
+            "address": "890 Don Mills Rd. Unit 138-140 North York, ON M3C 1V6 Canada",
+            "affinity": 0.9145793800574651
+          },
+          {
+            "id": "FD9B592E-231C-445F-9F61-CB70365A7C34",
+            "name": "Asian Legend",
+            "address": "900 Don Mills Rd. North York, ON M3C 1V6 Canada",
+            "affinity": 0.8999131654795829
+          },
+          {
+            "id": "6842A752-7FE8-46C1-B47D-A7481558855E",
+            "name": "CoCo",
+            "address": "890 Don Mills Rd. 130 & 132 North York, ON M3C 1V6 Canada",
+            "affinity": 0.8760235098296164
+          },
+          {
+            "id": "E0F967CE-00BF-4220-B1F2-DFC7DD7F27D9",
+            "name": "Diwan",
+            "address": "Aga Khan Museum 77 Wynford Dr North York, ON M3C 1K1 Canada",
+            "affinity": 0.8732478819669466
+          },
+          {
+            "id": "C0D1BAC7-1534-4219-9585-377F177ECA90",
+            "name": "Sorento Italian Kitchen",
+            "address": "900 Don Mills Rd. North York, ON M3C 1V6 Canada",
+            "affinity": 0.8720447585252392
+          }
+        ],
+        "contextAvailable": true
+      }
+    ],
+    "trace": [
+      {
+        "step": "Find Dineen Coffee Co.",
+        "path": "/search",
+        "params": {
+          "query": "Dineen Coffee Co.",
+          "take": "10"
+        },
+        "status": "ok",
+        "count": 10
+      },
+      {
+        "step": "Find FIKA Cafe",
+        "path": "/search",
+        "params": {
+          "query": "FIKA Cafe",
+          "take": "10"
+        },
+        "status": "ok",
+        "count": 10
+      },
+      {
+        "step": "Find Rooster Coffee House",
+        "path": "/search",
+        "params": {
+          "query": "Rooster Coffee House",
+          "take": "10"
+        },
+        "status": "ok",
+        "count": 10
+      },
+      {
+        "step": "Map audience taste across the city",
+        "path": "/v2/insights",
+        "params": {
+          "filter.type": "urn:heatmap",
+          "filter.location.query": "Toronto, Ontario, Canada",
+          "signal.interests.entities": "FAD69E17-B23A-41C8-B25A-EBBEA04F4658,218AD775-5013-4D5A-84E9-9D308A68AFEF,4A68BC83-0A82-42CC-9A76-2E284F0DD2B9",
+          "signal.interests.tags": "urn:tag:genre:place:restaurant"
+        },
+        "status": "ok",
+        "count": 8363
+      },
+      {
+        "step": "Nearby dining for area 2",
+        "path": "/v2/insights",
+        "params": {
+          "filter.type": "urn:entity:place",
+          "filter.location": "POINT(-79.463425 43.668594)",
+          "filter.location.radius": "1000",
+          "filter.tags": "urn:tag:genre:place:restaurant",
+          "signal.interests.entities": "FAD69E17-B23A-41C8-B25A-EBBEA04F4658,218AD775-5013-4D5A-84E9-9D308A68AFEF,4A68BC83-0A82-42CC-9A76-2E284F0DD2B9",
+          "take": "5"
+        },
+        "status": "ok",
+        "count": 5
+      },
+      {
+        "step": "Locate area 2 on OpenStreetMap",
+        "path": "Photon /reverse",
+        "params": {
+          "latitude": "43.668594",
+          "longitude": "-79.463425"
+        },
+        "status": "ok",
+        "count": 1
+      },
+      {
+        "step": "Nearby dining for area 3",
+        "path": "/v2/insights",
+        "params": {
+          "filter.type": "urn:entity:place",
+          "filter.location": "POINT(-79.33708 43.723526)",
+          "filter.location.radius": "1000",
+          "filter.tags": "urn:tag:genre:place:restaurant",
+          "signal.interests.entities": "FAD69E17-B23A-41C8-B25A-EBBEA04F4658,218AD775-5013-4D5A-84E9-9D308A68AFEF,4A68BC83-0A82-42CC-9A76-2E284F0DD2B9",
+          "take": "5"
+        },
+        "status": "ok",
+        "count": 5
+      },
+      {
+        "step": "Locate area 3 on OpenStreetMap",
+        "path": "Photon /reverse",
+        "params": {
+          "latitude": "43.723526",
+          "longitude": "-79.33708"
+        },
+        "status": "ok",
+        "count": 1
+      },
+      {
+        "step": "Nearby dining for area 1",
+        "path": "/v2/insights",
+        "params": {
+          "filter.type": "urn:entity:place",
+          "filter.location": "POINT(-79.422226 43.64662)",
+          "filter.location.radius": "1000",
+          "filter.tags": "urn:tag:genre:place:restaurant",
+          "signal.interests.entities": "FAD69E17-B23A-41C8-B25A-EBBEA04F4658,218AD775-5013-4D5A-84E9-9D308A68AFEF,4A68BC83-0A82-42CC-9A76-2E284F0DD2B9",
+          "take": "5"
+        },
+        "status": "ok",
+        "count": 5
+      },
+      {
+        "step": "Locate area 1 on OpenStreetMap",
+        "path": "Photon /reverse",
+        "params": {
+          "latitude": "43.64662",
+          "longitude": "-79.422226"
+        },
+        "status": "ok",
+        "count": 1
+      }
+    ],
+    "separationKm": 2,
+    "allTied": false,
+    "totalReturned": 8363,
+    "rejected": [],
+    "rejectedCount": 0,
+    "eligibleCount": 4292,
+    "rankingMethod": "contrast",
+    "popularityCoverage": 0.9920782851817335,
+    "popularityRejectedCount": 885,
+    "screenedCount": 1277,
+    "cellCount": 4292
+  },
+  "profile": {
+    "tags": [
+      {
+        "name": "Coffee shop",
+        "affinity": 0.9976364981515836
+      },
+      {
+        "name": "Cafe",
+        "affinity": 0.9952288322123714
+      },
+      {
+        "name": "French",
+        "affinity": 0.9946095109844512
+      },
+      {
+        "name": "Coffee store",
+        "affinity": 0.9859308647341756
+      },
+      {
+        "name": "Brunch",
+        "affinity": 0.9812687217213488
+      },
+      {
+        "name": "Dessert shop",
+        "affinity": 0.9716537362167319
+      },
+      {
+        "name": "Bakery",
+        "affinity": 0.9674944823638002
+      },
+      {
+        "name": "Canadian",
+        "affinity": 0.9669470692990698
+      }
+    ],
+    "ageSignals": [
+      {
+        "referenceId": "FAD69E17-B23A-41C8-B25A-EBBEA04F4658",
+        "referenceName": "Dineen Coffee Co.",
+        "bands": [
+          {
+            "name": "24_and_younger",
+            "score": 0.053000000000000005
+          },
+          {
+            "name": "25_to_29",
+            "score": 0.049
+          },
+          {
+            "name": "30_to_34",
+            "score": -0.11000000000000001
+          },
+          {
+            "name": "35_to_44",
+            "score": 0.041
+          },
+          {
+            "name": "45_to_54",
+            "score": -0.22699999999999995
+          },
+          {
+            "name": "55_and_older",
+            "score": -0.09600000000000002
+          }
+        ]
+      },
+      {
+        "referenceId": "4A68BC83-0A82-42CC-9A76-2E284F0DD2B9",
+        "referenceName": "Rooster Coffee House",
+        "bands": [
+          {
+            "name": "24_and_younger",
+            "score": 0.029999999999999992
+          },
+          {
+            "name": "25_to_29",
+            "score": -0.022000000000000002
+          },
+          {
+            "name": "30_to_34",
+            "score": -0.11000000000000001
+          },
+          {
+            "name": "35_to_44",
+            "score": 0.229
+          },
+          {
+            "name": "45_to_54",
+            "score": -0.441
+          },
+          {
+            "name": "55_and_older",
+            "score": 0.006999999999999995
+          }
+        ]
+      },
+      {
+        "referenceId": "218AD775-5013-4D5A-84E9-9D308A68AFEF",
+        "referenceName": "FIKA Cafe",
+        "bands": [
+          {
+            "name": "24_and_younger",
+            "score": -0.02
+          },
+          {
+            "name": "25_to_29",
+            "score": -0.01
+          },
+          {
+            "name": "30_to_34",
+            "score": -0.87
+          },
+          {
+            "name": "35_to_44",
+            "score": 0.19
+          },
+          {
+            "name": "45_to_54",
+            "score": 0.12
+          },
+          {
+            "name": "55_and_older",
+            "score": -0.67
+          }
+        ]
+      }
+    ],
+    "relatedBrands": [
+      {
+        "id": "64950A6B-EA57-4DA1-81EE-4F2761082412",
+        "name": "Frank And Oak"
+      },
+      {
+        "id": "B5EFE12E-DDCB-4C20-AFE9-6E72FE6F542E",
+        "name": "Soia & Kyo"
+      },
+      {
+        "id": "431D6036-C28C-4F78-9B1A-A2DAD842872A",
+        "name": "Holt Renfrew"
+      },
+      {
+        "id": "B287C7B0-609F-430D-8F17-D3459EFB8FBA",
+        "name": "Aritzia"
+      },
+      {
+        "id": "700F9C09-6BF2-4AFD-A5AA-CB316504A0E3",
+        "name": "Hudson's Bay"
+      }
+    ],
+    "trace": [
+      {
+        "step": "Read audience taste tags",
+        "path": "/v2/insights",
+        "params": {
+          "filter.type": "urn:tag",
+          "filter.tag.types": "urn:tag:genre:place",
+          "signal.interests.entities": "FAD69E17-B23A-41C8-B25A-EBBEA04F4658,218AD775-5013-4D5A-84E9-9D308A68AFEF,4A68BC83-0A82-42CC-9A76-2E284F0DD2B9",
+          "take": "8"
+        },
+        "status": "ok",
+        "count": 8
+      },
+      {
+        "step": "Read reference demographic affinity",
+        "path": "/v2/insights",
+        "params": {
+          "filter.type": "urn:demographics",
+          "signal.interests.entities": "FAD69E17-B23A-41C8-B25A-EBBEA04F4658,218AD775-5013-4D5A-84E9-9D308A68AFEF,4A68BC83-0A82-42CC-9A76-2E284F0DD2B9"
+        },
+        "status": "ok",
+        "count": 3
+      },
+      {
+        "step": "Find cross-brand audience connections",
+        "path": "/v2/insights",
+        "params": {
+          "filter.type": "urn:entity:brand",
+          "signal.interests.entities": "FAD69E17-B23A-41C8-B25A-EBBEA04F4658,218AD775-5013-4D5A-84E9-9D308A68AFEF,4A68BC83-0A82-42CC-9A76-2E284F0DD2B9",
+          "filter.exclude.entities": "FAD69E17-B23A-41C8-B25A-EBBEA04F4658,218AD775-5013-4D5A-84E9-9D308A68AFEF,4A68BC83-0A82-42CC-9A76-2E284F0DD2B9",
+          "take": "5"
+        },
+        "status": "ok",
+        "count": 5
+      }
+    ],
+    "unavailable": []
+  },
+  "comparisons": [
+    {
+      "areaId": "area-3",
+      "venue": "Kitaya Japanese Takeout",
+      "shared": [
+        "Place",
+        "Restaurant",
+        "Lunch",
+        "Dinner",
+        "Dessert",
+        "Sweet",
+        "Vegetarian",
+        "Gluten Free"
+      ],
+      "referenceTags": [
+        "Alcohol",
+        "Cocktails",
+        "Breakfast",
+        "Quick bite",
+        "Place",
+        "Coffee Shop",
+        "Dessert",
+        "Wine"
+      ],
+      "venueTags": [
+        "Lunch",
+        "Dinner",
+        "Restaurant",
+        "Japanese",
+        "Place",
+        "Dessert",
+        "Japanese Restaurant",
+        "Sushi Takeaway"
+      ],
+      "trace": [
+        {
+          "step": "Compare reference and nearby-venue tags",
+          "path": "/v2/analysis/compare",
+          "params": {
+            "a.signal.interests.entities": "FAD69E17-B23A-41C8-B25A-EBBEA04F4658,218AD775-5013-4D5A-84E9-9D308A68AFEF,4A68BC83-0A82-42CC-9A76-2E284F0DD2B9",
+            "b.signal.interests.entities": "E3B92DC3-4ADF-4A02-BC24-8A6C55CF70FD"
+          },
+          "status": "ok",
+          "count": 13
+        }
+      ]
+    },
+    {
+      "areaId": "area-1",
+      "venue": "Kitten and the Bear",
+      "shared": [
+        "Sweet",
+        "Vegetarian",
+        "Gluten Free",
+        "Vegan",
+        "Casual",
+        "Average",
+        "Baking",
+        "Place"
+      ],
+      "referenceTags": [
+        "Alcohol",
+        "Cocktails",
+        "Breakfast",
+        "Quick bite",
+        "Place",
+        "Coffee Shop",
+        "Dessert",
+        "Wine"
+      ],
+      "venueTags": [
+        "Bakery",
+        "Restaurant",
+        "Breakfast",
+        "Place",
+        "Coffee",
+        "Bakery",
+        "Gourmet Grocery Store",
+        "Moderately expensive"
+      ],
+      "trace": [
+        {
+          "step": "Compare reference and nearby-venue tags",
+          "path": "/v2/analysis/compare",
+          "params": {
+            "a.signal.interests.entities": "FAD69E17-B23A-41C8-B25A-EBBEA04F4658,218AD775-5013-4D5A-84E9-9D308A68AFEF,4A68BC83-0A82-42CC-9A76-2E284F0DD2B9",
+            "b.signal.interests.entities": "B9FA3F61-388F-474F-B7C6-05FBBDD1B485"
+          },
+          "status": "ok",
+          "count": 39
+        }
+      ]
+    },
+    {
+      "areaId": "area-2",
+      "venue": "The Good Neighbour Espresso Bar",
+      "shared": [
+        "Place",
+        "Restaurant",
+        "Lunch",
+        "Dinner",
+        "Coffee",
+        "Alcohol",
+        "Beer",
+        "Small plates"
+      ],
+      "referenceTags": [
+        "Alcohol",
+        "Cocktails",
+        "Breakfast",
+        "Quick bite",
+        "Place",
+        "Coffee Shop",
+        "Dessert",
+        "Wine"
+      ],
+      "venueTags": [
+        "Alcohol",
+        "Lunch",
+        "Brunch",
+        "Dinner",
+        "Restaurant",
+        "Cocktails",
+        "Catering",
+        "Breakfast"
+      ],
+      "trace": [
+        {
+          "step": "Compare reference and nearby-venue tags",
+          "path": "/v2/analysis/compare",
+          "params": {
+            "a.signal.interests.entities": "FAD69E17-B23A-41C8-B25A-EBBEA04F4658,218AD775-5013-4D5A-84E9-9D308A68AFEF,4A68BC83-0A82-42CC-9A76-2E284F0DD2B9",
+            "b.signal.interests.entities": "FDB752F0-E791-46C3-B04B-A308A5E9E679"
+          },
+          "status": "ok",
+          "count": 44
+        }
+      ]
+    }
+  ],
+  "research": {
+    "area-3": {
+      "text": "This \"lifestyle centre\" is an open-air mall with a mix of retail, dining, and entertainment.\n\n**Why scout here**\n\nCF Shops at Don Mills is a significant commercial hub that aims to create a welcoming, walkable urban setting with a variety of amenities.\n\nThe presence of numerous restaurants and cafes, including some with family-friendly options like Jack Astor's, suggests a potential audience for a new café.\n\nThe centre has previously hosted family-oriented activities and has amenities like family washrooms and a nursing room.\n\nAn outdoor playground exists within the Shops at Don Mills, though its placement has been noted as somewhat removed from the main foot traffic.\n\n**Reasons to hesitate**\n\nWhile there's an outdoor playground at CF Shops at Don Mills, one source describes its location as an \"afterthought,\" away from the central square and main foot traffic.\n\nThe concept of a café with an *indoor* playground has existing examples in Toronto, such as The Willow Play Cafe in the Junction neighbourhood and Pinocchio Play Café in Lawrence Park.\n\nCF Shops at Don Mills also features various restaurants and cafes such as Eataly, Joey Don Mills Grill/Lounge, McEwan, Scaddabush Italian Kitchen, Anejo Restaurant, Nome Izakaya, Pablo's Coffee House, Jack Astor's Bar & Grill, and Tim Hortons.\n\nEataly offers Italian classics for all ages and includes both grab-and-go and seated restaurant options.\n\nJack Astor's Bar & Grill is noted as a kid-friendly option.\n\nMany offer dine-in, takeaway, and delivery.\n\n**Access and local context**\n\nThe location is at Don Mills Road and Lawrence Avenue East.\n\nCF Shops at Don Mills is accessible by car and public transit, with free parking available in a multi-level garage.\n\nThe shopping centre is described as an open-air lifestyle centre with storefronts facing internal streets, similar to a regular neighbourhood retail area.\n\nThe Aga Khan Museum is located approximately one and a half kilometres southeast of the Shops at Don Mills.\n\nEvaluate existing indoor play offerings in the immediate vicinity of Don Mills Road, considering the upcoming Jolly Bubble Indoor Playground.",
+      "createdAt": "2026-10-23T20:25:48.482Z",
+      "sources": [
+        {
+          "title": "wikipedia.org",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGdhQq2GnI65u0mH7R4eo4Y-WPH_54OV8sBBKTDAXNVvxeduAm8v__lGSWigb06vAWf1j14oIXuuqt1sYm0mnDeSdX_Fe5JY5RKVVVRmRp78wylGvIQnzJlq_p8AHc75__0lNv-35K4n7KORw=="
+        },
+        {
+          "title": "cadillacfairview.com",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHVT0VCZiFh8rCmwqa3a-kiYcpsHF6AKOkMWub4JjrkN4jw-A7nA5Y-J83CbccXmGr2o6t3b3jOTwZa-ILZ3kK8unOt2_YsGPpa1_bq1YlocPG3m7geaBP3CdRDRTChUz5GPr2myiu961yXSMzOUFJGYFjRHxs2UYcztstY"
+        },
+        {
+          "title": "loopnet.com",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFubUjzkCDD6IH2c_46HMvMn3-BsLNayNIrGBOxrb8FwVuHByw-6QaVBA7x-49_32ZOnncoFk4jueVy_OAlHzgOL9v_E-7CquDcoMYZwwOIcQnY1A_gN_W0bm6Udq1XQvyD77zf76OdHF6gdT_IHLms0h-lPV0fKqYlZgAqS3MxrtTSx-sBOA=="
+        },
+        {
+          "title": "kidsinto.com",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHeW26Sz8AEqQqL47vFkVKUEB1FgAgwNenTs5AU72-Brr-oUI0SJ3_pbrp8bObJccTRVuphjshuDBaLKSoz3IyOaLGZkt3quoFUVNvn5nUIHSr8OAHBbMXgpme4FyjX4ZagmGJAvuMmuB539_pZZw=="
+        },
+        {
+          "title": "cadillacfairview.com",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGCJQw5RfxLSSyqcDvNM658HcgNHO7Ez03zYzx5vjftmiUSJwgtamHAQFOlZ-uGKeGyVuaQw5YfdHiAS-eKTzm9g4UuVcmvKb_GzFsK-J2yZ4pIck-UHiIclB2qqUZbdLEDX2hrScKp2DnZJy2QXfrshZVZoJJD3hVSiYJVsqjBfTIw"
+        },
+        {
+          "title": "cadillacfairview.com",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHcKQ3C8raQ7wH7NCgPWIkLe2deVjZsh6q2GK-hwr727tXDMGQT_5oUBbRZ315YMp6VWQ9VWS7x7MDZoCc73zDcVm4wQQ7fAkBp7xPBXB3IJIWtaD-Oyy8lGT2d_SP3EDK91YoadC-XGlMOlBtZbq9xU66kL5c_pduXh3q841oMDc686vDvy2S1iiuoNhI1Lyg9JqisM_Bf7jzSB31PqBwz5qtj"
+        },
+        {
+          "title": "danforthdad.com",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEuz0cOiFNHulgy_40keJKZKhTlsR8fuPh2v4DQJF0gnw3_OS9r8UVHXN3XJBCEVcuxbB7G6eC-_c5RmJzkzpwQ7ubhu9sBRvdY9-YhaZsS7TUYlnZo5437krn8qs3Y6KmQ1ZKm"
+        },
+        {
+          "title": "karenmillar.com",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEkTnCcsWn12CmTkUwwvTeNasN4foJz9Y3rwXx7tMG8h6SaawfuR7HGA-4wCCTvetCbr1ELXvaRE-AJtW89AvGX-V6teEg0iD8ydvp0fnKE34yEO83fQycO0zLJ6gBMlNBOFpKEg8DsrTXMRecljfWN8DYWwey5KuOkL0A_zBJ7"
+        },
+        {
+          "title": "thewillowplaycafe.ca",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHGupthkUrzXkAywcw0xEj5vFqO2wgup94ZTMqVWATWLOmcKKrnrln___bbv7O4f2hYNPgy0ClRTgc_zapyTNMMmcA8YWkKoQYLY5sx1Y7Y0Bb_8I4BgY5Td2CgmA=="
+        },
+        {
+          "title": "mixinteriors.com",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGARA5f-kCFhB1pcKaWnmK0nlKSXbWgEkOj4WNFi5IF3GwF9p9oFVEOqj0itJzD3hch6IEgz9nDlDi5rYA3vchL2dnvEgR87aMeO2m6_HsXj8SuCgtJP85OBhxnoK7pYDW8d7dayfdUNWFK5NGpdJiPhQ1_CXAGvATlw_kJ3Ob893u5AWVlZKLr4-uLMUOaghcQx_5Gka4YTqdNP1edvA=="
+        },
+        {
+          "title": "pinocchioplaycafe.com",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGF42Gsm23LAl9PhuTjP3stYNiQaRwPgAu0PlUYBpbpnN5hu8usO8ijicWNIFOTi0-y34-qye69_D7a_TjRqb7Bs12o8N1y-P20BXRV__RtjeptVZWFH_HUZQ=="
+        },
+        {
+          "title": "cadillacfairview.com",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFyPUGKwA2WpcOGORoO57f_A74JYAPOAvwtEBx7dQC4EH53gCFeaB3pVGQJZBTiPnCAK5vPQsbS6Nnt0kL8lq-HE35-Scx0IIFz1BNrRjZH2xvIcvZGzY2BHbe7j1lQsK-35s7uq-6Zm6YrljsCUdi3EXb8OoZBmAs0z4FFrsYp2lvWntuY44D5r605TvwXsg=="
+        },
+        {
+          "title": "cadillacfairview.com",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFicwD030C7AKO4g8U142jXsHkp1-zpT-HieSIelLMJo_Tim5TXo8f9gXyNjCQe6lD21Fab8Gw36MCeWpvhnmdTEOf6r5B5Ot4cTrAZZgQKiGRuSQtKF7afyT_SZfWpTAKm7nCd2okiGKdWemXmJndl5cqovqtSxaERrJxjP0Z1T3zJhoLc1jJZEw=="
+        },
+        {
+          "title": "mapcarta.com",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH-akABCZLjS-XXhB9w6w9UkgYFD9Cv2O50Rm9mrrWVcMuGKAvoc5gY3ikjlYeNZzL7Zmr_C29zi_9D3vPP1kpEeZ2bot7_kXZMPXU-AnsCNxEcSG9W_fiI3A=="
+        }
+      ],
+      "citations": [
+        {
+          "end": 92,
+          "sourceIndices": [
+            0,
+            1
+          ]
+        },
+        {
+          "end": 112,
+          "sourceIndices": [
+            2,
+            0
+          ]
+        },
+        {
+          "end": 252,
+          "sourceIndices": [
+            2,
+            0
+          ]
+        },
+        {
+          "end": 410,
+          "sourceIndices": [
+            3,
+            4
+          ]
+        },
+        {
+          "end": 531,
+          "sourceIndices": [
+            5,
+            3,
+            4
+          ]
+        },
+        {
+          "end": 676,
+          "sourceIndices": [
+            6
+          ]
+        },
+        {
+          "end": 701,
+          "sourceIndices": [
+            6
+          ]
+        },
+        {
+          "end": 872,
+          "sourceIndices": [
+            6
+          ]
+        },
+        {
+          "end": 1058,
+          "sourceIndices": [
+            8,
+            9,
+            10
+          ]
+        },
+        {
+          "end": 1303,
+          "sourceIndices": [
+            11
+          ]
+        },
+        {
+          "end": 1409,
+          "sourceIndices": [
+            11
+          ]
+        },
+        {
+          "end": 1470,
+          "sourceIndices": [
+            3
+          ]
+        },
+        {
+          "end": 1515,
+          "sourceIndices": [
+            4
+          ]
+        },
+        {
+          "end": 1545,
+          "sourceIndices": [
+            0
+          ]
+        },
+        {
+          "end": 1606,
+          "sourceIndices": [
+            0
+          ]
+        },
+        {
+          "end": 1723,
+          "sourceIndices": [
+            0,
+            3,
+            12
+          ]
+        },
+        {
+          "end": 1879,
+          "sourceIndices": [
+            0
+          ]
+        },
+        {
+          "end": 1988,
+          "sourceIndices": [
+            13
+          ]
+        },
+        {
+          "end": 2131,
+          "sourceIndices": [
+            7
+          ]
+        }
+      ],
+      "queries": [
+        "commercial streets near 43.723526, -79.33708 Toronto",
+        "Don Mills Road commercial businesses Toronto",
+        "Shops at Don Mills cafes",
+        "Shops at Don Mills playground",
+        "Toronto café with indoor playground zoning"
+      ],
+      "searchSuggestionsHtml": "<style>\n.container {\n  align-items: center;\n  border-radius: 8px;\n  display: flex;\n  font-family: Google Sans, Roboto, sans-serif;\n  font-size: 14px;\n  line-height: 20px;\n  padding: 8px 12px;\n}\n.chip {\n  display: inline-block;\n  border: solid 1px;\n  border-radius: 16px;\n  min-width: 14px;\n  padding: 5px 16px;\n  text-align: center;\n  user-select: none;\n  margin: 0 8px;\n  -webkit-tap-highlight-color: transparent;\n}\n.carousel {\n  overflow: auto;\n  scrollbar-width: none;\n  white-space: nowrap;\n  margin-right: -12px;\n}\n.headline {\n  display: flex;\n  margin-right: 4px;\n}\n.gradient-container {\n  position: relative;\n}\n.gradient {\n  position: absolute;\n  transform: translate(3px, -9px);\n  height: 36px;\n  width: 9px;\n}\n@media (prefers-color-scheme: light) {\n  .container {\n    background-color: #fafafa;\n    box-shadow: 0 0 0 1px #0000000f;\n  }\n  .headline-label {\n    color: #1f1f1f;\n  }\n  .chip {\n    background-color: #ffffff;\n    border-color: #d2d2d2;\n    color: #5e5e5e;\n    text-decoration: none;\n  }\n  .chip:hover {\n    background-color: #f2f2f2;\n  }\n  .chip:focus {\n    background-color: #f2f2f2;\n  }\n  .chip:active {\n    background-color: #d8d8d8;\n    border-color: #b6b6b6;\n  }\n  .logo-dark {\n    display: none;\n  }\n  .gradient {\n    background: linear-gradient(90deg, #fafafa 15%, #fafafa00 100%);\n  }\n}\n@media (prefers-color-scheme: dark) {\n  .container {\n    background-color: #1f1f1f;\n    box-shadow: 0 0 0 1px #ffffff26;\n  }\n  .headline-label {\n    color: #fff;\n  }\n  .chip {\n    background-color: #2c2c2c;\n    border-color: #3c4043;\n    color: #fff;\n    text-decoration: none;\n  }\n  .chip:hover {\n    background-color: #353536;\n  }\n  .chip:focus {\n    background-color: #353536;\n  }\n  .chip:active {\n    background-color: #464849;\n    border-color: #53575b;\n  }\n  .logo-light {\n    display: none;\n  }\n  .gradient {\n    background: linear-gradient(90deg, #1f1f1f 15%, #1f1f1f00 100%);\n  }\n}\n</style>\n<div class=\"container\">\n  <div class=\"headline\">\n    <svg class=\"logo-light\" width=\"18\" height=\"18\" viewBox=\"9 9 35 35\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n      <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M42.8622 27.0064C42.8622 25.7839 42.7525 24.6084 42.5487 23.4799H26.3109V30.1568H35.5897C35.1821 32.3041 33.9596 34.1222 32.1258 35.3448V39.6864H37.7213C40.9814 36.677 42.8622 32.2571 42.8622 27.0064V27.0064Z\" fill=\"#4285F4\"/>\n      <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M26.3109 43.8555C30.9659 43.8555 34.8687 42.3195 37.7213 39.6863L32.1258 35.3447C30.5898 36.3792 28.6306 37.0061 26.3109 37.0061C21.8282 37.0061 18.0195 33.9811 16.6559 29.906H10.9194V34.3573C13.7563 39.9841 19.5712 43.8555 26.3109 43.8555V43.8555Z\" fill=\"#34A853\"/>\n      <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M16.6559 29.8904C16.3111 28.8559 16.1074 27.7588 16.1074 26.6146C16.1074 25.4704 16.3111 24.3733 16.6559 23.3388V18.8875H10.9194C9.74388 21.2072 9.06992 23.8247 9.06992 26.6146C9.06992 29.4045 9.74388 32.022 10.9194 34.3417L15.3864 30.8621L16.6559 29.8904V29.8904Z\" fill=\"#FBBC05\"/>\n      <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M26.3109 16.2386C28.85 16.2386 31.107 17.1164 32.9095 18.8091L37.8466 13.8719C34.853 11.082 30.9659 9.3736 26.3109 9.3736C19.5712 9.3736 13.7563 13.245 10.9194 18.8875L16.6559 23.3388C18.0195 19.2636 21.8282 16.2386 26.3109 16.2386V16.2386Z\" fill=\"#EA4335\"/>\n    </svg>\n    <svg class=\"logo-dark\" width=\"18\" height=\"18\" viewBox=\"0 0 48 48\" xmlns=\"http://www.w3.org/2000/svg\">\n      <circle cx=\"24\" cy=\"23\" fill=\"#FFF\" r=\"22\"/>\n      <path d=\"M33.76 34.26c2.75-2.56 4.49-6.37 4.49-11.26 0-.89-.08-1.84-.29-3H24.01v5.99h8.03c-.4 2.02-1.5 3.56-3.07 4.56v.75l3.91 2.97h.88z\" fill=\"#4285F4\"/>\n      <path d=\"M15.58 25.77A8.845 8.845 0 0 0 24 31.86c1.92 0 3.62-.46 4.97-1.31l4.79 3.71C31.14 36.7 27.65 38 24 38c-5.93 0-11.01-3.4-13.45-8.36l.17-1.01 4.06-2.85h.8z\" fill=\"#34A853\"/>\n      <path d=\"M15.59 20.21a8.864 8.864 0 0 0 0 5.58l-5.03 3.86c-.98-2-1.53-4.25-1.53-6.64 0-2.39.55-4.64 1.53-6.64l1-.22 3.81 2.98.22 1.08z\" fill=\"#FBBC05\"/>\n      <path d=\"M24 14.14c2.11 0 4.02.75 5.52 1.98l4.36-4.36C31.22 9.43 27.81 8 24 8c-5.93 0-11.01 3.4-13.45 8.36l5.03 3.85A8.86 8.86 0 0 1 24 14.14z\" fill=\"#EA4335\"/>\n    </svg>\n    <div class=\"gradient-container\"><div class=\"gradient\"></div></div>\n  </div>\n  <div class=\"carousel\">\n    <a class=\"chip\" href=\"https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF3iSF0GuAYAlbllVlSIMxNPmuh6y4YZIS98OEEO9DH4WQhhpIq8w_sM-mgjDDYL8NlzFHRjv06InnYkqjbsbo9UltaAKQ_gEs00gb0MmU_ZjrOBHVKngqX137imNJi9inAXXD_AS2RHjDaiqhnTOXNvEg0YvLr0aY1wxfEM4QAbMX6zPGzz94a-czp1VpOg-CBMgHIfgKnsKCULt2CX_Xc\">Shops at Don Mills playground</a>\n    <a class=\"chip\" href=\"https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFYWu3s5MQzWK1oNHQCCn8zOzxzSqivj3Li3iNldQAkDBeoXvExKvG8xW8Uvr3GDBrUaLmewzmZNFXcYlJaK4gmWnmbaGJgANCa9dcvZ_woImsd_oEr031Vpo_KC2YaJBg2VzN-63EAgN0IJ_gozCmxg7MpVp7f9Ne5KASdsMCCRB1ZEWHCiPTpH7XLceScAeX19g079R_LS1ZQMHK-SWkOgVuxYAMUYIWyMT6BTlo8\">Don Mills Road commercial businesses Toronto</a>\n    <a class=\"chip\" href=\"https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHW8UytqdliOoqxt4-DFBQiV1fKym9p_ShTbvkXFNvJgoiOAplJXZycRIF7znMI_wFUwuazVFkzOfVXDoPnEJpy0Lsg2pnYtZZX50eDx7tNUKx09AakOQFPHFHMw4LsSfE_mYSTWr-5jb4FNwNp0KxZnuVharyvmmE4DRjM0KvfSYifARE4qXOMiJZL-PBH_HNEAsEZsW6iaVxTH1t-1ZXVA7vQLr2MhNfDbl91Mkf4lyohSTc8w35j\">commercial streets near 43.723526, -79.33708 Toronto</a>\n    <a class=\"chip\" href=\"https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHnc0nlcdIWTRuM-wG_PHacOK98qCwZn8aybi24UtkslotNJ71ad9MPkY6enmxyNzgwUQ4x9vPyQ8SGxenSRz5d74JhrPr-WavgMGOj50nfmOobU19hi7Mfg-O4thczm2zLRveXVbDH-6waHk96WC6Vrm9AzSJq-NMCECUjMzOXRxghEpiTNu4EW1auBS5nqF7eB3HRiVOWfyQAcA==\">Shops at Don Mills cafes</a>\n    <a class=\"chip\" href=\"https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEkhmsHa5Upwze9v81sozo-cI5xDO90iMLn9BiWc3gRiAvPYhWHn7n_GfrrmcqBlACj-zpRJSfsRXzJNe1An2hu3vb5-wBalgAu6f0v0S6bl_S0j54A18G-9KzZp37HlbCi_rgzp3oZg6wTLlH-DWA1EtNvPn0RYFKqlqYRQraYoZcyRAqEhuOkmnnkD398jdul_9XWWVa8cfNg_tautMwMPiVA9N3wVvB_QV22ufprMwRD\">Toronto café with indoor playground zoning</a>\n  </div>\n</div>\n",
+      "status": "partial",
+      "notice": "Some sentences were omitted because evidence checks or citation alignment failed. Only retained cited passages are shown.",
+      "omittedSentences": 17,
+      "validationRules": [
+        "ungrounded-sentence",
+        "numeric-claim"
+      ]
+    }
+  },
+  "assessment": {
+    "visitFirst": "area-1",
+    "reason": "Near Spadina–Fort York is ranked 1 of 3 by local rank contrast. Start with this highest-ranked eligible point; verify premises and practical constraints during the visit. This is a shortlist comparison, not a business-success forecast.",
+    "tradeOff": "Taste evidence does not establish usable floor area, access or an available commercial unit.",
+    "nextAction": "Scout nearby commercial streets. Check usable space, accessibility and the proposed layout, then read the cited research."
+  },
+  "steps": [
+    {
+      "id": "step-1",
+      "tool": "explore_areas",
+      "title": "Mapping audience fit against popularity",
+      "status": "complete",
+      "durationMs": 2914
+    },
+    {
+      "id": "step-2",
+      "tool": "audience_profile",
+      "title": "Reading audience taste and demographic signals",
+      "status": "complete",
+      "durationMs": 340
+    },
+    {
+      "id": "step-3",
+      "tool": "compare_audiences",
+      "title": "Comparing an actual nearby venue’s audience tags",
+      "status": "complete",
+      "durationMs": 33
+    },
+    {
+      "id": "step-4",
+      "tool": "compare_audiences",
+      "title": "Comparing an actual nearby venue’s audience tags",
+      "status": "complete",
+      "durationMs": 52
+    },
+    {
+      "id": "step-5",
+      "tool": "compare_audiences",
+      "title": "Comparing an actual nearby venue’s audience tags",
+      "status": "complete",
+      "durationMs": 59
+    },
+    {
+      "id": "step-6",
+      "tool": "research_area",
+      "title": "Researching the selected area’s practical trade-offs",
+      "status": "complete",
+      "notice": "Some sentences were omitted because evidence checks or citation alignment failed. Only retained cited passages are shown.",
+      "durationMs": 7107
+    }
+  ],
+  "decisionIssues": [],
+  "selection": {
+    "visitFirst": "area-1",
+    "reasonCode": "taste-evidence",
+    "checkFocus": "space-access"
+  },
+  "decisionContract": "structured-v2",
+  "decisionOrigin": "ranking-default",
+  "decisionNotice": "No cited practical reason supported a lower-ranked visit. Visit order follows the verified ranking instead.",
+  "createdAt": "2026-10-23T20:25:49.207Z"
+}

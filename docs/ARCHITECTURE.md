@@ -6,7 +6,7 @@ Next.js App Router, TypeScript and React on Vercel. Leaflet displays map points;
 
 Browser → `/api/scout` → bounded Gemini function calls → Qloo exploration/profile/compare → Google-grounded research → structured decision codes → deterministic rank facts → SSE events and final brief.
 
-The model chooses an eligible visit-first ID, a reason code and a check focus. `lib/sites/decision.ts` computes its actual shortlist rank and tie status. No free-text model claim can become the primary “highest contrast” explanation.
+The model proposes an eligible visit-first ID, a reason code and a check focus. Rank is the default visit order; a lower-ranked visit requires an exact retained cited factual passage naming the actual area or a verified nearby venue, with a matching source. Generic city-wide checklists cannot override rank. `lib/sites/decision.ts` computes its actual shortlist rank and tie status. No free-text model claim can become the primary “highest contrast” explanation.
 
 ## Ownership
 
@@ -17,7 +17,8 @@ The model chooses an eligible visit-first ID, a reason code and a check focus. `
 | `lib/sites/signal.ts` | Positive-popularity coverage, local midrank percentiles and contrast |
 | `lib/sites/explore.ts` | Radius, outlet exclusions, popularity/taste screens and separated points |
 | `lib/sites/profile.ts` | Audience tags, signed demographic affinity, brands and venue comparison |
-| `lib/sites/research.ts` | Source-grounded practical research with nearby venue identities |
+| `lib/sites/research.ts` | Source-grounded retrieval, bounded retries/deadline and safe diagnostic events |
+| `lib/sites/research-report.ts` | Whole-sentence filtering, exact grounding alignment, rebuilt citations, sources-only recovery and safe failure categories |
 | `lib/sites/decision.ts` | Strict decision-code contract and deterministic rank/tie wording |
 | `lib/sites/scout-agent.ts` | Allowed stages, bounded model turns, real tool events and final selection |
 | `lib/sites/mcp.ts` | Read-only tools exposed through `/api/mcp` |

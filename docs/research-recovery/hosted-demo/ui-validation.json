@@ -1,0 +1,17 @@
+{
+  "url": "https://collab-scout-gzr151629-circuitstudioais-projects.vercel.app",
+  "status": "passed",
+  "savedDemo": null,
+  "cached": false,
+  "mode": "Hosted end-to-end agent run (cache reuse, if returned by server, is visibly labelled)",
+  "checks": [
+    "One click produces a live decision, contrast cards, Audience DNA, actual tool statuses and cited research",
+    "Downloaded Expansion Brief is a structurally valid one-page PDF",
+    "Downloaded notes retain saved provenance when applicable",
+    "Rendered agent result passes tested desktop/mobile axe rules, with no overflow or page errors",
+    "Changing the popularity floor invalidates the agent interpretation, audience panel and old areas"
+  ],
+  "desktopAxe": [],
+  "mobileAxe": [],
+  "pageErrors": []
+}

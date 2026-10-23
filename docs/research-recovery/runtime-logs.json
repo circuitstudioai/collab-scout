@@ -1,0 +1,60 @@
+{
+  "url": "https://collab-scout-fkzbg80ya-circuitstudioais-projects.vercel.app",
+  "checkedAt": "2026-10-23T20:30:20.956037+00:00",
+  "events": [
+    {
+      "environment": "preview",
+      "path": "/api/scout",
+      "event": {
+        "event": "sitebrief.research",
+        "requestId": "efde5bfa-a3e1-4938-a58c-3b3b8f5a70e3",
+        "attempt": 1,
+        "durationMs": 8038,
+        "status": "partial",
+        "sourceCount": 35,
+        "citationCount": 22,
+        "omittedSentences": 14,
+        "validationRules": [
+          "ungrounded-sentence",
+          "regulatory-claim"
+        ]
+      }
+    },
+    {
+      "environment": "preview",
+      "path": "/api/scout",
+      "event": {
+        "event": "sitebrief.research",
+        "requestId": "1452f788-3a98-463a-a35a-af1251f44c99",
+        "attempt": 1,
+        "durationMs": 7099,
+        "status": "partial",
+        "sourceCount": 11,
+        "citationCount": 8,
+        "omittedSentences": 27,
+        "validationRules": [
+          "ungrounded-sentence",
+          "unsupported-market-claim",
+          "numeric-claim"
+        ]
+      }
+    },
+    {
+      "environment": "preview",
+      "path": "/api/scout",
+      "event": {
+        "event": "sitebrief.research",
+        "requestId": "01288b98-41e4-4cff-a9e0-7d8d220ca2e1",
+        "attempt": 1,
+        "durationMs": 6801,
+        "status": "partial",
+        "sourceCount": 17,
+        "citationCount": 23,
+        "omittedSentences": 11,
+        "validationRules": [
+          "ungrounded-sentence"
+        ]
+      }
+    }
+  ]
+}

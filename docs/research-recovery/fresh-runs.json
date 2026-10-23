@@ -1,0 +1,423 @@
+{
+  "url": "https://collab-scout-fkzbg80ya-circuitstudioais-projects.vercel.app",
+  "checkedAt": "2026-10-23T20:29:41.467Z",
+  "counts": {
+    "live-cited": 5
+  },
+  "results": [
+    {
+      "scenario": "canonical-playground",
+      "url": "https://collab-scout-fkzbg80ya-circuitstudioais-projects.vercel.app",
+      "status": 200,
+      "elapsedSeconds": 16.435,
+      "checkedAt": "2026-10-23T20:28:06.174Z",
+      "mode": "live-cited",
+      "research": [
+        {
+          "status": "partial",
+          "sourceCount": 13,
+          "citationCount": 12,
+          "omittedSentences": 14,
+          "validationRules": [
+            "ungrounded-sentence",
+            "unsupported-market-claim"
+          ]
+        }
+      ],
+      "steps": [
+        {
+          "id": "step-1",
+          "tool": "explore_areas",
+          "title": "Mapping audience fit against popularity",
+          "status": "complete",
+          "durationMs": 4567
+        },
+        {
+          "id": "step-2",
+          "tool": "audience_profile",
+          "title": "Reading audience taste and demographic signals",
+          "status": "complete",
+          "durationMs": 519
+        },
+        {
+          "id": "step-3",
+          "tool": "compare_audiences",
+          "title": "Comparing an actual nearby venue’s audience tags",
+          "status": "complete",
+          "durationMs": 27
+        },
+        {
+          "id": "step-4",
+          "tool": "compare_audiences",
+          "title": "Comparing an actual nearby venue’s audience tags",
+          "status": "complete",
+          "durationMs": 40
+        },
+        {
+          "id": "step-5",
+          "tool": "compare_audiences",
+          "title": "Comparing an actual nearby venue’s audience tags",
+          "status": "complete",
+          "durationMs": 28
+        },
+        {
+          "id": "step-6",
+          "tool": "research_area",
+          "title": "Researching the selected area’s practical trade-offs",
+          "status": "complete",
+          "notice": "Some sentences were omitted because evidence checks or citation alignment failed. Only retained cited passages are shown.",
+          "durationMs": 6387
+        }
+      ],
+      "decisionOrigin": "ranking-default",
+      "assessment": {
+        "visitFirst": "area-1",
+        "reason": "Near Spadina–Fort York is ranked 1 of 3 by local rank contrast. Start with this highest-ranked eligible point; verify premises and practical constraints during the visit. This is a shortlist comparison, not a business-success forecast.",
+        "tradeOff": "Taste evidence does not establish demand, rents, available units or commercial suitability.",
+        "nextAction": "Read the cited research and verify premises, access, permissions and operating conditions during a scouting visit."
+      },
+      "rank": 1,
+      "tied": 1
+    },
+    {
+      "scenario": "blue-bottle",
+      "url": "https://collab-scout-fkzbg80ya-circuitstudioais-projects.vercel.app",
+      "status": 200,
+      "elapsedSeconds": 37.917,
+      "checkedAt": "2026-10-23T20:28:44.092Z",
+      "mode": "live-cited",
+      "research": [
+        {
+          "status": "partial",
+          "sourceCount": 16,
+          "citationCount": 21,
+          "omittedSentences": 11,
+          "validationRules": [
+            "ungrounded-sentence",
+            "numeric-claim"
+          ]
+        },
+        {
+          "status": "partial",
+          "sourceCount": 16,
+          "citationCount": 14,
+          "omittedSentences": 19,
+          "validationRules": [
+            "ungrounded-sentence",
+            "numeric-claim"
+          ]
+        },
+        {
+          "status": "partial",
+          "sourceCount": 14,
+          "citationCount": 14,
+          "omittedSentences": 17,
+          "validationRules": [
+            "ungrounded-sentence",
+            "numeric-claim"
+          ]
+        }
+      ],
+      "steps": [
+        {
+          "id": "step-1",
+          "tool": "explore_areas",
+          "title": "Mapping audience fit against popularity",
+          "status": "complete",
+          "durationMs": 3189
+        },
+        {
+          "id": "step-2",
+          "tool": "audience_profile",
+          "title": "Reading audience taste and demographic signals",
+          "status": "complete",
+          "durationMs": 479
+        },
+        {
+          "id": "step-3",
+          "tool": "compare_audiences",
+          "title": "Comparing an actual nearby venue’s audience tags",
+          "status": "complete",
+          "durationMs": 35
+        },
+        {
+          "id": "step-4",
+          "tool": "compare_audiences",
+          "title": "Comparing an actual nearby venue’s audience tags",
+          "status": "complete",
+          "durationMs": 30
+        },
+        {
+          "id": "step-5",
+          "tool": "compare_audiences",
+          "title": "Comparing an actual nearby venue’s audience tags",
+          "status": "complete",
+          "durationMs": 21
+        },
+        {
+          "id": "step-6",
+          "tool": "research_area",
+          "title": "Researching the selected area’s practical trade-offs",
+          "status": "complete",
+          "notice": "Some sentences were omitted because evidence checks or citation alignment failed. Only retained cited passages are shown.",
+          "durationMs": 6355
+        },
+        {
+          "id": "step-7",
+          "tool": "research_area",
+          "title": "Researching the selected area’s practical trade-offs",
+          "status": "complete",
+          "notice": "Some sentences were omitted because evidence checks or citation alignment failed. Only retained cited passages are shown.",
+          "durationMs": 7488
+        },
+        {
+          "id": "step-8",
+          "tool": "research_area",
+          "title": "Researching the selected area’s practical trade-offs",
+          "status": "complete",
+          "notice": "Some sentences were omitted because evidence checks or citation alignment failed. Only retained cited passages are shown.",
+          "durationMs": 7612
+        }
+      ],
+      "decisionOrigin": "agent",
+      "assessment": {
+        "visitFirst": "area-1",
+        "reason": "Near East End-Danforth is ranked 1 of 3 by local rank contrast. Start with this highest-ranked eligible point; verify premises and practical constraints during the visit. This is a shortlist comparison, not a business-success forecast.",
+        "tradeOff": "Taste evidence does not establish demand, rents, available units or commercial suitability.",
+        "nextAction": "Read the cited research and verify premises, access, permissions and operating conditions during a scouting visit."
+      },
+      "rank": 1,
+      "tied": 1
+    },
+    {
+      "scenario": "custom-playground",
+      "url": "https://collab-scout-fkzbg80ya-circuitstudioais-projects.vercel.app",
+      "status": 200,
+      "elapsedSeconds": 13.374,
+      "checkedAt": "2026-10-23T20:28:57.467Z",
+      "mode": "live-cited",
+      "research": [
+        {
+          "status": "partial",
+          "sourceCount": 17,
+          "citationCount": 23,
+          "omittedSentences": 11,
+          "validationRules": [
+            "ungrounded-sentence"
+          ]
+        }
+      ],
+      "steps": [
+        {
+          "id": "step-1",
+          "tool": "explore_areas",
+          "title": "Mapping audience fit against popularity",
+          "status": "complete",
+          "durationMs": 2607
+        },
+        {
+          "id": "step-2",
+          "tool": "audience_profile",
+          "title": "Reading audience taste and demographic signals",
+          "status": "complete",
+          "durationMs": 332
+        },
+        {
+          "id": "step-3",
+          "tool": "compare_audiences",
+          "title": "Comparing an actual nearby venue’s audience tags",
+          "status": "complete",
+          "durationMs": 56
+        },
+        {
+          "id": "step-4",
+          "tool": "research_area",
+          "title": "Researching the selected area’s practical trade-offs",
+          "status": "complete",
+          "notice": "Some sentences were omitted because evidence checks or citation alignment failed. Only retained cited passages are shown.",
+          "durationMs": 6801
+        }
+      ],
+      "decisionOrigin": "ranking-default",
+      "assessment": {
+        "visitFirst": "area-1",
+        "reason": "Near Spadina–Fort York is ranked 1 of 3 by local rank contrast. Start with this highest-ranked eligible point; verify premises and practical constraints during the visit. This is a shortlist comparison, not a business-success forecast.",
+        "tradeOff": "Taste evidence does not establish demand, rents, available units or commercial suitability.",
+        "nextAction": "Read the cited research and verify premises, access, permissions and operating conditions during a scouting visit."
+      },
+      "rank": 1,
+      "tied": 1
+    },
+    {
+      "scenario": "blue-bottle",
+      "url": "https://collab-scout-fkzbg80ya-circuitstudioais-projects.vercel.app",
+      "status": 200,
+      "elapsedSeconds": 29.006,
+      "checkedAt": "2026-10-23T20:29:26.476Z",
+      "mode": "live-cited",
+      "research": [
+        {
+          "status": "partial",
+          "sourceCount": 11,
+          "citationCount": 8,
+          "omittedSentences": 27,
+          "validationRules": [
+            "ungrounded-sentence",
+            "unsupported-market-claim",
+            "numeric-claim"
+          ]
+        },
+        {
+          "status": "partial",
+          "sourceCount": 20,
+          "citationCount": 14,
+          "omittedSentences": 17,
+          "validationRules": [
+            "ungrounded-sentence",
+            "numeric-claim"
+          ]
+        },
+        {
+          "status": "partial",
+          "sourceCount": 15,
+          "citationCount": 9,
+          "omittedSentences": 22,
+          "validationRules": [
+            "ungrounded-sentence",
+            "numeric-claim"
+          ]
+        }
+      ],
+      "steps": [
+        {
+          "id": "step-1",
+          "tool": "explore_areas",
+          "title": "Mapping audience fit against popularity",
+          "status": "complete",
+          "durationMs": 838
+        },
+        {
+          "id": "step-2",
+          "tool": "audience_profile",
+          "title": "Reading audience taste and demographic signals",
+          "status": "complete",
+          "durationMs": 466
+        },
+        {
+          "id": "step-3",
+          "tool": "compare_audiences",
+          "title": "Comparing an actual nearby venue’s audience tags",
+          "status": "complete",
+          "durationMs": 26
+        },
+        {
+          "id": "step-4",
+          "tool": "compare_audiences",
+          "title": "Comparing an actual nearby venue’s audience tags",
+          "status": "complete",
+          "durationMs": 25
+        },
+        {
+          "id": "step-5",
+          "tool": "compare_audiences",
+          "title": "Comparing an actual nearby venue’s audience tags",
+          "status": "complete",
+          "durationMs": 27
+        },
+        {
+          "id": "step-6",
+          "tool": "research_area",
+          "title": "Researching the selected area’s practical trade-offs",
+          "status": "complete",
+          "notice": "Some sentences were omitted because evidence checks or citation alignment failed. Only retained cited passages are shown.",
+          "durationMs": 7100
+        },
+        {
+          "id": "step-7",
+          "tool": "research_area",
+          "title": "Researching the selected area’s practical trade-offs",
+          "status": "complete",
+          "notice": "Some sentences were omitted because evidence checks or citation alignment failed. Only retained cited passages are shown.",
+          "durationMs": 10272
+        },
+        {
+          "id": "step-8",
+          "tool": "research_area",
+          "title": "Researching the selected area’s practical trade-offs",
+          "status": "complete",
+          "notice": "Some sentences were omitted because evidence checks or citation alignment failed. Only retained cited passages are shown.",
+          "durationMs": 6506
+        }
+      ],
+      "decisionOrigin": "agent",
+      "assessment": {
+        "visitFirst": "area-1",
+        "reason": "Near East End-Danforth is ranked 1 of 3 by local rank contrast. Start with this highest-ranked eligible point; verify premises and practical constraints during the visit. This is a shortlist comparison, not a business-success forecast.",
+        "tradeOff": "Taste evidence does not establish demand, rents, available units or commercial suitability.",
+        "nextAction": "Read the cited research and verify premises, access, permissions and operating conditions during a scouting visit."
+      },
+      "rank": 1,
+      "tied": 1
+    },
+    {
+      "scenario": "custom-playground",
+      "url": "https://collab-scout-fkzbg80ya-circuitstudioais-projects.vercel.app",
+      "status": 200,
+      "elapsedSeconds": 14.987,
+      "checkedAt": "2026-10-23T20:29:41.465Z",
+      "mode": "live-cited",
+      "research": [
+        {
+          "status": "partial",
+          "sourceCount": 35,
+          "citationCount": 22,
+          "omittedSentences": 14,
+          "validationRules": [
+            "ungrounded-sentence",
+            "regulatory-claim"
+          ]
+        }
+      ],
+      "steps": [
+        {
+          "id": "step-1",
+          "tool": "explore_areas",
+          "title": "Mapping audience fit against popularity",
+          "status": "complete",
+          "durationMs": 2698
+        },
+        {
+          "id": "step-2",
+          "tool": "audience_profile",
+          "title": "Reading audience taste and demographic signals",
+          "status": "complete",
+          "durationMs": 352
+        },
+        {
+          "id": "step-3",
+          "tool": "compare_audiences",
+          "title": "Comparing an actual nearby venue’s audience tags",
+          "status": "complete",
+          "durationMs": 23
+        },
+        {
+          "id": "step-4",
+          "tool": "research_area",
+          "title": "Researching the selected area’s practical trade-offs",
+          "status": "complete",
+          "notice": "Some sentences were omitted because evidence checks or citation alignment failed. Only retained cited passages are shown.",
+          "durationMs": 8039
+        }
+      ],
+      "decisionOrigin": "ranking-default",
+      "assessment": {
+        "visitFirst": "area-1",
+        "reason": "Near Spadina–Fort York is ranked 1 of 3 by local rank contrast. Start with this highest-ranked eligible point; verify premises and practical constraints during the visit. This is a shortlist comparison, not a business-success forecast.",
+        "tradeOff": "Taste evidence does not establish zoning, permits, lease terms or permission for the proposed use.",
+        "nextAction": "Confirm the proposed use with the city and property owner. Do not treat a map point as an approved unit."
+      },
+      "rank": 1,
+      "tied": 1
+    }
+  ]
+}
