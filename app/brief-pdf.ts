@@ -15,7 +15,7 @@ export async function downloadExpansionPdf(result:Exploration,run:ScoutRun|null,
  block(`${result.brief.existingOutlets?.length?`Operator rule: ${result.brief.minimumOutletDistanceKm??0} km from supplied outlets; ${result.rejectedCount} points excluded.`:'No existing outlets supplied.'} ${run?.cached?'Reused real run, not a new live request.':''}`,9,200);
  const report=reports[assessment?.visitFirst??Object.keys(reports)[0]];
  if(report&&y<235){block('RESEARCH SOURCES (FULL REPORT IN SCOUTING NOTES)',10);for(const source of report.sources.filter(s=>s.url).slice(0,3)){if(y>254)break;pdf.setFontSize(8);pdf.textWithLink(clean(source.title.slice(0,80)),20,y,{url:source.url});y+=6;}}
- pdf.setFontSize(8);pdf.setTextColor(80);pdf.text(pdf.splitTextToSize('Method: local affinity-minus-popularity percentile contrast, not probability lift. Taste is not demand, foot traffic, rent, availability or business success. Nearby dining is a ranked sample. Verify leases, permits and operating economics before committing.',170),20,271);
+ pdf.setFontSize(8);pdf.setTextColor(80);pdf.text(pdf.splitTextToSize('Method: local affinity-minus-popularity percentile contrast, not probability lift. The displayed minimum popularity floor is mandatory. Taste is not demand, foot traffic, rent, availability or business success. Nearby dining is a ranked sample. Verify leases, permits and operating economics before committing.',170),20,271);
  if(pdf.getNumberOfPages()!==1)throw new Error('The PDF exceeded one page. Download complete scouting notes instead.');
  pdf.save('sitebrief-expansion-brief.pdf');
 }

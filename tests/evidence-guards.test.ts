@@ -12,3 +12,12 @@ it('does not mistake a verified area ID for an invented numerical statistic',()=
  expect(()=>assertNarrativeEvidence('Area-1 is a point to scout, not a verified unit.', ['area-1'])).not.toThrow();
  expect(()=>assertNarrativeEvidence('Area-1 has a 6.8% child population.', ['area-1'])).toThrow('numeric');
 });
+it('rejects unsupported market-gap conclusions even without numerical claims',()=>{
+ expect(()=>assertNarrativeEvidence('There is a market gap for this cafe.')).toThrow('gap');
+});
+it('rejects quantities spelled out to evade numeric checks and unsourced regulatory prescriptions',()=>{
+ expect(()=>assertNarrativeEvidence('The venue needs at least two point eight meters of height.')).toThrow('numeric');
+ expect(()=>assertNarrativeEvidence('Space could be two thousand square feet.')).toThrow('numeric');
+ expect(()=>assertNarrativeEvidence('Menus cost fourteen to twenty-four dollars.')).toThrow('numeric');
+ expect(()=>assertNarrativeEvidence('Toronto regulations prohibit upper-floor playgrounds.')).toThrow('regulatory');
+});

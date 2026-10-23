@@ -1,38 +1,31 @@
-# Sitebrief submission draft
-
-Not submitted. City-discovery redesign is on review PR #6; production promotion and final Devpost human verification/login remain open.
+# Sitebrief — submission copy
 
 ## Tagline
-Find where to scout your next restaurant—with taste evidence, expansion rules and sourced trade-offs.
-
-## Inspiration
-A restaurant founder may know the city but not which areas to investigate. Asking for a shortlist of addresses puts the discovery work back on the founder. Sitebrief starts with a city and audience assumptions, then helps plan scouting visits.
+Find areas to scout for your next restaurant, with taste evidence and practical checks.
 
 ## What it does
-Choose a city and intended audience references, then build a scouting brief. The owner-specified one-click scenario is a new café with an indoor playground in Toronto. The server finds three distinct local café references by Qloo popularity from a returned café-tagged sample; exact names and addresses stay visible. No prices, hours or existing outlets are assumed.
+Sitebrief starts with a city, a restaurant concept and audience references rather than requiring founders to supply candidate properties. A bounded Gemini tool loop gathers real Qloo map evidence, audience tags/demographics/brands, a nearby-venue comparison and Google-grounded local research.
 
-A bounded Gemini function-calling loop gathers real Qloo heatmap evidence, reads audience tags and signed demographics, compares a returned nearby venue, and researches an eligible area with Google Search grounding. The interface streams actual tool activity, displays source-linked trade-offs and exports a one-page PDF. Known-address comparison remains a secondary workflow.
+Deterministic rules enforce radius, existing-outlet buffers, a minimum local popularity floor and a taste screen. The model chooses eligible visit order and check codes; code states actual ranks and ties. Nearby samples are not treated as competitor counts or proof of a market gap.
 
-## How we built it
-Next.js, React, TypeScript, Zod, Leaflet and Photon/OpenStreetMap. Server-only Qloo and Gemini credentials. `/api/scout` streams the bounded four-tool workflow; `/api/mcp` exposes five read-only tools over Streamable HTTP. The model chooses eligible area IDs and interpretation, not numerical scores or relaxed operator rules. Exact endpoints, limits and reproducible evidence are documented in README and SCOUT_AGENT.md.
+The owner-specified example is a new Toronto café with an indoor playground. Actual local café references are selected from Qloo's returned sample. No operating details, available properties or parental demand are invented. Users inspect the map/cards and citations, then export a one-page brief or full notes. Known-address comparison remains available separately.
 
-## How Qloo contributes
-Qloo resolves entities and supplies heatmap affinity/popularity, nearby dining, taste tags, signed reference demographic affinities, related brands and audience comparison. Ranking uses local affinity-minus-popularity percentile contrast among positive-popularity points with top-30% audience affinity. It is not probability lift, customer demand or a competitor scarcity estimate. Insufficient popularity coverage is explicitly an affinity-only fallback. Existing-outlet buffers remain binding when supplied.
+## Who it helps
+Restaurant operators, small-chain expansion teams and property advisers need a shortlist of areas before they can inspect commercial units. Sitebrief turns a city and audience references into an inspectable scouting brief. It does not replace premises checks or a professional site study.
 
-The playground concept guides sourced practical research; café taste proxies do not establish family demand or property suitability. The agent combines these distinct evidence types without claiming an available lease or permit approval.
+## What is different
+The workflow is not a general market-analysis chatbot. It selects candidate map points using city-local taste-versus-popularity ranks and operator exclusions, then states the actual evidence and questions for a scouting visit. It can also be called through MCP.
 
-## What we learned
-Geocoding a place, finding a taste signal and proving a restaurant can succeed are different tasks. We keep those distinctions visible. The design now starts with city exploration rather than requiring founders to know the answer before searching.
+Sitebrief evolved from the repository’s earlier Collab Scout partner-discovery prototype. This entry adds city-first restaurant scouting, geographic selection rules, audience evidence, a bounded Gemini tool workflow, cited research, MCP access and a downloadable expansion brief.
 
-## Current limits
-No customer interviews or purchase-intent validation have been completed. Taste scores do not establish population, unmet demand, foot traffic, sales, profitability or rental availability. Highlights are returned map points with nearby labels, not verified neighborhood recommendations. Photon demo availability is not guaranteed. Saved highlights are tab-local; no account is required.
+## Why Qloo matters
+Qloo resolves the entities and supplies geographic affinity/popularity, taste tags, signed reference demographic affinities, related brands and audience comparison. Removing Qloo removes the actual shortlist evidence. Contrast is a difference in local percentile ranks, not probability lift or measured demand.
 
-## Testing instructions
-1. Open the exact reviewed preview linked from README.
-2. Click **Try the Toronto playground café** for the owner-specified playground café scenario.
-3. Watch real evidence tool activity; cached runs show their original time.
-4. Inspect the three local café references, local-rank contrast, audience profile and cited practical trade-offs.
-5. Download the one-page expansion brief. Full scouting notes preserve the longer research and trace.
-6. For an AI client, connect to the preview's `/api/mcp` endpoint using Streamable HTTP; see README. Official SDK transport testing is documented, not a claim of separately testing every named chat client.
+## Implementation and limits
+Next.js, React, TypeScript, Leaflet, Photon/OpenStreetMap, Qloo and Gemini2.5Flash. Read-only MCP tools expose the restaurant workflow. Source-grounded research is not a guarantee of accuracy, current availability or permissions. No customer validation, revenue forecast, study-cost saving or winning probability is claimed. Quota enforcement remains a separate deferred change.
 
-Not submitted. No receipt, customer validation, study-cost saving or deadline-performance guarantee is claimed. PR6 remains open; production is unchanged.
+## Try it
+Public demo: https://collab-scout.vercel.app. Click **Try the Toronto playground café**, inspect the agent steps and returned evidence, open source links and download the one-page brief. MCP: `https://collab-scout.vercel.app/api/mcp`. Reused real requests are labelled with their original time.
+
+---
+Publisher note, not submission copy: the current three-fix branch is verified on the review preview linked in README. Merge/release it and verify production before describing those fixes as live in the submitted demo. Submission status and acceptance receipts belong in VALIDATION.md, not the pasted product description.
