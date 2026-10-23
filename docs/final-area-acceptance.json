@@ -1,0 +1,107 @@
+{
+  "applicationCommit": "7f5e5f041389524fa650081a73d6b56da1e0eb4f",
+  "preview": "https://collab-scout-6lk8wwz0h-circuitstudioais-projects.vercel.app",
+  "checkedAt": "2026-10-23T22:16:48.476Z",
+  "freshRuns": [
+    {
+      "scenario": "canonical-playground",
+      "mode": "live-cited",
+      "elapsedSeconds": 17.074,
+      "visitId": "area-1",
+      "researchId": "area-1",
+      "latitude": 43.64662,
+      "longitude": -79.422226,
+      "rank": 1,
+      "reportStatus": "partial",
+      "retainedCitations": 6
+    },
+    {
+      "scenario": "blue-bottle",
+      "mode": "live-cited",
+      "elapsedSeconds": 16.62,
+      "visitId": "area-1",
+      "researchId": "area-1",
+      "latitude": 43.67546,
+      "longitude": -79.30824,
+      "rank": 1,
+      "reportStatus": "partial",
+      "retainedCitations": 8
+    },
+    {
+      "scenario": "custom-playground",
+      "mode": "live-cited",
+      "elapsedSeconds": 12.372,
+      "visitId": "area-1",
+      "researchId": "area-1",
+      "latitude": 43.64662,
+      "longitude": -79.422226,
+      "rank": 1,
+      "reportStatus": "partial",
+      "retainedCitations": 1
+    },
+    {
+      "scenario": "blue-bottle",
+      "mode": "live-cited",
+      "elapsedSeconds": 20.691,
+      "visitId": "area-1",
+      "researchId": "area-1",
+      "latitude": 43.67546,
+      "longitude": -79.30824,
+      "rank": 1,
+      "reportStatus": "partial",
+      "retainedCitations": 2
+    },
+    {
+      "scenario": "custom-playground",
+      "mode": "live-cited",
+      "elapsedSeconds": 13.328,
+      "visitId": "area-1",
+      "researchId": "area-1",
+      "latitude": 43.64662,
+      "longitude": -79.422226,
+      "rank": 1,
+      "reportStatus": "partial",
+      "retainedCitations": 2
+    }
+  ],
+  "counts": {
+    "live-cited": 5
+  },
+  "allVisitIdsAndCoordinatesMatch": true,
+  "browser": {
+    "cached": true,
+    "savedDemo": null,
+    "desktopAxeViolations": 0,
+    "mobileAxeViolations": 0,
+    "pageErrors": [],
+    "checks": [
+      "One click produces a live decision, contrast cards, Audience DNA, actual tool statuses and cited research",
+      "Downloaded Expansion Brief is a structurally valid one-page PDF",
+      "Downloaded notes retain same-area research coordinates and saved provenance when applicable",
+      "Rendered agent result passes tested desktop/mobile axe rules, with no overflow or page errors",
+      "Changing the popularity floor invalidates the agent interpretation, audience panel and old areas"
+    ]
+  },
+  "syntheticRecoveryFixtures": {
+    "mode": "Synthetic UI transport fixtures; not fresh provider evidence",
+    "checks": [
+      "Sources-only links are visible, narrative absent, notes and one-page PDF explicitly label unavailable summary",
+      "Partial report retains the safe sentence, notice and correctly linked citation",
+      "Research for a different area remains visible and labelled, with unique heading IDs",
+      "Mismatched point metadata suppresses report/source links in UI, notes and PDF",
+      "Safe provider failure category is visible in tool activity",
+      "Cited practical decision evidence renders its quote and source and remains in the one-page PDF",
+      "Unavailable place label remains an explicit unnamed coordinate point without mobile overflow"
+    ],
+    "desktopAxeViolations": 0,
+    "mobileAxeViolations": 0,
+    "pageErrors": []
+  },
+  "localChecks": {
+    "tests": 114,
+    "suites": 20,
+    "lint": "passed",
+    "build": "passed"
+  },
+  "detailedEvidence": "Run data, screenshots and PDFs retained outside Git under workspace reports/sitebrief-pr9-20261023; reproduction scripts are committed."
+}

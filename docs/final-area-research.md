@@ -14,9 +14,21 @@ Failed place-name lookup produces an unnamed map point with its coordinates, not
 
 ## Verification
 
-Local: 113 tests in 20 suites, lint and build passed. Observed red-to-green regressions cover lower-area research after a rank-one visit, supervision/licensing wording, and unnamed-coordinate labels. Additional tests cover ID/coordinate mismatch, foreign reports in caching/recovery, a model trying to switch the final visit, and current validation of saved research.
+Local: 114 tests in 20 suites, lint and build passed. Observed red-to-green regressions cover lower-area research after a rank-one visit, supervision/licensing wording, and unnamed-coordinate labels. Additional tests cover ID/coordinate mismatch, foreign reports in caching/recovery, a model trying to switch the final visit, and current validation of saved research.
 
-Hosted same-area acceptance and browser/download checks are in progress. This document is not a production acceptance claim.
+[PR #9](https://github.com/circuitstudioai/collab-scout/pull/9) application commit `7f5e5f041389524fa650081a73d6b56da1e0eb4f` passed five fresh uncached runs: one canonical playground, two Blue Bottle and two custom playground requests. All five returned cited research for the final visit ID **and exact coordinates**, with rank one and no other researched point. They took 12.4–20.7 seconds and retained 1–8 citations each. All reports were partial; omitted text was not presented as findings. No cached, saved, sources-only or ranking-only outcome counted as fresh cited acceptance.
+
+Exact verified preview: https://collab-scout-6lk8wwz0h-circuitstudioais-projects.vercel.app
+
+A separate hosted browser check reused the visibly labelled warm canonical run (`cached:true`, no saved-demo substitution). It verified matching point coordinates in PDF/notes and a PDF source URL belonging to that point, structurally one-page PDF, desktop/mobile axe rules, no overflow/page errors, and popularity-change invalidation. This was cache/render acceptance, not a sixth fresh provider success.
+
+Hosted synthetic fixtures separately verified source-only/partial notices, off-selected manual research, safe errors, rejected mismatched-source links in UI/PDF/notes, legacy practical-quote rendering and unnamed-coordinate labels. These are not fresh provider successes. [Compact receipt](final-area-acceptance.json). Raw run data, screenshots and PDFs remain outside Git; scripts reproduce the checks.
+
+The initial target-only batch also matched IDs/coordinates, but manual text review caught broad district assertions and implicit permit obligations. Those initial receipts stay outside Git and are not relabelled final acceptance. Retained passages were then restricted to supplied nearby venue names, and the five fresh runs were repeated. Cited passages were manually inspected for those venue identities; this is not independent certification of every source's correctness, geography or freshness.
+
+Standards — self-review: locked selection, retrieval, report validation and shared consumption guards remain separate. Strict schemas and bounded calls remain; client imports contain only pure validation and erased types, not credentials/provider setup. Existing historical receipts are preserved.
+
+Scope — self-review: same-area research, obligation filtering, honest fallback labels and stale active instructions are included. The old live lower-ranked override is removed intentionally. Quota and landing/production/submission remain separate. The final documentation/test receipt commit does not change the tested application code.
 
 ## Evidence policy and scope
 
