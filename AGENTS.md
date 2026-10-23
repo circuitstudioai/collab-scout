@@ -8,14 +8,26 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 <!-- END:nextjs-agent-rules -->
 
-## Current authorized product: Sitebrief
+## Active product and authority
 
-Abhi authorized building, publishing and submitting the restaurant-site comparison pivot on 2026-10-21. This supersedes old Collab Scout review-only/no-submission instructions for this task. Preserve existing main until release gates pass. Product source of truth: docs/SITEBRIEF.md. Validation: docs/VALIDATION.md. Submission copy: docs/sitebrief-devpost.md.
+Sitebrief is a restaurant scouting product. Current source of truth: `docs/SITEBRIEF.md`; architecture: `docs/ARCHITECTURE.md`; method: `docs/SCOUT_AGENT.md`; setup: `docs/SETUP.md`; verification: `docs/VALIDATION.md`.
 
-No customer validation is claimed. No keys in source or client bundles. Qloo host is https://hackathon.api.qloo.com with X-Api-Key. No invented entities, taste scores, availability, demand or financial projections. Sample mode stays fixed and clearly disclosed; never replace failed live calls with mock evidence. Do not submit until live sponsor integration and published demo acceptance pass. No paid upgrades authorized. Never contact brokers/owners or send outreach.
+PR #6 was merged into main on October23, 2026 as `8509047`.
 
-Current primary product is city-first discovery: / and POST /api/explore, with schema at /api/explore/tool; docs/CITY_DISCOVERY.md defines the new authorized scope. Known-location comparison is secondary at /compare and POST /api/sites. Both POST routes are agent-callable decision tools. Keep score decisions deterministic. Gemini orchestrates the bounded scout loop and the separate sourced restaurant-area research endpoint; deterministic Qloo scores and outlet exclusions remain independent. Current restaurant expansion scope: docs/RESTAURANT_EXPANSION.md. The previous Collab Scout source is recoverable in Git history; its remaining docs are historical rather than current requirements.
+The current owner request is a new review PR for three fixes: truthful decision/rank claims, a minimum city-local popularity floor with honest ties, and removal of obsolete/internal documentation. Keep this follow-up PR unmerged until the owner authorizes merging it. Do not submit to Devpost, send outreach or make paid infrastructure changes as part of this request.
 
-## October22 owner review scope
+Quota work is explicitly deferred. Its incomplete checkpoint is on the separate local branch `fix/sitebrief-visitor-quota-20261023`, not this change. Do not add quota gates, provision a store, choose a global allowance or imply per-visitor protection exists in this PR.
 
-Current release improvements are documented in docs/SCOUT_AGENT.md. Keep PR6 unmerged for owner review. The agent uses Qloo popularity and deterministic local rank contrast; do not call it calibrated probability lift or infer competitor scarcity from a small ranked venue sample. The owner approved city-local taste/popularity rank contrast. The demo is a new café with an indoor playground, using popular Toronto cafés resolved from live Qloo records; no hypothetical existing outlets, prices or hours. Legacy collaboration routes are retired; historical partnership implementation is removed. No merge, production promotion, public directory listing or Devpost submission is authorized merely by the latest request to update and ping PR6.
+## Evidence boundaries
+
+- Qloo host: `https://hackathon.api.qloo.com`, authenticated server-side with `X-Api-Key`. No secrets in source, client bundles, logs or screenshots.
+- Scores, operator constraints, popularity floors, rank comparisons and ties are deterministic. The model chooses eligible IDs and reason/check codes; it cannot supply final ranking prose.
+- Qloo popularity is engagement/prevalence, not observed visits. Local percentile contrast is not probability lift, demand, revenue or business suitability. Nearby dining is a small ranked sample, not a census or a market-gap measurement.
+- No invented entities, properties, prices, operating hours, customer validation or financial projections. The owner-specified demo is a new café with an indoor playground and popular Toronto café references. Leave unspecified operating details unset.
+- Research uses provider grounding metadata for source links. Citations are not a guarantee of geography, freshness or correctness. Keep unsupported claims out of the primary decision; retain practical questions as questions.
+- Fail visibly when live data/research is unavailable. Never substitute sample evidence for failed live requests. Sample comparison and reused real runs must remain labelled.
+- Tests must cover low-ranked agent choices, actual ties, unsupported gap claims, missing popularity, floor enforcement and outlet exclusions. Run focused regressions, then tests/lint/build and hosted acceptance. State exactly what was verified.
+
+## Extensibility
+
+Keep provider retrieval, deterministic selection, structured agent orchestration and presentation separate. Other industries require their own evidence and suitability rules; do not add a generic industry promise without a supported workflow.

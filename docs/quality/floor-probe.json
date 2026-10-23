@@ -1,0 +1,140 @@
+{
+  "note": "Real Qloo heatmap probe, before-floor baseline and candidate comparisons. Popularity is not observed visits. Full raw payload deliberately omitted.",
+  "runs": [
+    {
+      "references": [
+        "Blue Bottle Coffee"
+      ],
+      "points": 4292,
+      "selection": [
+        {
+          "popularity": 0.022721836881128915,
+          "popularityPercentile": 1.0216063879755755,
+          "contrast": 85.20432127759511
+        },
+        {
+          "popularity": 0.022721836881128915,
+          "popularityPercentile": 1.0216063879755755,
+          "contrast": 85.20432127759511
+        },
+        {
+          "popularity": 0.03288686917005501,
+          "popularityPercentile": 1.5852512916862376,
+          "contrast": 84.64067637388446
+        }
+      ],
+      "floors": [
+        {
+          "floor": 20,
+          "eligible": 1257,
+          "top": [
+            {
+              "popularity": 0.28426213824443913,
+              "popularityPercentile": 20.150305307656176,
+              "contrast": 64.14983560356976
+            },
+            {
+              "popularity": 0.29347046161205453,
+              "popularityPercentile": 20.784405824330673,
+              "contrast": 63.703616721465465
+            },
+            {
+              "popularity": 0.33293470461612057,
+              "popularityPercentile": 24.048849224988256,
+              "contrast": 58.65429779239079
+            }
+          ]
+        },
+        {
+          "floor": 50,
+          "eligible": 1156,
+          "top": [
+            {
+              "popularity": 0.6303515905285817,
+              "popularityPercentile": 50.49318929074683,
+              "contrast": 35.31000469704087
+            },
+            {
+              "popularity": 0.632265008371203,
+              "popularityPercentile": 50.622357914513856,
+              "contrast": 34.21794269610146
+            },
+            {
+              "popularity": 0.632265008371203,
+              "popularityPercentile": 50.622357914513856,
+              "contrast": 33.56035697510569
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "references": [
+        "Blue Bottle Coffee",
+        "Aesop"
+      ],
+      "points": 4292,
+      "selection": [
+        {
+          "popularity": 0.022721836881128915,
+          "popularityPercentile": 1.0216063879755755,
+          "contrast": 82.33912635039924
+        },
+        {
+          "popularity": 0.022721836881128915,
+          "popularityPercentile": 1.0216063879755755,
+          "contrast": 82.33912635039924
+        },
+        {
+          "popularity": 0.03288686917005501,
+          "popularityPercentile": 1.5852512916862376,
+          "contrast": 81.77548144668859
+        }
+      ],
+      "floors": [
+        {
+          "floor": 20,
+          "eligible": 1257,
+          "top": [
+            {
+              "popularity": 0.28426213824443913,
+              "popularityPercentile": 20.150305307656176,
+              "contrast": 61.75434476279944
+            },
+            {
+              "popularity": 0.29347046161205453,
+              "popularityPercentile": 20.784405824330673,
+              "contrast": 61.28464067637388
+            },
+            {
+              "popularity": 0.33293470461612057,
+              "popularityPercentile": 24.048849224988256,
+              "contrast": 56.51714419915453
+            }
+          ]
+        },
+        {
+          "floor": 50,
+          "eligible": 1154,
+          "top": [
+            {
+              "popularity": 0.6316670652953839,
+              "popularityPercentile": 50.751526538280885,
+              "contrast": 32.25692813527478
+            },
+            {
+              "popularity": 0.6335804831380053,
+              "popularityPercentile": 50.88069516204791,
+              "contrast": 31.49365899483326
+            },
+            {
+              "popularity": 0.6335804831380053,
+              "popularityPercentile": 50.88069516204791,
+              "contrast": 30.90652888680132
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "url": "https://collab-scout-a5jwqkjk0-circuitstudioais-projects.vercel.app",
+  "checks": [
+    "Fixed sample remains functional and disclosed",
+    "Custom mode starts with two blank locations, not NYC sample pins",
+    "Real city results identify Toronto, Ontario, Canada and move map focus",
+    "Real Toronto neighborhood lookup fills two independent pins without map clicks",
+    "Full real Toronto comparison succeeds with looked-up coordinates; no sample replacement",
+    "Toronto comparison export retains chosen locations",
+    "City change invalidates old pins/results, disables area search until confirmed, and preserves rents",
+    "Blank manual coordinates cannot silently become 0,0",
+    "Synthetic lookup failure gives a recovery path and preserves other location/rent values",
+    "Lookup can be retried successfully after provider failure",
+    "Mobile map fallback places only selected B while preserving A coordinates",
+    "Cancelled placement remains disarmed",
+    "Late lookup response cannot repopulate old-city choices or pins after city change"
+  ],
+  "network": "Geocoding and Qloo requests are real except the explicitly intercepted recovery scenarios.",
+  "desktopAxe": [],
+  "mobileAxe": [],
+  "liveToronto": {
+    "status": 200,
+    "cells": 8363,
+    "sourceSteps": 5
+  },
+  "pageErrors": [],
+  "status": "passed"
+}

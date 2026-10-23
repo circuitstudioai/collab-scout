@@ -1,38 +1,19 @@
-# Current PR6 agent review — October 22
+# Sitebrief validation
 
-See `agent/validation.json`, `agent/ui-validation.json` and `mcp/validation.json` for the exact verified preview and current evidence. The owner requested an unmerged review PR; production acceptance below is historical and does not prove the new agent release. Current checks: 73 tests across 12 suites; lint and builds pass. The owner-specified demo is a new café with an indoor playground and live Toronto café references.
+## Current three-fix review
 
-# Sitebrief validation — October 21, 2026
+The three-fix branch passed **82 tests in14 suites**, lint, production build and diff checks. Current tested preview: https://collab-scout-l6ibhw23i-circuitstudioais-projects.vercel.app. This branch has not been promoted to production.
 
-## Production acceptance
+Fresh Blue Bottle and the owner-specified playground-café agent both completed with structured decision codes and correct actual ranks. The default20th-percentile and median popularity floors were verified. The one-click café test checked actual research citations, a valid one-page PDF, desktop/mobile axe rules, no overflow/page errors and stale-result invalidation when changing the popularity setting. See [quality acceptance](quality/README.md), [live ranking receipt](quality/validation.json) and [UI receipt](quality/ui-validation.json).
 
-- Working MVP: https://collab-scout.vercel.app (no account required).
-- PR #4 merged as `1a2362699174d6f87d8ac7788023519947e20c50` on October 21 at 18:13 UTC.
-- Vercel production deployment `dpl_D5eVCrZ8VV7CnpH5ST7hPDkAhrCz` is READY and serves the stable alias.
-- Repeated the entire live browser journey, the two-/three-location UI checks, and real negative cases against the stable production URL. All passed.
-- Live health and agent-tool schema return HTTP 200. The source remains public with a detectable MIT license.
-- Scanned 15 client JavaScript files: the saved server-side Qloo credential is absent. Only .env.example is tracked.
-- These reports test specific requests and browser states, not universal geographic coverage, complete accessibility certification or validated demand.
+Official MCP SDK and13 secondary-comparison checks passed on earlier previews of the same relevant code paths; their receipts preserve those distinct URLs. They are not falsely labelled as new provider calls against the final preview. No quota change is included. No Devpost submission was made.
 
-## Current release
+The initial regression reproduced the agent calling a lower-ranked point highest contrast and asserting a market gap. New contract tests cover a lower-ranked visit choice with its actual rank, strict decision codes, ties and rejection of free-text claims. Popularity tests cover the mandatory floor, missing coverage and outlet exclusions.
 
-- Six Jest suites: **53/53 tests passed**. Three new cases reproduce ambiguous choices, explicit ID selection, and forged/stale ID rejection. Synthetic transport tests remain labelled and are separate from real provider acceptance.
-- Lint and local production build passed after reconciling the latest main branch. Vercel builds passed.
-- Public-browser live acceptance: search HTTP 409 choice, then full comparison HTTP 200, 1,553 real Qloo heatmap cells, eight nearby restaurants per site, five successful source steps. Selected public entity: Blue Bottle Coffee, 54 W 40th St, New York. Provider results can change.
-- Browser journey verifies sample disclosure, no silent preselection, rent exclusion, live memo download with stable source ID, desktop and 390px mobile layouts. Zero axe WCAG A/AA violations in tested selection and mobile-result states, no horizontal overflow, no page errors. See live-browser-validation.json and screenshots/live-*.png.
-- Real negative checks: unsupported coordinates have no score/shortlist; forged ID requires a new choice; unrecognized search names never silently select fuzzy results; invalid brief returns 400. See live-negative-validation.json.
-- Earlier map-placement checks remain in map-entry-browser-validation.json: selected-site boundaries, cancellation, direct entry and failure retention.
-- Public source is MIT licensed. Final review: RELEASE_REVIEW.md. Agent tool schema: GET /api/sites/tool, including HTTP 409 selection/retry instructions.
-- Credentials were pulled from the existing encrypted Vercel environment into ignored .env.local for server-side testing. No values were printed, committed, placed in client bundles or added to reports.
+## Historical acceptance artifacts
 
-## Submission status
+`docs/agent/`, `docs/mcp/`, `docs/location-ux/` and other dated JSON/image artifacts retain their original URLs and timestamps. They document past runs only, not the current review branch. Old internal review notes and obsolete product specs were removed; Git history preserves them.
 
-Devpost still shows a human-verification challenge in the `sitebrief-devpost` browser tab. Login behind that challenge is unverified. No entry was submitted and no receipt exists. Submission copy is in sitebrief-devpost.md.
+## Required gates
 
-Official rules rechecked October 21: deadline October 30, 2026 at 11:45pm EDT; working Qloo-integrated agentic tool, functional demo, public open-source licensed repository and text description required. Keep free access through November 16 judging. https://qloo.devpost.com/rules
-
-## Historical findings superseded
-
-Earlier October 21 builds reported missing configuration or 401 responses. The freshly configured credential now succeeds on the hackathon host. A subsequent 422 was reproduced as ambiguous entity resolution and fixed. An old bare movie-filter probe is not an authentication acceptance test: Qloo requires a valid signal/filter combination.
-
-Past sample/transport tests were not live integration evidence. Current live reports above supersede the old authentication blocker without asserting that historical deployments captured the same credential.
+Run unit/contract tests, lint, build and diff checks. Verify fresh Blue Bottle and the Toronto café flow separately from synthetic/replayed UI checks. Confirm actual rank/tie claims, enforced popularity floor, missing-data behavior, map/card links, source inspection, one-page PDF, desktop/mobile accessibility and stale-result invalidation. Preserve secondary comparison and existing MCP behavior. Report exactly what was tested, not a universal certification.

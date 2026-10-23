@@ -15,7 +15,7 @@ it('repairs a malformed final decision within the bounded budget without inventi
  let calls=0;const generate=async()=>{
   calls++;if(calls===1)return {functionCalls:[{name:'explore_areas',args:{}}],candidates:[{content:{role:'model',parts:[{functionCall:{name:'explore_areas',args:{}}}]}}]} as GenerateContentResponse;
   if(calls===2)return {text:'{"visitFirst":',candidates:[{finishReason:'MAX_TOKENS',content:{role:'model',parts:[{text:'{"visitFirst":'}]}}]} as GenerateContentResponse;
-  return {text:JSON.stringify({visitFirst:null,reason:'No points remain outside the supplied outlet buffer.',tradeOff:'No shortlist without changing the operator rule.',nextAction:'Review the supplied buffer.'})} as GenerateContentResponse;
+  return {text:JSON.stringify({visitFirst:null,reasonCode:'taste-evidence',checkFocus:'general'})} as GenerateContentResponse;
  };
  const run=await runScout({city:'Toronto',center:{latitude:43.65,longitude:-79.38},radiusKm:10,concept:'Coffee bar',references:['Starbucks'],existingOutlets:[{name:'Existing',latitude:43.65,longitude:-79.38}],minimumOutletDistanceKm:1},()=>{},generate);
  expect(run.assessment?.visitFirst).toBeNull();expect(run.exploration.areas).toEqual([]);expect(run.decisionIssues).toEqual(['Invalid JSON (MAX_TOKENS)']);expect(calls).toBe(3);delete process.env.QLOO_API_KEY;

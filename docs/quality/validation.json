@@ -1,0 +1,159 @@
+{
+  "url": "https://collab-scout-l6ibhw23i-circuitstudioais-projects.vercel.app",
+  "checkedAt": "2026-10-23T00:52:39.478Z",
+  "status": "passed",
+  "decisionContract": "structured-v2",
+  "selection": {
+    "visitFirst": "area-1",
+    "reasonCode": "taste-evidence",
+    "checkFocus": "space-access"
+  },
+  "decision": {
+    "selected": "area-1",
+    "rank": 1,
+    "tied": 1,
+    "reason": "This point is ranked 1 of 3 by local rank contrast. The agent selected it using the returned taste evidence. This is a comparison among shortlisted points, not a business-success forecast."
+  },
+  "blueBottle": {
+    "floor": 20,
+    "popularityRejected": 885,
+    "screened": 1257,
+    "allTied": false,
+    "areas": [
+      {
+        "id": "area-1",
+        "name": "Near East End-Danforth",
+        "popularity": 0.28426213824443913,
+        "popularityPercentile": 20.150305307656176,
+        "affinity": 0.8915331260464003,
+        "contrast": 64.14983560356976
+      },
+      {
+        "id": "area-2",
+        "name": "Near Mount Dennis",
+        "popularity": 0.29347046161205453,
+        "popularityPercentile": 20.784405824330673,
+        "affinity": 0.893207366658694,
+        "contrast": 63.703616721465465
+      },
+      {
+        "id": "area-3",
+        "name": "Near Broadview North",
+        "popularity": 0.33293470461612057,
+        "popularityPercentile": 24.048849224988256,
+        "affinity": 0.8729968906960057,
+        "contrast": 58.65429779239079
+      }
+    ]
+  },
+  "median": {
+    "floor": 50,
+    "popularityRejected": 2164,
+    "screened": 1156,
+    "allTied": false,
+    "areas": [
+      {
+        "id": "area-1",
+        "name": "Near St Lawrence-East Bayfront-The Islands",
+        "popularity": 0.6303515905285817,
+        "popularityPercentile": 50.49318929074683,
+        "affinity": 0.9150920832336762,
+        "contrast": 35.31000469704087
+      },
+      {
+        "id": "area-2",
+        "name": "Near Thorncliffe Park",
+        "popularity": 0.632265008371203,
+        "popularityPercentile": 50.622357914513856,
+        "affinity": 0.8981104998804114,
+        "contrast": 34.21794269610146
+      },
+      {
+        "id": "area-3",
+        "name": "Near Belgravia",
+        "popularity": 0.632265008371203,
+        "popularityPercentile": 50.622357914513856,
+        "affinity": 0.8906960057402535,
+        "contrast": 33.56035697510569
+      }
+    ]
+  },
+  "steps": [
+    {
+      "id": "step-1",
+      "tool": "explore_areas",
+      "title": "Mapping audience fit against popularity",
+      "status": "complete",
+      "durationMs": 3405
+    },
+    {
+      "id": "step-2",
+      "tool": "audience_profile",
+      "title": "Reading audience taste and demographic signals",
+      "status": "complete",
+      "durationMs": 495
+    },
+    {
+      "id": "step-3",
+      "tool": "compare_audiences",
+      "title": "Comparing an actual nearby venue’s audience tags",
+      "status": "complete",
+      "durationMs": 35
+    },
+    {
+      "id": "step-4",
+      "tool": "research_area",
+      "title": "Researching the selected area’s practical trade-offs",
+      "status": "complete",
+      "durationMs": 5493
+    }
+  ],
+  "researchSources": [
+    {
+      "title": "globalphile.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHABSF3qhhXeslim_MDwAhdXimYA8BeEmNxdcfAtUMNmRkaeC_qsdfSPZZ5nIv4KeI6Gfk5DOMZfcIGcCJVvLoniOcBMhezI98-RPs2gmDg6DMHJQwk026ACpOa6DZ6Lyo1aW9JcrPiPEB5ZBI94523pNY2zA=="
+    },
+    {
+      "title": "destinationtoronto.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGkuL7N1xkqrYL7qU8rWOva92sGGUCZGXYOB7w0mYgvMcV81SgYmj_HLikjfqEJHePY5LB-Er1aanOGOAFWIwS7xqJv_R8Gl2jmd96kWhyKcENGRx4_ZFeT-9C1iW8l-z0dtvqJCXCv1GPSTl3Ffj4e1cJExZITQU8wdQhdNivcLiDpKJDquI5FvxGT"
+    },
+    {
+      "title": "facebook.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFc4oVaeAtZ1IFkg5URwv-WBakczG_OKcB8opauOtbTAc2ASMaEMWHZklcqDjT7O3wgTcfklKpCPGJTxibD19byBGHAvj9t5CqpMnoclr7hhAWdQLytZlJrQhp10T0zGOKbTzpOeDNoKFZAUe8OrVTE7dc9E8lcmfTpeg=="
+    },
+    {
+      "title": "destinationtoronto.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG2Ir479p2XemhA304efUY38jCXE_wCScJu9corohd_yxGZkbTz4XEp0EjqHvP48JW_PqP0pvSZ4v1mGZrLc4mkw8KltsvRrvIOOGkxXBmCqCCcn5LH37OZ54o8RIW33OWgyaMnsBLmDymdAjjz-LSEQ4AKl7oYWWZnOZ6PhIUld7wRdsk7V9pt1ClemP0uxgFA3ijwaA=="
+    },
+    {
+      "title": "ethicallocalmarket.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE0d_6dfglLzvhDP58tum9TagHjot7At539ztErYGdb1qSnVlSqrXQaHY1UgykmCaHnekAgIpp2d0P30TFABjn0TQdDDBui3LsAT1ijDal-OY-a5EQARTDN_2MCPpEBvxbxrIvK3JQEXJahbVMGptoPSHuGs1_DyBEAhW7MQ2PFtF29APBdQavyInR0WHM="
+    },
+    {
+      "title": "fltrmagazine.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEo1Q_PpiKVzGQk7-J-8LOayuUy2dDTLLU0Ek3ifdLjHcm_Yga0NrVWTJPcIa4Z-ZtHkSrvjQtt_6C-G90gDEiY0T_Kk9TqqmHpc3xgykbYYLXfGJCvOywmhXtoxVO_MKdlX6rIu0_rp_WZFLCSLUJ14RT-Y2O2jGZSgvuRCN3Okh6ZdA=="
+    },
+    {
+      "title": "brewatlas.co",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEGwsNwpX9vX7F0jQJlwNc82LD_dvfvQGVQasonZiNhvDYz9rjMduC9vB22BkTBfgPnSlLId44tu__mIKd61hQTIqWvD5SdEi1l4v5IbbQ4QqqJHyQByZo="
+    },
+    {
+      "title": "stillwatercoffee.ca",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGNsMB1C4RMWTFZR6tub2StxeED4qabIPX5gZsWkILO7LAFDDtB5to_zpOgjlyXlFGkBjVKXAyOfZX_wfHkkzJ70-4xqZyBtVxr6ydlC1JAukL6YMy3KddFb_fchLPQVbU8o_tDBvo09tMOK34l6UipwcmtCCqGrzIcsGtoxWdG"
+    },
+    {
+      "title": "sarahfreia.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEApXTUsS2UbR2K2Xk1MX5yHyJE6q-gLUt7fqBZ3EfqtORROuCEuWEc-CkXvz40bBadg6SyhpJw7XwGSqIsCLyi1S8fbuL-EkJUhsHPpi3poJjClEvhpEoIlSTnPKe47GvuwkhKBINfIvOAiuCoEsCiyIORFOywyqA2ChOIlq-ARfuetg=="
+    },
+    {
+      "title": "canadianimmigrant.ca",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG7BipakygSdODTUzyyilQ6tiGvdwUVoutuFpHSEk-0bcFuv7YRp9kOt7PcsS2ciIAV0_zWV4Wqxqd4S6duxITELkxynWV06lhhU9MZZu-cxSEYsWQfUk891yegVM_ROCoNSvPy4xwKuzGEF7kPS7cNdXQOZdTAoVtxBeJDxQoX5q5of1wHqgcz_vakCBLUvUmPZVZ7-2kxgT3T-VV2jCjUZD-Eqou3"
+    }
+  ],
+  "checks": [
+    "Fresh live Gemini tool loop with Blue Bottle",
+    "Primary prose agrees with actual shortlist rank and ties",
+    "No highest-contrast or market-gap claim in primary decision",
+    "Mandatory default20 floor and optional50 floor enforced"
+  ]
+}
