@@ -8,7 +8,7 @@ The current correction locks visit selection before research, requires matching 
 
 PR #8 merged as `dedbc52`. Its five fresh runs did contain cited research and rank-one visits, but three did **not** contain research for that final visit. The old gate was insufficient. [Preserved historical receipts](research-recovery/README.md) must not be used as proof of same-area research. The follow-up adds the missing identity gate across server, UI, downloads, cache and saved recovery.
 
-## Cold-start demo recovery review
+## Historical cold-start review (PR #8, now merged)
 
 PR #7 was merged as `94c130c` on October23. Its three-fix preview receipts remain below. The follow-up cold-start branch adds deterministic ranking-only recovery and an explicitly dated saved canonical demo. Current receipts are in [cold-demo](cold-demo/README.md). The follow-up review preview is https://collab-scout-odq1cmq4f-circuitstudioais-projects.vercel.app. It is a separate unmerged review change; quota remains deferred.
 
