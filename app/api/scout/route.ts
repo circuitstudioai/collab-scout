@@ -2,9 +2,11 @@ import {z} from 'zod';
 import {exploreSchema} from '@/lib/sites/explore';
 import {runScout,type ScoutRun} from '@/lib/sites/scout-agent';
 import {buildDemoBrief} from '@/lib/sites/demo-server';
+import {withDemoDeadline} from '@/lib/sites/demo-deadline';
+import {savedPlaygroundDemo} from '@/lib/sites/saved-demo';
 import {SiteError} from '@/lib/sites/qloo';
 export const maxDuration=180;
-const requestSchema=z.union([exploreSchema,z.object({demo:z.literal(true)})]);
+const requestSchema=z.union([exploreSchema,z.object({demo:z.literal(true)}).strict()]);
 let active=0;let canonical:{run:ScoutRun;expires:number}|null=null;
 export async function GET(){return Response.json({name:'scout_restaurant_city',endpoint:'/api/scout',method:'POST',transport:'SSE data messages: step, exploration, profile, comparison, research, complete, error',input_schema:z.toJSONSchema(requestSchema),limits:'Bounded Gemini tool loop; read-only evidence; canonical example cache is per warm server instance, not a durable quota guarantee.'});}
 export async function POST(request:Request){
@@ -21,12 +23,16 @@ export async function POST(request:Request){
     if(demo&&canonical&&canonical.expires>Date.now()){
      send({type:'complete',value:{...canonical.run,cached:true}});
     }else{
-     const prepared=demo?await buildDemoBrief():null;
-     const brief=prepared?.brief??exploreSchema.parse(parsed.data);
-     const run=await runScout(brief,event=>{if(cancelled)throw new Error('Request cancelled');send(event);},undefined,prepared?.evidence);
-     if(demo&&run.assessment&&Object.keys(run.research).length)canonical={run,expires:Date.now()+900000};send({type:'complete',value:run});
+     const live=async(signal?:AbortSignal)=>{
+      const prepared=demo?await buildDemoBrief():null;signal?.throwIfAborted();
+      const brief=prepared?.brief??exploreSchema.parse(parsed.data);
+      return runScout(brief,event=>{signal?.throwIfAborted();if(cancelled)throw new Error('Request cancelled');send(event);},undefined,prepared?.evidence,signal);
+     };
+     const run=demo?await withDemoDeadline(live):await live();
+     if(demo&&run.exploration.areas.length&&(!run.assessment?.visitFirst||!Object.keys(run.research).length)){send({type:'complete',value:savedPlaygroundDemo('live-incomplete')});}
+     else{if(demo&&run.assessment?.visitFirst&&Object.values(run.research).some(r=>r.citations.length))canonical={run,expires:Date.now()+900000};send({type:'complete',value:run});}
     }
-   }catch(error){send({type:'error',error:error instanceof SiteError?error.message:'The scouting agent could not finish. Your brief is still here; try again or explore the map.',referenceChoice:error instanceof SiteError?error.referenceChoice:undefined});}
+   }catch(error){if(demo&&!cancelled){send({type:'complete',value:savedPlaygroundDemo('live-unavailable')});}else send({type:'error',error:error instanceof SiteError?error.message:'The scouting agent could not finish. Your brief is still here; try again or explore the map.',referenceChoice:error instanceof SiteError?error.referenceChoice:undefined});}
    finally{active--;if(!cancelled)controller.close();}
   },cancel(){cancelled=true;}
  });

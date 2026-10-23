@@ -1,0 +1,126 @@
+SITEBRIEF / CITY SCOUTING NOTES
+
+No cited practical reason supported a lower-ranked visit. Visit order follows the verified ranking instead.
+
+AGENT VISIT ORDER WITH VERIFIED RANKS: {"visitFirst":"area-1","reason":"Near Spadina–Fort York is ranked 1 of 3 by local rank contrast. Start with this highest-ranked eligible point; verify premises and practical constraints during the visit. This is a shortlist comparison, not a business-success forecast.","tradeOff":"Taste evidence does not establish zoning, permits, lease terms or permission for the proposed use.","nextAction":"Confirm the proposed use with the city and property owner. Do not treat a map point as an approved unit."}
+
+RANKING: contrast. Minimum local popularity percentile: 20. 885 points outside outlet buffers failed that screen. Local affinity-minus-popularity percentile contrast is not calibrated lift or demand.
+
+A new café with an indoor playground. Find areas to scout using popular Toronto cafés as audience references.
+
+Toronto, Ontario, Canada · within 10 km of 43.6534817, -79.3839347
+
+Restaurant: New café with an indoor playground
+Format: cafe
+Service: unspecified
+Price position: unspecified
+
+Outlet rule: 0 km minimum straight-line distance from no existing outlets supplied. This is not a customer-overlap estimate.
+
+0 returned points excluded by your outlet rule.
+
+RESEARCH: Near Banbury-Don Mills · 2026-10-23T20:34:23.707Z · partial
+Some sentences were omitted because evidence checks or citation alignment failed. Only retained cited passages are shown.
+Why scout here
+
+This location is near CF Shops at Don Mills, a "lifestyle centre" with an open-air, walkable layout that integrates residential and retail spaces.
+
+The shopping centre features various retail stores, restaurants, and services, including McEwan Fine Foods, Anthropologie, and Eataly.
+
+The presence of existing food establishments and an emphasis on community connection at CF Shops at Don Mills suggests a potential audience for a new café.
+
+An indoor playground is likely considered a "recreation use" and may also fall under the "amusement establishment" licence category, which requires a Zoning Review for a Business Licence.
+
+Such a business requires a unit suitable for assembly occupancy, with adequate exits, washrooms, and fire safety measures, often necessitating a change-of-use permit and a Building Code review.
+
+It's crucial to confirm that any potential space not only allows for commercial use but specifically permits an indoor playground business, as zoning categories and definitions can vary.
+
+Within CF Shops at Don Mills, there are establishments like Kitaya Japanese Takeout, Asian Legend, CoCo, Diwan at the Aga Khan Museum, and Sorento Italian Kitchen.
+
+Other cafes and food spots within CF Shops at Don Mills include Danish Pastry House, Lindt, Pablo's Coffee House, Ice'n Cake, and Demetres.
+
+Eataly has also recently opened a location within the shopping centre.
+
+Access and local context
+
+The area is well-connected, with CF Shops at Don Mills located at Don Mills Road and Lawrence Avenue East, offering on-site parking and proximity to the Don Valley Parkway (DVP).
+
+Public transit routes also serve the location.
+
+CF Shops at Don Mills is a mixed-use development with residential and retail spaces, aiming to be a community hub.
+
+What to check on a visit
+
+The physical space available needs to be assessed for its suitability as an "assembly occupancy," including the number of exits, washroom facilities, and potential for fire safety compliance.
+
+Inquire about the process for a change-of-use permit if the space was previously used for a different purpose.
+
+Investigate the local requirements for an "amusement establishment" licence and whether the proposed indoor playground concept falls under this category.
+
+If an outdoor patio is considered for the café, understand the City of Toronto's sidewalk café permit requirements, including size limitations, fencing rules, and any associated fees.
+wikipedia.org: https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEczlFIXb8AMgK4bfCXOElL3AH6ReJeZ308TVLGj2bV23Ajvm2a3TB6Zgm_ka9u6CCn8vHDTni67h2vjoRWgvN7Sh8i8oNpyMoRZdOhwI9Kp6_Nt49l5AtVypEORiZoh8J5UepJB2_Qxt9vmA==
+cadillacfairview.com: https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHvexvUToMXuV0gywqwE4woCmNKAlxXveeOsakDgB6AY80K4d0X8WRI0svhbcVjpNV6Z3bsyxW38OhHGKgUJ-HMzBTQ612co_aHKprBCtiM8wA5tM7R9VUKuksVqWxsN5p3JHgLDXf61vV1TyV9RLGPn7hFCrCKCJAnyEigKzQR
+maplevia.com: https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHYGp_wAzRGLcRL_hL30_CRylQo5yvP_u0CH47J6YP-HJJDhwkfO0LtyjJSkSmqqabzxliKeWqMfYO-X_Z8vrx8CkvwZPb5STKotygPb-y9TUTc28IvG3M8AAgu9Y78mLkknp2xy765x4hsBdwRDlmeL9Xs_A==
+connectassetmanagement.com: https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFj1R_G4-okTs0V3_qOneG5I6PIk13OsHLgOn0W3w_QhjysBY7dJDWNSu7XH3xebn-tmsSf6Tlga9ntTHWKG6VUTr671HtJ8EaaBEXWMUtWzlkrtAUhuZVmn6lQfcQ2H_dCgcEBJl2TxjGTlpKQPjnMZ6OkU6uH0YkOXfhXC56wausia4LM
+jatindua.com: https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEebuCve9rtV-64BrFE_eko3RDyFWujj_MnhlFyyIiA7wnQrDIlcYqyFCZvgsOUiFRYvRIELPXpwlMg-aoT3tTvvP7X2T8FjKl09eAKsAfReyHqTwCs4ybXlleX-_qA2ZZAfd_UeOOqsCBkDOxe1bSS40nnkjAQ7w==
+toronto.ca: https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGx0jhlAvSYMUE-yw6jpqOUosLmlPXN-m5VZ_B_3lU2qThmps4cKE3zJC4vO17SV05AGijSg89gHPKUWbSDUkx5Ig3k6cjCoyA0iLEKZEPvtbFSFD0DPwhjHO8yMN5gbftddDvRRcNvy7Dh00Dn3OM0fzmMEa8PYcYdy5lvu5i_ouglea6AHK6HZ0Un2D-HZvOgXHcY
+spiplastics.com: https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHY3XR5rejC4amnjcM952nH8cm91vpvPgaioTUlqQqd-6hUr3kH1qwagI9NJLKizhVgaFGOkz5foFRaT07Yrgp6YT1sYUuGd9c6WuDv5k0yWGLUwJoEj6MB5PVdamTfoXrizFYxcuCqXTg5r8UGlwNYjyIfTR-rGkb6AKmzVnKa_uOciRqZ7sOpHl3ZlYPpS-iUNWhfngDwU6W4
+dcindoorplayground.com: https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHLXyIuOMNJZQsp5uR7FaFDNI82e2stSe-wxqWa2wCHFHxw6jVSD3pDOaIu4OGyPgEEe9l_K8_6LNkpue41BXJ1wk2tC9jZ9L_HxRA0EoOXc8riZoVOWMEBwYifFnelwY7DaWVPMneIyN_roLa8MhqpU2X2bpJbXgfDzNPr1v_85d1BB66daFxkoElfkGyyIshSF-V82_Bxj0Z_
+loopnet.com: https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHdLaMjQi6CNIrSIrITPvvcq-wLA7fZWWoz_fV8IMTW9HknXGxEny-WviUHQ8Ie5rolMi-iobAS9e4r5wKua60ztwVLir7JscKUjTBQgoen2APYA80WMw4Rf8zqaAydL9aQnDEuNpEs0Msl9E-biRAINr85X8xkoKb2pG2HzQqbZ2PPxKuvjQ==
+toronto.ca: https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFoFsjDM8N-u7Nf7DbmS-GtEUHT-34QsRhm2XIlhehWunJR-LcLCJDLCLz3ECait3ok7LDlQaNfnA_O8oOi_qnRYRW67rjtGsmG1et31-VI39qcKcUszder-e1mchQL9PjLWt5PLyeTDjPsOUA_TjgUg51WPwV9iYlxSLZHPZGfAAyMLYVzlLkxExMd-SKo6u8mD6oMBr577oLQ3WmtkGY=
+toronto.ca: https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH0Nki5MPg7TdCis7unXgkZrs56I2qFEVaDj8NEQCLWgVOhe3by--j6GTg5_ZrlnNFgldkHnkM7jxoExFxL9xNWAQtG9h-C3mMQZme5biXMqG828-8qIIBYTzOun2G9HLx1z_1tPvzua-gIPUXqaQRj38MwZzvILL5q8tu21kR8aUT6ynELMR0s98srJEnA
+
+Audience assumptions: Dineen Coffee Co. (FAD69E17-B23A-41C8-B25A-EBBEA04F4658), FIKA Cafe (218AD775-5013-4D5A-84E9-9D308A68AFEF), Rooster Coffee House (4A68BC83-0A82-42CC-9A76-2E284F0DD2B9)
+
+Qloo evidence retrieved 2026-10-23T20:34:14.822Z. 4292 points in the original search radius.
+
+Near Spadina–Fort York
+114 Argyle Street, Spadina–Fort York, Toronto, Ontario, Canada
+Map point: 43.64662, -79.422226
+Qloo affinity: 0.9745276249701028
+Popularity: 0.513872279359005
+Local rank contrast: 55.19023015500235 percentile points
+4081 of 4292 returned local points scored lower.
+Nearby dining: Kitten and the Bear, Mildred's Temple Kitchen, Good Fork, Jimmy's Coffee, Bang Bang Ice Cream & Bakery
+
+Near York South–Weston
+35 Cawthra Avenue, York South–Weston, Toronto, Ontario, Canada
+Map point: 43.668594, -79.463425
+Qloo affinity: 0.9648409471418321
+Popularity: 0.5273857928725185
+Local rank contrast: 52.09018318459371 percentile points
+4001 of 4292 returned local points scored lower.
+Nearby dining: The Good Neighbour Espresso Bar, Mattachioni, North of Bombay, Annette Food Market, Playa Cabana Cantina
+
+Near Banbury-Don Mills
+Wynford Drive, Banbury-Don Mills, Toronto, Ontario, Canada
+Map point: 43.723526, -79.33708
+Qloo affinity: 0.9881607270987802
+Popularity: 0.5893326955273858
+Local rank contrast: 50.98637858149366 percentile points
+4193 of 4292 returned local points scored lower.
+Nearby dining: Kitaya Japanese Takeout, Asian Legend, CoCo, Diwan, Sorento Italian Kitchen
+
+METHOD: Highlights are high-scoring returned map points spaced at least 2 km apart, not neighborhood averages.
+
+TO CHECK: Visit at intended opening hours; count foot traffic; find available properties; obtain actual rents; check permits, lease terms and operating costs.
+
+LIMITS: Taste signals do not establish demand, population, sales, profitability or rental availability. Audience references determine the taste signal. Restaurant format, service period and price position guide the separate research. Nearby dining is a ranked sample, not a complete competitor list.
+
+SOURCES
+
+Find café-tagged Toronto places; select distinct names by returned popularity · ok · /v2/insights {"filter.type":"urn:entity:place","filter.location.query":"Toronto","filter.tags":"urn:tag:genre:place:restaurant:cafe","signal.interests.tags":"urn:tag:genre:place:restaurant:cafe","take":"30"} · 30 results
+
+Map audience taste across the city · ok · /v2/insights {"filter.type":"urn:heatmap","filter.location.query":"Toronto, Ontario, Canada","signal.interests.entities":"FAD69E17-B23A-41C8-B25A-EBBEA04F4658,218AD775-5013-4D5A-84E9-9D308A68AFEF,4A68BC83-0A82-42CC-9A76-2E284F0DD2B9","signal.interests.tags":"urn:tag:genre:place:restaurant"} · 8363 results
+
+Nearby dining for area 1 · ok · /v2/insights {"filter.type":"urn:entity:place","filter.location":"POINT(-79.422226 43.64662)","filter.location.radius":"1000","filter.tags":"urn:tag:genre:place:restaurant","signal.interests.entities":"FAD69E17-B23A-41C8-B25A-EBBEA04F4658,218AD775-5013-4D5A-84E9-9D308A68AFEF,4A68BC83-0A82-42CC-9A76-2E284F0DD2B9","take":"5"} · 5 results
+
+Nearby dining for area 3 · ok · /v2/insights {"filter.type":"urn:entity:place","filter.location":"POINT(-79.33708 43.723526)","filter.location.radius":"1000","filter.tags":"urn:tag:genre:place:restaurant","signal.interests.entities":"FAD69E17-B23A-41C8-B25A-EBBEA04F4658,218AD775-5013-4D5A-84E9-9D308A68AFEF,4A68BC83-0A82-42CC-9A76-2E284F0DD2B9","take":"5"} · 5 results
+
+Nearby dining for area 2 · ok · /v2/insights {"filter.type":"urn:entity:place","filter.location":"POINT(-79.463425 43.668594)","filter.location.radius":"1000","filter.tags":"urn:tag:genre:place:restaurant","signal.interests.entities":"FAD69E17-B23A-41C8-B25A-EBBEA04F4658,218AD775-5013-4D5A-84E9-9D308A68AFEF,4A68BC83-0A82-42CC-9A76-2E284F0DD2B9","take":"5"} · 5 results
+
+Locate area 1 on OpenStreetMap · ok · Photon /reverse {"latitude":"43.64662","longitude":"-79.422226"} · 1 results
+
+Locate area 2 on OpenStreetMap · ok · Photon /reverse {"latitude":"43.668594","longitude":"-79.463425"} · 1 results
+
+Locate area 3 on OpenStreetMap · ok · Photon /reverse {"latitude":"43.723526","longitude":"-79.33708"} · 1 results

@@ -1,0 +1,44 @@
+import {researchArea} from '../lib/sites/research';
+import {ResearchError} from '../lib/sites/research-report';
+import type {ResearchInput} from '../lib/sites/research';
+const generate=jest.fn();
+jest.mock('@google/genai',()=>({GoogleGenAI:jest.fn(()=>({models:{generateContent:(...args:unknown[])=>generate(...args)}}))}));
+const input={brief:{city:'Toronto',center:{latitude:43.65,longitude:-79.38},radiusKm:10,concept:'Cafe',references:['Cafe']},area:{name:'Area',address:null,latitude:43.65,longitude:-79.38,venues:[]}} as ResearchInput;
+beforeEach(()=>{generate.mockReset();process.env.GEMINI_API_KEY='private-test-key';jest.spyOn(console,'info').mockImplementation(()=>{});jest.spyOn(console,'warn').mockImplementation(()=>{});});
+afterEach(()=>{delete process.env.GEMINI_API_KEY;jest.restoreAllMocks();});
+it('reports rate limits without leaking provider details into the UI or logs',async()=>{
+ generate.mockRejectedValue({status:429,message:'private-test-key in provider request'});
+ await expect(researchArea(input)).rejects.toMatchObject({code:'provider-rate-limit',message:expect.not.stringContaining('private-test-key')});
+ expect(console.warn).toHaveBeenCalledWith(expect.stringContaining('"providerStatus":429'));
+ expect(JSON.stringify(jest.mocked(console.warn).mock.calls)).not.toContain('private-test-key');
+});
+it('retries missing grounding within the existing two-attempt budget',async()=>{
+ generate.mockResolvedValue({text:'A model claim with no search grounding.'});
+ await expect(researchArea(input)).rejects.toMatchObject({code:'missing-grounding'});
+ expect(generate).toHaveBeenCalledTimes(2);
+});
+it('retains earlier provider links if the summary retry times out',async()=>{
+ generate.mockResolvedValueOnce({text:'Two units are required.',candidates:[{groundingMetadata:{groundingChunks:[{web:{uri:'https://example.com/city'}}]}}]}).mockRejectedValueOnce({name:'TimeoutError',message:'Timeout with private-test-key'});
+ const report=await researchArea(input);expect(report.status).toBe('sources-only');expect(report.text).toBe('');expect(report.sources[0].url).toBe('https://example.com/city');
+ expect(console.warn).toHaveBeenCalledWith(expect.stringContaining('provider-timeout'));
+});
+it('does not run a later model call after cancellation',async()=>{
+ const controller=new AbortController();controller.abort();
+ await expect(researchArea(input,controller.signal)).rejects.toBeDefined();expect(generate).not.toHaveBeenCalled();
+});
+it('classifies a provider timeout as a timeout, not invalid research',async()=>{
+ generate.mockRejectedValue({name:'TimeoutError',message:'timed out'});
+ await expect(researchArea(input)).rejects.toBeInstanceOf(ResearchError);
+ expect(console.warn).toHaveBeenCalledWith(expect.stringContaining('provider-timeout'));
+});
+it('cancels research at the total deadline without starting a second attempt',async()=>{
+ const deadline=new AbortController();
+ const timeout=jest.spyOn(AbortSignal,'timeout').mockReturnValue(deadline.signal);
+ generate.mockImplementation(({config})=>new Promise((_,reject)=>config.abortSignal.addEventListener('abort',()=>reject(config.abortSignal.reason),{once:true})));
+ const pending=researchArea(input);
+ // Allow the asynchronous SDK import to complete, then trip the actual signal boundary.
+ await new Promise(resolve=>setImmediate(resolve));
+ deadline.abort(new DOMException('Timed out','TimeoutError'));
+ await expect(pending).rejects.toMatchObject({code:'provider-timeout'});
+ expect(timeout).toHaveBeenCalledWith(40000);expect(generate).toHaveBeenCalledTimes(1);
+});

@@ -1,0 +1,103 @@
+SITEBRIEF / CITY SCOUTING NOTES
+
+SAVED DEMO: originally recorded 2026-10-23T00:52:45.674Z; live retrieval was unavailable or incomplete. Only the saved highlights are shown, not the original city grid.
+
+AGENT VISIT ORDER WITH VERIFIED RANKS: {"visitFirst":"area-1","reason":"This point is ranked 1 of 3 by local rank contrast. The agent selected practical checks as the next step for this point. This is a comparison among shortlisted points, not a business-success forecast.","tradeOff":"Taste evidence does not establish zoning, permits, lease terms or permission for the proposed use.","nextAction":"Confirm the proposed use with the city and property owner. Do not treat a map point as an approved unit."}
+
+RANKING: contrast. Minimum local popularity percentile: 20. 885 points outside outlet buffers failed that screen. Local affinity-minus-popularity percentile contrast is not calibrated lift or demand.
+
+A new café with an indoor playground. Find areas to scout using popular Toronto cafés as audience references.
+
+Toronto, Ontario, Canada · within 10 km of 43.6534817, -79.3839347
+
+Restaurant: New café with an indoor playground
+Format: cafe
+Service: unspecified
+Price position: unspecified
+
+Outlet rule: 0 km minimum straight-line distance from no existing outlets supplied. This is not a customer-overlap estimate.
+
+0 returned points excluded by your outlet rule.
+
+RESEARCH: Near Spadina–Fort York · 2026-10-23T00:52:45.088Z
+Why scout here:
+The area around the coordinates in Toronto, Ontario, shows a strong commercial presence along Dundas Street West and Ossington Avenue, both identified as vibrant retail and dining corridors. Dundas Street West, for instance, has properties like one at Dundas Street West and Claremont Street, described as having a prominent corner location and a bright, column-free layout that could support flexible retail configurations. Ossington Avenue is recognized as a sought-after commercial district with strong pedestrian traffic and a mix of national, international, and independent retailers and restaurants. The proposed café with an indoor playground could potentially benefit from the existing popularity of these streets, drawing from local residents and visitors already frequenting nearby establishments.
+
+Reasons to hesitate:
+Establishing an indoor playground within a cafe concept requires specific considerations beyond a typical retail or food service space. Zoning and permits for an indoor playground, especially one combined with a food establishment, can be complex and may require a change-of-use permit or building evaluation even if no construction is planned. The City of Toronto differentiates between an "Amusement Establishment" and a "Recreation Centre," and the proposed concept would need to clarify its classification to understand the applicable licensing and zoning requirements. Obtaining necessary approvals for an indoor playground in Toronto, including building permits and zoning changes, can take several months.
+
+Nearby concepts and menu checks:
+The area features a variety of established food and beverage businesses that could serve as audience references. These include Kitten and the Bear, Mildred's Temple Kitchen, Good Fork, Jimmy's Coffee, and Bang Bang Ice Cream & Bakery. Kitten and the Bear, for example, specializes in artisanal jams and scones, suggesting a focus on quality breakfast and brunch items. Mildred's Temple Kitchen offers a diverse brunch menu. Good Fork is another café-style venue. Jimmy's Coffee is a well-known local coffee chain, and Bang Bang Ice Cream & Bakery provides dessert and baked goods. To understand pricing and specific offerings in the area, official menus from these establishments would need to be reviewed.
+
+Access and local context:
+The commercial streets in this area are well-served by public transit. For example, the Dundas Street West properties are along the Dundas streetcar route and within walking distance of the Bathurst streetcar line. Ossington Avenue is near Queen Street West, with access to the Queen streetcar. This transit accessibility can contribute to a steady flow of potential customers. The area is also described as an established residential neighborhood, which could provide a local customer base for a family-friendly café with an indoor playground.
+
+What to check on a visit:
+During a site visit, it would be crucial to:
+*   Investigate the specific zoning of potential properties on Dundas Street West and Ossington Avenue to determine if an indoor playground and café are permitted uses, or if a zoning variance or change-of-use permit would be required.
+*   Assess the available space within potential units for both the café operations and the indoor playground, considering the need for clear visibility between parent seating and play areas, and appropriate separation of high-energy and quiet zones within the play space.
+*   Inquire with the property owner and the City of Toronto about necessary permits for an indoor playground, including any building evaluations, fire safety requirements, accessibility standards, and specific business licenses for an "Amusement Establishment" or similar classification.
+*   Examine the immediate surroundings for existing family-oriented businesses or community spaces, and observe pedestrian traffic patterns, particularly during different times of day and week, to gauge potential customer flow.
+loopnet.com: https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH5u2jq1ynWvvIan_xrVoLy-x5fnHZTR8li2bfQ3yDqxNiFyIXwcesnZKbXWYcxWbaxWF-Keh5pP5vVSDqKOp1E1ddl_PccizKhXKVMSamAgi-XpGSeKzheH3yT2RSTzN696fdcGncm1FLFZfw4MZFzHTLv7r1TfmFYpimI0dqgLjfMPg==
+loopnet.com: https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGcSQPCW6aD7xT3CfTWiKRiOQEQlRhAVzguFc6eh7B5TL-QAv0fja8XhwOGPgghc7fXCiBmetgxi-sNxPCzA4PT6lvC8c10IHaOsNz6FZAsPWVzq9E9zunXG9sNYjDmIuwjOgL6bNDZ3tMLtMUVaPw4Qp32kyX586rP9XokCg56qQ==
+dcindoorplayground.com: https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHFC9BZb8EQpgogJUn-l9uEitc5K0xGOyZAzKmmbin9LTsbQEZ2lGshF3_RBA_5B5Ds15jLkEwie56m-h-GDpICjvFfMJe3uB6WAM0zxMeECch4dXKTyxRj13rjip48FzeuiECpW0d9uooSmMPtrVWqMqF65Z2JgPue_cHDAE2sVkc6TDMHsVynIUyGHur1AvTZff56p53SaSYn
+toronto.ca: https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFhtfMHJ-afR3KQtApH5da1NZVQJPKu4Qh64yImvsEkRYgcWB1lSbZp-m7lHdylX3_noZLLkN3d0GUIIakTtc3jkU2QpMDlFDd_BYdzOIe7rfBbIPpxdbPCgqkdTuZzTJHdH74Yw6XvGk2yTnVVCnhFoGAK1SJAWYFWXkv0ojF9wA7V6o466brdcse2Ga3l_K2q8E8Y
+lemfunplay.com: https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHlwhxOmpe5B5MCn9g26Y1fInAcbhYuTtYLUDfezh81VAx9UIJvhw5-HNjOD1YYBu2IzeMXQIyjQweXW88xuA0XtOAn00977LTEqOVidpVXpH41HSG-DBtE8-jUj5rHDnDzgaeIneo5xwgJXyPPtqMCPRkj1H0iWvrVi6BDdXXZLJgAFAIwbXY0Pd2kqBML5k8=
+fieldgatecommercial.com: https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG0TPELzm5yU-P3gD9sI27cPWJktaGjl6HtvuXGDaBNY6PMDFLgd4XlWqyIqZfBGW5QY98TWQRW59BNjZZ_AyZ9xeY5ZfXATl8zOAGK6Av014oNAId6ps0Ha2rf8Pv01hpd4Uetm7VBTB_aIr8ATQdNr6pHuZo5aVO8TN83GbCWKGuXtg==
+pitaya.kids: https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEoshsFIkKFdp0Ht2KmNP62ZICBJ5JWpgT761sZqPCzbArIKvvvT-1xrQSV6ElOzKm00MF4P-Lxm5QH8RzG-Inp88i-IT5Ds3frBZtwlM7qaWYT_lnDDLRAguK9Jsr_8RXXMOEXaAmjcGqUs3f0yP5220ot_b4PU5nI1J6PyJn899S5hVxbCXL-ORv4Iw2JrljOI5XKTQ==
+dreamlandplayground.com: https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFAc7Y5n2mwjYGKdG-43sjItTeecwSJhaWW4tvO8DlnFx1bXMUVtrsRzNVGBigZG7u39QpzvkY82GTYGp3Mv5mxqEXRdwZa9W316OvUu_yoHvltea2surpfizPMvymwdD5cqSw7QKWWW23kTJxWMspwz98uB07bn6QJtIk09GX_eoNTGvtATAIBxO36IuZbX8k6uZPdJrpnlJHFVEhAxbU5bUmS6A==
+
+Audience assumptions: Dineen Coffee Co. (FAD69E17-B23A-41C8-B25A-EBBEA04F4658), FIKA Cafe (218AD775-5013-4D5A-84E9-9D308A68AFEF), Rooster Coffee House (4A68BC83-0A82-42CC-9A76-2E284F0DD2B9)
+
+Qloo evidence retrieved 2026-10-23T00:52:29.963Z. 4292 points in the original search radius; only saved highlights retained.
+
+Near Spadina–Fort York
+114 Argyle Street, Spadina–Fort York, Toronto, Ontario, Canada
+Map point: 43.64662, -79.422226
+Qloo affinity: 0.9745276249701028
+Popularity: 0.513872279359005
+Local rank contrast: 55.19023015500235 percentile points
+4081 of 4292 returned local points scored lower.
+Nearby dining: Kitten and the Bear, Mildred's Temple Kitchen, Good Fork, Jimmy's Coffee, Bang Bang Ice Cream & Bakery
+
+Near York South–Weston
+35 Cawthra Avenue, York South–Weston, Toronto, Ontario, Canada
+Map point: 43.668594, -79.463425
+Qloo affinity: 0.964840947141832
+Popularity: 0.5273857928725185
+Local rank contrast: 52.09018318459371 percentile points
+4001 of 4292 returned local points scored lower.
+Nearby dining: The Good Neighbour Espresso Bar, Mattachioni, North of Bombay, Annette Food Market, Playa Cabana Cantina
+
+Near Banbury-Don Mills
+Wynford Drive, Banbury-Don Mills, Toronto, Ontario, Canada
+Map point: 43.723526, -79.33708
+Qloo affinity: 0.9881607270987802
+Popularity: 0.5893326955273858
+Local rank contrast: 50.98637858149366 percentile points
+4193 of 4292 returned local points scored lower.
+Nearby dining: Kitaya Japanese Takeout, Asian Legend, CoCo, Diwan, Sorento Italian Kitchen
+
+METHOD: Highlights are high-scoring returned map points spaced at least 2 km apart, not neighborhood averages.
+
+TO CHECK: Visit at intended opening hours; count foot traffic; find available properties; obtain actual rents; check permits, lease terms and operating costs.
+
+LIMITS: Taste signals do not establish demand, population, sales, profitability or rental availability. Audience references determine the taste signal. Restaurant format, service period and price position guide the separate research. Nearby dining is a ranked sample, not a complete competitor list.
+
+SOURCES
+
+Find café-tagged Toronto places; select distinct names by returned popularity · ok · /v2/insights {"filter.type":"urn:entity:place","filter.location.query":"Toronto","filter.tags":"urn:tag:genre:place:restaurant:cafe","signal.interests.tags":"urn:tag:genre:place:restaurant:cafe","take":"30"} · 30 results
+
+Map audience taste across the city · ok · /v2/insights {"filter.type":"urn:heatmap","filter.location.query":"Toronto, Ontario, Canada","signal.interests.entities":"FAD69E17-B23A-41C8-B25A-EBBEA04F4658,218AD775-5013-4D5A-84E9-9D308A68AFEF,4A68BC83-0A82-42CC-9A76-2E284F0DD2B9","signal.interests.tags":"urn:tag:genre:place:restaurant"} · 8363 results
+
+Nearby dining for area 3 · ok · /v2/insights {"filter.type":"urn:entity:place","filter.location":"POINT(-79.33708 43.723526)","filter.location.radius":"1000","filter.tags":"urn:tag:genre:place:restaurant","signal.interests.entities":"FAD69E17-B23A-41C8-B25A-EBBEA04F4658,218AD775-5013-4D5A-84E9-9D308A68AFEF,4A68BC83-0A82-42CC-9A76-2E284F0DD2B9","take":"5"} · 5 results
+
+Nearby dining for area 2 · ok · /v2/insights {"filter.type":"urn:entity:place","filter.location":"POINT(-79.463425 43.668594)","filter.location.radius":"1000","filter.tags":"urn:tag:genre:place:restaurant","signal.interests.entities":"FAD69E17-B23A-41C8-B25A-EBBEA04F4658,218AD775-5013-4D5A-84E9-9D308A68AFEF,4A68BC83-0A82-42CC-9A76-2E284F0DD2B9","take":"5"} · 5 results
+
+Nearby dining for area 1 · ok · /v2/insights {"filter.type":"urn:entity:place","filter.location":"POINT(-79.422226 43.64662)","filter.location.radius":"1000","filter.tags":"urn:tag:genre:place:restaurant","signal.interests.entities":"FAD69E17-B23A-41C8-B25A-EBBEA04F4658,218AD775-5013-4D5A-84E9-9D308A68AFEF,4A68BC83-0A82-42CC-9A76-2E284F0DD2B9","take":"5"} · 5 results
+
+Locate area 1 on OpenStreetMap · ok · Photon /reverse {"latitude":"43.64662","longitude":"-79.422226"} · 1 results
+
+Locate area 2 on OpenStreetMap · ok · Photon /reverse {"latitude":"43.668594","longitude":"-79.463425"} · 1 results
+
+Locate area 3 on OpenStreetMap · ok · Photon /reverse {"latitude":"43.723526","longitude":"-79.33708"} · 1 results

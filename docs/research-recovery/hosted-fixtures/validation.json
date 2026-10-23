@@ -1,0 +1,15 @@
+{
+  "url": "https://collab-scout-gzr151629-circuitstudioais-projects.vercel.app",
+  "checkedAt": "2026-10-23T20:34:16.150Z",
+  "mode": "Synthetic UI transport fixtures; not fresh provider evidence",
+  "checks": [
+    "Sources-only links are visible, narrative absent, notes and one-page PDF explicitly label unavailable summary",
+    "Partial report retains the safe sentence, notice and correctly linked citation",
+    "Research for a different area remains visible and labelled, with unique heading IDs",
+    "Safe provider failure category is visible in tool activity",
+    "Cited practical decision evidence renders its quote and source and remains in the one-page PDF"
+  ],
+  "axe": [],
+  "mobileAxe": [],
+  "pageErrors": []
+}

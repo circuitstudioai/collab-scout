@@ -15,7 +15,7 @@ QLOO_API_URL=https://hackathon.api.qloo.com
 GEMINI_API_KEY=
 ```
 
-Never commit values or add a NEXT_PUBLIC prefix. Qloo uses X-Api-Key. Gemini2.5Flash is called directly by the server for bounded tool decisions and Google-grounded research. There is no canned research fallback.
+Never commit values or add a NEXT_PUBLIC prefix. Qloo uses X-Api-Key. Gemini2.5Flash is called directly by the server for bounded tool decisions and Google-grounded research. Custom briefs have no canned research fallback. The fixed playground demonstration can show an explicitly dated saved real reference run on provider failure; this is not presented as a new live request.
 
 ## Vercel
 

@@ -3,7 +3,7 @@
 Find areas to investigate for your next restaurant. A bounded Gemini tool workflow combines real Qloo evidence, operator rules and cited practical research. The output is a scouting visit plan, not a lease recommendation.
 
 - **Production:** https://collab-scout.vercel.app
-- **Current review preview:** https://collab-scout-l6ibhw23i-circuitstudioais-projects.vercel.app (three-fix branch; not promoted to production).
+- **Release evidence:** [verified versions and review previews](docs/VALIDATION.md).
 - **Source:** https://github.com/circuitstudioai/collab-scout · MIT.
 
 ## The decision
@@ -12,7 +12,7 @@ Find areas to investigate for your next restaurant. A bounded Gemini tool workfl
 2. Apply optional outlet buffers, a minimum city-local popularity floor and the taste screen.
 3. Rank by local affinity percentile minus popularity percentile; preserve actual ties.
 4. Let the agent inspect audience tags, signed demographic affinity, related brands and a nearby-venue comparison, then research an eligible point.
-5. The agent chooses an eligible ID and check codes. **Code—not model prose—states actual rank and ties.** A lower-ranked visit choice cannot become a “highest contrast” claim.
+5. The agent chooses an eligible ID and check codes. **Code—not model prose—states actual rank and ties.** Visit order defaults to the highest-ranked eligible point. A lower-ranked visit needs an area-specific cited fact; generic checklists do not justify it.
 6. Inspect sources and download a one-page PDF or full notes. Known-address comparison remains available at `/compare` with a clearly labelled fixed sample.
 
 Balanced discovery excludes the lowest20% of measured local popularity; established popularity uses the median. These are disclosed exploratory settings, not observed visitor counts or validated commercial thresholds. Missing popularity coverage produces no shortlist rather than silently waiving the floor. No downtown exclusion or competitor scarcity score is imposed.
@@ -21,7 +21,7 @@ Balanced discovery excludes the lowest20% of measured local popularity; establis
 
 Click **Try the Toronto playground café**. The owner's scenario is a new café with an indoor playground. Local café references come from Qloo's returned Toronto café-tagged sample, not an exhaustive city leaderboard or proof of family demand. Prices, hours and existing outlets remain unspecified.
 
-Watch actual tool activity, inspect rank/ties and floor, open a cited source, and download the PDF. Reused real runs show their original time. The warm-instance example cache is not durable storage or quota protection.
+Watch actual tool activity, inspect rank/ties and floor, open a cited source, and download the PDF. Cited passages survive unrelated rejected sentences. If no summary survives, provider links are labelled sources to inspect, not validated findings. Reused real runs show their original time. On unavailable/incomplete live evidence, the canonical example can show a clearly labelled saved reference run with its original date and only the saved highlights. Custom briefs never receive that saved café. The live demo has a60-second work deadline; Gemini/research cancellation prevents later model stages. These mechanisms are not quota protection.
 
 ## Provider roles
 

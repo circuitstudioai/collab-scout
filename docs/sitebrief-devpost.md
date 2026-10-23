@@ -26,6 +26,3 @@ Next.js, React, TypeScript, Leaflet, Photon/OpenStreetMap, Qloo and Gemini2.5Fla
 
 ## Try it
 Public demo: https://collab-scout.vercel.app. Click **Try the Toronto playground café**, inspect the agent steps and returned evidence, open source links and download the one-page brief. MCP: `https://collab-scout.vercel.app/api/mcp`. Reused real requests are labelled with their original time.
-
----
-Publisher note, not submission copy: the current three-fix branch is verified on the review preview linked in README. Merge/release it and verify production before describing those fixes as live in the submitted demo. Submission status and acceptance receipts belong in VALIDATION.md, not the pasted product description.
