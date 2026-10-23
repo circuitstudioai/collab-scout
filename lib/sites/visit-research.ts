@@ -12,3 +12,9 @@ export function researchForVisit(run:Visit){
  return reportMatchesArea(report,area)?report:undefined;
 }
 export function hasCitedVisitResearch(run:Visit){return Boolean(researchForVisit(run)?.citations.length);}
+/** Unused search chunks are not cited evidence. Sources-only links remain explicitly for inspection. */
+export function visibleResearchSources(report:ResearchReport){
+ const used=new Set(report.citations.flatMap(c=>c.sourceIndices));
+ const inspectOnly=report.status==='sources-only'||!report.citations.length;
+ return report.sources.map((source,index)=>({source,index})).filter(({source,index})=>Boolean(source.url)&&(inspectOnly||used.has(index)));
+}

@@ -8,13 +8,15 @@ If selected-area research is unavailable, retain a clearly labelled ranking-only
 
 Retained local passages must name a supplied nearby venue, with normalized apostrophes for exact label matching. Generic district assertions and dangling pronouns are omitted; source links alone are not local findings. This is a bounded identity/relevance guard, not proof of every source's geography or freshness.
 
+Cited-source lists include only links attached to retained passages. Unused provider search chunks cannot appear as cited evidence in UI/PDF/notes; sources-only results keep their explicitly labelled inspection links.
+
 Whole unsupported obligation/licensing sentences are omitted without discarding safe cited passages. Permissions remain unanswered questions for the City and property owner, not inferred approvals. The filter is bounded, not a semantic or legal truth validator.
 
 Failed place-name lookup produces an unnamed map point with its coordinates, not an invented neighbourhood. Active instructions acknowledge PR #8 is merged. Historical receipts remain unchanged, with the old acceptance gap explicitly marked.
 
 ## Verification
 
-Local: 114 tests in 20 suites, lint and build passed. Observed red-to-green regressions cover lower-area research after a rank-one visit, supervision/licensing wording, and unnamed-coordinate labels. Additional tests cover ID/coordinate mismatch, foreign reports in caching/recovery, a model trying to switch the final visit, and current validation of saved research.
+Local: 115 tests in 20 suites, lint and build passed. Observed red-to-green regressions cover lower-area research after a rank-one visit, supervision/licensing wording, and unnamed-coordinate labels. Additional tests cover ID/coordinate mismatch, foreign reports in caching/recovery, a model trying to switch the final visit, and current validation of saved research.
 
 [PR #9](https://github.com/circuitstudioai/collab-scout/pull/9) application commit `7f5e5f041389524fa650081a73d6b56da1e0eb4f` passed five fresh uncached runs: one canonical playground, two Blue Bottle and two custom playground requests. All five returned cited research for the final visit ID **and exact coordinates**, with rank one and no other researched point. They took 12.4–20.7 seconds and retained 1–8 citations each. All reports were partial; omitted text was not presented as findings. No cached, saved, sources-only or ranking-only outcome counted as fresh cited acceptance.
 
@@ -28,7 +30,7 @@ The initial target-only batch also matched IDs/coordinates, but manual text revi
 
 Standards — self-review: locked selection, retrieval, report validation and shared consumption guards remain separate. Strict schemas and bounded calls remain; client imports contain only pure validation and erased types, not credentials/provider setup. Existing historical receipts are preserved.
 
-Scope — self-review: same-area research, obligation filtering, honest fallback labels and stale active instructions are included. The old live lower-ranked override is removed intentionally. Quota and landing/production/submission remain separate. The final documentation/test receipt commit does not change the tested application code.
+Scope — self-review: same-area research, obligation filtering, honest fallback labels and stale active instructions are included. The old live lower-ranked override is removed intentionally. Quota and landing/production/submission remain separate. A final display/export-only correction excludes unused provider chunks from cited-source lists. It does not change the five-run research/decision pipeline; its own hosted UI/PDF regression must pass before final readiness.
 
 ## Evidence policy and scope
 

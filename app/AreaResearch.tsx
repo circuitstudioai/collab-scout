@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 import type { Area, Exploration } from '@/lib/sites/explore';
-import {reportMatchesArea} from '@/lib/sites/visit-research';
+import {reportMatchesArea,visibleResearchSources} from '@/lib/sites/visit-research';
 import type { ResearchReport } from '@/lib/sites/research';
 function CitedText({report}:{report:ResearchReport}){
  const clean=(text:string)=>text.replace(/\*\*|__/g,'');
@@ -59,6 +59,6 @@ export default function AreaResearch({result,area,reports,onReport,headingId="re
  {busy&&<p role="status" className="atlas-working">Searching menus, local context and practical trade-offs. This can take up to 48 seconds.</p>}
  {error&&<p role="alert" className="atlas-error">{error}</p>}
  {!report&&!busy&&!error&&<div className="atlas-research-empty"><strong>From a map point to a useful scouting brief.</strong><p>Investigate nearby concepts, published prices, access, reasons to hesitate, and what to verify in person.</p></div>}
- {report&&<><p className="atlas-research-date">{report.status==='sources-only'?'SOURCES RETRIEVED':'RESEARCHED'} {new Date(report.createdAt).toLocaleString()} · CHECK SOURCE DATES</p><>{report.notice&&<p role="status" className="atlas-help">{report.notice}</p>}{report.text&&<><h3>Cited local context</h3><CitedText report={report}/></>}</><details className="atlas-source-log" open={report.status==='sources-only'}><summary>{report.status==='sources-only'?'Sources to inspect & search queries':'Sources & search queries'}</summary><ol>{report.sources.map((s,i)=>s.url?<li key={i}><a href={s.url} target="_blank" rel="noreferrer">{i+1}. {s.title}</a></li>:null)}</ol><p>{report.queries.join(' · ')}</p></details>{report.searchSuggestionsHtml&&<iframe title="Google Search suggestions" className="atlas-search-suggestions" srcDoc={report.searchSuggestionsHtml} sandbox="allow-popups allow-popups-to-escape-sandbox"/>}</>}
+ {report&&<><p className="atlas-research-date">{report.status==='sources-only'?'SOURCES RETRIEVED':'RESEARCHED'} {new Date(report.createdAt).toLocaleString()} · CHECK SOURCE DATES</p><>{report.notice&&<p role="status" className="atlas-help">{report.notice}</p>}{report.text&&<><h3>Cited local context</h3><CitedText report={report}/></>}</><details className="atlas-source-log" open={report.status==='sources-only'}><summary>{report.status==='sources-only'?'Sources to inspect & search queries':'Sources & search queries'}</summary><ol>{visibleResearchSources(report).map(({source:s,index:i})=><li key={i}><a href={s.url} target="_blank" rel="noreferrer">{i+1}. {s.title}</a></li>)}</ol><p>{report.queries.join(' · ')}</p></details>{report.searchSuggestionsHtml&&<iframe title="Google Search suggestions" className="atlas-search-suggestions" srcDoc={report.searchSuggestionsHtml} sandbox="allow-popups allow-popups-to-escape-sandbox"/>}</>}
  </section>;
 }
