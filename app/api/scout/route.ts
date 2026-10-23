@@ -30,7 +30,7 @@ export async function POST(request:Request){
      };
      const run=demo?await withDemoDeadline(live):await live();
      if(demo&&run.exploration.areas.length&&(!run.assessment?.visitFirst||!Object.keys(run.research).length)){send({type:'complete',value:savedPlaygroundDemo('live-incomplete')});}
-     else{if(demo&&run.assessment?.visitFirst&&Object.keys(run.research).length)canonical={run,expires:Date.now()+900000};send({type:'complete',value:run});}
+     else{if(demo&&run.assessment?.visitFirst&&Object.values(run.research).some(r=>r.citations.length))canonical={run,expires:Date.now()+900000};send({type:'complete',value:run});}
     }
    }catch(error){if(demo&&!cancelled){send({type:'complete',value:savedPlaygroundDemo('live-unavailable')});}else send({type:'error',error:error instanceof SiteError?error.message:'The scouting agent could not finish. Your brief is still here; try again or explore the map.',referenceChoice:error instanceof SiteError?error.referenceChoice:undefined});}
    finally{active--;if(!cancelled)controller.close();}

@@ -26,7 +26,7 @@ it('does not publish a lower-ranked selection falsely called highest contrast or
  expect(run.exploration.areas.length).toBeGreaterThan(1);
  expect(run.assessment?.reason??'').not.toMatch(/highest contrast|market gap/i);
 });
-it('renders the actual rank when the agent chooses a lower-ranked point for practical follow-up',async()=>{
+it('defaults to the highest-ranked eligible point when a lower-ranked choice has no cited practical reason',async()=>{
  const run=await runScout(brief,()=>{},generator({visitFirst:'area-2',reasonCode:'practical-follow-up',checkFocus:'space-access'}));
- expect(run.assessment).not.toBeNull();expect(run.assessment?.visitFirst).toBe('area-2');expect(run.assessment?.reason).toMatch(/ranked 2 of 2/);expect(run.assessment?.reason).not.toMatch(/highest contrast|market gap/i);
+ expect(run.assessment).not.toBeNull();expect(run.assessment?.visitFirst).toBe('area-1');expect(run.assessment?.reason).toMatch(/ranked 1 of 2/);expect(run.assessment?.reason).not.toMatch(/highest contrast|market gap/i);
 });

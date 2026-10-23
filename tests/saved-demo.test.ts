@@ -30,3 +30,15 @@ it('does not replace a genuine empty live shortlist with old eligible points',as
  const prior=savedPlaygroundDemo('live-unavailable');jest.mocked(buildDemoBrief).mockResolvedValue({brief:prior.exploration.brief,evidence:{references:prior.exploration.references,trace:[]}});jest.mocked(runScout).mockResolvedValue({...prior,exploration:{...prior.exploration,areas:[]},assessment:null,savedDemo:undefined,cached:false,research:{}});
  const response=await POST(new Request('http://local/api/scout',{method:'POST',body:JSON.stringify({demo:true})}));const events=(await response.text()).split('\n\n').filter(Boolean).map(f=>JSON.parse(f.slice(6)));const run=events.find(e=>e.type==='complete').value;expect(run.savedDemo).toBeUndefined();expect(run.exploration.areas).toEqual([]);
 });
+it('keeps live sources-only recovery distinct and does not warm-cache it as successful cited research',async()=>{
+ const prior=savedPlaygroundDemo('live-unavailable');
+ const sourcesOnly=Object.fromEntries(Object.entries(prior.research).map(([id,r])=>[id,{...r,text:'',citations:[],status:'sources-only' as const,notice:'Sources to inspect; summary unavailable.'}]));
+ jest.mocked(buildDemoBrief).mockResolvedValue({brief:prior.exploration.brief,evidence:{references:prior.exploration.references,trace:[]}});
+ jest.mocked(runScout).mockResolvedValue({...prior,research:sourcesOnly,cached:false,savedDemo:undefined});
+ for(let i=0;i<2;i++){
+  const response=await POST(new Request('http://local/api/scout',{method:'POST',body:JSON.stringify({demo:true})}));
+  const events=(await response.text()).split('\n\n').filter(Boolean).map(f=>JSON.parse(f.slice(6)));
+  const run=events.find(e=>e.type==='complete').value;expect(run.savedDemo).toBeUndefined();expect(run.cached).toBe(false);
+ }
+ expect(runScout).toHaveBeenCalledTimes(2);
+});

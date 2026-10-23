@@ -12,7 +12,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 Sitebrief is a restaurant scouting product. Current source of truth: `docs/SITEBRIEF.md`; architecture: `docs/ARCHITECTURE.md`; method: `docs/SCOUT_AGENT.md`; setup: `docs/SETUP.md`; verification: `docs/VALIDATION.md`.
 
-PR #6 and PR #7 are merged. This follow-up addresses cold-start demo recovery: retain a verified ranked visit when optional research/model output fails, and label saved canonical demo evidence with its original date. Keep the follow-up review PR unmerged. Do not submit to Devpost, change production or provision paid infrastructure in this change.
+PR #6 and PR #7 are merged. This follow-up also addresses partial cited-research recovery, safe research diagnostics and evidence-based visit order. Cold-start recovery must  retain a verified ranked visit when optional research/model output fails, and label saved canonical demo evidence with its original date. Keep the follow-up review PR unmerged. Do not submit to Devpost, change production or provision paid infrastructure in this change.
 
 Quota work is explicitly deferred. Its incomplete checkpoint is on the separate local branch `fix/sitebrief-visitor-quota-20261023`, not this change. Do not add quota gates, provision a store, choose a global allowance or imply per-visitor protection exists in this PR.
 
