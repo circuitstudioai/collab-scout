@@ -1,0 +1,456 @@
+{
+  "url": "https://collab-scout-r1bgogxxt-circuitstudioais-projects.vercel.app",
+  "status": "passed",
+  "elapsedSeconds": 26.297,
+  "cached": false,
+  "createdAt": "2026-10-22T18:43:41.808Z",
+  "events": [
+    "step",
+    "exploration",
+    "step",
+    "step",
+    "profile",
+    "step",
+    "step",
+    "comparison",
+    "step",
+    "step",
+    "research",
+    "step",
+    "complete"
+  ],
+  "steps": [
+    {
+      "id": "step-1",
+      "tool": "explore_areas",
+      "title": "Mapping audience fit against popularity",
+      "status": "complete",
+      "durationMs": 4448
+    },
+    {
+      "id": "step-2",
+      "tool": "audience_profile",
+      "title": "Reading audience taste and demographic signals",
+      "status": "complete",
+      "durationMs": 346
+    },
+    {
+      "id": "step-3",
+      "tool": "compare_audiences",
+      "title": "Comparing an actual nearby venue’s audience tags",
+      "status": "complete",
+      "durationMs": 27
+    },
+    {
+      "id": "step-4",
+      "tool": "research_area",
+      "title": "Researching the selected area’s practical trade-offs",
+      "status": "complete",
+      "durationMs": 15617
+    }
+  ],
+  "decisionIssues": [],
+  "brief": {
+    "city": "Toronto, Ontario, Canada",
+    "center": {
+      "latitude": 43.6534817,
+      "longitude": -79.3839347
+    },
+    "radiusKm": 10,
+    "concept": "A new café with an indoor playground. Find areas to scout using popular Toronto cafés as audience references.",
+    "references": [
+      "Dineen Coffee Co.",
+      "FIKA Cafe",
+      "Rooster Coffee House"
+    ],
+    "restaurant": {
+      "brandName": "New café with an indoor playground",
+      "format": "cafe",
+      "servicePeriod": "unspecified",
+      "pricePosition": "unspecified"
+    },
+    "existingOutlets": [],
+    "minimumOutletDistanceKm": 0
+  },
+  "references": [
+    {
+      "id": "FAD69E17-B23A-41C8-B25A-EBBEA04F4658",
+      "name": "Dineen Coffee Co.",
+      "resolution": "local-cafe",
+      "address": "140 Yonge St Toronto, ON M5C 1X6 Canada"
+    },
+    {
+      "id": "218AD775-5013-4D5A-84E9-9D308A68AFEF",
+      "name": "FIKA Cafe",
+      "resolution": "local-cafe",
+      "address": "28 Kensington Ave Toronto, ON M5T 2J9 Canada"
+    },
+    {
+      "id": "4A68BC83-0A82-42CC-9A76-2E284F0DD2B9",
+      "name": "Rooster Coffee House",
+      "resolution": "local-cafe",
+      "address": "568 Jarvis St Toronto, ON M4Y 0C1 Canada"
+    }
+  ],
+  "ranking": {
+    "method": "contrast",
+    "popularityCoverage": 0.9920782851817335,
+    "points": 4292,
+    "excluded": 0,
+    "areas": [
+      {
+        "id": "area-1",
+        "name": "Near Spadina–Fort York",
+        "affinity": 0.9745276249701028,
+        "popularity": 0.513872279359005,
+        "contrast": 55.19023015500235,
+        "audiencePercentile": 95.05636449037107,
+        "popularityPercentile": 39.86613433536872
+      },
+      {
+        "id": "area-2",
+        "name": "Near York South–Weston",
+        "affinity": 0.9648409471418321,
+        "popularity": 0.5273857928725185,
+        "contrast": 52.09018318459371,
+        "audiencePercentile": 93.17754814466886,
+        "popularityPercentile": 41.08736496007515
+      },
+      {
+        "id": "area-3",
+        "name": "Near Banbury-Don Mills",
+        "affinity": 0.9881607270987802,
+        "popularity": 0.5893326955273858,
+        "contrast": 50.98637858149366,
+        "audiencePercentile": 97.68670737435416,
+        "popularityPercentile": 46.700328792860496
+      }
+    ]
+  },
+  "audience": {
+    "tags": [
+      {
+        "name": "Coffee shop",
+        "affinity": 0.9976364981515836
+      },
+      {
+        "name": "Cafe",
+        "affinity": 0.9952288322123714
+      },
+      {
+        "name": "French",
+        "affinity": 0.9946095109844512
+      },
+      {
+        "name": "Coffee store",
+        "affinity": 0.9859308647341756
+      },
+      {
+        "name": "Brunch",
+        "affinity": 0.9812687217213488
+      },
+      {
+        "name": "Dessert shop",
+        "affinity": 0.9716537362167319
+      },
+      {
+        "name": "Bakery",
+        "affinity": 0.9674944823638002
+      },
+      {
+        "name": "Canadian",
+        "affinity": 0.9669470692990698
+      }
+    ],
+    "ageSignals": [
+      {
+        "referenceId": "FAD69E17-B23A-41C8-B25A-EBBEA04F4658",
+        "referenceName": "Dineen Coffee Co.",
+        "bands": [
+          {
+            "name": "24_and_younger",
+            "score": 0.053000000000000005
+          },
+          {
+            "name": "25_to_29",
+            "score": 0.049
+          },
+          {
+            "name": "30_to_34",
+            "score": -0.11000000000000001
+          },
+          {
+            "name": "35_to_44",
+            "score": 0.041
+          },
+          {
+            "name": "45_to_54",
+            "score": -0.22699999999999995
+          },
+          {
+            "name": "55_and_older",
+            "score": -0.09600000000000002
+          }
+        ]
+      },
+      {
+        "referenceId": "4A68BC83-0A82-42CC-9A76-2E284F0DD2B9",
+        "referenceName": "Rooster Coffee House",
+        "bands": [
+          {
+            "name": "24_and_younger",
+            "score": 0.029999999999999992
+          },
+          {
+            "name": "25_to_29",
+            "score": -0.022000000000000002
+          },
+          {
+            "name": "30_to_34",
+            "score": -0.11000000000000001
+          },
+          {
+            "name": "35_to_44",
+            "score": 0.229
+          },
+          {
+            "name": "45_to_54",
+            "score": -0.441
+          },
+          {
+            "name": "55_and_older",
+            "score": 0.006999999999999995
+          }
+        ]
+      },
+      {
+        "referenceId": "218AD775-5013-4D5A-84E9-9D308A68AFEF",
+        "referenceName": "FIKA Cafe",
+        "bands": [
+          {
+            "name": "24_and_younger",
+            "score": -0.02
+          },
+          {
+            "name": "25_to_29",
+            "score": -0.01
+          },
+          {
+            "name": "30_to_34",
+            "score": -0.87
+          },
+          {
+            "name": "35_to_44",
+            "score": 0.19
+          },
+          {
+            "name": "45_to_54",
+            "score": 0.12
+          },
+          {
+            "name": "55_and_older",
+            "score": -0.67
+          }
+        ]
+      }
+    ],
+    "relatedBrands": [
+      {
+        "id": "64950A6B-EA57-4DA1-81EE-4F2761082412",
+        "name": "Frank And Oak"
+      },
+      {
+        "id": "B5EFE12E-DDCB-4C20-AFE9-6E72FE6F542E",
+        "name": "Soia & Kyo"
+      },
+      {
+        "id": "431D6036-C28C-4F78-9B1A-A2DAD842872A",
+        "name": "Holt Renfrew"
+      },
+      {
+        "id": "B287C7B0-609F-430D-8F17-D3459EFB8FBA",
+        "name": "Aritzia"
+      },
+      {
+        "id": "700F9C09-6BF2-4AFD-A5AA-CB316504A0E3",
+        "name": "Hudson's Bay"
+      }
+    ]
+  },
+  "comparisons": [
+    {
+      "areaId": "area-1",
+      "venue": "Kitten and the Bear",
+      "shared": [
+        "Sweet",
+        "Vegetarian",
+        "Gluten Free",
+        "Vegan",
+        "Casual",
+        "Average",
+        "Baking",
+        "Place"
+      ],
+      "referenceTags": [
+        "Alcohol",
+        "Cocktails",
+        "Breakfast",
+        "Quick bite",
+        "Place",
+        "Coffee Shop",
+        "Dessert",
+        "Wine"
+      ],
+      "venueTags": [
+        "Bakery",
+        "Restaurant",
+        "Breakfast",
+        "Place",
+        "Coffee",
+        "Bakery",
+        "Gourmet Grocery Store",
+        "Moderately expensive"
+      ],
+      "trace": [
+        {
+          "step": "Compare reference and nearby-venue tags",
+          "path": "/v2/analysis/compare",
+          "params": {
+            "a.signal.interests.entities": "FAD69E17-B23A-41C8-B25A-EBBEA04F4658,218AD775-5013-4D5A-84E9-9D308A68AFEF,4A68BC83-0A82-42CC-9A76-2E284F0DD2B9",
+            "b.signal.interests.entities": "B9FA3F61-388F-474F-B7C6-05FBBDD1B485"
+          },
+          "status": "ok",
+          "count": 39
+        }
+      ]
+    }
+  ],
+  "assessment": {
+    "visitFirst": "area-1",
+    "reason": "Area-1, near Spadina–Fort York, demonstrates the highest audience percentile and strong overall affinity compared to the other explored areas. The local venues exhibit high affinity with the reference cafés, suggesting a receptive audience for a new café concept. The area also boasts existing commercial vibrancy and pedestrian activity, which are favorable for a new establishment. Furthermore, the local commercial streets offer diverse café and dining experiences, indicating a market that could accommodate a unique offering like a café with an indoor playground.",
+    "tradeOff": "While the area shows strong potential for a café audience, the substantial space and ceiling height requirements for an indoor playground might be challenging to secure in established commercial corridors. Additionally, specific zoning regulations for 'Amusement Establishments' and landlord approvals for a 'play café' would require careful investigation.",
+    "nextAction": "Scout the commercial streets near Spadina–Fort York, particularly Dundas Street West and Ossington Avenue, and the Liberty Village area. Focus on identifying commercial spaces with suitable square footage and ceiling height for an indoor playground. Investigate local zoning bylaws, observe pedestrian traffic, and assess parking and drop-off accessibility."
+  },
+  "research": {
+    "area-1": {
+      "sources": 11,
+      "citations": 10,
+      "text": "Why scout here\nThe area around the given coordinates in Toronto presents several commercial streets with existing café and restaurant activity, which could indicate a suitable environment for a new café. Dundas Street West and Ossington Avenue are particularly notable, featuring a mix of popular establishments. Dundas Street West, for instance, has venues like Kitten and the Bear and Good Fork, while Ossington Avenue hosts Jimmy's Coffee and Bang Bang Ice Cream & Bakery. Liberty Village, a nearby master-planned community, is also experiencing growth in retail and office spaces, with a high concentration of businesses and a focus on walkability and transit access. This area's existing commercial vibrancy and pedestrian traffic suggest a potential customer base for a café.\n\nReasons to hesitate\nIntroducing an indoor playground requires significant space, which might be a challenge to secure in established commercial corridors. Industry experts recommend a minimum of two thousand to three thousand square feet for smaller indoor playgrounds, with five thousand four hundred to eight thousand six hundred square feet for optimal facilities including party rooms. Additionally, specific ceiling height requirements (twelve to fifteen feet minimum for multi-level structures) and local zoning regulations for \"Amusement Establishments\" would need thorough investigation. Toronto's regulations restrict high-floor children's playgrounds, favouring lower floors for safety and accessibility. Securing landlord approval for \"play café/indoor play\" as a permitted use, along with clear agreements on fit-out, noise, and operating hours, will be crucial.\n\nNearby concepts and menu checks\nThe existing popular venues in the vicinity offer a range of café and dining experiences. Kitten and the Bear on Dundas Street West focuses on gourmet jams and scones, suggesting a market for specialty food items. Mildred's Temple Kitchen, while a full-service restaurant, indicates a demand for brunch and elevated casual dining. Good Fork offers a local café experience, and Jimmy's Coffee is a well-known coffee shop chain. Bang Bang Ice Cream & Bakery suggests a market for treats and desserts. These diverse offerings imply that a new café with a unique draw like an indoor playground could find its niche, though specific menu pricing would need to be verified with the individual businesses.\n\nAccess and local context\nThe area benefits from good public transit access. King Street West, for example, is served by the streetcar system, and Liberty Village boasts a transit score of one hundred. This accessibility is beneficial for drawing customers from a wider area. The mix of residential and commercial properties, particularly in areas like Liberty Village, suggests a potential local customer base. However, an indoor playground concept relies heavily on easy parking and drop-off, which may vary across these commercial streets. Toronto also has specific permit requirements for sidewalk cafés, including detailed site plans and commercial general liability insurance, should any outdoor seating be planned.\n\nWhat to check on a visit\nA physical visit should focus on identifying available commercial spaces that meet the substantial square footage and ceiling height requirements for an indoor playground. Investigate specific zoning bylaws for \"Amusement Establishments\" in the immediate vicinity of potential sites. Observe pedestrian traffic patterns, especially on weekends, and assess the ease of vehicle drop-off and parking for families. Look for existing family-oriented businesses or amenities that could indicate a suitable demographic. Finally, inquire with commercial real estate agents about landlord attitudes towards non-traditional café concepts and the feasibility of obtaining necessary permits for an indoor play area.",
+      "sourceLinks": [
+        {
+          "title": "rlpcommercialtoronto.com",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH_XlXNNHFEE9F9TXMRO74ZRQQCvayIWCqKQLGcnYDEYQb8i-sxjrKGT7QBLdd8f1LiR3FmqPxGKq-f2-fwWA6OgXotytzlC44-yAerav_qY8F4003B3XKUyKjS6nVNGuspsl33OmCfpiSIb0lpI2Bmu3nJKdzdluISz9g4oFcfCb3-iBXCm_K9NytzGpMfHnRQrPlW6xRGtkLaLqcISlF8Tzb0ikv3F0CSGVJwFDgJ"
+        },
+        {
+          "title": "libertyvillagebia.com",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHBwD3o_1ZO2oBjTQr3YODd9sUtEtz4glJmm9l-R7z9G8rBCn_3l8PA1oltLdECzkZXL58gQ4rYFzrUe9qRLZdo3AtDIe4_5TGJv628QOMy5vVlXtaPWcWIp-_x_oYwjUB3i2gS3QUGvkVnW8IS"
+        },
+        {
+          "title": "toronto-bia.com",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE2R5IOKwCmVGgWFcHI4nE2p-evmABklIeoJ1tYGZP_dtCosLlw83iB_VNntUa7XcezYSJ_zFcE3splBkKnR118sXnFpvxSq_J8cIC7fqNNHUHpDlEIZsUkhaYeALuCWBozdaQpep8ezEfrLx5SHxv8IB6ZmGS_0Q=="
+        },
+        {
+          "title": "yommiplay.com",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGULYDnyqf-y7XIwaAXV9-IZdddixtR9PcqqTtioBYRG_2jlowTPb_CuGBEo9ismxm11jcc7p-yH0wBwKDwp-4GXJGgWFhUyNzIvdKZPf6pugtm2IsmxVyj2-DKgJ1oiqyTPdL0uSP38sVfGi2d3S71FwVPeD0hebHXcAdy1k40lp6A1pyUVe83Bg=="
+        },
+        {
+          "title": "spiplastics.com",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEKrY6NIktGOFPApMgZ-JvIE9dMkpC6tm6kNhn5vnJIB5lXLdltQnlsHZP1Uxh8o6BezGLGJPe7nwlriiEMdyXIUwDmo1cCHBKGfrkwOaovEXPy2nL0xpwMHaDWPoS4tBgkcsR2qZJI1lhMt_Y2W0H6SAWWQiNXiMA9MkXLPTecxb1HN7CKdQgXkQeFxtiNTZ5wSDPsroqzGyNE"
+        },
+        {
+          "title": "farkidsisland.com",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGcUYwOMzm0GZLJ7J-vZ_8K8YZV9F-UGezPtSirOkmMwwEM0tIAhPeVAk3cvunJCDCaH4HlKhEDuJ9LosM1l5bvqWMeuFgsDgwuJAc8Y7K8JoVTGXhgs6VhAY-2PcyQagMKRAEFkLRUb6puYiL6hTgzOb68moMwXC8OvQEGP9182xt4yxZXbsIWMN5a2YI-1IqWrfRSZEY="
+        },
+        {
+          "title": "toronto.ca",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGKxOcA61ZP19ut2f4-3JRVWWEXPRSV5b1E9IkP5uWnNENvE1G68IhUAaonoI8ZMwj6eOPldJcvib3Aaa_BnjmirEljSQ2Q2SSuzGx3HrCTiExkRx59cGkSydCjK7hY1kpov3Kcv2BW07INjRqgDaDq9kVNBRJEZQFxJTZRY7tJVYW-qcX_lE3grUsFw2OXg1Jr15pc"
+        },
+        {
+          "title": "bettaplay.com",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEHt3cFri9nSvmNFGSp4INMG-RCiVfdpJcPeXWjUbNQLfEkP1UzCwuWZVB1mDnPwf7Qnhot2C4S-dr5ImjJM1u8T3GPiH8WMo-PHbXeBln3MiicR3s634EKjynX6Kwn5Nv2KLwiSvp67BGDs0NZ5x0i18ascSxXYE7HACTYg6Mv-wIGzMbuNdRoX49sqJw5erR2fycIYUHzbFGh"
+        },
+        {
+          "title": "koalaplayground.com",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGHbY17oUdxn9DdjOb1mxwjj53p_wyo7-Vu9VtI1bHRgu_hpyjJbr1NXrcJJe5Plnk9WIaV4kSeidooY40mvG1eGfqaDAk3w3-wuYP9eoapV4Syw3OrgroS4jGot8_E9dWttXf_ymvn47ytXNK7hE_0hID3On087O78LaEA_fRNL9xjwBI="
+        },
+        {
+          "title": "toronto.ca",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHArGDA9Ba5be84WIuSItwsYh2Jddt8XffScNDNhARiWZXLNi51RXnhRTjZLwTV_KCaARQuRi-_ObZR2fVIRmzZ1oe8egXX0U6ngPL3naK26-BLShd7wX3WghKR_YK2zJE0yhuQaP8u46kaDNNx9kN2illzu9jpcH3yqLKxOLl9XV89ubzX3FU60SNCooDU4_x3iZk2cRgOis5-NHU91pA="
+        },
+        {
+          "title": "toronto.ca",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH1pEUvg7ajwroEqVxj2rVb7m9J5DrQgKvA7dKOi2Ri4dVvYY_1FVKnQkWHD7kJt6fXEarr6nDCHbrK7mLGvm0MN_2mSuuSX4bOoGgDIsFVRrtWTgLCsf3nJ2pix22vFdM90s-8Mujx_VzcpiUgvXgFWqtNhkBXDZSnTZi1bX7mNX5BLWuAsOhLX_9fcYNd"
+        }
+      ],
+      "citationOffsets": [
+        {
+          "end": 671,
+          "sourceIndices": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "end": 1172,
+          "sourceIndices": [
+            3,
+            4
+          ]
+        },
+        {
+          "end": 1378,
+          "sourceIndices": [
+            5,
+            6
+          ]
+        },
+        {
+          "end": 1497,
+          "sourceIndices": [
+            7
+          ]
+        },
+        {
+          "end": 1657,
+          "sourceIndices": [
+            8
+          ]
+        },
+        {
+          "end": 2591,
+          "sourceIndices": [
+            0,
+            1
+          ]
+        },
+        {
+          "end": 2801,
+          "sourceIndices": [
+            0
+          ]
+        },
+        {
+          "end": 2932,
+          "sourceIndices": [
+            8
+          ]
+        },
+        {
+          "end": 3111,
+          "sourceIndices": [
+            9,
+            10
+          ]
+        },
+        {
+          "end": 3421,
+          "sourceIndices": [
+            6
+          ]
+        }
+      ],
+      "retrievedAt": "2026-10-22T18:43:39.954Z"
+    }
+  }
+}

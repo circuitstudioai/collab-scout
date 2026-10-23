@@ -1,0 +1,14 @@
+{
+  "url": "https://collab-scout-r1bgogxxt-circuitstudioais-projects.vercel.app",
+  "status": "passed",
+  "mode": "Hosted end-to-end agent run (cache reuse, if returned by server, is visibly labelled)",
+  "checks": [
+    "One click produces an agent interpretation, contrast cards, Audience DNA, actual tool statuses and cited research",
+    "Downloaded Expansion Brief is a structurally valid one-page PDF",
+    "Rendered agent result passes tested desktop/mobile axe rules, with no overflow or page errors",
+    "Changing a constraint invalidates the agent interpretation, audience panel and old areas"
+  ],
+  "desktopAxe": [],
+  "mobileAxe": [],
+  "pageErrors": []
+}

@@ -1,3 +1,7 @@
+# Current restaurant expansion release
+
+The October 22 restaurant expansion scope is defined in [RESTAURANT_EXPANSION.md](RESTAURANT_EXPANSION.md). It supersedes conflicting historical descriptions below, including no-Gemini and mandatory manual entity-selection statements. The primary discovery and secondary address-comparison journeys remain supported.
+
 # Product requirements — Collab Scout
 
 Source of truth for this document: the current tree (`README.md`, `AGENTS.md`, `PROJECT_SUMMARY.md`, `docs/SETUP.md`, `docs/devpost-draft.md`, `uploads/qloo-plan_6717.md` for hackathon rules / deadline, and the implementation under `app/`, `lib/`, `seed/`). Do not treat the pre-pivot Market Desk plan in `uploads/qloo-plan_6717.md` as current product scope.

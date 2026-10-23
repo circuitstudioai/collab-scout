@@ -1,7 +1,7 @@
-import type { Brief, Cell, Comparison, Site, SiteResult, Trace, Venue, ReferenceChoice } from './schema';
+import type { Brief, Cell, Comparison, Site, SiteResult, Trace, Venue } from './schema';
 import { sampleBrief, briefSchema } from './schema';
-import { qlooGet } from '../qloo/http';
-import { resolveQlooApiKey, resolveQlooBaseUrl } from '../qloo/config';
+import { SiteError, record, rows, createReader, resolveReferences } from './qloo';
+export { SiteError } from './qloo';
 
 export function distanceKm(a: Pick<Site, 'latitude' | 'longitude'>, b: Pick<Site, 'latitude' | 'longitude'>): number {
   const rad = Math.PI / 180;
@@ -26,17 +26,13 @@ export function recommend(sites: SiteResult[]): string {
     return 'The leading locations within your rent budget have the same taste score. Compare lease terms and operating costs to decide which to visit first.';
   return `Start with ${ranked[0].name}. It has the highest nearby taste score among locations within your rent budget. Check lease terms and operating costs before deciding.`;
 }
-export class SiteError extends Error { constructor(message: string, public status = 422, public referenceChoice?: ReferenceChoice) { super(message); } }
-type Row = Record<string, unknown>;
-const record = (value: unknown): Row => value && typeof value === 'object' ? value as Row : {};
-function rows(raw: unknown, key: string): Row[] { const results = record(raw).results; const list = key === 'entities' && Array.isArray(results) ? results : record(results)[key]; return Array.isArray(list) ? list.map(record) : []; }
 export function parseCells(raw: unknown): Cell[] {
   return rows(raw, 'heatmap').flatMap(row => {
     const p = record(row.location), q = record(row.query);
     return typeof p.latitude === 'number' && Number.isFinite(p.latitude) && Math.abs(p.latitude) <= 90 &&
       typeof p.longitude === 'number' && Number.isFinite(p.longitude) && Math.abs(p.longitude) <= 180 &&
       typeof q.affinity === 'number' && Number.isFinite(q.affinity)
-      ? [{ latitude: p.latitude, longitude: p.longitude, affinity: q.affinity }] : [];
+      ? [{ latitude: p.latitude, longitude: p.longitude, affinity: q.affinity, ...(typeof q.popularity==='number'&&Number.isFinite(q.popularity)&&q.popularity>=0?{popularity:q.popularity}:{}),...(typeof q.affinity_rank==='number'&&Number.isFinite(q.affinity_rank)?{affinityRank:q.affinity_rank}:{}) }] : [];
   });
 }
 export async function compareSites(brief: Brief): Promise<Comparison> {
@@ -55,41 +51,8 @@ export async function compareSites(brief: Brief): Promise<Comparison> {
     contexts = brief.sites.map((_, i) => ({ available: true, venues: [{ id: `sample-${i}`, name: 'Example café (made up for this sample)', affinity: null }] }));
     trace.push({ step: 'Load sample comparison', path: 'local fixture · no Qloo calls', params: {}, status: 'ok', count: cells.length });
   } else {
-    const apiKey = resolveQlooApiKey();
-    if (!apiKey) throw new SiteError('Live comparisons are not configured yet. Try the sample comparison for now.', 503);
-    async function get(step: string, path: string, params: Record<string, string>, resultKey: string) {
-      try {
-        const raw = await qlooGet({ apiKey, baseUrl: resolveQlooBaseUrl(), path, params, timeoutMs: 8000, maxRetries: 0 });
-        if (record(raw).success === false) throw new Error('Unsuccessful Qloo response');
-        trace.push({ step, path, params, status: 'ok', count: rows(raw, resultKey).length });
-        return raw;
-      } catch {
-        trace.push({ step, path, params, status: 'unavailable', count: 0 });
-        throw new SiteError(`Qloo did not return the data for this step. Try again or use the sample comparison.`, 502);
-      }
-    }
-    references = [];
-    for (const name of brief.references) {
-      const raw = await get(`Find ${name}`, '/search', { query: name, take: '10' }, 'entities');
-      // Search has historically returned either results[] or results.entities[].
-      const result = record(raw).results;
-      const candidates = Array.isArray(result) ? result.map(record) : rows(raw, 'entities');
-      const valid = candidates.filter(r => typeof r.name === 'string' && typeof r.entity_id === 'string' && r.entity_id.trim().length > 0);
-      const matches = valid.filter(r => String(r.name).trim().toLowerCase() === name.trim().toLowerCase());
-      const selected = brief.referenceSelections?.find(s => s.query === name);
-      const chosen = selected ? valid.find(r => String(r.entity_id).trim() === selected.id) : matches.length === 1 ? matches[0] : undefined;
-      if (!chosen) {
-        if (!valid.length) throw new SiteError(`We could not find a single exact match for “${name}”. Check the name or choose another brand or place.`);
-        const options = [...new Map(valid.map(r => [String(r.entity_id).trim(), r])).values()].map(r => ({
-          id: String(r.entity_id).trim(), name: String(r.name),
-          type: Array.isArray(r.types) ? r.types.filter((t): t is string => typeof t === 'string').map(t => t.replace('urn:entity:', '')).join(', ') : 'Entity',
-          address: typeof record(r.properties).address === 'string' ? String(record(r.properties).address) : 'No address supplied',
-          closed: record(r.properties).is_closed === true,
-        }));
-        throw new SiteError(`Choose the specific brand or place you mean by “${name}”, then compare again.`, 409, { query: name, options });
-      }
-      references.push({ id: String(chosen.entity_id).trim(), name: String(chosen.name) });
-    }
+    const get = createReader(trace);
+    references = await resolveReferences(brief, get);
     const interests = references.map(r => r.id).join(',');
     const raw = await get('Get taste scores for the area', '/v2/insights', {
       'filter.type': 'urn:heatmap', 'filter.location.query': brief.city,

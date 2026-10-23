@@ -1,0 +1,168 @@
+{
+  "url": "https://collab-scout-b3hwva7ry-circuitstudioais-projects.vercel.app",
+  "checks": [
+    "Primary flow needs neither candidate addresses nor rents",
+    "Real Toronto discovery produces geographically local high-scoring areas without supplied sites",
+    "Scouting list and downloaded notes retain selected areas, source IDs and method limits",
+    "Area cards and map selection agree",
+    "Clicking a labelled map marker selects its matching area card",
+    "Keyboard Enter on a map marker selects its matching card",
+    "Mobile390 has no overflow; rendered results pass tested axe rules",
+    "Changing search radius clears old highlights and saved selections",
+    "Empty coverage error preserves the brief and never invents an area or sample fallback",
+    "Changing cities removes old pins"
+  ],
+  "network": "Successful exploration uses real Qloo and Photon requests. Only the empty-coverage recovery scenario is intercepted.",
+  "initialAxe": [],
+  "live": {
+    "cells": 4292,
+    "totalReturned": 8363,
+    "separationKm": 2,
+    "areas": [
+      {
+        "name": "Near Wellington Place",
+        "latitude": 43.647995,
+        "longitude": -79.38652,
+        "affinity": 1,
+        "lowerCount": 4291,
+        "pointCount": 4292,
+        "nearby": 5,
+        "nameAvailable": true,
+        "contextAvailable": true
+      },
+      {
+        "name": "Near Maple House at Canary Landing",
+        "latitude": 43.65074,
+        "longitude": -79.359055,
+        "affinity": 0.9996412341545085,
+        "lowerCount": 4288,
+        "pointCount": 4292,
+        "nearby": 5,
+        "nameAvailable": true,
+        "contextAvailable": true
+      },
+      {
+        "name": "Near University",
+        "latitude": 43.668594,
+        "longitude": -79.39476,
+        "affinity": 0.9990432910786893,
+        "lowerCount": 4283,
+        "pointCount": 4292,
+        "nearby": 5,
+        "nameAvailable": true,
+        "contextAvailable": true
+      }
+    ],
+    "trace": [
+      {
+        "step": "Find Blue Bottle Coffee",
+        "path": "/search",
+        "params": {
+          "query": "Blue Bottle Coffee",
+          "take": "10"
+        },
+        "status": "ok",
+        "count": 10
+      },
+      {
+        "step": "Find the Blue Bottle Coffee brand, not an outlet",
+        "path": "/search",
+        "params": {
+          "query": "Blue Bottle Coffee",
+          "types": "urn:entity:brand",
+          "take": "5"
+        },
+        "status": "ok",
+        "count": 5
+      },
+      {
+        "step": "Map audience taste across the city",
+        "path": "/v2/insights",
+        "params": {
+          "filter.type": "urn:heatmap",
+          "filter.location.query": "Toronto, Ontario, Canada",
+          "signal.interests.entities": "22B1BC87-CDFE-4340-86F8-8E0E6E1E6A7D",
+          "signal.interests.tags": "urn:tag:genre:place:restaurant"
+        },
+        "status": "ok",
+        "count": 8363
+      },
+      {
+        "step": "Nearby dining for area 2",
+        "path": "/v2/insights",
+        "params": {
+          "filter.type": "urn:entity:place",
+          "filter.location": "POINT(-79.359055 43.65074)",
+          "filter.location.radius": "1000",
+          "filter.tags": "urn:tag:genre:place:restaurant",
+          "signal.interests.entities": "22B1BC87-CDFE-4340-86F8-8E0E6E1E6A7D",
+          "take": "5"
+        },
+        "status": "ok",
+        "count": 5
+      },
+      {
+        "step": "Locate area 2 on OpenStreetMap",
+        "path": "Photon /reverse",
+        "params": {
+          "latitude": "43.65074",
+          "longitude": "-79.359055"
+        },
+        "status": "ok",
+        "count": 1
+      },
+      {
+        "step": "Nearby dining for area 3",
+        "path": "/v2/insights",
+        "params": {
+          "filter.type": "urn:entity:place",
+          "filter.location": "POINT(-79.39476 43.668594)",
+          "filter.location.radius": "1000",
+          "filter.tags": "urn:tag:genre:place:restaurant",
+          "signal.interests.entities": "22B1BC87-CDFE-4340-86F8-8E0E6E1E6A7D",
+          "take": "5"
+        },
+        "status": "ok",
+        "count": 5
+      },
+      {
+        "step": "Nearby dining for area 1",
+        "path": "/v2/insights",
+        "params": {
+          "filter.type": "urn:entity:place",
+          "filter.location": "POINT(-79.38652 43.647995)",
+          "filter.location.radius": "1000",
+          "filter.tags": "urn:tag:genre:place:restaurant",
+          "signal.interests.entities": "22B1BC87-CDFE-4340-86F8-8E0E6E1E6A7D",
+          "take": "5"
+        },
+        "status": "ok",
+        "count": 5
+      },
+      {
+        "step": "Locate area 1 on OpenStreetMap",
+        "path": "Photon /reverse",
+        "params": {
+          "latitude": "43.647995",
+          "longitude": "-79.38652"
+        },
+        "status": "ok",
+        "count": 1
+      },
+      {
+        "step": "Locate area 3 on OpenStreetMap",
+        "path": "Photon /reverse",
+        "params": {
+          "latitude": "43.668594",
+          "longitude": "-79.39476"
+        },
+        "status": "ok",
+        "count": 1
+      }
+    ]
+  },
+  "resultsAxe": [],
+  "mobileAxe": [],
+  "pageErrors": [],
+  "status": "passed"
+}

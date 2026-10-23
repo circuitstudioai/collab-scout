@@ -1,3 +1,7 @@
+# Current restaurant setup
+
+See root README and `SCOUT_AGENT.md` for the active restaurant agent, MCP and verification. Set server-only QLOO_API_KEY, QLOO_API_URL and GEMINI_API_KEY, then redeploy. The following Collab Scout setup is historical: its partnership routes, orchestrator and seed product were removed. There is no active canned research fallback.
+
 # Setup and deploy
 
 Canonical repo: [github.com/circuitstudioai/collab-scout](https://github.com/circuitstudioai/collab-scout).
@@ -86,3 +90,7 @@ No key → mock fallback; demo still works.
 - Any Market Desk code or deep link
 
 Deadline: Fri Oct 30, 2026, 11:45 PM ET.
+
+## Verify deployed credentials, not redacted downloads
+
+Vercel environment downloads can contain placeholder representations of sensitive values. A local call using such a placeholder does not test the deployed credential. Verify server-side integration on a fresh deployment before reporting an invalid saved key. On October22, a local placeholder probe failed while the freshly deployed research endpoint successfully returned grounded Gemini research. Never print credentials while diagnosing this difference.

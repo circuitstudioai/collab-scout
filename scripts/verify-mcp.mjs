@@ -1,0 +1,8 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+const moduleBase=process.env.MCP_SDK_PATH;
+const {Client}=await import(moduleBase?moduleBase+'/client/index.js':'@modelcontextprotocol/sdk/client/index.js');const {StreamableHTTPClientTransport}=await import(moduleBase?moduleBase+'/client/streamableHttp.js':'@modelcontextprotocol/sdk/client/streamableHttp.js');
+const base=process.argv[2];const client=new Client({name:'sitebrief-live-verifier',version:'1.0.0'});const transport=new StreamableHTTPClientTransport(new URL(base+'/api/mcp'));
+try{await client.connect(transport);const listed=await client.listTools();assert(listed.tools.some(t=>t.name==='scout_restaurant_city'));
+const result=await client.callTool({name:'explore_restaurant_areas',arguments:{city:'Toronto, Ontario, Canada',center:{latitude:43.65348,longitude:-79.38393},radiusKm:10,concept:'A specialty café',references:['Starbucks']}},undefined,{timeout:60000});assert(!result.isError,JSON.stringify(result));const data=JSON.parse(result.content.find(c=>c.type==='text').text);assert(data.areas.length>0);assert.equal(data.rankingMethod,'contrast');assert(data.references[0].resolution==='brand');
+const report={url:base+'/api/mcp',status:'passed',client:'Official @modelcontextprotocol/sdk Client + StreamableHTTPClientTransport',tools:listed.tools.map(t=>t.name),liveTool:'explore_restaurant_areas',areas:data.areas.map(a=>({name:a.name,contrast:a.contrast})),note:'This proves SDK interoperability, not installation in every named chat client.'};fs.mkdirSync('docs/mcp',{recursive:true});fs.writeFileSync('docs/mcp/validation.json',JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report,null,2));}finally{await client.close();}

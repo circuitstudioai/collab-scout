@@ -1,42 +1,80 @@
-# Sitebrief
+# Sitebrief — restaurant expansion, with evidence
 
-Compare restaurant locations with Qloo taste evidence, rent constraints, and explicit unknowns. Built for the [Qloo Agentic Hackathon](https://qloo.devpost.com/). MIT licensed.
+**Find where to scout your next restaurant—with an evidence-backed brief.** Site Scout combines Qloo taste/popularity evidence, operator expansion rules, audience signals and cited web research into a scouting decision and a one-page PDF.
 
-**Status:** live Qloo journey verified on October 21, 2026: search, explicit entity selection, shared heatmap, nearby dining, and exported comparison. Not submitted; Devpost human verification remains blocked. No customer validation claimed.
+Independent restaurant operators, small chains and franchise teams use the same flow. No account or candidate property address is needed. No customer validation is claimed.
 
-[Working MVP](https://collab-scout.vercel.app) · [Implementation PR](https://github.com/circuitstudioai/collab-scout/pull/4)
+- **Verified review demo:** https://collab-scout-r1bgogxxt-circuitstudioais-projects.vercel.app
+- **Production:** https://collab-scout.vercel.app — unchanged; the new agent is on PR #6, not production.
+- **Source:** https://github.com/circuitstudioai/collab-scout · MIT.
+- **MCP endpoint:** `/api/mcp` — stateless Streamable HTTP, tested separately with the official MCP SDK before claiming client compatibility.
 
-## Run
+## The agent's decision
+
+1. Resolve the intended audience brands, not a long list of same-name outlets.
+2. Retrieve Qloo heatmap affinity **and popularity** for the city.
+3. Apply the operator radius and existing-outlet distance rule.
+4. Rank strong taste points by **local affinity percentile minus popularity percentile**. This is rank contrast, not calibrated probability lift or demand. Zero-popularity points do not become “whitespace”.
+5. Read Qloo taste tags, signed demographic affinity and related brands. Compare one actual nearby venue's returned tags.
+6. Choose an eligible area to research with Google Search, then return a bounded agent interpretation, trade-offs and a next action. Tool execution appears in the interface as it happens.
+7. Download a one-page Expansion Brief PDF or complete scouting notes with sources.
+
+The model chooses eligible area IDs and calls tools over multiple turns. It cannot change the operator's constraints, invent Qloo scores or run arbitrary network requests. All raw score and geographic rules remain deterministic. Removing Qloo removes the actual shortlist and the evidence the agent uses.
+
+## Qloo integration
+
+Server-side `X-Api-Key`, `https://hackathon.api.qloo.com`, GET requests only:
+
+| Request | Decision input |
+|---|---|
+| `/search`, including `types=urn:entity:brand` when needed | Actual reference IDs; exact brands take priority over outlets |
+| `/v2/insights`, `filter.type=urn:heatmap` | Affinity, popularity and affinity rank at real returned map points |
+| `/v2/insights`, `filter.type=urn:entity:place` | Deduplicated nearby dining sample, not a competitor census |
+| `/v2/insights`, `filter.type=urn:tag` | Returned audience taste connections |
+| `/v2/insights`, `filter.type=urn:demographics` | Signed reference age-affinity signals, not local resident percentages |
+| `/v2/insights`, `filter.type=urn:entity:brand` | Related brand connections, not confirmed nearby partners |
+| `/v2/analysis/compare` | Shared and separate returned reference/venue tags, not proof of unmet demand |
+
+Gemini 2.5 Flash drives the bounded tool loop. A separate Google Search-grounded research tool returns provider-supplied citations, source links and retrieval dates. No source-free fallback is presented as research.
+
+## Try the recording journey
+
+Choose **Try the Toronto playground café**. The scenario is a new café with an indoor playground. Three local café references are selected by Qloo popularity from the returned Toronto café sample, not an exhaustive city leaderboard. Prices, hours and existing outlets remain unspecified. Watch actual tool activity, inspect city-local contrast, read the decision, open a research source and download the PDF.
+
+The canonical example may reuse a real run for 15 minutes on a warm server instance. Reuse shows the original timestamp; it is not simulated live activity. This cache is best-effort, not durable quota protection. Custom runs are not cached by this demo route.
+
+`/compare` preserves live known-address comparison and a clearly labelled fixed sample. The primary route does not default to fabricated evidence.
+
+## MCP / agent access
+
+Configure an MCP-capable client with this verified review server URL (production is not promoted yet):
+
+```json
+{"mcpServers":{"sitebrief":{"url":"https://collab-scout-r1bgogxxt-circuitstudioais-projects.vercel.app/api/mcp"}}}
+```
+
+Tools: `explore_restaurant_areas`, `compare_restaurant_sites`, `audience_profile`, `research_restaurant_area`, `scout_restaurant_city`.
+
+For a long scout call, allow a 180-second request timeout. The public demo is read-only and concurrency-limited; it is not a production multi-tenant service. `/api/scout` also publishes its input schema and streams tool events through SSE. Existing schemas: `/api/explore/tool`, `/api/sites/tool`, `/api/research`.
+
+## Develop and verify
 
 ```sh
-npm ci
-npm run dev -- --port 43125
+npm install
+npm run dev
 npm test -- --runInBand
 npm run lint
 npm run build
 ```
 
-Open the homepage and run the fixed sample. Choose **Use my locations** to edit the brief and request live evidence. Live analysis requires server-side `QLOO_API_KEY` and `QLOO_API_URL=https://hackathon.api.qloo.com` in `.env.local` or hosting environment. Authentication uses `X-Api-Key`. Never place keys in public environment variables or source files.
+Set server-only `QLOO_API_KEY`, `QLOO_API_URL=https://hackathon.api.qloo.com`, and `GEMINI_API_KEY`. After changing Vercel environment values, redeploy. A local redacted/placeholder environment download does not test a deployed credential.
 
-## How the tool works
+- Product and method: `docs/RESTAURANT_EXPANSION.md`.
+- Recording guide: `docs/restaurant-demo-plan.md`.
+- Current hosted evidence: `docs/agent/` and `docs/mcp/`; earlier core-flow evidence: `docs/restaurant-demo/`.
+- Optional hosted verification scripts: `verify-scout-agent.mjs` uses Node fetch; `verify-mcp.mjs` requires the official MCP SDK; `verify-agent-ui.mjs` requires playwright-core, axe-core and pdf-lib plus Chromium. They accept module-path environment overrides for an isolated tool installation. See `docs/agent/review.md` for the commands used.
+- Legacy collaboration prototype: `docs/LEGACY.md`; it is not the submitted restaurant product.
 
-1. Resolve 1–3 reference names. If multiple records match, let the user choose a specific record by type and address.
-2. Retrieve a common city heatmap from Qloo.
-3. Match each site to its nearest returned point within 2 km.
-4. Retrieve a taste-ranked sample of dining places within 1 km per site.
-5. Exclude sites with unknown/over-budget rent from the supported shortlist.
-6. Export the comparison with source IDs, trace and next checks.
+## Limits
 
-`POST /api/sites` accepts the schema in `lib/sites/schema.ts`. The endpoint is agent-callable; `GET /api/sites/tool` publishes its function schema. If a name needs a choice, HTTP 409 returns `referenceChoice`. Retry with `referenceSelections: [{ query, id }]` after the user chooses. IDs are validated against a fresh Qloo search. No LLM-generated scores. No fabricated live fallbacks. A Qloo failure is an error, not permission to show sample evidence as live.
-
-Taste affinity is not customer count, foot traffic, spending, unmet demand or predicted revenue. Reference entities are proxies for intended audiences. Available property listings, verified rent, zoning and operating costs require other evidence. Gemini is not invoked by this workflow.
-
-Map tiles are supplied by OpenStreetMap under its attribution and usage requirements. Leaflet code is BSD-2-Clause. The fixed example has illustrative rents and taste signals; its sites are not advertised available properties.
-
-## Scope and evidence
-
-- [Product decision and API assumptions](docs/SITEBRIEF.md)
-- [Validation evidence and blockers](docs/VALIDATION.md)
-- [Submission copy — not submitted](docs/sitebrief-devpost.md)
-
-This repository retains the preceding Collab Scout code for continuity. Sitebrief owns `/` and `/api/sites`; legacy source and docs are historical, not current product claims. The Sitebrief release replaces the homepage after the live release gates pass. Legacy Collab Scout routes and fixes are retained.
+Taste is not foot traffic, rent, property availability, revenue or success. Outlet buffers measure straight-line separation, not cannibalization or legally protected territories. Nearby samples do not establish market saturation or whitespace. Rank contrast is exploratory, and small differences should not determine a lease decision. Research sources can be incomplete or stale. Verify actual properties, permits, access, operating economics and observed conditions in person.

@@ -1,0 +1,377 @@
+%PDF-1.3
+%ºß¬à
+3 0 obj
+<</Type /Page
+/Parent 1 0 R
+/Resources 2 0 R
+/MediaBox [0 0 595.2799999999999727 841.8899999999999864]
+/Annots [
+<</Type /Annot /Subtype /Link /Rect [56.6929133858267775 290.8248031496060548 148.1329133858267824 281.624803149606123] /Border [0 0 0] /A <</S /URI /URI (https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH_XlXNNHFEE9F9TXMRO74ZRQQCvayIWCqKQLGcnYDEYQb8i-sxjrKGT7QBLdd8f1LiR3FmqPxGKq-f2-fwWA6OgXotytzlC44-yAerav_qY8F4003B3XKUyKjS6nVNGuspsl33OmCfpiSIb0lpI2Bmu3nJKdzdluISz9g4oFcfCb3-iBXCm_K9NytzGpMfHnRQrPlW6xRGtkLaLqcISlF8Tzb0ikv3F0CSGVJwFDgJ) >> >>
+<</Type /Annot /Subtype /Link /Rect [56.6929133858267775 273.8169291338580251 128.2129133858267664 264.6169291338580933] /Border [0 0 0] /A <</S /URI /URI (https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHBwD3o_1ZO2oBjTQr3YODd9sUtEtz4glJmm9l-R7z9G8rBCn_3l8PA1oltLdECzkZXL58gQ4rYFzrUe9qRLZdo3AtDIe4_5TGJv628QOMy5vVlXtaPWcWIp-_x_oYwjUB3i2gS3QUGvkVnW8IS) >> >>
+<</Type /Annot /Subtype /Link /Rect [56.6929133858267775 256.8090551181099954 111.8929133858267733 247.6090551181100636] /Border [0 0 0] /A <</S /URI /URI (https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE2R5IOKwCmVGgWFcHI4nE2p-evmABklIeoJ1tYGZP_dtCosLlw83iB_VNntUa7XcezYSJ_zFcE3splBkKnR118sXnFpvxSq_J8cIC7fqNNHUHpDlEIZsUkhaYeALuCWBozdaQpep8ezEfrLx5SHxv8IB6ZmGS_0Q==) >> >>
+]
+/Contents 4 0 R
+>>
+endobj
+4 0 obj
+<<
+/Length 4038
+>>
+stream
+0.5670000000000001 w
+0 G
+BT
+/F1 11 Tf
+12.6499999999999986 TL
+0.125 0.235 0.212 rg
+56.6929133858267775 785.1970866141732586 Td
+(SITEBRIEF / EXPANSION BRIEF) Tj
+ET
+BT
+/F1 22 Tf
+25.2999999999999972 TL
+0.125 0.235 0.212 rg
+56.6929133858267775 760.1388188976377478 Td
+(Toronto, Ontario, Canada) Tj
+ET
+BT
+/F1 10 Tf
+11.5 TL
+0.125 0.235 0.212 rg
+56.6929133858267775 721.360866141732231 Td
+(A new café with an indoor playground. Find areas to scout using popular Toronto cafés as audience) Tj
+T* (references.) Tj
+T* (Retrieved 2026-10-22T18:43:21.522Z) Tj
+ET
+BT
+/F1 9 Tf
+10.3499999999999996 TL
+0.125 0.235 0.212 rg
+56.6929133858267775 672.6049606299212655 Td
+(Audience references: Dineen Coffee Co., FIKA Cafe, Rooster Coffee House) Tj
+ET
+BT
+/F1 11 Tf
+12.6499999999999986 TL
+0.125 0.235 0.212 rg
+56.6929133858267775 648.7939370078739785 Td
+(FIRST SCOUTING VISIT) Tj
+ET
+BT
+/F1 10 Tf
+11.5 TL
+0.125 0.235 0.212 rg
+56.6929133858267775 623.7356692913385814 Td
+(Near Spadina-Fort York: Area-1, near Spadina-Fort York, demonstrates the highest audience percentile and) Tj
+T* (strong overall affinity compared to the other explored areas. The local venues exhibit high affinity with the) Tj
+T* (reference cafés, suggesting a receptive audience for a new café concept. The area also boasts existing) Tj
+T* (commercial vibrancy and pedestrian activity, which are favorable for a new establishment. Furthermore, the) Tj
+T* (local commercial streets offer diverse café and dining…) Tj
+ET
+BT
+/F1 10 Tf
+11.5 TL
+0.125 0.235 0.212 rg
+56.6929133858267775 550.0348818897637102 Td
+(Trade-off: While the area shows strong potential for a café audience, the substantial space and ceiling height) Tj
+T* (requirements for an indoor playground might be challenging to secure in established commercial corridors.) Tj
+T* (Additionally, specific zoning regulations for 'Amusement Estab…) Tj
+ET
+BT
+/F1 10 Tf
+11.5 TL
+0.125 0.235 0.212 rg
+56.6929133858267775 501.2789763779526879 Td
+(Next action: Scout the commercial streets near Spadina-Fort York, particularly Dundas Street West and) Tj
+T* (Ossington Avenue, and the Liberty Village area. Focus on identifying commercial spaces with suita…) Tj
+ET
+BT
+/F1 11 Tf
+12.6499999999999986 TL
+0.125 0.235 0.212 rg
+56.6929133858267775 464.9955118110235617 Td
+(AREAS TO INVESTIGATE) Tj
+ET
+BT
+/F1 9 Tf
+10.3499999999999996 TL
+0.125 0.235 0.212 rg
+56.6929133858267775 439.9372440944881077 Td
+(Near Spadina-Fort York | 43.6466, -79.4222) Tj
+T* (Affinity 0.975 | Popularity 0.514 | Contrast 55.2 percentile points) Tj
+ET
+BT
+/F1 9 Tf
+10.3499999999999996 TL
+0.125 0.235 0.212 rg
+56.6929133858267775 403.6537795275589247 Td
+(Near York South-Weston | 43.6686, -79.4634) Tj
+T* (Affinity 0.965 | Popularity 0.527 | Contrast 52.1 percentile points) Tj
+ET
+BT
+/F1 9 Tf
+10.3499999999999996 TL
+0.125 0.235 0.212 rg
+56.6929133858267775 367.3703149606297416 Td
+(Near Banbury-Don Mills | 43.7235, -79.3371) Tj
+T* (Affinity 0.988 | Popularity 0.589 | Contrast 51.0 percentile points) Tj
+ET
+BT
+/F1 9 Tf
+10.3499999999999996 TL
+0.125 0.235 0.212 rg
+56.6929133858267775 331.0868503937006153 Td
+(No existing outlets supplied. Reused real run, not a new live request.) Tj
+ET
+BT
+/F1 10 Tf
+11.5 TL
+0.125 0.235 0.212 rg
+56.6929133858267775 307.2758267716533283 Td
+(RESEARCH SOURCES \(FULL REPORT IN SCOUTING NOTES\)) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0.125 0.235 0.212 rg
+56.6929133858267775 283.4648031496060412 Td
+(rlpcommercialtoronto.com) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0.125 0.235 0.212 rg
+56.6929133858267775 266.4569291338580115 Td
+(libertyvillagebia.com) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0.125 0.235 0.212 rg
+56.6929133858267775 249.4490551181099818 Td
+(toronto-bia.com) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0.314 g
+56.6929133858267775 73.7010236220471597 Td
+(Method: local affinity-minus-popularity percentile contrast, not probability lift. Taste is not demand, foot traffic, rent, availability or) Tj
+T* (business success. Nearby dining is a ranked sample. Verify leases, permits and operating economics before committing.) Tj
+ET
+endstream
+endobj
+1 0 obj
+<</Type /Pages
+/Kids [3 0 R ]
+/Count 1
+>>
+endobj
+5 0 obj
+<<
+/Type /Font
+/BaseFont /Helvetica
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+6 0 obj
+<<
+/Type /Font
+/BaseFont /Helvetica-Bold
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+7 0 obj
+<<
+/Type /Font
+/BaseFont /Helvetica-Oblique
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+8 0 obj
+<<
+/Type /Font
+/BaseFont /Helvetica-BoldOblique
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+9 0 obj
+<<
+/Type /Font
+/BaseFont /Courier
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+10 0 obj
+<<
+/Type /Font
+/BaseFont /Courier-Bold
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+11 0 obj
+<<
+/Type /Font
+/BaseFont /Courier-Oblique
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+12 0 obj
+<<
+/Type /Font
+/BaseFont /Courier-BoldOblique
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+13 0 obj
+<<
+/Type /Font
+/BaseFont /Times-Roman
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+14 0 obj
+<<
+/Type /Font
+/BaseFont /Times-Bold
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+15 0 obj
+<<
+/Type /Font
+/BaseFont /Times-Italic
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+16 0 obj
+<<
+/Type /Font
+/BaseFont /Times-BoldItalic
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+17 0 obj
+<<
+/Type /Font
+/BaseFont /ZapfDingbats
+/Subtype /Type1
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+18 0 obj
+<<
+/Type /Font
+/BaseFont /Symbol
+/Subtype /Type1
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+2 0 obj
+<<
+/ProcSet [/PDF /Text /ImageB /ImageC /ImageI]
+/Font <<
+/F1 5 0 R
+/F2 6 0 R
+/F3 7 0 R
+/F4 8 0 R
+/F5 9 0 R
+/F6 10 0 R
+/F7 11 0 R
+/F8 12 0 R
+/F9 13 0 R
+/F10 14 0 R
+/F11 15 0 R
+/F12 16 0 R
+/F13 17 0 R
+/F14 18 0 R
+>>
+/XObject <<
+>>
+>>
+endobj
+19 0 obj
+<<
+/Producer (jsPDF 4.2.1)
+/CreationDate (D:20261022184345-00'00')
+>>
+endobj
+20 0 obj
+<<
+/Type /Catalog
+/Pages 1 0 R
+/OpenAction [3 0 R /FitH null]
+/PageLayout /OneColumn
+>>
+endobj
+xref
+0 21
+0000000000 65535 f 
+0000005494 00000 n 
+0000007311 00000 n 
+0000000015 00000 n 
+0000001404 00000 n 
+0000005551 00000 n 
+0000005676 00000 n 
+0000005806 00000 n 
+0000005939 00000 n 
+0000006076 00000 n 
+0000006199 00000 n 
+0000006328 00000 n 
+0000006460 00000 n 
+0000006596 00000 n 
+0000006724 00000 n 
+0000006851 00000 n 
+0000006980 00000 n 
+0000007113 00000 n 
+0000007215 00000 n 
+0000007559 00000 n 
+0000007645 00000 n 
+trailer
+<<
+/Size 21
+/Root 20 0 R
+/Info 19 0 R
+/ID [ <6156401773FD6EF5C4969431DAC38F91> <6156401773FD6EF5C4969431DAC38F91> ]
+>>
+startxref
+7749
+%%EOF

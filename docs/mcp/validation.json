@@ -1,0 +1,28 @@
+{
+  "url": "https://collab-scout-r1bgogxxt-circuitstudioais-projects.vercel.app/api/mcp",
+  "status": "passed",
+  "client": "Official @modelcontextprotocol/sdk Client + StreamableHTTPClientTransport",
+  "tools": [
+    "explore_restaurant_areas",
+    "compare_restaurant_sites",
+    "audience_profile",
+    "research_restaurant_area",
+    "scout_restaurant_city"
+  ],
+  "liveTool": "explore_restaurant_areas",
+  "areas": [
+    {
+      "name": "Near Englemount-Lawrence",
+      "contrast": 49.65946453734147
+    },
+    {
+      "name": "Near Bridle Path-Sunnybrook-York Mills",
+      "contrast": 49.17801784875529
+    },
+    {
+      "name": "Near Flemingdon Park",
+      "contrast": 42.94269610145608
+    }
+  ],
+  "note": "This proves SDK interoperability, not installation in every named chat client."
+}

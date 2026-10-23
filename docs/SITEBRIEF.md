@@ -1,3 +1,15 @@
+# Current owner-approved agent review
+
+[SCOUT_AGENT.md](SCOUT_AGENT.md) supersedes conflicting historical no-LLM and raw-affinity requirements below. The bounded Gemini scout uses Qloo evidence and Google-grounded research; ranking remains deterministic. The demo is the owner-specified new café with an indoor playground. Keep PR6 unmerged.
+
+# Current restaurant expansion release
+
+The October 22 restaurant expansion scope is defined in [RESTAURANT_EXPANSION.md](RESTAURANT_EXPANSION.md). It supersedes conflicting historical descriptions below, including no-Gemini and mandatory manual entity-selection statements. The primary discovery and secondary address-comparison journeys remain supported.
+
+# Current primary flow: city discovery
+
+Abhi approved city-first exploration on October 21. [CITY_DISCOVERY.md](CITY_DISCOVERY.md) is the source of truth for the primary flow. The comparison requirements below now apply to the secondary `/compare` experience.
+
 # Sitebrief — locked hackathon scope
 
 Decision: Abhi authorized a pivot from Collab Scout on 2026-10-21, including building, publishing, and submitting the working entry. Prior review-only and no-submission instructions are superseded for this work. Collab Scout remains recoverable on main and its existing branches until the new version is ready.
