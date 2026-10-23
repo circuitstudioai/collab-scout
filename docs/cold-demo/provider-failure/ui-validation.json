@@ -1,0 +1,20 @@
+{
+  "url": "http://127.0.0.1:3097",
+  "status": "passed",
+  "savedDemo": {
+    "recordedAt": "2026-10-23T00:52:45.674Z",
+    "originalPointCount": 4292,
+    "reason": "live-unavailable"
+  },
+  "cached": true,
+  "mode": "Saved reference run: original date shown; not a fresh provider success",
+  "checks": [
+    "One click produces an agent interpretation, contrast cards, Audience DNA, actual tool statuses and cited research",
+    "Downloaded Expansion Brief is a structurally valid one-page PDF",
+    "Rendered agent result passes tested desktop/mobile axe rules, with no overflow or page errors",
+    "Changing the popularity floor invalidates the agent interpretation, audience panel and old areas"
+  ],
+  "desktopAxe": [],
+  "mobileAxe": [],
+  "pageErrors": []
+}

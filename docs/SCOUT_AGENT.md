@@ -18,7 +18,7 @@ Gemini receives real Qloo tool results before selecting eligible IDs. Allowed st
 
 The final model response contains only `visitFirst`, `reasonCode` and `checkFocus`, with strict enums and an eligible-ID schema. `decision.ts` renders the actual rank/ties and practical visit questions. It never accepts model-written ranking prose. A lower-ranked choice remains possible, but is explicitly shown with its real rank. Free-text market-gap assertions cannot enter this decision channel.
 
-Malformed decisions receive bounded repair requests without changing evidence. If no valid decision is produced, keep the returned map and show an incomplete-decision state. Cache only completed real runs.
+Malformed decisions receive bounded repair requests without changing evidence. If the model cannot select an eligible point or optional research fails, keep gathered evidence and show a clearly labelled deterministic top-rank fallback. Do not invent an area when the shortlist is empty. Cache only live runs with a selected point and cited research.
 
 ## Separate research
 
@@ -26,6 +26,6 @@ Google Search grounding supplies source links and citation offsets. Research rec
 
 ## Outputs and access
 
-Real tool events stream through `/api/scout`. Read-only MCP tools are available at `/api/mcp`. Current MCP access has not gained authentication or per-visitor limits in this PR; quota work was explicitly deferred. A warm-instance real-run cache retains its original timestamp and does not provide durable replay or quota protection.
+Real tool events stream through `/api/scout`. Read-only MCP tools are available at `/api/mcp`. Current MCP access has not gained authentication or per-visitor limits in this PR; quota work was explicitly deferred. A warm-instance real-run cache retains its original timestamp. The canonical playground demo also has a compact saved reference artifact: original date, original point count and only its three highlights, not a stored city heatmap. On live failure/incomplete research or a60-second live-work deadline, the demo may show that explicitly labelled saved run. Custom briefs never use it. Neither mechanism is quota protection.
 
 The PDF is one page; full notes retain longer evidence and sources. Recorded/cached requests and synthetic UI tests must remain distinguishable from fresh provider acceptance.

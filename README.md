@@ -3,7 +3,7 @@
 Find areas to investigate for your next restaurant. A bounded Gemini tool workflow combines real Qloo evidence, operator rules and cited practical research. The output is a scouting visit plan, not a lease recommendation.
 
 - **Production:** https://collab-scout.vercel.app
-- **Current review preview:** https://collab-scout-l6ibhw23i-circuitstudioais-projects.vercel.app (three-fix branch; not promoted to production).
+- **Release evidence:** [verified versions and review previews](docs/VALIDATION.md).
 - **Source:** https://github.com/circuitstudioai/collab-scout · MIT.
 
 ## The decision
@@ -21,7 +21,7 @@ Balanced discovery excludes the lowest20% of measured local popularity; establis
 
 Click **Try the Toronto playground café**. The owner's scenario is a new café with an indoor playground. Local café references come from Qloo's returned Toronto café-tagged sample, not an exhaustive city leaderboard or proof of family demand. Prices, hours and existing outlets remain unspecified.
 
-Watch actual tool activity, inspect rank/ties and floor, open a cited source, and download the PDF. Reused real runs show their original time. The warm-instance example cache is not durable storage or quota protection.
+Watch actual tool activity, inspect rank/ties and floor, open a cited source, and download the PDF. Reused real runs show their original time. On unavailable/incomplete live evidence, the canonical example can show a clearly labelled saved reference run with its original date and only the saved highlights. Custom briefs never receive that saved café. The live demo has a60-second work deadline; Gemini/research cancellation prevents later model stages. These mechanisms are not quota protection.
 
 ## Provider roles
 

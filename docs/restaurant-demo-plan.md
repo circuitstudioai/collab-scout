@@ -11,3 +11,7 @@ Scenario: a new café with an indoor playground in Toronto, with popular Toronto
 7. Download the one-page PDF and show the source links. Full notes retain the longer evidence.
 
 Edit waiting time transparently. Do not splice failed research into a claimed success, present reused evidence as fresh, or claim per-visitor quota protection. Production promotion and Devpost submission are not part of this PR.
+
+## Failure recovery
+
+Live custom briefs keep a clearly labelled ranking-only visit if research or final model output fails after valid Qloo evidence is available. A genuine empty shortlist stays empty. The canonical café demonstration may instead show its dated saved reference on failure/incomplete research or its sixty-second deadline. Show the saved-run banner, recorded tool log and highlights-only map; never present it as a new live result. Saved provenance also travels into the PDF and notes.
