@@ -6,7 +6,7 @@ Next.js App Router, TypeScript and React on Vercel. Leaflet displays map points;
 
 Browser → `/api/scout` → bounded Gemini function calls → Qloo exploration/profile/compare → Google-grounded research → structured decision codes → deterministic rank facts → SSE events and final brief.
 
-The model proposes an eligible visit-first ID, a reason code and a check focus. Rank is the default visit order; a lower-ranked visit requires an exact retained cited factual passage naming the actual area or a verified nearby venue, with a matching source. Generic city-wide checklists cannot override rank. `lib/sites/decision.ts` computes its actual shortlist rank and tie status. No free-text model claim can become the primary “highest contrast” explanation.
+Server code locks the highest-ranked eligible point immediately after exploration, preserving explicit ties. Research execution and the final model schema use only that point. `lib/sites/visit-research.ts` requires matching IDs and exact coordinates; UI/export/cache/saved recovery use the same check. The model chooses visit check codes, not a new candidate. `lib/sites/decision.ts` renders the actual shortlist rank and tie status.
 
 ## Ownership
 
@@ -19,6 +19,7 @@ The model proposes an eligible visit-first ID, a reason code and a check focus. 
 | `lib/sites/profile.ts` | Audience tags, signed demographic affinity, brands and venue comparison |
 | `lib/sites/research.ts` | Source-grounded retrieval, bounded retries/deadline and safe diagnostic events |
 | `lib/sites/research-report.ts` | Whole-sentence filtering, exact grounding alignment, rebuilt citations, sources-only recovery and safe failure categories |
+| `lib/sites/visit-research.ts` | Final-visit research identity by ID and coordinates across consumers |
 | `lib/sites/decision.ts` | Strict decision-code contract and deterministic rank/tie wording |
 | `lib/sites/scout-agent.ts` | Allowed stages, bounded model turns, real tool events and final selection |
 | `lib/sites/mcp.ts` | Read-only tools exposed through `/api/mcp` |

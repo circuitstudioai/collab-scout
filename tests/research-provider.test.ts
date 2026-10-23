@@ -42,3 +42,9 @@ it('cancels research at the total deadline without starting a second attempt',as
  await expect(pending).rejects.toMatchObject({code:'provider-timeout'});
  expect(timeout).toHaveBeenCalledWith(40000);expect(generate).toHaveBeenCalledTimes(1);
 });
+it('keeps local research anchored to the actual supplied nearby venues, not invented neighbourhood context',async()=>{
+ const generic='Parkdale encompasses the supplied coordinates.';const local="Mildred’s Temple Kitchen publishes a brunch menu.";
+ generate.mockResolvedValue({text:`${generic} ${local}`,candidates:[{groundingMetadata:{groundingChunks:[{web:{uri:'https://example.com/menu'}}],groundingSupports:[{segment:{text:`${generic} ${local}`},groundingChunkIndices:[0]}]}}]});
+ const report=await researchArea({...input,area:{...input.area,venues:[{name:"Mildred's Temple Kitchen"}]}});
+ expect(report.text).toBe(local);expect(report.validationRules).toContain('unverified-local-context');
+});

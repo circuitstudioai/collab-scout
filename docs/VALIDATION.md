@@ -1,10 +1,14 @@
 # Sitebrief validation
 
-## Cited research and visit-order recovery
+## Same-area research correction
 
-PR #8 now also retains safe cited passages, labels sources-only recovery, exposes safe research failures and requires area-specific cited facts for lower-ranked visits. Five fresh uncached runs at application commit `bb50c40` returned live cited research and rank-one visits; all reports were partial, not unfiltered narratives. The final UI at `a467905` also passed hosted desktop/mobile and download checks after correcting a long-notice overflow. Tests/lint/build passed. [Current receipts, exact preview URL, iteration history and limitations](research-recovery/README.md). This PR remains unmerged; production is still the PR #7 release.
+The current correction locks visit selection before research, requires matching point IDs/coordinates in every output and recovery path, removes unsupported obligation statements, and labels unnamed points honestly. Validation and the exact review preview belong in [final-area research](final-area-research.md). No production promotion or merge is included in this correction.
 
-## Cold-start demo recovery review
+## Historical PR #8 acceptance gap
+
+PR #8 merged as `dedbc52`. Its five fresh runs did contain cited research and rank-one visits, but three did **not** contain research for that final visit. The old gate was insufficient. [Preserved historical receipts](research-recovery/README.md) must not be used as proof of same-area research. The follow-up adds the missing identity gate across server, UI, downloads, cache and saved recovery.
+
+## Historical cold-start review (PR #8, now merged)
 
 PR #7 was merged as `94c130c` on October23. Its three-fix preview receipts remain below. The follow-up cold-start branch adds deterministic ranking-only recovery and an explicitly dated saved canonical demo. Current receipts are in [cold-demo](cold-demo/README.md). The follow-up review preview is https://collab-scout-odq1cmq4f-circuitstudioais-projects.vercel.app. It is a separate unmerged review change; quota remains deferred.
 

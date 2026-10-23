@@ -12,7 +12,7 @@ Find areas to investigate for your next restaurant. A bounded Gemini tool workfl
 2. Apply optional outlet buffers, a minimum city-local popularity floor and the taste screen.
 3. Rank by local affinity percentile minus popularity percentile; preserve actual ties.
 4. Let the agent inspect audience tags, signed demographic affinity, related brands and a nearby-venue comparison, then research an eligible point.
-5. The agent chooses an eligible ID and check codes. **Code—not model prose—states actual rank and ties.** Visit order defaults to the highest-ranked eligible point. A lower-ranked visit needs an area-specific cited fact; generic checklists do not justify it.
+5. The agent chooses an eligible ID and check codes. **Code—not model prose—states actual rank and ties.** The server locks the highest-ranked eligible visit before research. Research and the final visit must match by point ID and coordinates; a later model response cannot switch areas.
 6. Inspect sources and download a one-page PDF or full notes. Known-address comparison remains available at `/compare` with a clearly labelled fixed sample.
 
 Balanced discovery excludes the lowest20% of measured local popularity; established popularity uses the median. These are disclosed exploratory settings, not observed visitor counts or validated commercial thresholds. Missing popularity coverage produces no shortlist rather than silently waiving the floor. No downtown exclusion or competitor scarcity score is imposed.

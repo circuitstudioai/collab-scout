@@ -4,6 +4,7 @@ import {runScout,type ScoutRun} from '@/lib/sites/scout-agent';
 import {buildDemoBrief} from '@/lib/sites/demo-server';
 import {withDemoDeadline} from '@/lib/sites/demo-deadline';
 import {savedPlaygroundDemo} from '@/lib/sites/saved-demo';
+import {researchForVisit,hasCitedVisitResearch} from '@/lib/sites/visit-research';
 import {SiteError} from '@/lib/sites/qloo';
 export const maxDuration=180;
 const requestSchema=z.union([exploreSchema,z.object({demo:z.literal(true)}).strict()]);
@@ -20,7 +21,7 @@ export async function POST(request:Request){
   async start(controller){
    const send=(event:unknown)=>{if(!cancelled)controller.enqueue(encoder.encode(`data: ${JSON.stringify(event)}\n\n`));};
    try{
-    if(demo&&canonical&&canonical.expires>Date.now()){
+    if(demo&&canonical&&canonical.expires>Date.now()&&hasCitedVisitResearch(canonical.run)){
      send({type:'complete',value:{...canonical.run,cached:true}});
     }else{
      const live=async(signal?:AbortSignal)=>{
@@ -29,8 +30,8 @@ export async function POST(request:Request){
       return runScout(brief,event=>{signal?.throwIfAborted();if(cancelled)throw new Error('Request cancelled');send(event);},undefined,prepared?.evidence,signal);
      };
      const run=demo?await withDemoDeadline(live):await live();
-     if(demo&&run.exploration.areas.length&&(!run.assessment?.visitFirst||!Object.keys(run.research).length)){send({type:'complete',value:savedPlaygroundDemo('live-incomplete')});}
-     else{if(demo&&run.assessment?.visitFirst&&Object.values(run.research).some(r=>r.citations.length))canonical={run,expires:Date.now()+900000};send({type:'complete',value:run});}
+     if(demo&&run.exploration.areas.length&&(!run.assessment?.visitFirst||!researchForVisit(run))){send({type:'complete',value:savedPlaygroundDemo('live-incomplete')});}
+     else{if(demo&&hasCitedVisitResearch(run))canonical={run,expires:Date.now()+900000};send({type:'complete',value:run});}
     }
    }catch(error){if(demo&&!cancelled){send({type:'complete',value:savedPlaygroundDemo('live-unavailable')});}else send({type:'error',error:error instanceof SiteError?error.message:'The scouting agent could not finish. Your brief is still here; try again or explore the map.',referenceChoice:error instanceof SiteError?error.referenceChoice:undefined});}
    finally{active--;if(!cancelled)controller.close();}

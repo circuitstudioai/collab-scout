@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 import type { Area, Exploration } from '@/lib/sites/explore';
+import {reportMatchesArea,visibleResearchSources} from '@/lib/sites/visit-research';
 import type { ResearchReport } from '@/lib/sites/research';
 function CitedText({report}:{report:ResearchReport}){
  const clean=(text:string)=>text.replace(/\*\*|__/g,'');
@@ -39,23 +40,25 @@ function CitedText({report}:{report:ResearchReport}){
 
 export default function AreaResearch({result,area,reports,onReport,headingId="research-title"}:{result:Exploration;area:Area;reports:Record<string,ResearchReport>;onReport:(id:string,report:ResearchReport)=>void;headingId?:string}){
  const [busy,setBusy]=useState(false),[error,setError]=useState('');const controller=useRef<AbortController|null>(null);
- const report=reports[area.id];
+ const candidate=reports[area.id];const report=reportMatchesArea(candidate,area)?candidate:undefined;
  useEffect(()=>()=>{controller.current?.abort();controller.current=null;},[]);
  async function research(){
   controller.current?.abort();const request=new AbortController();controller.current=request;setBusy(true);setError('');
   const timer=setTimeout(()=>request.abort(),48000);
   try{
-   const response=await fetch('/api/research',{method:'POST',headers:{'Content-Type':'application/json'},signal:request.signal,body:JSON.stringify({brief:result.brief,mapEvidence:{affinity:area.affinity,popularity:area.popularity,audiencePercentile:area.audiencePercentile,popularityPercentile:area.popularityPercentile,contrast:area.contrast},area:{name:area.name,address:area.address,latitude:area.latitude,longitude:area.longitude,venues:area.venues.map(v=>({name:v.name,address:v.address}))}})});
+   const response=await fetch('/api/research',{method:'POST',headers:{'Content-Type':'application/json'},signal:request.signal,body:JSON.stringify({brief:result.brief,mapEvidence:{affinity:area.affinity,popularity:area.popularity,audiencePercentile:area.audiencePercentile,popularityPercentile:area.popularityPercentile,contrast:area.contrast},area:{id:area.id,name:area.name,address:area.address,latitude:area.latitude,longitude:area.longitude,venues:area.venues.map(v=>({name:v.name,address:v.address}))}})});
    const data=await response.json();if(!response.ok)throw new Error(data.error||'Research could not finish.');
+   if(!reportMatchesArea(data,area))throw new Error('Research did not match this map point and was not used.');
    if(!request.signal.aborted)onReport(area.id,data);
   }catch(e){if(!request.signal.aborted)setError(e instanceof Error?e.message:'Research could not finish.');else if(controller.current===request)setError('Research took too long. Your map is unchanged. Try again.');}
   finally{clearTimeout(timer);if(controller.current===request)setBusy(false);}
  }
  return <section className="atlas-research" aria-labelledby={headingId}><div className="atlas-research-heading"><div><p className="atlas-eyebrow">04 / LOOK BEYOND THE TASTE MAP</p><h2 id={headingId}>Should you scout {area.name.replace(/^Near /,'')}?</h2><p>Research for your {result.brief.restaurant?.format.replace('-',' ')??'restaurant'} · {!result.brief.restaurant?.pricePosition||result.brief.restaurant.pricePosition==='unspecified'?'Price not set':result.brief.restaurant.pricePosition} · {!result.brief.restaurant?.servicePeriod||result.brief.restaurant.servicePeriod==='unspecified'?'Hours not set':`${result.brief.restaurant.servicePeriod} service`}</p></div>{!report&&<button type="button" className="atlas-go" disabled={busy} onClick={research}>{busy?'Researching the area…':'Research this area ↗'}</button>}</div>
  <p className="atlas-help">AI-assisted web research, separate from Qloo taste evidence. Facts link to retrieved sources; interpretation is not a site approval.</p>
+ {candidate&&!report&&<p role="status" className="atlas-help">Research for this map point is unavailable. A mismatched report was not used.</p>}
  {busy&&<p role="status" className="atlas-working">Searching menus, local context and practical trade-offs. This can take up to 48 seconds.</p>}
  {error&&<p role="alert" className="atlas-error">{error}</p>}
  {!report&&!busy&&!error&&<div className="atlas-research-empty"><strong>From a map point to a useful scouting brief.</strong><p>Investigate nearby concepts, published prices, access, reasons to hesitate, and what to verify in person.</p></div>}
- {report&&<><p className="atlas-research-date">{report.status==='sources-only'?'SOURCES RETRIEVED':'RESEARCHED'} {new Date(report.createdAt).toLocaleString()} · CHECK SOURCE DATES</p><>{report.notice&&<p role="status" className="atlas-help">{report.notice}</p>}{report.text&&<><h3>Cited local context</h3><CitedText report={report}/></>}</><details className="atlas-source-log" open={report.status==='sources-only'}><summary>{report.status==='sources-only'?'Sources to inspect & search queries':'Sources & search queries'}</summary><ol>{report.sources.map((s,i)=>s.url?<li key={i}><a href={s.url} target="_blank" rel="noreferrer">{i+1}. {s.title}</a></li>:null)}</ol><p>{report.queries.join(' · ')}</p></details>{report.searchSuggestionsHtml&&<iframe title="Google Search suggestions" className="atlas-search-suggestions" srcDoc={report.searchSuggestionsHtml} sandbox="allow-popups allow-popups-to-escape-sandbox"/>}</>}
+ {report&&<><p className="atlas-research-date">{report.status==='sources-only'?'SOURCES RETRIEVED':'RESEARCHED'} {new Date(report.createdAt).toLocaleString()} · CHECK SOURCE DATES</p><>{report.notice&&<p role="status" className="atlas-help">{report.notice}</p>}{report.text&&<><h3>Cited local context</h3><CitedText report={report}/></>}</><details className="atlas-source-log" open={report.status==='sources-only'}><summary>{report.status==='sources-only'?'Sources to inspect & search queries':'Sources & search queries'}</summary><ol>{visibleResearchSources(report).map(({source:s,index:i})=><li key={i}><a href={s.url} target="_blank" rel="noreferrer">{i+1}. {s.title}</a></li>)}</ol><p>{report.queries.join(' · ')}</p></details>{report.searchSuggestionsHtml&&<iframe title="Google Search suggestions" className="atlas-search-suggestions" srcDoc={report.searchSuggestionsHtml} sandbox="allow-popups allow-popups-to-escape-sandbox"/>}</>}
  </section>;
 }
