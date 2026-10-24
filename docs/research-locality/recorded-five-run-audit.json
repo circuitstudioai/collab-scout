@@ -1,0 +1,294 @@
+{
+  "checkedAt": "2026-10-24T14:19:35.257Z",
+  "total": 5,
+  "mechanicalPassed": 5,
+  "sourceLocalityPassed": 0,
+  "rows": [
+    {
+      "file": "run-1.json",
+      "target": {
+        "areaId": "area-1",
+        "latitude": 43.67546,
+        "longitude": -79.30824
+      },
+      "radiusKm": 1,
+      "targetMatches": true,
+      "mechanicalPass": true,
+      "sourceLocalityPass": false,
+      "rows": [
+        {
+          "field": "SPACE",
+          "text": "A turnkey restaurant space is available for lease on Gerrard Street East, and other commercial retail spaces are advertised on Gerrard Street East and Queen Street East.",
+          "sources": [
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGavzNcjyXblzPoycNfH_vAevJ49mbz3yz78bX7hoSgc0YF3Xu6QNJfHxbDN_lvIHwu9WkcaLaLqvFypEJUU0QJJNlI8QpI0qfkCzUbSwyvDWAiDvFEnrdclG-PK3emKOy2p1fur8FX52uIOBxJzUbpxztoWceZqJyTFNmeu3OuDAE7wQBZBb-a9Tv7ukfxCtESYZyi3TmG5yLB4WFR_g==",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGsh_T2B9Aqd3uv1xHE48KvmNQOp8efl8DH5kr96iOIRd7awe181uoB04x1Ce_sIDodtO0bDzT7-5dFgIqPtGkoLenkWzrotKUJLpf3F5ELU5s1VYbmCxOYP0HYm-KOhi0lWWyyW338cgUqtk4=",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGfjiV3vO0q2UjDEzdSKJmyE6yMEyzsVvSKezc5qa6ULO34VfIWfQj5URVhOiZ0DckALsWS_giMzUeJzTRgY-C2Uj0OO28oyloL1JUym_k3Yqj9mgGMSRJtT9K6pjJY1ZCKyzqiDvCsc3LNw-Okd1RuxaNiqIy0bAWNfbx33I3VeWWN2Dbd3yJI8fEVHmZoekJxqXqO1XpGUvNm-6_JtXYl",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFwik3D04hSsdYUd9iKAtK6eeEz3F3onKpGXass9a1nYH3mmaoeZevqRF48VW58DHb18tXTDjuedSlQJzUV3deDm2bZujpTI3OR88fCltBOkaLSb8XgOIHI0OFWgzEbH_aJblOK47Cz"
+          ],
+          "reason": "missing-source-locality-review",
+          "pass": false
+        },
+        {
+          "field": "VENUES",
+          "text": "Nearby businesses include Limon Beaches and Bud's Coffee on Queen Street East, and Lazy Daisy's Cafe and Bodega Henriette on Gerrard Street East.",
+          "sources": [
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHxof4oe9NshNcUYgao7fZtL3JCsa9RPeH2ga20LtTBGsuc509o2XLFGZcMkj4nsCobNG-cIiv7Bb1EIPKsuBYbP90jR9fxrxVXgNzpsED3fmNJK-vN1yDlYCUS6KoN5te4WaqejUwnFnhHG7dXPwn5S7KsVNx8fg==",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGsh_T2B9Aqd3uv1xHE48KvmNQOp8efl8DH5kr96iOIRd7awe181uoB04x1Ce_sIDodtO0bDzT7-5dFgIqPtGkoLenkWzrotKUJLpf3F5ELU5s1VYbmCxOYP0HYm-KOhi0lWWyyW338cgUqtk4="
+          ],
+          "reason": "missing-source-locality-review",
+          "pass": false
+        },
+        {
+          "field": "ACTIVITY",
+          "text": "The Jimmie Simpson Recreation Centre on Queen Street East and the Matty Eckler Community Recreation Centre on Gerrard Street East offer community programs.",
+          "sources": [
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEAe5kL_Vv8oKvnXEN68z1pu2y-DNdunaymyvavyJddWuSQOEmCJRtib2h148p0rhgGor6JGs8fnaBn9SdfW4BfXTzvM-EoKx2gtgqE8fRq5KOxewE5XNROa7zlPB_98cXTwoFHg4-gVA-sh3y5mrf9o1LAToNIR6Xi0c4Vy88JRoTRQUs5yedNSXecyqXKlM4KR9ApSMQkinf-pE3g-DAkJXoWSV2PzNVae0FpR3ianvoPqx8v2Ge18dO8MPpYzri9jW80UAh8y6RioPNmDte26RZZq53f",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFhD4Grym-x38zqqW6N29eAz2ifQhLHNEM_XLIU9FNgCNXnmB43j_Hrau_uhloAjWkVOUWKOLxBbQlP1FcXAnKhRPTrqbZp8OiurNBY0VJKXy2UGvn-QMpC8O7aQL9aj7rm1Rj7BtdO9PVkPUvOq1ySzMussxbSEfH-MBgzd9Ta0iP16rqbmJM7--m7xa58EToWJUKznuFWKRsJGgeetBLqgfWVEIyuTtjRRbc1GNrf29vMaiYbU5eD4DyV0oslxCqxWPd0ctmUPY4EWgk-3w==",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH5OYXTRM9pSwxA89sPJt4Etj-iXOu95XzgqAvcq4vZtyuPKSMLddEvF3gObaK9pRHzLnxz2AUys7tjVi4Zw26MqZw2i8Zp3YJ4QzC_QH79Q-ELMGjofGPcrP5uYwkaRxYoudKYVcpTQuaucjfq_zHGKHwZ8ho2gyeB4ER7Nc_pK1WgQSQS4dJIOCEf7sgZlNmnN2gMa7JpPFcjyyvBFAznnAbCULsMwasN01Ites-ITZ04ddSd0KvqWYZCj2R21W9DCEFeq4UozAMMONoPW0bOeVUyB_k=",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHoKmUDS_WiK5r7Oa_fFR-kyphtXnhZxSGB-QUwDyZ7-m4lk0psuujuaVZDQuLtyDVSJLBmJFaJ8kFIuVnJLFfhIvmTVc_xypA-EGbU_sTyZcs4R7EktZUCMjrCvIkzYDIqBsz5fTffucDzBhAhcFP6eTOC-g=="
+          ],
+          "reason": "missing-source-locality-review",
+          "pass": false
+        }
+      ],
+      "notice": "Offline source/locality review only; not full release acceptance, live generation, cache/fallback, UI, MCP, merge or Production approval."
+    },
+    {
+      "file": "run-2.json",
+      "target": {
+        "areaId": "area-1",
+        "latitude": 43.67546,
+        "longitude": -79.30824
+      },
+      "radiusKm": 1,
+      "targetMatches": true,
+      "mechanicalPass": true,
+      "sourceLocalityPass": false,
+      "rows": [
+        {
+          "field": "ACCESS",
+          "text": "The location is near Queen St E and Gerrard St E.",
+          "sources": [
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEKh9bNq8GENNCg_mHfPTyB7oHioPP1_4zc6L0bOsTtCig8QGbeAwpM1UiTL9gLHl3IetS0FKq96WNHusss17LZ0JW6dsoxLXAfdIrPDhV0y8vsKLvH7UD9f2Lhu-TZVloM0GoWDg4q9mfCaglzTIjqfDPourlM4Y8US44Lp8tuGrxm-vhB"
+          ],
+          "reason": "missing-source-locality-review",
+          "pass": false
+        },
+        {
+          "field": "VENUES",
+          "text": "Nearby coffee and food options include Limon Beaches, Bud's Coffee, Lazy Daisy's Cafe, and Bodega Henriette.",
+          "sources": [
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGemm62-okEfSgxdufX8G0QUdCcE1Y9OUcds7detnTLMqPlqoPuZeedAfNsgxog-pu2VpBJBvlTCqjKExpJLG77mkwcaTkUV5wNmEeZTDigOV-jNXL3RqHbKocoSgwlGgb_iFIiTiTZPtZ7bvXGZk8_LVEA6IboBg==",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGXo15ZDFcbmZn7j0ZU77V3TmY_LfwQ7o73duIGfz3Ta0KkX6QsBx7768mU5x0tllL31nMHF8VgPZn3XabqjGvaY3QytZWlc6D3eB0sfrL630KDPsQxuPLNvRCH"
+          ],
+          "reason": "missing-source-locality-review",
+          "pass": false
+        },
+        {
+          "field": "ACTIVITY",
+          "text": "East End-Danforth hosts various community events, including trivia nights at Red Tape Brewery and a Youth Fall Arts Market. Construction of the Ontario Line is ongoing, impacting Queen Street East and Gerrard Street East. The City of Toronto is planning to reconstruct Gerrard Street East to improve pedestrian safety.",
+          "sources": [
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGtp_scWT8B-s8aHo2QsfLcFOLTtRe8dj_Vq_Sn36D7sgOvNiAls4D8Z8Rbby7aSCWZ-0HkwnvqDXwXYdwTMajmrZt5sQy2WNHuaJNxw8fswKg0b1C5UCSnMSgMo4OzEbzxUB__gr8_-B3CbazG9Ii0lpVIzeYmcw4sa-ZCEoZPD5yC",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHTAW_7WqWM4df-q8ssFjK2Brgu970Z_Xk6l7qy2iqfrkYb3qs8A-rAonOuWgmhHvcNug3UAKTkb7h_0ekMLhIBY-er01wuCGqe053AZzepVvc1ziVrYo8XSUgzexABqNfDdw==",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFiw6vrWy9ZCF5--6AXycOaS2bpB83RFlwWSkHdZbSxEo3wd-uqk-TU9js805JtTDjV5hNz1r30ntPAQ1JfKqCTuBmZFdSnX2RNYcqgCBzF-nAJu4HO-zFjiw4TgUSxApeYjwz116B1syiuln96B2hWyjVip8fdFl7m6nO1I5uJfkiD9Jpy",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGvcea_QSBN0yGVBJNspf0cWclVr0khH6lzWWBv3w5CQJPHWyj0Q5reqBr1eW-Und3-C-gBSKPxX2gVdAfuY-hp07nV_XiN25xtB5RURERVIpU1Gl6XreOIWRQCifgSm2yimsKkoGUtIfLzGCpThuxD-9lb",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFXWO45l0SsLdfZYB1aNgg7_MpFxAPH7GPtk7AbMBGtL1d4tMG8qCObaMrq-GgcCo09fUKqiQVuCc872EdxsMi0llTXJKxv5m9lwCn0xkPVBDOrvjM-uxhK9kN5T5fTJBdmdbEF0Xre5hb1htaon62JqwZG6quAP7oXPeQcKpMXvrmjZvm8PVQRsAQaw0L2aY1lK9zUf6PzaumJPNcsUAsKO4rEpHUitZKYYN1vj2CMX-69061COh8og5OeBw==",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHibqf5e3C5XM543QrL30ZEcqZXrI3U1_UoyRaQJtr8MgumKRSxMe90CWTTdjdjH0T1Hjw5kzVozMBTutCePLuKmEBhUEAQJ16X6bmTmQv7UeLnmZa9HlR6d4zLVLUVBKDVVXzNsGoHvSUtNPTxOgC-wNnzmRj4DkIhBy3xEWjbRKdP-Cv7F8_7wsM4I02e0H7enKEBxTvlhuHqmRzBp5chCdrEfO3axtlBa_qAdXlip9Um6Xsq5x8=",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHPW3Ectv_5dY4B34xsRWFmjoGc8Ez7PWkRjaGaJ3SOQW82V5uOcl4nms2lzLJT3tOm73aOcWSCMlj3--SmtDQD0RM7rIHoAWtAgG5uSl5GG-plIcimbQewgYguIOznRjNC1Db_brx3hys29GIC8RDDRq7xU8Y1NLF-n-rnOw--PaFpSc66ZS1E7c46jFbkVXViGxzGC-hX3Oaak-nrBotsdvNFiKybgXDOWLczsCyYx-XR",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG9FIiSkH8V-BVoWMGeKECtqxlX4cNhhI95W7VsSOsTuHsh-Zd7M3TCj9kVqqTPZEdh1MRPcK9OBhd6BIavk8BxN-CPhrZGZzM_75a-z3pvhKVTOT3sM-txV2PSW1jzvdp7_xvbqtgVsMP6Awhi4pp9vRcQ1cjONo60mCZzMkK-UKuMoqWI3DNhu5szWZZ_jJnlqq4T6bDLZVbwGtdTpFKTo7aYuDprYZJrzZFjuIkN59AEmtwz-HQpYJ6vlL0WqedMKHj0QAU9xZlJV7p80ZLdXs9Q",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHd4o72NDwWoVRl6Fpm7APpZ08vEw8-Tj1Ya3ajQAF4Dy262CbNqLYUV3X0P31tQTj4bjA8lQxUvzbHZi7cAnouC3-aepG1P5Tvn_4KADT8vsub6KB6uvBW0S_-VO0tRIfPkJDf48EMYgfh9vqR36MXiV3fGPRRzcI6LOzHBcTpqAGNag2Q29edDu-PLybenXIFjIJqf4aKvGmeQJshonuJPmuXk3M=",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFsYM8Lb9fWfsPBdrEHYJg-7S5CWA1mVvR9BV68RlYxxYAwlE3As_nZyAtu3LT-iuNtH0CydWZQPnth-w-XjpyCSjhtF03COyqCIzi2dKScBvCZfdgzPY5qB2JNLDyPGCq38SNl8UmOWOgXxJfV8fd-GYJKQpHwX3aNqXEu3YRhOJPZSr6eEjiKlPrsX1LaFUryDu2eBsYwT-72Dm_kjlmtsbVp61bV",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHCHRWs8MUU65fIz6f4a_n-9SVDcd43lHMHzGr8IePB0SWgbMIfpjVaPNYnJ-Ka5mQCZN1F7t5kYtXDDrECQwauoHL4viXyaneVoOGYGeFgwbd5Ap-I3J5KcvqI2TLEj_4uAqOCY5B6fw0kpvV6aSYf2MGFo5fcoY5dNLUmwYfaC2cH-77LtkeoG5VYFpfZ9GQnYKce3AYkMfuAW9muHcCcSbsziA3zXkcXK4iRdP5Z2eqpFHvvvi7scd8=",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEOqCe0XwRj7V3mU7vHIdfryTkhcY5sENQOaWUxA6donATVOI_CxrJLb8m6U74ndS4LOGMF_RoLfzLe2tJ_NE6dz9HPDPVsRXQ4k33c33ElR_rVk5sKulKWYEoS-ghxCcpMwMwA2aeXfcK0w2u96mbZ"
+          ],
+          "reason": "missing-source-locality-review",
+          "pass": false
+        }
+      ],
+      "notice": "Offline source/locality review only; not full release acceptance, live generation, cache/fallback, UI, MCP, merge or Production approval."
+    },
+    {
+      "file": "run-3.json",
+      "target": {
+        "areaId": "area-1",
+        "latitude": 43.67546,
+        "longitude": -79.30824
+      },
+      "radiusKm": 1,
+      "targetMatches": true,
+      "mechanicalPass": true,
+      "sourceLocalityPass": false,
+      "rows": [
+        {
+          "field": "SPACE",
+          "text": "Commercial spaces are advertised for lease along Gerrard Street East and Queen Street East.",
+          "sources": [
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHmxDkglZ_Z6c6WBA5Wdmib4k43ctLpHrEF10owrbENN6qApz0DwIIlxRwQQtecbazY3pDYt6WHhiFMZMWVDzV0lkZqvQ0F3mt-2YVenPk9K-JZiJs5s0dHAEXRyewhGzfZ1LZA5ls8TuH1siyjejrM_ifF84oQO7cLjkQ=",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHw1_0iwWvpOG7qMs5yOP6o0Wd1982ZwXlno2ApBNFRabKh5HI5U_4MJ5tbBs980I03FalH_kfpwMu9XgjXP_qMwwlqvt1utnXCWaLaiZQOUSdZqphmC5ClxidvLulMDALIeo3SNN12z1FzIBE=",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEey7S8ZPWuCssVF34Mc2kDIILQWQIAV7U8WVlB25Ifo3HHYOD_eyg8z75-DrbxVnzegn_umMngTssEZ4gXXu0Z44o1NLjkjR5nRuI8-bNhSSUmbKfNORTYR6uwkHEFikuNjHDGFDsn44wjqfjfHcUECQaUOu4bM7wSVXZC16CBGCZmaRj3EfIB251Ls-0OiU17yBPufp2Ob3lB69J4R7Q=",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGAzdbMMYqlyF_pW8StQlGRPnC9xX-Km4vpYb9KJg1I0YP99oydFgHMqPxmsSOQIFiDTsO_16F5HDgtWOnEjUKsPgUq_9zqrzLEgO5kgrTkRdw3kJi-RQVvIK7ZnLbyrg4bTS9whILQu7Jo8VZniiY6eDXy6sQlpM75qrdvt3Gnez6vXzKHXoYQqRFUsBDG75LUlPL76NYaW1rqLS4MMyyVeEZIKfMDQ02vVyFaXNGbBhY=",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG1gRIUtWKhhDhTerkb7VG8M_bhFXQuoLDaGPA79n__yHJErY3M2U5KLsLybJebU9w1x9acT2NXqRPQ4TgT_LY5WEEKz0aVB7j5fp2iR2w_kwIFRm79PuMa4uW5vYzIKenrTiHpKUUltjXsDM-VpT-lwZOd00B4TX6usi1enqygnoswbtyKh_A59GvzaFGqxS_LI7rQdaGNwAfbYRI38Gwf"
+          ],
+          "reason": "missing-source-locality-review",
+          "pass": false
+        },
+        {
+          "field": "VENUES",
+          "text": "Nearby coffee competitors include Limon Beaches, Lazy Daisy's Cafe, Bodega Henriette, and Bud's Coffee.",
+          "sources": [
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHcZYmfQ0oADXaG44EvrGpeREZlq9zRbrKOQ349lvbnSs-6OdiYzMfoF2E9RVlYMzZ6zioV6bE9RrlVc_DTp6Gwcf-9QAUx4S4-k07kFEuss2al7A53AnaqGMV-7WJSfhvw-_W1SEp_crAzvuHmQQyyXIPjJix1hIrtkUhGkvUM",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHhHUcTaKFSned8PbRUDvMk5b6WPCEsjs2QONYArWalug4iOFOKmpYZ2qcjNyrMO4tX6t2nXwwJPHB4z4OM_YFbC89-TR1jfF-J-L9kzTx3XbxrPIt2",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF1yH1u5xCjF7CcBrhm9Fg787PoETOSTTZXcDkEw8VawmEVb37Cp7aCF3eWxL1SYZz72KhY8Apm80gxZ8_g4VIqphXNKm9j-Acwy8Mzq7Rl1tOzw90CJOXVRmS0qqvLvqzLvQQ-Kqn2ZZJcvHbL3HWRI9LrNkZrkw==",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH96pN07ClT1L2irwXtEwH7gb8KQvf_sa2CCvChYYFRXVD7YOC_wIBinm1FTHq3YaXqV0BVoHpzce3Wm9rMaXOfgFkCDWB9JVdcFMz-2dMDkRF40Pzw5YWvciFgddavnoj134KTZl-8EsrHgHB0nUabTMPgNJ5U2_w=",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEk9f1GfQTYZxLno3coJZNVrivBbLVWg6t43c8whThnuQk5LDeTA4mMcar3JuxT0fndPumtyJJUcMYKJ448RBNSDe-Oi8BNdtm5E9k-03slC6xRCdDYUiPgF-V4WaBi2O75qWF-Vq483GT9D-X3izLsWO4xxZG1nnTtAKkWNn_gQbu3zUgrIQDD",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH-8kbH-PRYc6gy_MxL_NVaxYhk0hgB1OqwmiVQLyYOZlUe39NUga6EsdI30MRcFG9QBc-s354R1Kk1JojBsd7ttmbxVQdNG1zgbZX31md7b5uHmjBJx8g_hVnsNq8bnQ==",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFPFPhcIM4sTOt1fOhOQMss77oA9AndWeQXdCfuQK1FPwNvHLdt3HWohuvwA4tXRT3Vm1YeiqCDwlzVYlPuZH3MBhoPgqR7AVwGbAzP7QgZvlidaWRtoHI3vKxI"
+          ],
+          "reason": "missing-source-locality-review",
+          "pass": false
+        },
+        {
+          "field": "ACTIVITY",
+          "text": "Riverdale Collegiate Institute is a local school on Gerrard Street East.",
+          "sources": [
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE7vSY6hUVDEDKjgVXaqKwL03UwVItQF4viewmU_EyXaOkhHKXWXdm2t3HeRbIsvyg6VC_FqOaSIyFXlOslKb8WX9102DfH9iKpkl7SlR6yuOUvyKbmXpl82JcIwHKTL4wt-gHbs1TGhhQv7nGdpOgxq2HAXHhAPAVr_edyaZdupN2RLNMkfo_DJxn97KNKKxQ=",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF0miPLmRFNm7lB0OI28--ZuX0WY8eiDbC3BkjUojMY0LeOi9zVakCjK55zSzbFVsa1u6Tkf6xnUTXbDy1GEgjHEjAWjCB5qHG3bjRKfrDxw5EfZRjMDz7Tiy9LDXxdiJa3DiKzuoXLevCQQO6_y4ia6TNH8U1Zy3W2lvH-Djwq_NE2e1D4BqywFXz0FG8BAq7LDj4KfURk",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF9iFPzRCtQHQqx5vZthQRwkxuOzMRUj8TUf7spzpvNmsm36xyu2V36XuCsmzH9BRDF2pX8y-EG6pt4HuclKjHoZk-R7p4b03sbnMUhBL2EF6LatSaQYwI_HDOnWKZxppyspo_ENcw="
+          ],
+          "reason": "missing-source-locality-review",
+          "pass": false
+        }
+      ],
+      "notice": "Offline source/locality review only; not full release acceptance, live generation, cache/fallback, UI, MCP, merge or Production approval."
+    },
+    {
+      "file": "run-4.json",
+      "target": {
+        "areaId": "area-1",
+        "latitude": 43.67546,
+        "longitude": -79.30824
+      },
+      "radiusKm": 1,
+      "targetMatches": true,
+      "mechanicalPass": true,
+      "sourceLocalityPass": false,
+      "rows": [
+        {
+          "field": "SPACE",
+          "text": "Commercial retail spaces are advertised for lease on Gerrard Street East and Queen Street East in Toronto.",
+          "sources": [
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG67FBQM9OinGOzb6ydAjhueLO-khNTv2kt1I2nidXSz2DlrL2YfhMOLKw3j0MTSg7Udwx9ZPWp1sEwv6xWS5CRUgX3rpLclxL2i0n9Aoe9x4HLbqcygZP61pZ6bnEivvhZLhWyBtJQiqcfmiiaytCyCyViAFVL9AZlGSPpiQ==",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFpE9t5fnsgfUuLM2YxxYhv2OTqHjXw7qeMT9qz1J5AwvsrqajX-Hwn3iJB5PL9UhMX8QGf3R13VNtgX_mUE-5Q4dujRFXIIzav_eW0LZ9Wpbb08I3Aw2mxAq6JcyFaztts8KOEpO6QzxSoemjNoVqD6kG0fxnzx8Q0Pvfb_zfckTkPyIGwJs5hQLSSk-GCLZ-mS_hTPHkc2msvLodu0g==",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHYFOyQg-MXauI92e19y2xYdCIw70l1N2tZJt6MBzETLRW42IrPk2vKAGearNpHXEHYaHmu40a-DTWs31uv-E-mC85Lz2vP3AIuVsX_LNWccVewi5ONlQoK5bIVU9pOjNdIW6yb8aoTvBS5Hl4=",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHHQNFkyRC5-afjCN-bwdAv8ugZLMAyqMRVidSFMtqhvrcjoBnJ7wPmFjMpqk8Msthi3TCzup_0exg2VE4E1p75p4BcUF_9c4MM6VoKss7o7MASveQ6S0rLxuVDyOd3reWP4kM0ehobYZZfn27sFw==",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEueWfrsSryJxS3It7hVTObopQ5JML2bIFy6fn3_RZlypkiSjNVGGPt_m1h7yyymCITPk0mPdKcOJbSgjStualbDdjT-kGDU7yjUPDsRBfDribPV0PK_p_YyS8y4hA8ClvxEBPF_HUgK5TVodro7bCGzHBj3i9xSC-FdfOMpRW8Cd5c7y8=",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF2WgVOqZ4FsO9JnAvIzlBgKRQpbZO3QWXltPyKGG0Ovfqv4hyHD0MLRlD-9OqFjneSCoQn26w8yfb4JtVMvHD8OU5zWLhcpXmIIgnhTNNd7a6xM3zWKVHPdbCWfZqalErov4eR4WPj__FwAp6ThSKa_lL1K-2Ip8cQLLrow1xsvSaiJMDAwmNing7m3fmsNakRxetbCei2ZIWvj1FBMDb6kU0A2eQ=",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGVqN9-IVSgxY95OCzNdMiS0A8E3ByzfzZMcfvgNBhWlYpatLAxFVZKuFlTBKbFzWIiLPNtj_7QO8s8wLqVg0k6wjKhZN4VCruyxu_K76sqy91KkXhktTVX5QN7BUqQpm21NS9PtJgqPt4to9Y_0GLnOs31LijNGu-gAZ1bMi3TqY7kA0m5UT5Hu67LP3tSBEguEH4_Ny16VuE3pQ8=",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHONEm-uKZkzHYzMSZJYEWm1dpPZD9ltAZQJ_PHgwVieBt7R3FFjaiY60umxy3u4l6tB05g23lRpIJEjKoGHzEfmUZylcXVp7SJT3j7VFJz2oH2AmCJOGOrBZHsycEbOUFAM1z7euuT2OdIYH1CEQXyf3-L-CFOXUeOyL3AtSH5kAJoDP4RrUt96fg0t-zETGqSGIzhe1_jriSqdk2gwYrVF6bcZQI3HQb8ISQjlw12ek9r",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEHzyvWLB1TjVwu5y1iLOS8dYPth-NsaO5kysYA_tTt4tl4CnNaNrvY3u__3H6sXB1bclXfZG7c-HCbG22t8ncr9MkDpRky0wMRSJE4j-AoUUifoAWv0jysnLoBQhIEIppc18bsJL9RvlBupt4cEvgmu7qKP05BBTdIvlJeSvYOgUl-KvzCVhNSHLvJ2Jr4UK8wqaJJ1ck=",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH8EanxSsfMjmuvsM09mU6gbbih9xFo5dhJ4901jaH8E8SH7dBP3TVWgNLbseiQRoMpvZkQtWj6bSEY-8lVUTCTw0P2WZICRBxrVe0EIDKuuJh97l644AQFl8jSA89GjQaI17Bei0Rq6BLmdI2VNtevsdv79w31h6E=",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFz3HOt94IK1O-iSIRXhWsdXsCxFKbJnU-5EI99681oM4-6ge3er2T6lPN6izZ6jkj_unvHZRKsj630E0khVnaZjNKjlaJVv9G6lIBFxLMua8IMUwLGW6V9cYPHtFv071Yu-8h1wWrBCjm6sROK77hXYzqhC3ZuJgjmJoIErQ==",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFg6NQT_xzQYI_26s4IovB1huYICoWknjIb7n7QkMAp7s_5OQFFWhecPhWjYGls-TCn67zGL6LSkUwL1faKP63EasTt_PfcjH0iX0mU3fb7IQbkF33iUYnYz7d2w5iB2kCc9Xo99md3NQlkyFGQRSGlA1ST9m8=",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHorW9XteNuC8Hqsc05z6glnRba7HV9-fHcYWXfbX5Ft7uGWzDVnlWQ53RQgmQoGJ9pc_dvFe_PUuv2KLoYumrp0q_3I7lYmlPoYE3jR4LFonwgeTKtiqVoujjR3U0yrxvM63UZkEpMQBd37NqaB6tQRTiZmk_-25v0uQ==",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHXrxLHrPo7egfom272MvNNSZJjIm879Ibj68EelLkc9q_xjGQioEtxZsFM8UjdutzRjp2e4ukzWmM0DUkfaF1FNaFsHFWf3vb5dJgRXO-f0lJsWqDEScvE-nuSS0Gem720shpcseLmiIPu5LLMXCBmHMykCdTZWeMjWBiR55ihQGYCwRaMgZwAtmZEgqdWk-Msw6JeQUm15vQW",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQERrkOD656Z-7M7hkdp4Ih9xgGdT8MuWtqfFxoVmTgjgzd7umExaSnEhnFX2TiWN4isEIzY0lWganG22YViS6fBiZgn6JwVssxU2_sKJMq57KHW3OaUbpsL7rgNcJSaThz9EaJ6luYBdfHU4UnUKMGjqzZFLLD0tqNd4geWIGNszMJrMUBnTsZpnebrr7Q=",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGkLrhRVPTcDwIsM2l6BX5vZPQqO0LeyTCDOT5cTT__sfdRkn4lanwP1fni5TsYajuxdT3mQb3giaKwSVZmoGBGEKQai6v_CeOK46_ZPqe5rh6C35t6qu5mZ_f5e39pCyzdq3q15jQGHBKE_L75LXAeXbgS3JnWxq9EaIl5RmxLhiXg8Kg7bh47xDxca-egRxjBZk3z2p9Pcs8=",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEWpLSqt7yGh7KjP4k7uklBKC1x-69Ft_Vr1Pi42n-wBg0Oa2QcmY1KI8WSaT_DAVb8BJAPkhC65A5gFRHazvo5xSCpT6RP_5e3veGaag4AYP02EDMoptvGn4Lh5NhUj14FUFA7yOzsMdjlWENhqEVuNpHyXS5CBBFOiT4=",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFz1TAZ9MwVOpmLYh1rqur7UM-9YkqelVniAjEKYLetvLRzcS5bBP4CadVEeUakHUPNhSeUUuSZsri3ZOtjkgDLeZjMssl7N5bRhmV-qnS2tCUwVmGa18v-6mCxYxKrc_M3SlLXnPA=",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHSsLcQ6KAEr1CMGqYvaLd2YxVMNmqJIPkJtdNxveVt0t1AD5RyOHJ5W_oPioz34iK8bwIKCBF-Zr2sJDF1BdfyDW77BE5YEv5uhY8QHVu_xHA0eXCLRkWvj2F7S0fW057YAWrEOxhsc4BMjXMinYvRPqfLHbNpEoavMPk_tkAj1MQK5wTL7uwsMBvKGQ6lw3qIAdzcLALahtFQhP3iqg=="
+          ],
+          "reason": "missing-source-locality-review",
+          "pass": false
+        },
+        {
+          "field": "ACCESS",
+          "text": "The location is accessible via Queen Street East and Gerrard Street East by streetcar and bus services, and nearby Green P parking lots are available on Gerrard Street East.",
+          "sources": [
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHyU7CAShpqXgQeHNEX1aR5TNAFQ0ceucSCofMXAMDV8G2O3RaPW3bstMQtbebBvw7HJVbD6t4sGQAhHYrh1lVVdju8-F92SLYteww4DYWFSrtv9oTA63Tl4C3wO1ThHT2wF26R7R_1JAHpfqSHIL8dzdgKPZW1F0-gnfgOsZ8nAkCggXlBGCbXr1cuPVr0TYL48v0oaQZxPGE=",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFovSMuxNreoi_rx7Jw1SdS33_qo3qmGDxz6-AjS25FIpbq7o54KM4cvGr__qxMpset539tA0ELyb0MoykglTUCvCm7GfsKrd6p3boVT9SXVPZQ64LSybjqvbfTgjPxYJy-GwRob85zb_2PMdARzMV4FcaJVbjj4Gp4WfYb6mwANqHCMos=",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFz3HOt94IK1O-iSIRXhWsdXsCxFKbJnU-5EI99681oM4-6ge3er2T6lPN6izZ6jkj_unvHZRKsj630E0khVnaZjNKjlaJVv9G6lIBFxLMua8IMUwLGW6V9cYPHtFv071Yu-8h1wWrBCjm6sROK77hXYzqhC3ZuJgjmJoIErQ==",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGJP_RokBAGiHspSG80tyH_QDihGPLidbjTHqiyO-Quy72aMD_OudQDRplm7ygO9zVPMzmA53sMJIST2xgeGsRq4adpSfencl73_P8vnXK-F7ZM6n-9mRlKftf5TymCJEFLEVu81hNUTIukSuqO9QdL9XrW1fLNBk6pYgrpAawBlQV0og==",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEvMgr0JsKsKCOx-yB3y1f0uOa3wSKFDS6PGGL03v10kukZLRz2rWCpecT1kQDu-jmR9rTEdj_bo62UIe-632jYMpOIuFUSgNWc2vXsO5XXYLgusdfVx_qtJqhghh0dhaaJO93FpJNFBiJrdpStxrXus4ekhd1JJQ==",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHVmvD3to_vhlSh16jWJ7cZpG86c42Pf6ECWrZUrjKoqm9JaWmtxWyHGNe5fvVpOhazsktz0Tfu6aGDYX4S3MC8MnVvNQZ3FPlN3EpG8Bu9DmByo11C28kCYsnc_pUNhyaezvtXEowX0y4Py5_0222cR4yl8fgBrEJdnw==",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF8V5oSLcgQb5aCvVQs7H7eW-RGjSS_fUkyYMzaIKsI2DCO8es9xZEZtbT1wNOhnZaaCLzsis6EUBKqGJxkxNvSvNJD09V_cnYXfxSuiDbIfC5yBsLp3OoJzrmxk3F73b88u_S5Gw2b-uohHwYrV7zbUWyBqcYag7n-cg==",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEHbeQgNhPcWd-XBY4v-dxSGfgu6O0rr3DYkggTRClM3NMFLIMX4ojucO8TUGHLYgyPckVXEjNPsfHL-Cy7T6aEpOXDp5w5n29DOdcvTbdHk_pbLsopIqdkHML43N7CvJaQVkZhvKJwZDADZVIhR6m6ebhiZPNyRFVvVrhs1NzYrZcRLoXUggeZgCg_GhMcZqkOXVd8peXl",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHLk0OCa4SQiZhlyueKw_M6EhTFAeZnhpdANlhjJjPIQnFhwsU7zuDbnpTIEyHd6FymKfTcaBZjn_nF8WXSgMz5iUByxs_sEQFotSoni9TKYmfi6YfDtgMXFPf-UQHdn-13wLPOnRGxBdSPBtGcwSNtyO89Ee-Nc-MlQIQoXVGdvb8SE98VCm9RyCLM9Ar-M69vL-4INaJe",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFdOSKd-khtdWtLbtrIqnIIxcLymxFUUaN_EzEw43297osGM6J6e_6gPclk_2llCodbp1aOlZkMBA9pZb4L_po_N1-fHOJ6dV3jyb0Dp7wXsQ_o5m6r154Gnpqy56Oo3a8DfgbGkyrkQNhHWz8QBqtANmtIVA43enbtEZoV1g==",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFRgXJSeBfwgKinvPnCJXfMuL_FpQTUR3oDx6z9khNg36zYS3Hn-0DjP06g-XNozMVGysd18dX9y5R4LQGD7HTdgzE8r1IBtG5PnAiVv_pX0NIkgcnXCgquszk7Nzg99VPiLFOVep_ExaFpoqVkpjz90cAQ428uwbkY6kzoalQW5A==",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGokTfmWFeZSD7FbYUjfhf4kBtCtMEpiM-evdNaYCOf9B6jIDrOSkaVtexJ6_2mYFQXpriPj4hvo3fFoO8mgzFDkTcAavUXcSpXuuVoaDwGeTaIx8idATFYy2jxnXQQHPHrtv1dsLzHHQnAh85mObX52qmsqQ==",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFzHJ-bpEz7iZ3LqpD_HWakLqaOQfhRUHP6Wu2kFI59Ll0lpAG9eGi6UOZvusouYiOc1RMdzraODKpJCocxOE8j25g9UB5nRcN6qjJcTu0dzK__JffuOiHS_JPXWJXqEED4hfMrm0N5UownGQRZpyf7UD4yduBlqd7WuRYFVue7Buov",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEx4Atdf9xHVDAP0dPNkRasIh70VsBwcXAdix_2i-LrrdTxzzsfGjZtNHEaCJsEL89_hpdPJR2F2FbILAgAYVVBbNhFRz6t3dkBxvbwjWriAyrcHC1fLjCO0FTvtl4irTWOXtzhsG1vv0EUWpBPLpLFgw42l8v_",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFzBUGqMu1a-NSM6hxStgh8MN42SR9BoVrTxMb5Jzf_O8bErWZ0NaVFHWM1ZPfnmPINUPbO-oIaGTnPQyY3fiX7MaOQU0LWZcCJp53jZm0NB8pFO_y3cXtygvjFOjEyaf_dc-eUQahJFXYR4mzX",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGK6Yc8BnryMKNONkmzGVLQ3rKhP3R9PQWjFr7W5bS626487s3WaNwuSm20cc2_7c90ulgvNosoRsgjMTPbubU3ZyWhfJDwDpmZA_ZbqhXiU7bbc7F88kghR3cVVIB-oVwBkuRhunzmusndvuSUqTJKxjFd8Nex",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHV3_TlHt807264bD0UO2p8svZ5QRFIwW7QXeILdXrxmQGeR-Zrdg7zVSbPPadYeKj7wAR_7TXFQMr__CcZIpwD54OaXozjL8qri6gAJmFeEkrGHdOvAx8Uqo8uUuzS-BX1czObNpek6-9svi2xXNpKsBc3vYlsq8zzJ56EvXx2o90YomOCTd_X1wYfkbsJyI_as1fI4vzf8N8=",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFmPZvzvcpo__cz16_VAPwLlvDJPLKNCJZgG2cziudJFHC1pNvihdqrDzQ2rHJRFsrQvc3adVRCzN6NBJ2KEVgFARyLfZ_Ciab0lsSMDf2MqExqUReUgSS9l0v7BkkKiObiH8QULFBm2A==",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFefb3yggdmz7N-nj9ztNBpOWCOiZmByfNc7sM4fvzCxe1XjJCdzUQKwJCY5AhfyZBgfFteIWAHaCkvXgoT8nUimiE9TxEB0P0sO-RDH0I6BKeMxcBANwlVbUOd-AdSUtqkSluMR6tKoxzEJRG7",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEvQgsTN90K6yAr3UV8gLy6xICXEW4m58lwm_Sr5oCVDkhiGW4W4g66kX0-UDfiteDR3SfuSup4My3MsNILw4fDez7PyS9UU5yt81XDwE9uMBtO1WNhU7kTioxRU04VCBz2Ldr5j_aMsfgt6A==",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFTdAoL-UPF47O7bHRgp6-KjWRBTRgVbnUhCaNGJ7fwjqwkf24deOue7W0F_UEjxrwzZZsgIIsuy2MAolRIWUwpzBqMgJ_tFC6JDI6xzA7Dr8gc08ReV4Z2vfCKmPJhon2XvCg0qKNPXpIasBvn"
+          ],
+          "reason": "missing-source-locality-review",
+          "pass": false
+        },
+        {
+          "field": "VENUES",
+          "text": "Nearby established cafes include Lazy Daisy's Cafe on Gerrard Street East and Bud's Coffee on Queen Street East. Limon Beaches and The Stone Lion are also located on Queen Street East. Bodega Henriette is another nearby business on Gerrard Street East.",
+          "sources": [
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEnBtNukg_v03xdQ5z7w9U61490opV9tL1fDtLNS7-01bCC3InaMQLf9czvAy6XbwU3NykFaiEhq1sYmm70xI2qSP0uz40NsoKwt_L3_rRBsU_x8W7YsUpoK5bWyJz9Iw4AHZiaYS43i1n_VamzSHasx81qxXch",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEIGkNOgnefD2GJTDt_wpVXoj1-YERT_kSndhsdMOeyx5UjmGMiVQFMQUVal8Rus2JGPbnAWZLcwBNGodPeQpaQloypIcRx9s5ipgRmng-D8ok7RiRJV61XJYVsRYZ7sr7o5WKkUjEmKzwhLQ=="
+          ],
+          "reason": "missing-source-locality-review",
+          "pass": false
+        }
+      ],
+      "notice": "Offline source/locality review only; not full release acceptance, live generation, cache/fallback, UI, MCP, merge or Production approval."
+    },
+    {
+      "file": "run-5.json",
+      "target": {
+        "areaId": "area-1",
+        "latitude": 43.67546,
+        "longitude": -79.30824
+      },
+      "radiusKm": 1,
+      "targetMatches": true,
+      "mechanicalPass": true,
+      "sourceLocalityPass": false,
+      "rows": [
+        {
+          "field": "ACCESS",
+          "text": "Queen Street East and Gerrard Street East have streetcar stops, and Green P parking is available near Gerrard Street East.",
+          "sources": [
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFsSddN_CmDczTmuJ8deiwYIyoLrKYg3uMy9ZhfKpseJuprB5mTYn8vOT6tnWOWFsmth7cKOY6WWpvtvmz908EpvcdtAR9HT0Lih_Q2pB3v4nFkvBqR1TzKmdDBSAUx0R2SMZ0hr9y25L_LDw8duqVr47VkNsF8PkJ38bQ=",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFR_2bl_ujQ_jy6nD24SOySHVSeh1dAZEkqNwSOXl5NWIT-JH1fGa-96Ff_gl954Zvr7syfQ8fKIUaK55ApeJMUl_S6Ychta0WcPZkULPv5ZPDOMeOUhuFsFHmY10C_FL9pbgcfHr84zQIy005rfqI0HVsDIaFz-m82D7yKeYTGIW_ljKe5",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQERJM2RsGTu-xjqhB8gw4YMU154mW5UOy2bovb9awtWZjSXrUA8kv_bM-fsRFLhOqyhSwi-3ZI0MIQEIqB76BRGzAt7gdmkw_eRHCUQu90gPopvPKCcfXEhIF5wzfqE8XNO52mfFMtI4WGHJyqiQIM0T1IR6m80pop91QWoCYruxUAOFEyX_alqSyXiKIuNHEBJX661dIwR",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHoaaxms9WCPVL2yjy3OYfNP_lH5xHhsSY--vEPaA6NMQt8yWokjzOAW4JgClq5UdAuK2W1aEBaENJ8tqFLtFnow9FVNZAJOuzlp-x-I4ZCnKKPnxNnjKWSSGzW2K8_debqkz8p9gxktA=="
+          ],
+          "reason": "missing-source-locality-review",
+          "pass": false
+        },
+        {
+          "field": "VENUES",
+          "text": "Nearby coffee shops include Lazy Daisy's Cafe and Bud's Coffee.",
+          "sources": [
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFE-WMJVlZpU2qj_z1JqIdQdEyGSNshOrreUHL0YkA-Kely6V3MfKO_4hqJ0cRVJE1YPwvhiFqHhXq7HctcKyyrwNA77DN82y85jbX4Qw461PA9i2GAId9KE9MYZvtry30vmOsszQslKzeIbJ4bS_2xAGjpFRT2p6NXOdaWga2ykfD3QiO9xQdn-g==",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF3Pw-PHi-8sZbxKl7a4vag__eenwZX__2lTQnLhoaYyq4nx6mVUHzjEtWhW8guqd2pALBnGo5xf9POXjCXcuV43ltkDjAdi35sbPdSElvP7GdTjet7uscLBVPN5FRKTjymmBgBICDNX4xG8opoCqtNvfnIav-VXg=="
+          ],
+          "reason": "missing-source-locality-review",
+          "pass": false
+        },
+        {
+          "field": "ACTIVITY",
+          "text": "The Matty Eckler Community Recreation Centre is located on Gerrard Street East, offering various programs.",
+          "sources": [
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHN_tWTqyMNvoDq_rm321hUoZH_DSgo1GePgWoOlFATSHwMw8epiZssajRZeO6Tw4e0p-v7w5XtAEgKREtTd4SUpV6t7DLNh2cXoTunaytVwaGjqTUPBXD7uRKQB4HQaXcqlhiItYUEzsh-mJfNUVfXdofBoqzTg9EtynJvhvJCnkHvEbUNemxdI00TfYKnwflz0MKZgs2DVZsAlFtLPRcDuIUauQHTSAEzCQ7FRegxBFiotlcMvs_vuCcateUsY1QJioS_GfkgBBaDmv9w_g==",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGLI7EYXejt094NYYcfW6gPJC6oQewnw6GWEZ6mYSCrvWfOm6GBk0WcpidDFTdUdEuOB1Ll2XgE9tbLIi4JMYMm_E6lJuKsvDHg6PR3kJOh6OKjUiZGBAbk4DIo4aeSOrGC-m9JQX_o8TQfuVNDACBG2eQl7Qlsm-52gbH3VmO7gCuS3yJmlnObvxpcGAOfmbvP3NePQkSG0g4Xx2Wb9HponPORQ-DCc-MN7wWkCFRuguMkrzixv7JipCU7Xi4SY_8pDitaSCBKMa4R2PcHEVQCq4mTnoI=",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFkwAPFeRDCEj-Wg7ybhkJrz-ZDIYZVM1wdQGHY3yulpZ1FYmOIfi3d5dGKeoD4EqIzJzUXzh4uP_IV3rjFhDLa87r6_8r44h7KNsliI-meIdG5zvaRT69jqfmnFBU2_mbRkBgXYAvKupsEEWReqFZxnNnkXJgQ29MkoF7P9LeqmdlDPCJzXw=="
+          ],
+          "reason": "missing-source-locality-review",
+          "pass": false
+        }
+      ],
+      "notice": "Offline source/locality review only; not full release acceptance, live generation, cache/fallback, UI, MCP, merge or Production approval."
+    }
+  ]
+}

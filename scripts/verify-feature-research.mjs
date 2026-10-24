@@ -12,7 +12,8 @@ for(let i=0;i<Number(process.env.VERIFY_RUNS??5);i++){
  const fields=report?.fields?.filter(f=>f.status==='found')??[];const sources=new Set(fields.flatMap(f=>f.sourceIndices.map(i=>report.sources[i]?.url).filter(Boolean)));
  const matched=point&&report?.target?.areaId===point.id&&report.target.latitude===point.latitude&&report.target.longitude===point.longitude;
  const row={run:i+1,url:base,checkedAt:new Date().toISOString(),seconds:(Date.now()-start)/1000,status:response.status,point:point?{id:point.id,name:point.name,latitude:point.latitude,longitude:point.longitude}:null,matched:Boolean(matched),fields:fields.length,sources:sources.size,cached:run?.cached??false,saved:Boolean(run?.savedDemo),rules:report?.validationRules,error:frames.find(f=>f.type==='error')?.error};
- row.pass=Boolean(matched&&fields.length>=3&&sources.size>=2&&!row.cached&&!row.saved);rows.push(row);console.log(JSON.stringify(row));
- fs.writeFileSync(`${out}/summary.json`,JSON.stringify({rows,passed:rows.filter(r=>r.pass).length,total:rows.length},null,2));
+ row.mechanicalPass=Boolean(matched&&fields.length>=3&&sources.size>=2&&!row.cached&&!row.saved);rows.push(row);console.log(JSON.stringify(row));
+ fs.writeFileSync(`${out}/summary.json`,JSON.stringify({rows,mechanicalPassed:rows.filter(r=>r.mechanicalPass).length,total:rows.length,sourceLocalityStatus:'not-audited',releaseAcceptanceStatus:'not-established'},null,2));
 }
-assert(rows.every(r=>r.pass),'Every fresh run must show three grounded fields and two sources for the exact visit point');
+assert(rows.every(r=>r.mechanicalPass),'Mechanical checks only: every fresh run must show three grounded fields and two sources for the exact visit point');
+console.log('Mechanical checks complete; geographic/source correctness is NOT established. Run audit-recorded-research.mjs with trusted source reviews before claiming locality acceptance.');
