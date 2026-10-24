@@ -33,3 +33,11 @@ The initial regression reproduced the agent calling a lower-ranked point highest
 ## Required gates
 
 Run unit/contract tests, lint, build and diff checks. Verify fresh Blue Bottle and the Toronto café flow separately from synthetic/replayed UI checks. Confirm actual rank/tie claims, enforced popularity floor, missing-data behavior, map/card links, source inspection, one-page PDF, desktop/mobile accessibility and stale-result invalidation. Preserve secondary comparison and existing MCP behavior. Report exactly what was tested, not a universal certification.
+
+## 2026-10-24 geographic-scope experiment rejected
+
+Candidate `092c01d` added explicit one-kilometre search hints and venue/address bindings to grounded research and exact-quote extraction. It passed 160 tests, lint/build and exact-head Preview checks, but **failed hosted acceptance**. Five fresh, quota-metered runs on `collab-scout-az7ceq6ea-circuitstudioais-projects.vercel.app` retained 0, 1, 3, 3 and 1 fields: only 2/5 met the mechanical gate. Raw receipts are `/tmp/sitebrief-scoped-research-20261024/`. No cache or saved evidence was counted; no quota counter was reset.
+
+The fourth run still cited Jimmie Simpson Recreation Centre on Queen Street East. The prior official-source audit identifies its address as 870 Queen St E, approximately 3.31 km from the locked point; adding a radius instruction did not prevent the existing geographic failure. Several other fields continued to contain address/route numbers and were correctly rejected by the unchanged numeric guard. One retained field contained multiple sentences despite the one-sentence request. These are defects, not passing content acceptance.
+
+**The candidate was reverted.** The application returns to the prior tested implementation (`247de04`, also present in docs-only `0b0d0ea`); its earlier mechanical 5/5 result is not full geographic acceptance. This experiment establishes that more search/formatter prompt instructions are not sufficient. The next repair needs source-bound location evidence and validation for each new facility/listing, without relying on a shared street label or deleting words to manufacture a local claim. Preserve the two-search/two-formatter/deadline/quota limits and the draft/merge/Production/submission gates. Do not spend more quota repeating this rejected prompt-only approach.
