@@ -2,9 +2,11 @@
 
 Find areas to investigate for your next restaurant. A bounded Gemini tool workflow combines real Qloo evidence, operator rules and web-source discovery. The output is a scouting visit plan, not a lease recommendation.
 
-- **Production:** https://collab-scout.vercel.app
+- **Production:** https://sitebrief-circuitstudio.vercel.app
 - **Release evidence:** [verified versions and review previews](docs/VALIDATION.md).
-- **Source:** https://github.com/circuitstudioai/collab-scout · MIT.
+- **Source:** https://github.com/circuitstudioai/sitebrief · MIT.
+
+The repository and Vercel project were renamed from `collab-scout` to `sitebrief` without replacing either resource. The old GitHub links redirect, and the old `collab-scout.vercel.app` address remains a compatibility alias. Historical validation receipts keep their originally observed URLs.
 
 ## The decision
 
@@ -42,7 +44,7 @@ Qloo host is `https://hackathon.api.qloo.com`, with server-side `X-Api-Key`. No 
 `/api/mcp` exposes five read-only tools over stateless Streamable HTTP: exploration, known-site comparison, audience profile, research and the full scouting agent. Test interoperability with the official MCP SDK; no claim that every branded client was separately installed. Allow a180-second timeout for a complete scout call.
 
 ```json
-{"mcpServers":{"sitebrief":{"url":"https://collab-scout.vercel.app/api/mcp"}}}
+{"mcpServers":{"sitebrief":{"url":"https://sitebrief-circuitstudio.vercel.app/api/mcp"}}}
 ```
 
 **Shared daily admission is active:** Upstash Redis atomically admits up to **50 top-level live jobs per UTC day per environment** (Preview and Production counters are separate). Missing/unavailable storage and exhaustion fail closed. This is not a hard provider billing cap. Per-visitor limits and MCP authentication remain deferred; per-instance concurrency limits are additional protection, not the daily ceiling.

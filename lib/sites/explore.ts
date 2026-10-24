@@ -48,7 +48,7 @@ async function nameArea(cell:Cell):Promise<{name:string;address:string}|null>{
   try{
    for(const radius of ['0.3','0.8']){
     url.searchParams.set('radius',radius);url.searchParams.set('limit',radius==='0.3'?'1':'5');
-    const r=await fetch(url,{headers:{'User-Agent':'Sitebrief/1.0 (https://github.com/circuitstudioai/collab-scout)'},signal:AbortSignal.timeout(4000)});
+    const r=await fetch(url,{headers:{'User-Agent':'Sitebrief/1.0 (https://github.com/circuitstudioai/sitebrief)'},signal:AbortSignal.timeout(4000)});
     if(!r.ok)continue;
     const match=parseLocations(await r.json()).find(m=>distanceKm(cell,m)<=Number(radius));
     if(!match)continue;
