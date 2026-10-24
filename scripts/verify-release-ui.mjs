@@ -13,11 +13,19 @@ const page=await browser.newPage({viewport:{width:1440,height:1100}});const erro
 page.on('pageerror',error=>errors.push(error.message));
 try{
  if(recorded)await page.route('**/api/scout',route=>route.fulfill({status:200,contentType:'text/event-stream',body:`data: ${JSON.stringify({type:'complete',value:recorded})}\n\n`}));
+ await page.addInitScript(()=>{
+  const original=window.fetch;
+  window.fetch=async(...args)=>{
+   const response=await original(...args);
+   if(String(args[0]).endsWith('/api/scout'))window.__releaseScoutBody=response.clone().text();
+   return response;
+  };
+ });
  await page.goto(base,{waitUntil:'networkidle'});
  assert(await page.getByRole('button',{name:'Or try the playground café'}).isVisible());
  const responseWait=page.waitForResponse(response=>response.url().endsWith('/api/scout')&&response.request().method()==='POST',{timeout:175000});
  await page.getByRole('button',{name:'Try Blue Bottle in Toronto'}).click();
- const response=await responseWait;assert.equal(response.status(),200);const raw=await response.text();
+ const response=await responseWait;assert.equal(response.status(),200);await page.waitForFunction(()=>Boolean(window.__releaseScoutBody));const raw=await page.evaluate(()=>window.__releaseScoutBody);
  const frames=raw.split('\n\n').filter(frame=>frame.startsWith('data: ')).map(frame=>JSON.parse(frame.slice(6)));
  const run=frames.find(frame=>frame.type==='complete')?.value;assert(run,'Expected completed scenario, not just progress');
  fs.writeFileSync(out+'/run.json',JSON.stringify(run,null,2));
@@ -46,6 +54,6 @@ try{
  assert.deepEqual(await audit(),[]);await page.screenshot({path:out+'/desktop.png',fullPage:true});
  await page.setViewportSize({width:390,height:844});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);assert.deepEqual(await audit(),[]);await page.screenshot({path:out+'/mobile.png',fullPage:true});
  await page.getByLabel('Area popularity').selectOption('50');assert.equal(await page.locator('.atlas-verdict-label').count(),0);assert.deepEqual(errors,[]);
- const receipt={url:base,checkedAt:new Date().toISOString(),mode:recorded?'historical-run replay (not fresh retrieval)':'actual browser request (no interception)',saved:Boolean(run.savedDemo),cached:Boolean(run.cached),point:area.id,checks:['Blue Bottle lead and secondary example','four withheld fields and tentative verdicts','source inspection and City questions','PDF one page and exact point; no local summary','notes withholding and provenance','desktop/mobile accessibility and no overflow','input changes invalidate old result'],pageErrors:errors};
+ const receipt={url:base,checkedAt:new Date().toISOString(),mode:recorded?'historical-run replay (not fresh retrieval)':'actual browser request (no response substitution)',saved:Boolean(run.savedDemo),cached:Boolean(run.cached),point:area.id,checks:['Blue Bottle lead and secondary example','four withheld fields and tentative verdicts','source inspection and City questions','PDF one page and exact point; no local summary','notes withholding and provenance','desktop/mobile accessibility and no overflow','input changes invalidate old result'],pageErrors:errors};
  fs.writeFileSync(out+'/summary.json',JSON.stringify(receipt,null,2));console.log(JSON.stringify(receipt));
 }catch(error){await page.screenshot({path:out+'/failure.png',fullPage:true});console.log(JSON.stringify({error:error.message,body:(await page.locator('body').innerText()).slice(-2000)}));throw error;}finally{await browser.close();}

@@ -25,3 +25,13 @@ Preview and Production receipts will be recorded below after they are actually o
 - 164 tests / 28 suites, lint and optimized Production build passed.
 - Three regressions were observed failing before the boundary: historical saved prose, fresh grounded prose and agent-stream prose. All now pass.
 - Historical run1 browser replay passed on the optimized local server: four withheld fields, tentative verdicts, source links/checklist, one-page PDF/exact point, notes, desktop/mobile accessibility, no overflow or page errors, stale-input invalidation. This is replay sanitation evidence, not a fresh provider run. Raw receipt: `/tmp/sitebrief-release-ui-local-20261024/summary.json`.
+
+### Hosted Preview acceptance — application `03d17a4`
+
+Exact Preview: https://collab-scout-j7751nbww-circuitstudioais-projects.vercel.app (`dpl_FhSNMWbioXt1M4LcGuGo8VZydgLa`), READY; both GitHub/Vercel checks passed.
+
+- Five fresh, noncanonical full scout requests: **5/5 bounded release PASS**, no cache/saved substitutions. Each preserved exact final point identity and highest eligible rank, returned at least two source inspection links, and withheld all generated local fields/citations/provider HTML in streamed and final reports. This is not geographic/source-content acceptance. Raw: `/tmp/sitebrief-release-research-preview-20261024/summary.json`.
+- Hosted historical-run browser replay passed the same sanitation, artifact and accessibility gates as local replay. Raw: `/tmp/sitebrief-release-ui-preview-replay-20261024/summary.json`.
+- Actual browser request passed with a correctly labelled warm canonical source-discovery result (`cached=true`, `saved=false`); no response substitution. Source links, City questions, all four withheld fields, tentative verdicts, one-page PDF/point identity, notes, mobile/desktop accessibility, no overflow/page errors and input invalidation passed. Raw: `/tmp/sitebrief-release-ui-preview-live-20261024/summary.json`.
+- The browser capture harness initially could not retrieve an SSE body through Chrome's resource-body interface. It now reads a clone of the actual fetch response without changing the response. This is a harness repair, not a product failure or invented fresh run.
+- The receipt/harness continuation changes only docs/scripts. Application code remains exactly the tested `03d17a4` tree. Final-head deployment checks must pass before merge. Production remains a separate pending observation.
