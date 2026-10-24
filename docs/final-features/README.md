@@ -2,7 +2,7 @@
 
 Latest owner direction replaces the Supabase adapter with **Upstash Redis via Vercel Marketplace, Free only**, US East, no auto-upgrade or eviction. Limit remains 50/day per environment. Server-only Sensitive configuration may connect Preview and Production; Production app deployment, merge and submission remain gated.
 
-**Current checks: 153 tests / 27 suites, lint and production build pass.**
+**Latest sprint checks: 158 tests / 27 suites, lint and production build pass. See the recovery/relevance checkpoint below; full release acceptance remains incomplete.**
 
 Current local Redis proof passed: 3 of 12 concurrent EVAL calls admitted at limit 3; no exhaustion increments; exact UTC expiration; previous-day rollover; environment isolation; corrupt-state denial; unrelated fixture preserved. The application adapter over real local EVAL admitted exactly 50 of 64 attempts, denied 14 with 429, and failed closed on outage. This bridge is not hosted Upstash REST or integrated Preview proof. See [setup](../SETUP.md) and `scripts/verify-redis-quota.ts`.
 
@@ -10,7 +10,7 @@ Vercel CLI confirms a Free plan and the requested metadata but installation stop
 
 The Supabase continuation at `1fdbcd8` passed 146 tests and real local PostgreSQL checks. It was never configured/applied remotely and is superseded, not Redis evidence. The earlier Redis checkpoint below is retained as historical evidence for commit `841bbe1`, not the current adapter/configuration contract.
 
-## Current remaining gates
+## Earlier remaining gates — superseded by hosted checkpoints below
 
 1. Owner accepts Marketplace terms. Retry Free-only install with no auto-upgrade/eviction and verify actual plan/metadata; configure Sensitive server REST settings for Preview and Production.
 2. Prove hosted REST concurrency, exhaustion, reset and outage handling with isolated verification counters. Local Redis and mocked HTTP replies are not hosted evidence.
@@ -83,3 +83,15 @@ The saved failed hosted batch remains **4/5**, not superseded by unit tests. Add
 Recovery now merges retained evidence before deciding on extraction, requests missing fields rather than redoing validated ones, and does not echo rejected numeric values in the correction prompt. If cited source diversity is insufficient, recovery still requests fresh sources and can replace findings to meet the unchanged distinct-source gate. Exact grounded excerpt, numeric/gap/obligation, target-identity, forty-second deadline and two-Search/two-extraction ceilings are unchanged. No new provider, quota reset, infrastructure, Production deployment or approval bypass.
 
 Focused regressions observed both defects red, then green. New-head hosted acceptance remains to be measured; this change is not a claim that provider completeness or geographic relevance is solved.
+
+
+## Recovery Preview and relevance audit — October 24, 12:26 UTC
+
+- Tested app head: `247de044880ab8e2e0bf5bf8c947d52b9ff18294`, exact Preview https://collab-scout-gbp8cuwtj-circuitstudioais-projects.vercel.app / `dpl_27dgjkNtKkZtwC7L4DaR7vEqhEFN`. READY; both Vercel checks SUCCESS. PR10 stays OPEN/DRAFT. No Production deployment or infrastructure/config changes in this chunk.
+- **158 tests / 27 suites, lint (zero warnings) and build pass.** Regression evidence: first validated field/source overwritten before fix; unnecessary fourth model call after a retry already completed accumulated quality before fix; both now pass. Single-source recovery remains covered. Model, deadline, maximum attempts, evidence guards and quota unchanged.
+- One complete five-request batch on the new app head passed the **mechanical field/source/target-identity gate 5/5**: fields3,3,3,3,3; cited URL counts9,15,15,41,9; durations16.789,13.958,14.451,16.465,13.812 seconds. Every response fresh, neither cached nor saved, exact area-1 ID/coordinates. Actual shared Preview admissions; no counter reset. Original4/5 batch remains recorded above. One successful batch does not prove general provider reliability.
+- **Full research release acceptance is NOT passed.** Content audit found long-street anchor matching admits distant activity facilities. Run1 cites Jimmie Simpson and Matty Eckler centres, and run5 cites Matty Eckler. Rendered official Toronto pages confirm [870 Queen St E](https://www.toronto.ca/explore-enjoy/parks-recreation/places-spaces/parks-and-recreation-facilities/location/?id=58) and [953 Gerrard St E](https://www.toronto.ca/explore-enjoy/parks-recreation/places-spaces/parks-and-recreation-facilities/location/?id=234). Photon address results identify their associated parks approximately3.31km and2.56km from the locked point43.67546,-79.30824; these are approximate park-centre distances, not surveyed facility entrances. Sharing Queen/Gerrard street names does not establish relevance to the adjacent street segment. Broad listing claims also need page-level local review; all cited pages have NOT been audited. Do not call the5/5 count gate full acceptance or weaken geography requirements to clear it.
+- Official MCP SDK Client + StreamableHTTPClientTransport discovery and one real metered `explore_restaurant_areas` call pass, with eligible popularity-floor-compliant areas. This does not prove every chat-client installation or full MCP scouting/payment acceptance.
+- New-head desktop/mobile recorded-run replay using batchrun4 passes axe, no-overflow, one-page PDF/source identity, notes/checklist and stale-input invalidation; no page errors. This is presentation evidence, not a new actual browser-generated run. Earlier actual browser receipt remains historical.
+- Raw evidence outside Git: `/tmp/sitebrief-recovery-research-20261024/`, `/tmp/sitebrief-recovery-relevance-audit-20261024.json`, `/tmp/sitebrief-recovery-facility-audit-20261024.json`, `/tmp/sitebrief-recovery-mcp-20261024/`, `/tmp/sitebrief-recovery-ui-20261024/`.
+- Next: bound practical evidence to the actual local segment/verified nearby places without adding sentence-deletion filters or inventing a locality threshold. Re-audit supplied nearby anchors, candidate evidence and precise source locations; preserve missing fields honestly. Then repeat the complete fresh gate and close cache/saved-fallback/custom/live-browser receipts. Merge/Production/submission gates unchanged.
