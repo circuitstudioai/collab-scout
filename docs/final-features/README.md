@@ -1,15 +1,23 @@
-# Supabase quota continuation — October 24
+# Vercel Marketplace Redis continuation — October 24
 
-The owner authorized reusing an existing Supabase project and prohibited any extra spending. Redis has been replaced by a server-only Postgres RPC. The target project identity is not yet confirmed; no hosted database/configuration changes have been applied.
+Latest owner direction replaces the Supabase adapter with **Upstash Redis via Vercel Marketplace, Free only**, US East, no auto-upgrade or eviction. Limit remains 50/day per environment. Server-only Sensitive configuration may connect Preview and Production; Production app deployment, merge and submission remain gated.
 
-- Current local checks: **146 tests / 27 suites, lint and build pass**.
-- Local PostgreSQL: 12 simultaneous requests with a limit of 3 admitted exactly 3. Anonymous/authenticated RPC access and API-role direct table access are denied. Preview/Production and UTC days are independent. Reapplication preserves counters and unrelated data.
-- The existing project needs only two small private tables and one public RPC; no new project, paid plan, Edge Function or scheduled reset. The database controls the limit/day; the caller cannot increase its allowance.
-- Target identity, existing plan/capacity, hosted migration, dedicated backend credential, Preview settings and fresh integrated acceptance remain pending. See [setup](../SETUP.md).
+**Current checks: 153 tests / 27 suites, lint and production build pass.**
 
-The earlier Redis checkpoint below is retained as historical evidence for commit `841bbe1`; it is not the current adapter/configuration contract.
+Current local Redis proof passed: 3 of 12 concurrent EVAL calls admitted at limit 3; no exhaustion increments; exact UTC expiration; previous-day rollover; environment isolation; corrupt-state denial; unrelated fixture preserved. The application adapter over real local EVAL admitted exactly 50 of 64 attempts, denied 14 with 429, and failed closed on outage. This bridge is not hosted Upstash REST or integrated Preview proof. See [setup](../SETUP.md) and `scripts/verify-redis-quota.ts`.
 
-## Original final feature push — review checkpoint
+Vercel CLI confirms a Free plan and the requested metadata but installation stops at required **human Marketplace terms acceptance**. No resource or hosted settings were created. Five fresh full-head integrated Preview runs and final UI/PDF acceptance remain pending configuration. Missing mapped counts may show Unavailable; owner explicitly deferred provider reliability as a blocker.
+
+The Supabase continuation at `1fdbcd8` passed 146 tests and real local PostgreSQL checks. It was never configured/applied remotely and is superseded, not Redis evidence. The earlier Redis checkpoint below is retained as historical evidence for commit `841bbe1`, not the current adapter/configuration contract.
+
+## Current remaining gates
+
+1. Owner accepts Marketplace terms. Retry Free-only install with no auto-upgrade/eviction and verify actual plan/metadata; configure Sensitive server REST settings for Preview and Production.
+2. Prove hosted REST concurrency, exhaustion, reset and outage handling with isolated verification counters. Local Redis and mocked HTTP replies are not hosted evidence.
+3. Run five fresh full-head integrated Preview analyses and final UI/PDF checks. Do not count saved/cache responses as fresh or infer live success from deployment checks.
+4. Present the draft for review. Merge, Production app deployment and submission remain unapproved.
+
+## Historical original final feature push — `841bbe1` review checkpoint
 
 ## Release state
 

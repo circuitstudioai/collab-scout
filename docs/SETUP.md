@@ -31,23 +31,42 @@ npm run build
 
 Optional hosted-verification tools are Playwright/Chromium, axe-core, pdf-lib and the official MCP SDK. Scripts accept module-path overrides for isolated tool installations. See VALIDATION.md for the exact verified app and evidence; do not treat an old preview report as proof of a newer release.
 
-## Quota status — deliberately deferred
+## Shared quota — Vercel Marketplace Upstash Redis, Free only
 
-This feature branch uses an existing approved Supabase project for the shared global daily live-analysis budget. No Redis, Upstash, Edge Function, scheduled task, new project or paid add-on is required. The owner has prohibited extra spending.
+The owner selected **Upstash for Redis through Vercel Marketplace**, Free plan only, US East (`iad1`). No paid plan, upgrade, production app deployment or merge is authorized. Supabase is no longer used for quota; the un-applied SQL migration and its local proof script have been removed. Historical PostgreSQL receipts do not prove Redis acceptance.
 
-Apply `supabase/migrations/20261024001000_sitebrief_quota.sql` only after confirming the intended existing project. This additive migration creates a private `sitebrief_quota` schema with `policies` and `daily_usage`, and one server-only public RPC, `sitebrief_reserve_live_analysis`. It does not alter unrelated tables, Auth, Storage, billing or plan configuration. Tables have RLS enabled and no API-role direct grants. Anonymous/authenticated users cannot execute the RPC. Only `service_role` can invoke it; the definer function has a fixed empty search path and qualified objects.
+Use the existing Vercel project `collab-scout` in `circuitstudioais-projects`. CLI discovery confirms product `upstash/upstash-kv`, plan `free`, and metadata below. At the October 24 retry, installation stopped at **human Marketplace terms acceptance**; no storage resource or environment settings were created. The owner must accept terms with team access at https://vercel.com/circuitstudioais-projects/~/integrations/accept-terms/upstash?source=cli before retrying. Do not bypass human confirmation or substitute a paid plan.
 
-Required **server-only** variables:
+After confirming no duplicate resource exists, the authorized setup is:
 
-- `SITEBRIEF_SUPABASE_URL`: the approved project’s canonical HTTPS `*.supabase.co` origin.
-- `SITEBRIEF_SUPABASE_SECRET_KEY`: preferably a dedicated `sb_secret_...` backend key. A legacy service-role JWT is supported. Never use a publishable/anon key or a `NEXT_PUBLIC_` prefix.
+```sh
+vercel integration add upstash/upstash-kv --scope circuitstudioais-projects \
+  --plan free --name sitebrief-quota \
+  --metadata primaryRegion=iad1 --metadata autoUpgrade=false \
+  --metadata eviction=false --metadata prodPack=false \
+  --environment preview --environment production --no-env-pull
+```
 
-The secret is sent on the `apikey` header; a legacy service-role JWT also uses Bearer authorization. Redirects are refused so the key cannot be forwarded to a different endpoint. The key authorizes project-wide elevated access: store it only in encrypted server settings and never in evidence, client bundles or logs. The actual quota tables remain inaccessible directly through API roles.
+Verify the actual resource plan, region, disabled auto-upgrade and **no eviction** after creation. If Free is unavailable or flags cannot be confirmed, stop; never provision Pay As You Go. Do not borrow another product's data or credential.
 
-The database—not HTTP inputs or application environment variables—owns the UTC day and the limit. `sitebrief_quota.policies` defaults to 50 jobs per UTC day independently for `preview` and `production`. Changing a limit is an operator SQL action; the RPC cannot set a custom day or allowance. An atomic conditional upsert admits/increments or denies without overshooting. Each day uses a new key, so no reset cron is required. Only two small counters per day are stored; no visitor IPs, user identities or briefs are retained.
+The adapter accepts complete **server-only** variable pairs, in priority order:
 
-Each top-level live job consumes one admission, including failures. Nested agent tools do not charge again. All paid HTTP routes and MCP calls require admission. Fixed samples, discovery and qualified saved/cached examples do not call sponsors and are unmetered. Missing credentials, unavailable storage and malformed replies fail closed. Exhaustion returns 429 with the database UTC reset. This is a global allowance, not a per-visitor guarantee or exact currency cap.
+1. `SITEBRIEF_REDIS_REST_URL` / `SITEBRIEF_REDIS_REST_TOKEN`
+2. `UPSTASH_REDIS_REST_URL` / `UPSTASH_REDIS_REST_TOKEN`
+3. `KV_REST_API_URL` / `KV_REST_API_TOKEN`
 
-**Deployment boundary:** existing project identity is pending from the owner. Do not guess from another product’s name or borrow its credential. Check current plan/usage before installation; creating quota objects must not trigger a new project or paid upgrade. Configure Preview only, prove live atomic admission/permissions/outages, then repeat five fresh integrated runs. Production changes and merge remain separately gated.
+Use the HTTPS `*.upstash.io` REST origin and **write-capable** REST token, not the read-only token or Redis connection string. Store values as Sensitive Vercel variables for Preview and Production. Never add `NEXT_PUBLIC_`, commit values, display downloaded environments, or send tokens in reports. A partially supplied higher-priority pair fails closed; the adapter never mixes credentials across pairs. Redirects are refused. Redis error details and secrets are not returned to callers.
 
-Local database verification: `python3 scripts/verify-supabase-quota.py` exercises the migration on the isolated local PostgreSQL test database only. It proves concurrency, API-role denial, independent environment/day counters, safe reapplication and preservation of an unrelated fixture. It cannot target a hosted project.
+The application fixes the allowance at **50 top-level live jobs per UTC day per environment**; request data and environment overrides cannot increase it. One atomic Lua `EVAL` uses Redis `TIME`, checks the stored UTC day, and increments only when admitted. An environment-specific hash (`sitebrief:budget:v2:preview` or `:production`) expires at the next Redis UTC midnight. Old-day state also rolls over in the script; no cron is needed. No IPs, briefs or visitor identities are stored. Do not delete counters, enable eviction, change keys, swap databases or lower persistence during an active quota day: losing state resets consumption. A backend/provider administrator can alter state; this is not a provider billing cap.
+
+Each top-level live job consumes one admission, including failed jobs. Nested tools do not charge again. All paid HTTP routes and MCP calls require admission. Fixed samples, discovery and qualified saved/cached examples avoid new provider work and remain unmetered. Missing configuration, store outages, invalid state/replies and read-only tokens fail closed. Exhaustion returns 429 with Retry-After based on Redis UTC time. No process-local fallback exists.
+
+### Verification and deployment boundaries
+
+```sh
+npx tsx scripts/verify-redis-quota.ts
+```
+
+Requires local `redis-server` and `redis-cli` (or `REDIS_SERVER_BIN` / `REDIS_CLI_BIN`). Starts its own temporary Unix-socket-only Redis, with no TCP port, persistence or hosted URI. Proves atomic admission, exhaustion without overshoot, UTC expiry, previous-day rollover, environment isolation, invalid-state denial, preservation of unrelated data and adapter outage handling. The application adapter uses a local transport bridge to real Redis EVAL; this is **not hosted Upstash REST proof**. It does not simulate passage through midnight; it seeds previous-day state and checks exact UTC expiry.
+
+After storage/settings exist, deploy **Preview only**, prove hosted REST concurrency/exhaustion/reset/outage semantics with isolated verification counters, then repeat five fresh full-head integrated Preview runs and final UI/PDF checks. Never exhaust or reset the real production counter for a test. Production storage/env connection is authorized; production **app deployment**, merge, launch and submission remain separate gates. Missing mapped-store counts may explicitly display Unavailable and are not a release blocker under the owner's October 24 decision.
