@@ -1,3 +1,4 @@
+import {releaseResearch,releaseScoutRun,hasInspectionSources} from '@/lib/sites/research-release';
 import {reserveLiveAnalysis,quotaResponse} from '@/lib/sites/quota';
 import {z} from 'zod';
 import {exploreSchema} from '@/lib/sites/explore';
@@ -7,7 +8,6 @@ import {withDemoDeadline} from '@/lib/sites/demo-deadline';
 import {savedBlueBottleDemo} from '@/lib/sites/saved-blue-bottle';
 import {savedPlaygroundDemo} from '@/lib/sites/saved-demo';
 import {researchForVisit} from '@/lib/sites/visit-research';
-import {hasResearchQuality} from '@/lib/sites/structured-research';
 import {SiteError} from '@/lib/sites/qloo';
 export const maxDuration=180;
 const requestSchema=z.union([exploreSchema,z.object({demo:z.union([z.literal(true),z.literal('blue-bottle')])}).strict()]);
@@ -19,7 +19,7 @@ export async function POST(request:Request){
  let json;try{json=JSON.parse(body);}catch{return Response.json({error:'Send a valid JSON brief.'},{status:400});}
  const parsed=requestSchema.safeParse(json);if(!parsed.success)return Response.json({error:'Check your city, audience references and restaurant brief.'},{status:400});
  const demo='demo' in parsed.data;const demoKey='demo' in parsed.data?String(parsed.data.demo):'';const hit=canonical.get(demoKey);
- if(!(demo&&hit&&hit.expires>Date.now()&&hasResearchQuality(researchForVisit(hit.run)))){
+ if(!(demo&&hit&&hit.expires>Date.now()&&hasInspectionSources(researchForVisit(releaseScoutRun(hit.run))))){
   try{await reserveLiveAnalysis();}catch(error){
    if(demo){try{const saved=qualitySavedDemo('live-unavailable',undefined,demoKey);return new Response(`data: ${JSON.stringify({type:'complete',value:saved})}\n\n`,{headers:{'Content-Type':'text/event-stream','Cache-Control':'no-store'}});}catch{}}
    const blocked=quotaResponse(error);if(blocked)return blocked;throw error;
@@ -30,17 +30,17 @@ export async function POST(request:Request){
   async start(controller){
    const send=(event:unknown)=>{if(!cancelled)controller.enqueue(encoder.encode(`data: ${JSON.stringify(event)}\n\n`));};
    try{
-    if(demo&&hit&&hit.expires>Date.now()&&hasResearchQuality(researchForVisit(hit.run))){
-     send({type:'complete',value:{...hit!.run,cached:true}});
+    if(demo&&hit&&hit.expires>Date.now()&&hasInspectionSources(researchForVisit(releaseScoutRun(hit.run)))){
+     send({type:'complete',value:{...releaseScoutRun(hit!.run),cached:true}});
     }else{
      const live=async(signal?:AbortSignal)=>{
       const prepared=demo?await buildDemoBrief('demo' in parsed.data&&parsed.data.demo==='blue-bottle'):null;signal?.throwIfAborted();
       const brief=prepared?.brief??exploreSchema.parse(parsed.data);
-      return runScout(brief,event=>{signal?.throwIfAborted();if(cancelled)throw new Error('Request cancelled');send(event);},undefined,prepared?.evidence,signal);
+      return runScout(brief,event=>{signal?.throwIfAborted();if(cancelled)throw new Error('Request cancelled');send(event.type==='research'?{...event,value:releaseResearch(event.value)}:event);},undefined,prepared?.evidence,signal);
      };
-     const run=demo?await withDemoDeadline(live):await live();
-     if(demo&&run.exploration.areas.length&&(!run.assessment?.visitFirst||!hasResearchQuality(researchForVisit(run)))){send({type:'complete',value:qualitySavedDemo('live-incomplete',run,demoKey)});}
-     else{if(demo&&hasResearchQuality(researchForVisit(run)))canonical.set(demoKey,{run,expires:Date.now()+900000});send({type:'complete',value:run});}
+     const run=releaseScoutRun(demo?await withDemoDeadline(live):await live());
+     if(demo&&run.exploration.areas.length&&(!run.assessment?.visitFirst||!hasInspectionSources(researchForVisit(run)))){send({type:'complete',value:qualitySavedDemo('live-incomplete',run,demoKey)});}
+     else{if(demo&&hasInspectionSources(researchForVisit(run)))canonical.set(demoKey,{run,expires:Date.now()+900000});send({type:'complete',value:run});}
     }
    }catch(error){if(demo&&!cancelled){try{send({type:'complete',value:qualitySavedDemo('live-unavailable',undefined,demoKey)});}catch{send({type:'error',error:'Live evidence is unavailable, and the saved example does not meet the current research quality standard. Try again later.'});}}else send({type:'error',error:error instanceof SiteError?error.message:'The scouting agent could not finish. Your brief is still here; try again or explore the map.',referenceChoice:error instanceof SiteError?error.referenceChoice:undefined});}
    finally{active--;if(!cancelled)controller.close();}
@@ -51,7 +51,7 @@ export async function POST(request:Request){
 
 function qualitySavedDemo(reason:'live-unavailable'|'live-incomplete',live?:ScoutRun,demoKey='true'){
  const saved=demoKey==='true'?savedPlaygroundDemo(reason):demoKey==='blue-bottle'?savedBlueBottleDemo(reason):undefined;
- if(saved&&hasResearchQuality(researchForVisit(saved)))return saved;
- if(live)return {...live,decisionNotice:'Research is incomplete. Missing fields are shown honestly; this run was not cached.'};
+ if(saved&&hasInspectionSources(researchForVisit(saved)))return saved;
+ if(live)return {...releaseScoutRun(live),decisionNotice:'Local evidence unavailable. Source discovery is incomplete; this run was not cached.'};
  throw new SiteError('Live evidence is unavailable, and no saved example meets the current research quality standard. Please try again later.',503);
 }

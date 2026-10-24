@@ -1,3 +1,5 @@
+> **Current release boundary:** PR10 now withholds generated local summaries instead of claiming locality acceptance. The unused official-facility helper and its tests are moved to the draft quality follow-up (recoverable from commit `0c87211`). The observations below remain historical evidence, not current runtime behavior.
+
 # Recorded source/locality acceptance — 2026-10-24
 
 This is acceptance tooling, **not a runtime locality repair**. PR10 remains draft and research remains geographically unaccepted. The old five-run result established only mechanical field counts, source diversity and locked-point identity. It did not prove that facilities or listings were near that point.

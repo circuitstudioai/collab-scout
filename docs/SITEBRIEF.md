@@ -26,3 +26,7 @@ Audience entities drive Qloo taste signals. Radius, minimum popularity and suppl
 No measured footfall, available units, rent verification, zoning approval, customer demand or success probabilities are inferred. No accounts, billing, outreach or customer validation are claimed. Shared global usage admission is included in the feature branch; configuration and activation status are documented in SETUP.md. Scout/Maybe verdicts describe scouting priority, not commercial viability. Skip cards show actual failed rules. OSM mapped category counts are descriptive context, not an exhaustive competitor census or unmet demand.
 
 Methods: [SCOUT_AGENT.md](SCOUT_AGENT.md). Architecture: [ARCHITECTURE.md](ARCHITECTURE.md). Recording: [restaurant-demo-plan.md](restaurant-demo-plan.md).
+
+## October 24 bounded submission release
+
+The shipped research experience is source discovery, not verified local summaries. All four generated local summary fields are withheld until source-bound proximity validation is implemented. This includes saved/cache, UI and downloads. Source links are explicitly unvalidated inspection material. Qloo audience mapping, deterministic ranking and operator constraints remain usable; no claim of geographic research acceptance is made. See [release readiness](release-readiness.md).

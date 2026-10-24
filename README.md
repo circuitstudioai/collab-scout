@@ -1,6 +1,6 @@
 # Sitebrief — restaurant scouting with evidence
 
-Find areas to investigate for your next restaurant. A bounded Gemini tool workflow combines real Qloo evidence, operator rules and cited practical research. The output is a scouting visit plan, not a lease recommendation.
+Find areas to investigate for your next restaurant. A bounded Gemini tool workflow combines real Qloo evidence, operator rules and web-source discovery. The output is a scouting visit plan, not a lease recommendation.
 
 - **Production:** https://collab-scout.vercel.app
 - **Release evidence:** [verified versions and review previews](docs/VALIDATION.md).
@@ -21,7 +21,7 @@ Balanced discovery excludes the lowest20% of measured local popularity; establis
 
 Click **Try Blue Bottle in Toronto** for the proposed expansion example. **Or try the playground café** retains the owner’s secondary new-concept scenario. Local café references come from Qloo's returned Toronto café-tagged sample, not an exhaustive city leaderboard or proof of family demand. Prices, hours and existing outlets remain unspecified.
 
-Watch actual tool activity, inspect rank/ties and floor, open a cited source, and download the PDF. Four research fields each show grounded findings or “not found.” An unsupported field does not remove the others. Scout/Maybe cards show priority and reasons; Skip cards explain actual rejected rules. Mapped OSM café/restaurant counts add descriptive context, never an unmet-demand claim. Reused real runs show their original time. On unavailable/incomplete live evidence, the canonical example can show a clearly labelled saved reference run with its original date and only the saved highlights. Custom briefs never receive that saved café. The live demo has a60-second work deadline; Gemini/research cancellation prevents later model stages. A separate shared Upstash Redis budget protects live requests. Until the Free Marketplace store is configured, live requests fail closed; recorded examples must pass the same three-field/two-source quality standard. See [setup](docs/SETUP.md).
+Watch actual tool activity, inspect rank/ties and floor, inspect a retrieved source, and download the PDF. Generated local summaries are withheld: source proximity is not yet verified. Four research fields show “Local evidence unavailable; summary withheld.” Retrieved links are sources to inspect, not validated findings. Qloo ranks and tentative Maybe cards remain available; Skip cards explain actual rejected rules. Mapped OSM café/restaurant counts add descriptive context, never an unmet-demand claim. Reused real runs show their original time. On unavailable/incomplete live evidence, the canonical example can show a clearly labelled saved reference run with its original date and only the saved highlights. Custom briefs never receive that saved café. The live demo has a60-second work deadline; Gemini/research cancellation prevents later model stages. A separate shared Upstash Redis budget protects live requests. The Free store is configured with an atomic allowance of 50 top-level live jobs per UTC day per environment. Store errors and exhaustion fail closed. Source-discovery reuse requires at least two distinct source links for the exact visit point; this is not the former three-field research-quality gate. See [setup](docs/SETUP.md).
 
 ## Provider roles
 
@@ -33,7 +33,7 @@ Watch actual tool activity, inspect rank/ties and floor, open a cited source, an
 | `/v2/insights` tags/demographics/brands | Audience taste, signed reference affinities and brand connections |
 | `/v2/analysis/compare` | Returned shared/separate reference and venue tags |
 | Gemini2.5Flash function calls | Allowed tool selection and structured eligible decision codes |
-| Google Search grounding | Source-linked practical research, not Qloo scores |
+| Google Search grounding | Source links to inspect; local summaries withheld, not Qloo scores |
 
 Qloo host is `https://hackathon.api.qloo.com`, with server-side `X-Api-Key`. No failed live call becomes invented/sample evidence. Removing Qloo removes the actual shortlist evidence.
 
@@ -45,7 +45,7 @@ Qloo host is `https://hackathon.api.qloo.com`, with server-side `X-Api-Key`. No 
 {"mcpServers":{"sitebrief":{"url":"https://collab-scout.vercel.app/api/mcp"}}}
 ```
 
-**Quota work is deferred.** This review PR does not add per-visitor limits or MCP authentication. Existing concurrency counters are per instance, not a global usage/spending ceiling.
+**Shared daily admission is active:** Upstash Redis atomically admits up to **50 top-level live jobs per UTC day per environment** (Preview and Production counters are separate). Missing/unavailable storage and exhaustion fail closed. This is not a hard provider billing cap. Per-visitor limits and MCP authentication remain deferred; per-instance concurrency limits are additional protection, not the daily ceiling.
 
 ## Development and evidence
 

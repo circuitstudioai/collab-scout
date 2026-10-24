@@ -1,3 +1,4 @@
+import {releaseResearch,releaseScoutRun} from '@/lib/sites/research-release';
 import {areaVerdict} from '@/lib/sites/verdict';
 import {CITY_QUESTIONS} from '@/lib/sites/structured-research';
 import type {Exploration} from '@/lib/sites/explore';
@@ -6,6 +7,8 @@ import {researchForVisit,reportMatchesArea,visibleResearchSources} from '@/lib/s
 import type {ResearchReport} from '@/lib/sites/research';
 /** A one-page scouting artifact; complete research stays in the text export. */
 export async function downloadExpansionPdf(result:Exploration,run:ScoutRun|null,reports:Record<string,ResearchReport>){
+ reports=Object.fromEntries(Object.entries(reports).map(([id,report])=>[id,releaseResearch(report)]));
+ run=run?releaseScoutRun(run):null;
  const {jsPDF}=await import('jspdf');const pdf=new jsPDF({unit:'mm',format:'a4'});let y=20;
  const clean=(text:string)=>text.replace(/[–—]/g,'-').replace(/[“”]/g,'"').replace(/[’]/g,"'");
  function block(text:string,size=10,limit=600){pdf.setFontSize(size);const shortened=text.length>limit?text.slice(0,limit-1)+'…':text;const lines=pdf.splitTextToSize(clean(shortened),170);pdf.text(lines,20,y);y+=lines.length*Math.max(4.4,size*.44)+4;}

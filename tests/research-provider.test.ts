@@ -6,6 +6,14 @@ jest.mock('@google/genai',()=>({GoogleGenAI:jest.fn(()=>({models:{generateConten
 const input={brief:{city:'Toronto',center:{latitude:43.65,longitude:-79.38},radiusKm:10,concept:'Cafe',references:['Cafe']},area:{name:'Area',address:null,latitude:43.65,longitude:-79.38,venues:[]}} as ResearchInput;
 beforeEach(()=>{generate.mockReset();process.env.GEMINI_API_KEY='private-test-key';jest.spyOn(console,'info').mockImplementation(()=>{});jest.spyOn(console,'warn').mockImplementation(()=>{});});
 afterEach(()=>{delete process.env.GEMINI_API_KEY;jest.restoreAllMocks();});
+it('returns source discovery, not even apparently grounded local claims, at the live boundary',async()=>{
+ const fact='Area has a distant community centre.';
+ generate.mockResolvedValue({text:`[ACTIVITY]\n${fact}`,candidates:[{groundingMetadata:{groundingChunks:[{web:{uri:'https://city.test/centre'}}],groundingSupports:[{segment:{text:fact},groundingChunkIndices:[0]}]}}]});
+ const report=await researchArea(input);
+ expect(report.text).toBe('');expect(report.citations).toEqual([]);expect(report.status).toBe('sources-only');
+ expect(report.fields?.every(field=>field.status==='not-found'&&!field.text)).toBe(true);
+ expect(report.sources).toEqual([{title:'Web source',url:'https://city.test/centre'}]);expect(report.notice).toMatch(/Local evidence unavailable/);
+});
 it('reports rate limits without leaking provider details into the UI or logs',async()=>{
  generate.mockRejectedValue({status:429,message:'private-test-key in provider request'});
  await expect(researchArea(input)).rejects.toMatchObject({code:'provider-rate-limit',message:expect.not.stringContaining('private-test-key')});
@@ -46,14 +54,14 @@ it('marks an unanchored structured field not found while retaining venue evidenc
  const generic='Parkdale encompasses the supplied coordinates.';const local="Mildred’s Temple Kitchen publishes a brunch menu.";
  generate.mockResolvedValue({text:`[ACCESS]\n${generic}\n[VENUES]\n${local}`,candidates:[{groundingMetadata:{groundingChunks:[{web:{uri:'https://example.com/menu'}}],groundingSupports:[generic,local].map(text=>({segment:{text},groundingChunkIndices:[0]}))}}]});
  const report=await researchArea({...input,area:{...input.area,venues:[{name:"Mildred's Temple Kitchen"}]}});
- expect(report.text).toBe(local);expect(report.fields?.find(f=>f.key==='ACCESS')?.status).toBe('not-found');
+ expect(report.text).toBe('');expect(report.summaryPolicy).toBe('withheld-locality-v1');expect(report.fields?.find(f=>f.key==='ACCESS')?.status).toBe('not-found');
 });
 it('uses retained findings before deciding whether a retry needs another extraction call',async()=>{
  const space='Dundas Street West has a commercial leasing listing.';const venue='Cafe Local publishes a menu on Dundas Street West.';const access='Dundas Street West has streetcar service.';
  const grounded=(text:string,facts:string[])=>({text,candidates:[{groundingMetadata:{groundingChunks:[{web:{uri:'https://city.test/transit'}},{web:{uri:'https://local.test/listing'}}],groundingSupports:facts.map((text,i)=>({segment:{text},groundingChunkIndices:[i%2]}))}}]});
  generate.mockResolvedValueOnce(grounded(`[SPACE]\n${space}\n[ACCESS]\nnot found\n[VENUES]\n${venue}\n[ACTIVITY]\nnot found`,[space,venue])).mockResolvedValueOnce({text:'{"fields":[]}'}).mockResolvedValueOnce(grounded(`[SPACE]\nnot found\n[ACCESS]\n${access}\n[VENUES]\nnot found\n[ACTIVITY]\nnot found`,[access]));
  const report=await researchArea({...input,area:{...input.area,name:'Dundas Street West'}});
- expect(report.fields?.filter(f=>f.status==='found')).toHaveLength(3);expect(generate).toHaveBeenCalledTimes(3);
+ expect(report.fields?.filter(f=>f.status==='found')).toHaveLength(0);expect(report.sources).toHaveLength(2);expect(report.summaryPolicy).toBe('withheld-locality-v1');expect(generate).toHaveBeenCalledTimes(3);
  const extraction=JSON.parse(generate.mock.calls[1][0].contents);
  expect(extraction.fields.map(([key]:string[])=>key)).toEqual(['ACCESS','ACTIVITY']);
  const retry=JSON.parse(generate.mock.calls[2][0].contents);expect(retry.correction).toContain('only on the missing fields');

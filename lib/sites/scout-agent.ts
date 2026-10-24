@@ -1,3 +1,4 @@
+import {releaseResearch,releaseScoutRun} from './research-release';
 import {z} from 'zod';
 import {retrieveStoreCounts,type StoreCount} from './store-counts';
 import type {Content,GenerateContentParameters,GenerateContentResponse,FunctionDeclaration,FunctionCallingConfigMode} from '@google/genai';
@@ -24,7 +25,7 @@ const declarations:FunctionDeclaration[]=[
 ];
 const titles:Record<string,string>={explore_areas:'Mapping audience fit against popularity',audience_profile:'Reading audience taste and demographic signals',compare_audiences:'Comparing an actual nearby venue’s audience tags',research_area:'Researching the selected area’s practical trade-offs'};
 /** A bounded tool-calling loop. The model chooses tool arguments; only verified evidence can be returned. */
-export async function runScout(brief:ExploreBrief,onEvent:(event:ScoutEvent)=>void,generateOverride?:Generate,verified?:{references:Exploration['references'];trace:import('./schema').Trace[]},signal?:AbortSignal):Promise<ScoutRun>{
+async function collectScout(brief:ExploreBrief,onEvent:(event:ScoutEvent)=>void,generateOverride?:Generate,verified?:{references:Exploration['references'];trace:import('./schema').Trace[]},signal?:AbortSignal):Promise<ScoutRun>{
  let generate=generateOverride;
  if(!generate){const key=process.env.GEMINI_API_KEY?.trim();if(!key)throw new SiteError('The scouting agent is not configured. You can still explore the map.',503);const {GoogleGenAI}=await import('@google/genai');const ai=new GoogleGenAI({apiKey:key,httpOptions:{timeout:30000}});generate=input=>ai.models.generateContent(input);}
  const contents:Content[]=[{role:'user',parts:[{text:JSON.stringify(brief)}]}];
@@ -85,4 +86,9 @@ export async function runScout(brief:ExploreBrief,onEvent:(event:ScoutEvent)=>vo
  }
  throw new SiteError('The agent could not finish within its bounded tool budget. Your brief is unchanged. Use map exploration or try again.',502);
  }catch(error){if(signal?.aborted)throw error;if(exploration?.areas.length)return rankingFallback();throw error;}
+}
+
+export async function runScout(brief:ExploreBrief,onEvent:(event:ScoutEvent)=>void,generateOverride?:Generate,verified?:{references:Exploration['references'];trace:import('./schema').Trace[]},signal?:AbortSignal):Promise<ScoutRun>{
+ const run=await collectScout(brief,event=>onEvent(event.type==='research'?{...event,value:releaseResearch(event.value)}:event),generateOverride,verified,signal);
+ return releaseScoutRun(run);
 }

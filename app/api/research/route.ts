@@ -3,7 +3,7 @@ import { z } from 'zod';
 import { researchArea, researchSchema, researchFailure } from '@/lib/sites/research';
 export const maxDuration=60;
 let active=0;
-export async function GET(){return Response.json({name:'research_restaurant_area',endpoint:'/api/research',method:'POST',description:'Search public web sources for practical restaurant scouting context. Returns provider-grounded inline citations, retrieval date and search queries. Does not change Qloo taste rankings.',input_schema:z.toJSONSchema(researchSchema)});}
+export async function GET(){return Response.json({name:'research_restaurant_area',endpoint:'/api/research',method:'POST',description:'Search public web sources for practical restaurant scouting context. Returns source links for inspection, retrieval date and search queries. Generated local summaries are withheld because proximity is not verified. Does not change Qloo taste rankings.',input_schema:z.toJSONSchema(researchSchema)});}
 export async function POST(request:Request){
  if(active>=2)return Response.json({error:'Research is busy. Try again shortly; your map is still available.'},{status:429});
  active++;

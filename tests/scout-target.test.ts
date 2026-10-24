@@ -28,6 +28,13 @@ it('researches the locked highest-ranked visit even when the model requests a lo
  expect(researchArea).toHaveBeenCalledWith(expect.objectContaining({area:expect.objectContaining({latitude:top.latitude,longitude:top.longitude})}),undefined,['ACCESS','VENUES']);
  expect(Object.keys(run.research)).toEqual([top.id]);expect(run.assessment?.visitFirst).toBe(top.id);expect(run.steps.find(s=>s.tool==='research_area')?.notice).toMatch(/ACCESS → VENUES.*arrival/);
 });
+it('cannot leak a legacy local summary through agent streaming or completion',async()=>{
+ const events:unknown[]=[];const run=await runScout(brief,event=>events.push(event),generator());
+ const researchEvents=events.filter(event=>(event as {type:string}).type==='research');
+ expect(researchEvents).toHaveLength(1);expect(JSON.stringify(researchEvents)).not.toContain('Published menu.');
+ expect(run.research[top.id].text).toBe('');expect(run.research[top.id].citations).toEqual([]);
+ expect(run.decisionNotice).toMatch(/Qloo ranking only/);
+});
 it('cannot switch the final visit after researching the locked point',async()=>{
  const run=await runScout(brief,()=>{},generator('area-3'));
  expect(run.assessment?.visitFirst).toBe(top.id);expect(Object.keys(run.research)).toEqual([top.id]);

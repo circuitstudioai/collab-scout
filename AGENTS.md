@@ -31,3 +31,7 @@ This feature branch is authorized through reviewable PR and Preview verification
 ## Extensibility
 
 Keep provider retrieval, deterministic selection, structured agent orchestration and presentation separate. Other industries require their own evidence and suitability rules; do not add a generic industry promise without a supported workflow.
+
+## Superseding owner release decision — PM7115, October 24 16:01 UTC
+
+Abhi approved a bounded readiness pass, PR10 merge and Production verification. Withhold unverified local summaries across all server/client/saved/cache/export surfaces; retain Qloo rankings, source inspection and practical questions. No general geographic engine before merge. Correct quota docs (50 top-level jobs/UTC day/environment). Current source-discovery acceptance is not three-field quality or geographic acceptance. Open a new draft follow-up for locality and completeness; do not block the submission demo on that follow-up. Prior draft/no-merge/no-Production statements above are historical and superseded for this release only. No paid upgrades, invented counts or false evidence claims.

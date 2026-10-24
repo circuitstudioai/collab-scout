@@ -1,3 +1,4 @@
+import {releaseResearch} from './research-release';
 import { z } from 'zod';
 import { exploreSchema } from './explore';
 
@@ -13,7 +14,7 @@ import {type ResearchReport,ResearchError,researchFailure} from './research-repo
 export {ResearchError,researchFailure} from './research-report';
 import {extractGroundedFields} from './research-extraction';
 import {buildStructuredResearch,mergeResearchFields,localResearchAnchors,hasResearchQuality,researchRecoveryFields,type FieldKey} from './structured-research';
-export async function researchArea(input:ResearchInput,signal?:AbortSignal,priorities?:FieldKey[]):Promise<ResearchReport>{
+async function collectAreaResearch(input:ResearchInput,signal?:AbortSignal,priorities?:FieldKey[]):Promise<ResearchReport>{
   signal?.throwIfAborted();
   const key=process.env.GEMINI_API_KEY?.trim();
   if(!key)throw new ResearchError('not-configured');
@@ -66,4 +67,9 @@ HARD BOUNDARIES: no digits, quantities, prices, dates, numerical statistics or s
   }
   if(retained)return retained;
   throw new ResearchError('validation-rejected');
+}
+
+/** All public callers (HTTP, MCP and agent) receive the same bounded release view. */
+export async function researchArea(input:ResearchInput,signal?:AbortSignal,priorities?:FieldKey[]):Promise<ResearchReport>{
+ return releaseResearch(await collectAreaResearch(input,signal,priorities));
 }
