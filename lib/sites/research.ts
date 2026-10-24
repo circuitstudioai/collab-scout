@@ -12,7 +12,7 @@ export type {ResearchReport} from './research-report';
 import {type ResearchReport,ResearchError,researchFailure} from './research-report';
 export {ResearchError,researchFailure} from './research-report';
 import {extractGroundedFields} from './research-extraction';
-import {buildStructuredResearch,mergeResearchFields,localResearchAnchors,hasResearchQuality,RESEARCH_FIELDS,type FieldKey} from './structured-research';
+import {buildStructuredResearch,mergeResearchFields,localResearchAnchors,hasResearchQuality,researchRecoveryFields,type FieldKey} from './structured-research';
 export async function researchArea(input:ResearchInput,signal?:AbortSignal,priorities?:FieldKey[]):Promise<ResearchReport>{
   signal?.throwIfAborted();
   const key=process.env.GEMINI_API_KEY?.trim();
@@ -39,15 +39,21 @@ HARD BOUNDARIES: no digits, quantities, prices, dates, numerical statistics or s
   const metadata=response.candidates?.[0]?.groundingMetadata;
   const anchors=localResearchAnchors(input.area);
   let report=buildStructuredResearch({text:response.text,metadata},anchors);
-  if(!hasResearchQuality(report)){
-   try{const extracted=await extractGroundedFields({text:response.text,metadata},anchors,p=>ai.models.generateContent(p),bounded);if(extracted)report=mergeResearchFields(report,extracted);}catch{/* Keep grounded fields if the bounded formatter fails. */}
-  }
   report.target={areaId:input.area.id,latitude:input.area.latitude,longitude:input.area.longitude};
+  // Evaluate the accumulated evidence first: a retry may already fill the gate.
   report=mergeResearchFields(retained,report);
+  if(!hasResearchQuality(report)){
+   try{
+    const missing=researchRecoveryFields(report);
+    const extracted=await extractGroundedFields({text:response.text,metadata},anchors,p=>ai.models.generateContent(p),bounded,missing);
+    if(extracted){extracted.target=report.target;report=mergeResearchFields(report,extracted);}
+   }catch{/* Keep grounded fields if the bounded formatter fails. */}
+  }
   console.info(JSON.stringify({event:'sitebrief.research',requestId,attempt:attempt+1,durationMs:Date.now()-started,status:report.status,sourceCount:report.sources.filter(s=>s.url).length,citationCount:report.citations.length,omittedSentences:report.omittedSentences,validationRules:report.validationRules}));
   if(hasResearchQuality(report))return report;
   if(!retained||(report.fields?.filter(f=>f.status==='found').length??0)>(retained.fields?.filter(f=>f.status==='found').length??0))retained=report;
-  issue=`Retry once: seek grounded evidence for these missing fields: ${RESEARCH_FIELDS.filter(([key])=>report.fields?.find(f=>f.key===key)?.status!=='found').map(([key])=>key).join(', ')}. Return all four sections with supported evidence. At least three distinct fields from two sources are needed. Invalid field reasons: ${report.validationRules?.join('; ')}. Remove address numbers and route numbers from your new answer: name the street/transit service without its number. Never invent missing evidence.`;
+  const recovery=researchRecoveryFields(report);
+  issue=`Retry once: seek grounded evidence for these missing fields or fields needing a distinct source: ${recovery.join(', ')}. Already validated findings are retained. Focus your searches and answer only on the missing fields or requested new sources; use 'not found' for other fields instead of re-researching them. At least three distinct fields from two sources are needed across both attempts. Omit quantities, address numbers and transit route numbers from your new answer: name the street/transit service without its number. Never invent missing evidence.`;
   }catch(error){
    const failure=deadline.aborted?new ResearchError('provider-timeout'):researchFailure(error);
    const providerStatus=(error as {status?:unknown})?.status;

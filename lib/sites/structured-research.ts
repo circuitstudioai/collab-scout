@@ -54,11 +54,17 @@ export function buildStructuredResearch(response:{text?:string;metadata?:Groundi
  const count=fields.filter(f=>f.status==='found').length;
  return {validationRules:diagnostics,fields,text,sources,citations,createdAt:new Date().toISOString(),queries:metadata?.webSearchQueries??[],searchSuggestionsHtml:metadata?.searchEntryPoint?.renderedContent??'',status:count===4?'cited':count?'partial':'sources-only',notice:count===4?undefined:'Missing or unsupported fields are marked “not found”. Other cited fields are retained.'};
 }
+function citedUrls(fields:ResearchField[],sources:ResearchReport['sources']){
+ return new Set(fields.filter(f=>f.status==='found').flatMap(f=>f.sourceIndices.map(i=>sources[i]?.url).filter(Boolean)));
+}
 export function hasResearchQuality(report:ResearchReport|undefined){
  if(!report?.fields)return false;
  const filled=report.fields.filter(f=>f.status==='found'&&f.text.trim()&&f.sourceIndices.length);
- const urls=new Set(filled.flatMap(f=>f.sourceIndices.map(i=>report.sources[i]?.url).filter(Boolean)));
- return new Set(filled.map(f=>f.key)).size>=3&&urls.size>=2;
+ return new Set(filled.map(f=>f.key)).size>=3&&citedUrls(filled,report.sources).size>=2;
+}
+/** Missing fields normally suffice; insufficient source diversity needs new evidence, not more of the same. */
+export function researchRecoveryFields(report:ResearchReport):FieldKey[]{
+ return RESEARCH_FIELDS.filter(([key])=>citedUrls(report.fields??[],report.sources).size<2||report.fields?.find(f=>f.key===key)?.status!=='found').map(([key])=>key);
 }
 /** Retry can fill missing fields without dropping prior grounded findings for the same target. */
 export function mergeResearchFields(first:ResearchReport|undefined,second:ResearchReport):ResearchReport{
@@ -66,7 +72,12 @@ export function mergeResearchFields(first:ResearchReport|undefined,second:Resear
  if(JSON.stringify(first.target)!==JSON.stringify(second.target))throw new ResearchError('area-mismatch');
  const sources=[...first.sources];const remap=new Map<number,number>();
  for(const [i,source] of second.sources.entries()){let index=sources.findIndex(s=>s.url===source.url);if(index<0){index=sources.length;sources.push(source);}remap.set(i,index);}
- const fields=second.fields.map(f=>f.status==='found'?{...f,sourceIndices:f.sourceIndices.map(i=>remap.get(i)!)}:first.fields!.find(old=>old.key===f.key&&old.status==='found')??f);
+ let fields=second.fields.map(f=>first.fields!.find(old=>old.key===f.key&&old.status==='found')??(f.status==='found'?{...f,sourceIndices:f.sourceIndices.map(i=>remap.get(i)!)}:f));
+ // Retaining old findings must not prevent recovery from a single-source response.
+ if(citedUrls(fields,sources).size<2){
+  const refreshed=second.fields.map(f=>f.status==='found'?{...f,sourceIndices:f.sourceIndices.map(i=>remap.get(i)!)}:first.fields!.find(old=>old.key===f.key&&old.status==='found')??f);
+  if(citedUrls(refreshed,sources).size>=2)fields=refreshed;
+ }
  let text='';const citations:ResearchReport['citations']=[];
  for(const field of fields){if(field.status!=='found')continue;text+=(text?'\n\n':'')+field.text;citations.push({end:text.length,sourceIndices:field.sourceIndices});}
  const count=fields.filter(f=>f.status==='found').length;

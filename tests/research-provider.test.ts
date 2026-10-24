@@ -48,3 +48,13 @@ it('marks an unanchored structured field not found while retaining venue evidenc
  const report=await researchArea({...input,area:{...input.area,venues:[{name:"Mildred's Temple Kitchen"}]}});
  expect(report.text).toBe(local);expect(report.fields?.find(f=>f.key==='ACCESS')?.status).toBe('not-found');
 });
+it('uses retained findings before deciding whether a retry needs another extraction call',async()=>{
+ const space='Dundas Street West has a commercial leasing listing.';const venue='Cafe Local publishes a menu on Dundas Street West.';const access='Dundas Street West has streetcar service.';
+ const grounded=(text:string,facts:string[])=>({text,candidates:[{groundingMetadata:{groundingChunks:[{web:{uri:'https://city.test/transit'}},{web:{uri:'https://local.test/listing'}}],groundingSupports:facts.map((text,i)=>({segment:{text},groundingChunkIndices:[i%2]}))}}]});
+ generate.mockResolvedValueOnce(grounded(`[SPACE]\n${space}\n[ACCESS]\nnot found\n[VENUES]\n${venue}\n[ACTIVITY]\nnot found`,[space,venue])).mockResolvedValueOnce({text:'{"fields":[]}'}).mockResolvedValueOnce(grounded(`[SPACE]\nnot found\n[ACCESS]\n${access}\n[VENUES]\nnot found\n[ACTIVITY]\nnot found`,[access]));
+ const report=await researchArea({...input,area:{...input.area,name:'Dundas Street West'}});
+ expect(report.fields?.filter(f=>f.status==='found')).toHaveLength(3);expect(generate).toHaveBeenCalledTimes(3);
+ const extraction=JSON.parse(generate.mock.calls[1][0].contents);
+ expect(extraction.fields.map(([key]:string[])=>key)).toEqual(['ACCESS','ACTIVITY']);
+ const retry=JSON.parse(generate.mock.calls[2][0].contents);expect(retry.correction).toContain('only on the missing fields');
+});

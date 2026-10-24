@@ -74,3 +74,12 @@ Deferred: retrospective opening scorecard, share-link storage, top-two deep rese
 - Remaining: diagnose bounded research completeness/retry reliability, preserve evidence/number guards and explicit missing fields, then obtain a complete fresh5/5 batch and final live browser/cache/fallback/custom/MCP receipts. Missing mapped counts may remain explicitly Unavailable. PR remains draft. Production app activation, merge and submission remain separate owner gates.
 
 - Actual browser follow-up at11:43UTC used an un-intercepted Blue Bottle request on the same Preview: fresh live response, neither saved nor cached, three grounded fields for area-1; decision rendered, downloaded PDF matched the selected coordinates, mobile had no overflow, and no page errors. This separate successful UI run does not replace the failed first run in the original4/5 batch. Raw receipt: `/tmp/sitebrief-actual-live-ui-20261024.json`.
+
+
+## Research recovery repair — October 24 sprint continuation
+
+The saved failed hosted batch remains **4/5**, not superseded by unit tests. Address and route numbers were correctly rejected. Code review reproduced two recovery defects: a retry replaced the first validated finding/source identity, and a retry that already completed the three-field/two-source gate still invoked another formatter before merging retained evidence.
+
+Recovery now merges retained evidence before deciding on extraction, requests missing fields rather than redoing validated ones, and does not echo rejected numeric values in the correction prompt. If cited source diversity is insufficient, recovery still requests fresh sources and can replace findings to meet the unchanged distinct-source gate. Exact grounded excerpt, numeric/gap/obligation, target-identity, forty-second deadline and two-Search/two-extraction ceilings are unchanged. No new provider, quota reset, infrastructure, Production deployment or approval bypass.
+
+Focused regressions observed both defects red, then green. New-head hosted acceptance remains to be measured; this change is not a claim that provider completeness or geographic relevance is solved.

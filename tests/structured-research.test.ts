@@ -1,4 +1,4 @@
-import {buildStructuredResearch,hasResearchQuality,mergeResearchFields} from '../lib/sites/structured-research';
+import {buildStructuredResearch,hasResearchQuality,mergeResearchFields,researchRecoveryFields} from '../lib/sites/structured-research';
 const fields=['SPACE','ACCESS','VENUES','ACTIVITY'];
 const facts=['Dundas Street West has a commercial leasing listing.','Dundas Street West is served by the streetcar.','Cafe Local publishes a menu on Dundas Street West.','A public library on Dundas Street West hosts events.'];
 const text=fields.map((f,i)=>`[${f}]\n${facts[i]}`).join('\n\n');
@@ -29,4 +29,21 @@ it('keeps earlier fields when the one bounded retry fills different missing fiel
  const first=buildStructuredResearch({text,metadata:{...metadata,groundingSupports:metadata.groundingSupports.slice(0,2)}},['Dundas Street West']);
  const second=buildStructuredResearch({text,metadata:{...metadata,groundingSupports:metadata.groundingSupports.slice(2)}},['Dundas Street West']);
  const merged=mergeResearchFields(first,second);expect(merged.fields?.filter(f=>f.status==='found')).toHaveLength(4);expect(hasResearchQuality(merged)).toBe(true);expect(merged.citations).toHaveLength(4);
+});
+it('fills only missing fields on retry and keeps the first validated finding and source identity',()=>{
+ const first=buildStructuredResearch({text,metadata:{...metadata,groundingSupports:metadata.groundingSupports.slice(0,2)}},['Dundas Street West']);
+ const replacement='Dundas Street West has another commercial leasing listing.';
+ const second=buildStructuredResearch({text:text.replace(facts[0],replacement),metadata:{...metadata,groundingChunks:[{web:{uri:'https://retry.test/listing'}},metadata.groundingChunks[1]],groundingSupports:[{segment:{text:replacement},groundingChunkIndices:[0]},...metadata.groundingSupports.slice(2)]}},['Dundas Street West']);
+ const merged=mergeResearchFields(first,second);
+ expect(merged.fields?.[0].text).toBe(facts[0]);
+ expect(merged.fields?.[0].sourceIndices.map(i=>merged.sources[i].url)).toEqual(['https://city.test/transit']);
+ expect(merged.fields?.filter(f=>f.status==='found')).toHaveLength(4);
+});
+
+it('can recover source diversity rather than permanently freezing a single-source report',()=>{
+ const single={...metadata,groundingChunks:[metadata.groundingChunks[0]],groundingSupports:facts.map(text=>({segment:{text},groundingChunkIndices:[0]}))};
+ const first=buildStructuredResearch({text,metadata:single},['Dundas Street West']);
+ expect(hasResearchQuality(first)).toBe(false);expect(researchRecoveryFields(first)).toEqual(fields);
+ const second=buildStructuredResearch({text,metadata},['Dundas Street West']);
+ expect(hasResearchQuality(mergeResearchFields(first,second))).toBe(true);
 });
