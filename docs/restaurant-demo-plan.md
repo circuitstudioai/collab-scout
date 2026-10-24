@@ -1,17 +1,19 @@
-# Playground café recording guide
+# Sitebrief recording guide
 
-Scenario: a new café with an indoor playground in Toronto, with popular Toronto cafés as audience references. Prices, hours and existing outlets remain unset.
+Primary scenario: a proposed Blue Bottle expansion into Toronto. Use https://sitebrief-circuitstudio.vercel.app. The playground café is a separate secondary example. Prices, hours and existing outlets remain unset unless supplied.
 
-1. Click **Try the Toronto playground café**. Let actual requests finish. If a completed real run is reused, show its original retrieval time and label it as reused.
-2. Show which local café records were selected. They come from a returned café-tagged sample, not an exhaustive city leaderboard or proof of family demand.
-3. Show real exploration/profile/compare/research tool completions. Never replace actual execution with a simulated animation.
-4. Inspect the default20th-percentile popularity floor. Optionally compare the median setting using a custom run. This is Qloo popularity, not measured foot traffic.
-5. Show actual shortlist rank and any ties. A lower-ranked visit choice must not be described as highest contrast. Practical visit questions stay separate from measured facts.
-6. Open a cited local research source. Space, access, permissions and available premises require verification.
-7. Download the one-page PDF and show the source links. Full notes retain the longer evidence.
+1. Click **Try Blue Bottle in Toronto** and let actual requests finish.
+2. Show the Blue Bottle audience reference and real exploration/profile/compare/source-discovery tool activity.
+3. Explain the displayed popularity floor and actual shortlist rank/ties. Qloo popularity is not measured foot traffic; taste contrast is not demand or a business-success forecast.
+4. Show that the visit-first point stays locked to the highest-ranked eligible map point. No premises availability or permission is implied.
+5. Show the four withheld local-summary fields. Open a retrieved source as a link to inspect, not a validated nearby finding. Read the City/landlord questions as questions.
+6. Download the one-page PDF and scouting notes. Show the same point identity, limits and original timestamp/provenance.
+7. Show https://github.com/circuitstudioai/sitebrief as the source repository. Optionally mention the read-only MCP endpoint at `/api/mcp` without claiming every branded client was tested.
 
-Edit waiting time transparently. Do not splice failed research into a claimed success, present reused evidence as fresh, or claim per-visitor quota protection. Production promotion and Devpost submission are not part of this PR.
+Edit waiting time transparently. Never replace actual execution with simulated progress, splice failed research into a claimed success, or present cached/saved data as fresh. Shared Redis admission is active; per-visitor authentication is not. Do not claim geographic acceptance while local summaries remain withheld.
 
 ## Failure recovery
 
-Live custom briefs keep a clearly labelled ranking-only visit if research or final model output fails after valid Qloo evidence is available. A genuine empty shortlist stays empty. The canonical café demonstration may instead show its dated saved reference on failure/incomplete research or its sixty-second deadline. Show the saved-run banner, recorded tool log and highlights-only map; never present it as a new live result. Saved provenance also travels into the PDF and notes.
+Custom briefs retain a clearly labelled ranking-only visit if research or final model output fails after valid Qloo evidence. A genuine empty shortlist stays empty. Canonical demonstrations may show a dated saved reference on failure/incomplete source discovery or the sixty-second work deadline. Show its saved-run banner, recorded tool log and highlights-only map; never present it as a fresh result. Saved provenance also travels into PDF and notes.
+
+This guide describes a recording plan, not an already-recorded video or a Devpost submission receipt.

@@ -19,7 +19,7 @@ Never commit values or add a NEXT_PUBLIC prefix. Qloo uses X-Api-Key. Gemini2.5F
 
 ## Vercel
 
-Use the existing collab-scout project. Set Preview and Production environment values, then redeploy after updates. Verify a real hosted request: environment configuration alone does not establish successful integration. Sensitive environment downloads may contain placeholders; a local placeholder probe cannot diagnose a deployed credential.
+Use the existing sitebrief project. Set Preview and Production environment values, then redeploy after updates. Verify a real hosted request: environment configuration alone does not establish successful integration. Sensitive environment downloads may contain placeholders; a local placeholder probe cannot diagnose a deployed credential.
 
 ## Checks
 
@@ -35,7 +35,7 @@ Optional hosted-verification tools are Playwright/Chromium, axe-core, pdf-lib an
 
 The owner selected **Upstash for Redis through Vercel Marketplace**, Free plan only, US East (`iad1`). No paid plan or upgrade is authorized. The owner later authorized the bounded PR10 release, merge and Production verification; see [release readiness](release-readiness.md). Supabase is no longer used for quota; the un-applied SQL migration and its local proof script have been removed. Historical PostgreSQL receipts do not prove Redis acceptance.
 
-Use the existing Vercel project `collab-scout` in `circuitstudioais-projects`. CLI discovery confirms product `upstash/upstash-kv`, plan `free`, and metadata below. The owner accepted Marketplace terms on October 24. Dedicated resource `sitebrief-quota` (`store_GsZwpkM7ic7yWpSk`) is now provisioned on verified Free in `iad1`, with `autoUpgrade=false`, `eviction=false`, and `prodPack=false`. It is connected to Preview and Production. Sensitive `SITEBRIEF_REDIS_REST_URL` and `SITEBRIEF_REDIS_REST_TOKEN` aliases are configured for both targets. Do not create a duplicate resource or substitute a paid plan. Hosted quota proof passed. The original 4/5 field-completeness result is historical; current release withholds local summaries and does not claim geographic acceptance. See the latest checkpoint in `docs/final-features/README.md`.
+Use the existing Vercel project `sitebrief` in `circuitstudioais-projects`. CLI discovery confirms product `upstash/upstash-kv`, plan `free`, and metadata below. The owner accepted Marketplace terms on October 24. Dedicated resource `sitebrief-quota` (`store_GsZwpkM7ic7yWpSk`) is now provisioned on verified Free in `iad1`, with `autoUpgrade=false`, `eviction=false`, and `prodPack=false`. It is connected to Preview and Production. Sensitive `SITEBRIEF_REDIS_REST_URL` and `SITEBRIEF_REDIS_REST_TOKEN` aliases are configured for both targets. Do not create a duplicate resource or substitute a paid plan. Hosted quota proof passed. The original 4/5 field-completeness result is historical; current release withholds local summaries and does not claim geographic acceptance. See the latest checkpoint in `docs/final-features/README.md`.
 
 After confirming no duplicate resource exists, the authorized setup is:
 

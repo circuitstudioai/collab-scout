@@ -41,7 +41,7 @@ export async function retrieveStoreCount(point:StoreCountPoint,format:string,sig
  if(hit&&hit.expires>Date.now())return {...hit.value,target:{id:point.id,latitude:point.latitude,longitude:point.longitude},cached:true};
  try{
   const deadline=AbortSignal.timeout(7000);const requestSignal=signal?AbortSignal.any([signal,deadline]):deadline;
-  const response=await fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded','User-Agent':'Sitebrief/1.0 (https://github.com/circuitstudioai/collab-scout)'},body:new URLSearchParams({data:query}).toString(),signal:requestSignal,cache:'no-store'});
+  const response=await fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded','User-Agent':'Sitebrief/1.0 (https://github.com/circuitstudioai/sitebrief)'},body:new URLSearchParams({data:query}).toString(),signal:requestSignal,cache:'no-store'});
   if(!response.ok)throw Error('Provider unavailable');
   const elements=parseElements(await response.json());
   if(requestSignal.aborted)throw Error('Request cancelled');
@@ -64,7 +64,7 @@ export async function retrieveStoreCounts(points:StoreCountPoint[],format:string
  for(const p of chosen){const hit=cache.get(`${p.latitude},${p.longitude}:${category}`);if(hit&&hit.expires>Date.now())result[p.id]={...hit.value,target:p,cached:true};else missing=true;}
  if(!missing)return result;
  let elements:Element[]|undefined;
- try{signal?.throwIfAborted();const deadline=AbortSignal.timeout(12000);const response=await fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded','User-Agent':'Sitebrief/1.0 (https://github.com/circuitstudioai/collab-scout)'},body:new URLSearchParams({data:query}).toString(),signal:signal?AbortSignal.any([signal,deadline]):deadline,cache:'no-store'});if(!response.ok)throw Error();elements=parseElements(await response.json());signal?.throwIfAborted();}catch{}
+ try{signal?.throwIfAborted();const deadline=AbortSignal.timeout(12000);const response=await fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded','User-Agent':'Sitebrief/1.0 (https://github.com/circuitstudioai/sitebrief)'},body:new URLSearchParams({data:query}).toString(),signal:signal?AbortSignal.any([signal,deadline]):deadline,cache:'no-store'});if(!response.ok)throw Error();elements=parseElements(await response.json());signal?.throwIfAborted();}catch{}
  const {distanceKm}=await import('./compare');
  for(const p of chosen){if(result[p.id])continue;const local=elements?.filter(e=>distanceKm(p,{latitude:e.lat??e.center!.lat,longitude:e.lon??e.center!.lon})<=1);
   const value:StoreCount={target:p,category,categoryLabel,radiusMeters:1000,status:local?'available':'unavailable',retrievedAt:new Date().toISOString(),count:local?countListings(local,categories):null,source,notice:local?COVERAGE:`Listing count unavailable; no zero count inferred. ${COVERAGE}`,cached:false};result[p.id]=value;

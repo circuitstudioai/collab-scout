@@ -12,7 +12,7 @@ export async function GET(request: Request) {
   url.searchParams.set('q', query); url.searchParams.set('limit', '5'); url.searchParams.set('lang', 'en');
   if (lat !== null && lon !== null) { url.searchParams.set('lat', lat); url.searchParams.set('lon', lon); }
   try {
-    const response = await fetch(url, { headers: { 'User-Agent': 'Sitebrief/1.0 (https://github.com/circuitstudioai/collab-scout)', Accept: 'application/json' }, signal: AbortSignal.timeout(8000) });
+    const response = await fetch(url, { headers: { 'User-Agent': 'Sitebrief/1.0 (https://github.com/circuitstudioai/sitebrief)', Accept: 'application/json' }, signal: AbortSignal.timeout(8000) });
     if (!response.ok) throw new Error('Location provider unavailable');
     const locations = parseLocations(await response.json());
     if (cache.size >= 100) cache.delete(cache.keys().next().value!);
