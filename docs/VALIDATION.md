@@ -33,3 +33,11 @@ The initial regression reproduced the agent calling a lower-ranked point highest
 ## Required gates
 
 Run unit/contract tests, lint, build and diff checks. Verify fresh Blue Bottle and the Toronto café flow separately from synthetic/replayed UI checks. Confirm actual rank/tie claims, enforced popularity floor, missing-data behavior, map/card links, source inspection, one-page PDF, desktop/mobile accessibility and stale-result invalidation. Preserve secondary comparison and existing MCP behavior. Report exactly what was tested, not a universal certification.
+
+## 2026-10-24 scoped-geography candidate (PR10)
+
+After the mechanical five-run gate passed, manual source inspection found activity facilities approximately 2.56 and 3.31 km from the selected point. Whole-street anchor matching is not geographic verification. Earlier count-only success remains historical, not full acceptance.
+
+The next candidate supplies an explicit one-kilometre search scope around the locked coordinates, with each Qloo venue kept paired to its address and street. The search and exact-quote extraction stages both receive this scope. Venue addresses are disambiguation hints, not independently checked locations; do not infer a continuous street range, or search a reverse-geocoded home as commercial premises. Missing proximity evidence must remain not found. No sentence-deletion rule, model change, extra provider call, quota change or rank change is introduced.
+
+160 tests / 28 suites, lint and build pass. This is a prompt/context improvement, **not server-enforced source-distance validation** and not proof that the geographic defect is solved. Fresh Preview research and individual cited-source inspection remain required; keep draft/merge/Production/submission gates.

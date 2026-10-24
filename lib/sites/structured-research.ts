@@ -16,6 +16,17 @@ export function localResearchAnchors(area:{name:string;address:string|null;venue
  const streets=[area.address,...area.venues.map(v=>v.address)].flatMap(address=>{const street=streetFromAddress(address);return street?[street]:[];});
  return [...new Set([area.name.replace(/^Near /,''),...area.venues.map(v=>v.name),...streets])].filter(a=>a&&!/Unnamed map point/.test(a));
 }
+/** Search hints retain venue/address relationships; a whole street is not a local segment.
+ * The reverse-geocoded point can be a home, so it is never a premises/search address.
+ * These are provider hints, not independently verified source-location proof. */
+export function localResearchScope(area:{latitude:number;longitude:number;venues:{name:string;address?:string}[]}){
+ return {
+  center:{latitude:area.latitude,longitude:area.longitude},
+  radiusMeters:1000,
+  venueAddressHints:area.venues.map(venue=>({name:venue.name,...(venue.address?{address:venue.address}:{}),street:streetFromAddress(venue.address)??null})),
+  instructions:'Use each named venue with its own supplied address to disambiguate the local street segment. Search within one kilometre of the locked coordinates. Address numbers are search hints only, never narrative. Do not treat an entire street or neighbourhood as this search area. A shared street name alone does not establish proximity. Verify the actual location of every new listing, stop or facility; if proximity cannot be established, return not found. Do not infer a continuous street range between supplied venue addresses.'
+ };
+}
 /** Fixed section protocol supports Search on the current model without assuming tools + JSON-schema support.
  * Validate complete fields, never delete sentences and splice a different claim together. */
 export function buildStructuredResearch(response:{text?:string;metadata?:GroundingMetadata},anchors:string[]):ResearchReport{
