@@ -1,23 +1,20 @@
-/** A shared atomic budget. Process-local concurrency is not a usage quota. */
+/** Shared Supabase admission. The database owns the UTC day, limit and atomic increment. */
 export class QuotaError extends Error{
  constructor(message:string,public status=503,public retryAfter?:number){super(message);}
 }
-export const QUOTA_SCRIPT=`local n=tonumber(redis.call('GET',KEYS[1]) or '0'); if n>=tonumber(ARGV[1]) then return {0,n}; end; n=redis.call('INCR',KEYS[1]); redis.call('EXPIREAT',KEYS[1],ARGV[2]); return {1,n}`;
-export const DEFAULT_DAILY_LIMIT=50;
 export async function reserveLiveAnalysis(now=new Date()){
- const url=process.env.SITEBRIEF_REDIS_REST_URL?.trim();const token=process.env.SITEBRIEF_REDIS_REST_TOKEN?.trim();
- const limit=Number(process.env.SITEBRIEF_DAILY_ANALYSIS_LIMIT??DEFAULT_DAILY_LIMIT);
- let valid=false;try{valid=new URL(url??'').protocol==='https:';}catch{}
- if(!valid||!token||!Number.isSafeInteger(limit)||limit<1||limit>10000)throw new QuotaError('Live analysis is unavailable until shared usage protection is configured. Recorded examples remain available.');
- const reset=new Date(now);reset.setUTCHours(24,0,0,0);const retryAfter=Math.ceil((reset.getTime()-now.getTime())/1000);
- const key=`sitebrief:budget:v1:${process.env.VERCEL_ENV==='production'?'production':'preview'}:${now.toISOString().slice(0,10)}`;
- let result:unknown;
+ const rawUrl=process.env.SITEBRIEF_SUPABASE_URL?.trim();const key=process.env.SITEBRIEF_SUPABASE_SECRET_KEY?.trim()??'';
+ let origin='';try{const url=new URL(rawUrl??'');if(url.protocol==='https:'&&/^[a-z0-9-]+\.supabase\.co$/.test(url.hostname)&&!url.username&&!url.password&&url.pathname==='/'&&!url.search&&!url.hash&&!url.port)origin=url.origin;}catch{}
+ let legacy=false;try{legacy=JSON.parse(Buffer.from(key.split('.')[1]??'','base64url').toString()).role==='service_role';}catch{}
+ if(!origin||!(key.startsWith('sb_secret_')&&key.length>20||legacy))throw new QuotaError('Live analysis is unavailable until shared usage protection is configured. Recorded examples remain available.');
+ let data:Record<string,unknown>;
  try{
-  const response=await fetch(url!,{method:'POST',headers:{Authorization:`Bearer ${token}`,'Content-Type':'application/json'},body:JSON.stringify(['EVAL',QUOTA_SCRIPT,'1',key,String(limit),String(reset.getTime()/1000)]),signal:AbortSignal.timeout(4000),cache:'no-store'});
-  if(!response.ok)throw Error();const data=await response.json();if(data.error)throw Error();result=data.result;
+  const response=await fetch(`${origin}/rest/v1/rpc/sitebrief_reserve_live_analysis`,{method:'POST',headers:{apikey:key,...(legacy?{Authorization:`Bearer ${key}`} : {}),'Content-Type':'application/json'},body:JSON.stringify({p_environment:process.env.VERCEL_ENV==='production'?'production':'preview'}),signal:AbortSignal.timeout(4000),redirect:'error',cache:'no-store'});
+  if(!response.ok)throw Error();data=await response.json();
  }catch{throw new QuotaError('Usage protection is unavailable. No new live analysis was started. Please try later.');}
- if(!Array.isArray(result)||result.length!==2||![0,1].includes(result[0])||!Number.isSafeInteger(result[1])||result[1]<0||result[1]>limit)throw new QuotaError('Usage protection returned an invalid allowance. No live analysis was started.');
- if(result[0]===0)throw new QuotaError('The shared daily live-analysis allowance is used. It resets at 00:00 UTC. Recorded examples remain available.',429,retryAfter);
- return {limit,remaining:limit-result[1],resetsAt:reset.toISOString()};
+ const {admitted,used,limit,resetsAt}=data??{};const reset=typeof resetsAt==='string'?new Date(resetsAt):new Date(NaN);const until=reset.getTime()-now.getTime();
+ if(typeof admitted!=='boolean'||!Number.isSafeInteger(used)||!Number.isSafeInteger(limit)||Number(limit)<1||Number(limit)>10000||Number(used)<0||Number(used)>10000||(admitted?(Number(used)<1||Number(used)>Number(limit)):Number(used)<Number(limit))||!Number.isFinite(until)||until<=0||until>86700000||reset.getUTCHours()!==0||reset.getUTCMinutes()!==0||reset.getUTCSeconds()!==0||reset.getUTCMilliseconds()!==0)throw new QuotaError('Usage protection returned an invalid allowance. No live analysis was started.');
+ if(!admitted)throw new QuotaError('The shared daily live-analysis allowance is used. It resets at 00:00 UTC. Recorded examples remain available.',429,Math.ceil(until/1000));
+ return {limit:Number(limit),remaining:Number(limit)-Number(used),resetsAt:reset.toISOString()};
 }
 export function quotaResponse(error:unknown){return error instanceof QuotaError?Response.json({error:error.message},{status:error.status,headers:{'Cache-Control':'no-store',...(error.retryAfter?{'Retry-After':String(error.retryAfter)}:{})}}):null;}

@@ -1,4 +1,15 @@
-# Final feature push — review checkpoint
+# Supabase quota continuation — October 24
+
+The owner authorized reusing an existing Supabase project and prohibited any extra spending. Redis has been replaced by a server-only Postgres RPC. The target project identity is not yet confirmed; no hosted database/configuration changes have been applied.
+
+- Current local checks: **146 tests / 27 suites, lint and build pass**.
+- Local PostgreSQL: 12 simultaneous requests with a limit of 3 admitted exactly 3. Anonymous/authenticated RPC access and API-role direct table access are denied. Preview/Production and UTC days are independent. Reapplication preserves counters and unrelated data.
+- The existing project needs only two small private tables and one public RPC; no new project, paid plan, Edge Function or scheduled reset. The database controls the limit/day; the caller cannot increase its allowance.
+- Target identity, existing plan/capacity, hosted migration, dedicated backend credential, Preview settings and fresh integrated acceptance remain pending. See [setup](../SETUP.md).
+
+The earlier Redis checkpoint below is retained as historical evidence for commit `841bbe1`; it is not the current adapter/configuration contract.
+
+## Original final feature push — review checkpoint
 
 ## Release state
 

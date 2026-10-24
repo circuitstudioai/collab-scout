@@ -6,7 +6,7 @@ import {POST as mcp} from '../app/api/mcp/route';
 import {sampleBrief} from '../lib/sites/schema';
 const brief={city:'Toronto',center:{latitude:43.65,longitude:-79.38},radiusKm:10,concept:'Cafe',references:['Blue Bottle Coffee']};
 const request=(body:unknown)=>new Request('https://local.test/api',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json, text/event-stream'},body:JSON.stringify(body)});
-beforeEach(()=>{delete process.env.SITEBRIEF_REDIS_REST_URL;delete process.env.SITEBRIEF_REDIS_REST_TOKEN;});
+beforeEach(()=>{delete process.env.SITEBRIEF_SUPABASE_URL;delete process.env.SITEBRIEF_SUPABASE_SECRET_KEY;});
 it('protects every public paid entry point with fail-closed shared admission',async()=>{
  for(const [handler,body] of [[scout,brief],[explore,brief],[sites,{...sampleBrief,mode:'live'}],[research,{brief,area:{id:'area-1',name:'Near Spadina',address:null,latitude:43.65,longitude:-79.38,venues:[]}}]] as const){const r=await handler(request(body));expect(r.status).toBe(503);expect((await r.json()).error).toMatch(/shared usage protection/);}
 });

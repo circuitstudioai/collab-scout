@@ -33,14 +33,21 @@ Optional hosted-verification tools are Playwright/Chromium, axe-core, pdf-lib an
 
 ## Quota status — deliberately deferred
 
-This feature branch adds a shared global daily live-analysis budget. The default is 50 admitted top-level jobs per UTC day; set a lower or higher limit explicitly if needed. Each agent run is one job with its existing bounded provider/tool budget. Failed jobs still consume admission. Nested tools do not charge again. HTTP exploration, research, live comparison and scouting, plus MCP paid tool calls, all require shared admission. Discovery, fixed sample comparison and qualified cached/saved examples do not make sponsor calls and do not consume the budget.
+This feature branch uses an existing approved Supabase project for the shared global daily live-analysis budget. No Redis, Upstash, Edge Function, scheduled task, new project or paid add-on is required. The owner has prohibited extra spending.
+
+Apply `supabase/migrations/20261024001000_sitebrief_quota.sql` only after confirming the intended existing project. This additive migration creates a private `sitebrief_quota` schema with `policies` and `daily_usage`, and one server-only public RPC, `sitebrief_reserve_live_analysis`. It does not alter unrelated tables, Auth, Storage, billing or plan configuration. Tables have RLS enabled and no API-role direct grants. Anonymous/authenticated users cannot execute the RPC. Only `service_role` can invoke it; the definer function has a fixed empty search path and qualified objects.
 
 Required **server-only** variables:
 
-- `SITEBRIEF_REDIS_REST_URL`: dedicated HTTPS Redis REST endpoint.
-- `SITEBRIEF_REDIS_REST_TOKEN`: dedicated store credential.
-- `SITEBRIEF_DAILY_ANALYSIS_LIMIT`: optional integer, defaults to `50`.
+- `SITEBRIEF_SUPABASE_URL`: the approved project’s canonical HTTPS `*.supabase.co` origin.
+- `SITEBRIEF_SUPABASE_SECRET_KEY`: preferably a dedicated `sb_secret_...` backend key. A legacy service-role JWT is supported. Never use a publishable/anon key or a `NEXT_PUBLIC_` prefix.
 
-A single Redis `EVAL` checks/increments the daily counter atomically and expires it at the next UTC midnight. Preview and Production use separate counter keys. Missing credentials, store errors and invalid replies fail closed before provider work. Never enable an in-memory fallback. Exhaustion returns 429 and a UTC-reset notice. The allowance is global, not a per-visitor promise or monetary spending cap. One caller can exhaust it; no accounts or billing are introduced.
+The secret is sent on the `apikey` header; a legacy service-role JWT also uses Bearer authorization. Redirects are refused so the key cannot be forwarded to a different endpoint. The key authorizes project-wide elevated access: store it only in encrypted server settings and never in evidence, client bundles or logs. The actual quota tables remain inaccessible directly through API roles.
 
-**Configuration status:** no dedicated shared store existed at implementation start. No paid infrastructure or Production settings may be changed without separate authorization. Configure the approved dedicated store in Preview, verify atomic exhaustion/outage behavior, then repeat final hosted acceptance. Production activation and five cold Production runs happen only after an approved merge. Do not reuse another product’s database or secret.
+The database—not HTTP inputs or application environment variables—owns the UTC day and the limit. `sitebrief_quota.policies` defaults to 50 jobs per UTC day independently for `preview` and `production`. Changing a limit is an operator SQL action; the RPC cannot set a custom day or allowance. An atomic conditional upsert admits/increments or denies without overshooting. Each day uses a new key, so no reset cron is required. Only two small counters per day are stored; no visitor IPs, user identities or briefs are retained.
+
+Each top-level live job consumes one admission, including failures. Nested agent tools do not charge again. All paid HTTP routes and MCP calls require admission. Fixed samples, discovery and qualified saved/cached examples do not call sponsors and are unmetered. Missing credentials, unavailable storage and malformed replies fail closed. Exhaustion returns 429 with the database UTC reset. This is a global allowance, not a per-visitor guarantee or exact currency cap.
+
+**Deployment boundary:** existing project identity is pending from the owner. Do not guess from another product’s name or borrow its credential. Check current plan/usage before installation; creating quota objects must not trigger a new project or paid upgrade. Configure Preview only, prove live atomic admission/permissions/outages, then repeat five fresh integrated runs. Production changes and merge remain separately gated.
+
+Local database verification: `python3 scripts/verify-supabase-quota.py` exercises the migration on the isolated local PostgreSQL test database only. It proves concurrency, API-role denial, independent environment/day counters, safe reapplication and preservation of an unrelated fixture. It cannot target a hosted project.
