@@ -4,7 +4,7 @@ import type { Map as LeafletMap } from 'leaflet';
 import type { Cell, Site } from '@/lib/sites/schema';
 import 'leaflet/dist/leaflet.css';
 
-export default function SiteMap({ sites, cells, selected, center, onSelect, placing = false, onPlace }: { sites: Site[]; cells: Cell[]; selected: string; onSelect?: (id:string)=>void; center?: { latitude: number; longitude: number }; placing?: boolean; onPlace?: (latitude: number, longitude: number) => void }) {
+export default function SiteMap({ sites, cells, selected, center, onSelect, placing = false, onPlace }: { sites: (Site & {verdict?:'Scout'|'Maybe'})[]; cells: Cell[]; selected: string; onSelect?: (id:string)=>void; center?: { latitude: number; longitude: number }; placing?: boolean; onPlace?: (latitude: number, longitude: number) => void }) {
   const container = useRef<HTMLDivElement>(null);
   const selection = useRef(onSelect);
   useEffect(() => { selection.current = onSelect; }, [onSelect]);
@@ -32,7 +32,7 @@ export default function SiteMap({ sites, cells, selected, center, onSelect, plac
       sites.forEach((site, i) => {
         const label = document.createElement('span');
         label.textContent = `${String.fromCharCode(65 + i)} · ${site.name.replace(/^[A-C] · /, '')}`;
-        const marker = L.circleMarker([site.latitude, site.longitude], { radius: site.id === selected ? 13 : 9, color: '#ffffff', weight: 3, fillColor: '#9d462b', fillOpacity: 1 }).addTo(map!).on('click',()=>selection.current?.(site.id)).bindTooltip(label, { permanent: true, direction: 'top', offset: [0, -12] });
+        const marker = L.circleMarker([site.latitude, site.longitude], { radius: site.id === selected ? 13 : 9, color: '#ffffff', weight: 3, fillColor: site.verdict==='Scout'?'#244b38':site.verdict==='Maybe'?'#9c741c':'#9d462b', fillOpacity: 1 }).addTo(map!).on('click',()=>selection.current?.(site.id)).bindTooltip(label, { permanent: true, direction: 'top', offset: [0, -12] });
         marker.on('add', () => {
           const element = marker.getElement();
           if (!element || !selection.current) return;

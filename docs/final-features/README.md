@@ -1,0 +1,97 @@
+# Vercel Marketplace Redis continuation — October 24
+
+Latest owner direction replaces the Supabase adapter with **Upstash Redis via Vercel Marketplace, Free only**, US East, no auto-upgrade or eviction. Limit remains 50/day per environment. Server-only Sensitive configuration may connect Preview and Production; Production app deployment, merge and submission remain gated.
+
+**Latest sprint checks: 158 tests / 27 suites, lint and production build pass. See the recovery/relevance checkpoint below; full release acceptance remains incomplete.**
+
+Current local Redis proof passed: 3 of 12 concurrent EVAL calls admitted at limit 3; no exhaustion increments; exact UTC expiration; previous-day rollover; environment isolation; corrupt-state denial; unrelated fixture preserved. The application adapter over real local EVAL admitted exactly 50 of 64 attempts, denied 14 with 429, and failed closed on outage. This bridge is not hosted Upstash REST or integrated Preview proof. See [setup](../SETUP.md) and `scripts/verify-redis-quota.ts`.
+
+Vercel CLI confirms a Free plan and the requested metadata but installation stops at required **human Marketplace terms acceptance**. No resource or hosted settings were created. Five fresh full-head integrated Preview runs and final UI/PDF acceptance remain pending configuration. Missing mapped counts may show Unavailable; owner explicitly deferred provider reliability as a blocker.
+
+The Supabase continuation at `1fdbcd8` passed 146 tests and real local PostgreSQL checks. It was never configured/applied remotely and is superseded, not Redis evidence. The earlier Redis checkpoint below is retained as historical evidence for commit `841bbe1`, not the current adapter/configuration contract.
+
+## Earlier remaining gates — superseded by hosted checkpoints below
+
+1. Owner accepts Marketplace terms. Retry Free-only install with no auto-upgrade/eviction and verify actual plan/metadata; configure Sensitive server REST settings for Preview and Production.
+2. Prove hosted REST concurrency, exhaustion, reset and outage handling with isolated verification counters. Local Redis and mocked HTTP replies are not hosted evidence.
+3. Run five fresh full-head integrated Preview analyses and final UI/PDF checks. Do not count saved/cache responses as fresh or infer live success from deployment checks.
+4. Present the draft for review. Merge, Production app deployment and submission remain unapproved.
+
+## Historical original final feature push — `841bbe1` review checkpoint
+
+## Release state
+
+**Not ready to merge.** Shared quota configuration and final integrated live acceptance remain blocked. No Production settings, deployment promotion, merge or submission was performed.
+
+- Four structured research fields, field-level provider grounding, one bounded retrieval retry, and schema-constrained exact-excerpt extraction on Gemini 2.5 Flash. No sentence-deletion filters were added.
+- Required agent research priorities/focus appear in actual tool events. Visit ID/coordinates, deterministic rank/ties and popularity-floor rules remain enforced.
+- Scout/Maybe verdicts, real Skip examples, source chips, verdict-coloured map markers, structured research, fixed City/landlord questions, dated provenance, real progress, Blue Bottle lead and secondary playground example.
+- One-page PDF and notes retain verdicts, matching research sources, dates and the checklist. A compact, dated Blue Bottle fallback passes the same quality gate; custom requests never receive it.
+- OSM mapped category counts are descriptive, nullable and separate from ranking. One union query serves the shortlist alongside agent work. Failure never becomes zero. Public-provider reliability is currently poor; see [pilot](../store-count-pilot.md).
+- Atomic shared Redis admission guards all paid public HTTP routes and MCP tool calls. Default global allowance: 50 top-level jobs / UTC day, configurable. No per-visitor or authenticated-identity promise. Missing storage fails closed. No dedicated store is configured; no paid service was provisioned.
+- A second bounded reverse lookup and a Qloo-provided street-address fallback avoid invented neighbourhood labels. Coordinates remain the final honest fallback.
+
+## Measured evidence
+
+1. Unit/integration suite: **144 tests / 27 suites pass**, plus lint, TypeScript via build and production build. These include quota fail-closed routes, atomic command contract, malformed replies, sample/discovery exemption, geography identity, source membership, field preservation, alias handling and source-only recovery. Redis service-side Lua execution has **not** been live-tested against a configured store.
+2. Research-only isolation Preview: [ojv1b6nfs](https://collab-scout-ojv1b6nfs-circuitstudioais-projects.vercel.app) returned **5/5 fresh uncached Blue Bottle runs** with ≥3 filled fields and ≥2 distinct source URLs for the visit ID/coordinates. Field counts: 3, 3, 4, 3, 3. Durations: 27.527, 24.805, 16.828, 25.199, 17.644 seconds. This isolates new research/agent code on PR #9 HTTP handlers **before quota integration**; it is not final-head, Production, fresh-container or quota-enabled acceptance. Earlier pre-extraction batches were 4/5, not hidden or counted as passes.
+3. [Concurrent batch-count isolation Preview](https://collab-scout-rcdxfs3k4-circuitstudioais-projects.vercel.app): an additional fresh run returned four cited fields in 17.7 seconds, with agent-selected `SPACE → ACCESS → VENUES` and `premises` focus. All three OSM counts timed out within the shared twelve-second fetch budget; research still completed. These are not zero counts.
+4. Local browser replay of a recorded real run: verdicts, fields, checklist, matching PDF source links, one-page PDF, notes, stale-input invalidation, no page errors, tested WCAG A/AA axe checks at 1440px and 390px, and no horizontal overflow passed. Replay is presentation verification, not a new live provider run.
+5. Blue Bottle saved artifact was derived from the real four-field run recorded **2026-10-23T23:44:17.846Z**. It contains only three highlights, the original count of 4,292 points and citation-bearing sources; the original grid is not reconstructed. Saved recovery remains visibly dated and never counts as fresh acceptance.
+
+Raw runs, screenshots and PDFs are outside Git under `/tmp/sitebrief-feature-*`. Only this compact summary, scripts and the minimal derived fallback are committed.
+
+## Reproduction
+
+```sh
+npm test -- --runInBand
+npm run lint
+npm run build
+node scripts/verify-feature-research.mjs https://EXACT_PREVIEW
+PLAYWRIGHT_MODULE_PATH=/path/to/playwright-core PDF_LIB_MODULE_PATH=/path/to/pdf-lib node scripts/verify-feature-ui.mjs https://EXACT_PREVIEW /path/to/recorded-run.json
+```
+
+`verify-feature-research.mjs` sends custom briefs to avoid canonical saved/cache recovery. The UI script explicitly replays a real recorded result and must not be cited as live research proof. `save-feature-demo.mjs` derives a compact artifact from a verified fresh canonical-equivalent run, retaining original timestamps.
+
+## Resume / merge gates
+
+1. Supply a dedicated Redis REST endpoint/token through private configuration. Configure Preview only; use a separate Preview budget key.
+2. Prove real shared counter exhaustion, parallel admission and reset/outage behavior. Do not claim mocked tests prove Redis service execution.
+3. Repeat five fresh full-head Preview runs after quota admission is enabled. Audit field relevance and cited pages, not only counts and IDs. Verify the canonical live path, saved path, custom failures and cache gate separately.
+4. Resolve the OSM reliability issue or explicitly defer store counts as unavailable with owner agreement. Never fill a count from the ranked Qloo sample or infer unmet demand.
+5. After owner-approved merge/configuration, repeat five cold Production runs and verify live quota and verdicts. Saved/cache responses are not fresh passes.
+
+Deferred: retrospective opening scorecard, share-link storage, top-two deep research, accounts/billing and additional sentence filters.
+
+## Hosted Redis checkpoint — October 24, 11:41 UTC
+
+- Tested application SHA: `c42ee55eabd2089bb7a20266df4e3ebefef9223d`. Preview redeployment `dpl_4tVmu2VAUiq7xMMo9b6Fw8TEv6DE` is READY: https://collab-scout-35y68l9gj-circuitstudioais-projects.vercel.app. No merge or Production app deployment.
+- Owner confirmed Marketplace terms acceptance. Provisioned only `sitebrief-quota` / `store_GsZwpkM7ic7yWpSk`, verified Free, US East `iad1`, auto-upgrade/eviction/Prod Pack all false. Connected to Preview and Production. Server-only Sensitive SITEBRIEF_REDIS_REST_URL/TOKEN aliases configured for both; actual values were never printed or committed. The existing provider variables remain managed by the integration.
+- Hosted Upstash REST Lua proof passed on isolated timestamped proof counters: exactly 3/12 concurrent admissions at limit3, no exhaustion increment, exact Redis-UTC midnight expiry, seeded previous-day rollover, environment-style key isolation, corrupt-state rejection and preservation of unrelated proof fixture. Application adapter also passed using hosted REST with isolated-key substitution. Injected network outage failed closed; this is not evidence of a real provider outage or passage through midnight. Only proof keys were deleted afterward. Production budget counter stayed absent/untouched.
+- Five sequential fresh integrated Preview runs used the actual shared Preview counter: **4/5 passed, not acceptance complete**. Field counts2,4,3,3,3; distinct cited sources13,10,10,16,7. All matched the locked visit ID/coordinates and were neither cached nor saved. Durations24.387,18.700,20.040,16.727,17.364seconds. Run1 correctly withheld SPACE/ACCESS fields containing prohibited numeric claims; report retained only two fields. Keep this failed batch visible; do not call the gate passed or repeatedly rerun until lucky.
+- Current-head desktop/mobile rendering, axe accessibility/no-overflow, one-page PDF/source identity, notes and stale-input invalidation passed with the successful recorded run2 replay. This proves presentation of actual recorded evidence, not a fresh browser-generated research journey. No page errors.
+- Raw evidence (outside Git): `/tmp/sitebrief-hosted-research-20261024/`, `/tmp/sitebrief-hosted-quota-proof-summary.json`, `/tmp/sitebrief-hosted-feature-ui-20261024/`.
+- Remaining: diagnose bounded research completeness/retry reliability, preserve evidence/number guards and explicit missing fields, then obtain a complete fresh5/5 batch and final live browser/cache/fallback/custom/MCP receipts. Missing mapped counts may remain explicitly Unavailable. PR remains draft. Production app activation, merge and submission remain separate owner gates.
+
+- Actual browser follow-up at11:43UTC used an un-intercepted Blue Bottle request on the same Preview: fresh live response, neither saved nor cached, three grounded fields for area-1; decision rendered, downloaded PDF matched the selected coordinates, mobile had no overflow, and no page errors. This separate successful UI run does not replace the failed first run in the original4/5 batch. Raw receipt: `/tmp/sitebrief-actual-live-ui-20261024.json`.
+
+
+## Research recovery repair — October 24 sprint continuation
+
+The saved failed hosted batch remains **4/5**, not superseded by unit tests. Address and route numbers were correctly rejected. Code review reproduced two recovery defects: a retry replaced the first validated finding/source identity, and a retry that already completed the three-field/two-source gate still invoked another formatter before merging retained evidence.
+
+Recovery now merges retained evidence before deciding on extraction, requests missing fields rather than redoing validated ones, and does not echo rejected numeric values in the correction prompt. If cited source diversity is insufficient, recovery still requests fresh sources and can replace findings to meet the unchanged distinct-source gate. Exact grounded excerpt, numeric/gap/obligation, target-identity, forty-second deadline and two-Search/two-extraction ceilings are unchanged. No new provider, quota reset, infrastructure, Production deployment or approval bypass.
+
+Focused regressions observed both defects red, then green. New-head hosted acceptance remains to be measured; this change is not a claim that provider completeness or geographic relevance is solved.
+
+
+## Recovery Preview and relevance audit — October 24, 12:26 UTC
+
+- Tested app head: `247de044880ab8e2e0bf5bf8c947d52b9ff18294`, exact Preview https://collab-scout-gbp8cuwtj-circuitstudioais-projects.vercel.app / `dpl_27dgjkNtKkZtwC7L4DaR7vEqhEFN`. READY; both Vercel checks SUCCESS. PR10 stays OPEN/DRAFT. No Production deployment or infrastructure/config changes in this chunk.
+- **158 tests / 27 suites, lint (zero warnings) and build pass.** Regression evidence: first validated field/source overwritten before fix; unnecessary fourth model call after a retry already completed accumulated quality before fix; both now pass. Single-source recovery remains covered. Model, deadline, maximum attempts, evidence guards and quota unchanged.
+- One complete five-request batch on the new app head passed the **mechanical field/source/target-identity gate 5/5**: fields3,3,3,3,3; cited URL counts9,15,15,41,9; durations16.789,13.958,14.451,16.465,13.812 seconds. Every response fresh, neither cached nor saved, exact area-1 ID/coordinates. Actual shared Preview admissions; no counter reset. Original4/5 batch remains recorded above. One successful batch does not prove general provider reliability.
+- **Full research release acceptance is NOT passed.** Content audit found long-street anchor matching admits distant activity facilities. Run1 cites Jimmie Simpson and Matty Eckler centres, and run5 cites Matty Eckler. Rendered official Toronto pages confirm [870 Queen St E](https://www.toronto.ca/explore-enjoy/parks-recreation/places-spaces/parks-and-recreation-facilities/location/?id=58) and [953 Gerrard St E](https://www.toronto.ca/explore-enjoy/parks-recreation/places-spaces/parks-and-recreation-facilities/location/?id=234). Photon address results identify their associated parks approximately3.31km and2.56km from the locked point43.67546,-79.30824; these are approximate park-centre distances, not surveyed facility entrances. Sharing Queen/Gerrard street names does not establish relevance to the adjacent street segment. Broad listing claims also need page-level local review; all cited pages have NOT been audited. Do not call the5/5 count gate full acceptance or weaken geography requirements to clear it.
+- Official MCP SDK Client + StreamableHTTPClientTransport discovery and one real metered `explore_restaurant_areas` call pass, with eligible popularity-floor-compliant areas. This does not prove every chat-client installation or full MCP scouting/payment acceptance.
+- New-head desktop/mobile recorded-run replay using batchrun4 passes axe, no-overflow, one-page PDF/source identity, notes/checklist and stale-input invalidation; no page errors. This is presentation evidence, not a new actual browser-generated run. Earlier actual browser receipt remains historical.
+- Raw evidence outside Git: `/tmp/sitebrief-recovery-research-20261024/`, `/tmp/sitebrief-recovery-relevance-audit-20261024.json`, `/tmp/sitebrief-recovery-facility-audit-20261024.json`, `/tmp/sitebrief-recovery-mcp-20261024/`, `/tmp/sitebrief-recovery-ui-20261024/`.
+- Next: bound practical evidence to the actual local segment/verified nearby places without adding sentence-deletion filters or inventing a locality threshold. Re-audit supplied nearby anchors, candidate evidence and precise source locations; preserve missing fields honestly. Then repeat the complete fresh gate and close cache/saved-fallback/custom/live-browser receipts. Merge/Production/submission gates unchanged.

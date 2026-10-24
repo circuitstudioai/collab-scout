@@ -1,3 +1,4 @@
+jest.mock('../lib/sites/store-counts',()=>({retrieveStoreCounts:jest.fn(async()=>({}))}));
 import {runScout} from '../lib/sites/scout-agent';
 import type {GenerateContentResponse} from '@google/genai';
 import {qlooGet} from '../lib/qloo/http';

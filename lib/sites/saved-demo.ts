@@ -1,3 +1,4 @@
+import {releaseScoutRun} from './research-release';
 import snapshot from './data/playground-demo.json';
 import {demoBrief} from './demo';
 import {renderDecision,highestRanked} from './decision';
@@ -16,5 +17,5 @@ export function savedPlaygroundDemo(reason:'live-unavailable'|'live-incomplete')
  const research:ScoutRun['research']={};const stored=saved.research[area.id];
  if(stored&&(!stored.target||reportMatchesArea(stored,area))){try{research[area.id]=recheckRecordedReport(stored,{areaId:area.id,latitude:area.latitude,longitude:area.longitude},area.venues.map(v=>v.name));}catch{/* An unusable historical report is not evidence for the saved visit. */}}
  const run={...saved,research,exploration,assessment:renderDecision(selection,exploration,'ranking-default'),selection,decisionOrigin:'ranking-default',cached:true,savedDemo:{recordedAt:saved.createdAt,originalPointCount:cellCount,reason}} as ScoutRun;
- return run;
+ return releaseScoutRun(run);
 }

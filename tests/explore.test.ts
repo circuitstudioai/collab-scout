@@ -63,3 +63,8 @@ it('supports a disclosed median floor and refuses a public request to disable th
  const result=selectAreas(cells,center,20,{minimumPopularityPercentile:50});
  expect(result.selected.length).toBeGreaterThan(0);expect(result.selected.every(c=>(c.popularityPercentile??0)>=50)).toBe(true);
 });
+it('uses a verified nearby Qloo street when both reverse lookups fail',async()=>{
+ const fetcher=jest.spyOn(globalThis,'fetch').mockResolvedValue(new Response('{}',{status:503}));
+ get.mockImplementation(async o=>{if(o.path==='/search')return {results:[{entity_id:'fallback-brand',name:'Blue Bottle Coffee'}]};if(o.params?.['filter.type']==='urn:heatmap')return {results:{heatmap:Array.from({length:5},(_,i)=>({location:{latitude:43.66+i*.0001,longitude:-79.37},query:{affinity:.9-i*.15,popularity:1}}))}};return {results:{entities:[{entity_id:'nearby-cafe',name:'Local cafe',properties:{address:'123 Dundas St W Toronto, ON Canada'}}]}};});
+ const result=await exploreCity(brief());expect(result.areas[0].name).toBe('Near Dundas St W');expect(result.areas[0].address).toContain('nearby Qloo venue');expect(fetcher).toHaveBeenCalledTimes(2);
+});

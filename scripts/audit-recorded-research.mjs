@@ -1,0 +1,10 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import {auditRun} from './lib/research-acceptance.mjs';
+const [directory,radius,reviewPath]=process.argv.slice(2);
+if(!directory||!radius)throw Error('Usage: node scripts/audit-recorded-research.mjs RUN_DIRECTORY AUDIT_RADIUS_KM [TRUSTED_REVIEW_JSON]');
+const reviews=reviewPath?JSON.parse(fs.readFileSync(reviewPath,'utf8')):[];
+const rows=fs.readdirSync(directory).filter(f=>/^run-\d+\.json$/.test(f)).sort((a,b)=>a.localeCompare(b,undefined,{numeric:true})).map(file=>({file,...auditRun(JSON.parse(fs.readFileSync(path.join(directory,file),'utf8')),reviews,Number(radius))}));
+const summary={checkedAt:new Date().toISOString(),total:rows.length,mechanicalPassed:rows.filter(r=>r.mechanicalPass).length,sourceLocalityPassed:rows.filter(r=>r.sourceLocalityPass).length,rows};
+console.log(JSON.stringify(summary,null,2));
+if(!rows.length||rows.some(r=>!r.sourceLocalityPass))process.exitCode=1;

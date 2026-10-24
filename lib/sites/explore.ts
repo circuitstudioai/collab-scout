@@ -2,7 +2,7 @@ import { z } from 'zod';
 import {scoreSignal} from './signal';
 import { distanceKm, parseCells } from './compare';
 import { SiteError, createReader, resolveReferences, rows, record } from './qloo';
-import { parseLocations } from './locations';
+import { parseLocations,streetFromAddress } from './locations';
 import type { Cell, Trace, Venue } from './schema';
 export const exploreSchema = z.object({
   city: z.string().trim().min(2).max(100),
@@ -20,7 +20,7 @@ export type ExploreBrief = z.infer<typeof exploreSchema>;
 export type Area = Cell & { id:string; name:string; address:string|null; lowerCount:number; pointCount:number; distanceKm:number; venues:Venue[]; contextAvailable:boolean; nameAvailable:boolean };
 export type RejectedPoint = Cell & {outletName:string; distanceKm:number};
 export type OutletConstraints = Pick<ExploreBrief,'existingOutlets'|'minimumOutletDistanceKm'|'minimumPopularityPercentile'>;
-export type Exploration = { createdAt:string; brief:ExploreBrief; references:{id:string;name:string;resolution?:'brand'|'exact'|'selected'|'local-cafe';address?:string}[]; cells:Cell[]; areas:Area[]; trace:Trace[]; separationKm:number; allTied:boolean; totalReturned:number; rejected:RejectedPoint[]; rejectedCount:number; eligibleCount:number;rankingMethod:'contrast'|'affinity';popularityCoverage:number;popularityRejectedCount:number;screenedCount:number };
+export type Exploration = { screeningExamples?:{point:Cell;reason:'popularity'|'taste'}[];createdAt:string; brief:ExploreBrief; references:{id:string;name:string;resolution?:'brand'|'exact'|'selected'|'local-cafe';address?:string}[]; cells:Cell[]; areas:Area[]; trace:Trace[]; separationKm:number; allTied:boolean; totalReturned:number; rejected:RejectedPoint[]; rejectedCount:number; eligibleCount:number;rankingMethod:'contrast'|'affinity';popularityCoverage:number;popularityRejectedCount:number;screenedCount:number };
 export function selectAreas(cells:Cell[], center:ExploreBrief['center'], radiusKm:number, constraints:OutletConstraints={}) {
   const unique=[...new Map(cells.filter(c=>distanceKm(center,c)<=radiusKm).map(c=>[`${c.latitude},${c.longitude}`,c])).values()];
   const scored=scoreSignal(unique);const local=scored.cells;
@@ -45,7 +45,17 @@ const labels=new Map<string,{name:string;address:string;expires:number}>();
 async function nameArea(cell:Cell):Promise<{name:string;address:string}|null>{
   const key=`${cell.latitude},${cell.longitude}`;const cached=labels.get(key);if(cached&&cached.expires>Date.now())return cached;
   const url=new URL('https://photon.komoot.io/reverse');url.searchParams.set('lat',String(cell.latitude));url.searchParams.set('lon',String(cell.longitude));url.searchParams.set('radius','0.3');url.searchParams.set('limit','1');url.searchParams.set('lang','en');
-  try{const r=await fetch(url,{headers:{'User-Agent':'Sitebrief/1.0 (https://github.com/circuitstudioai/collab-scout)'},signal:AbortSignal.timeout(6000)});if(!r.ok)return null;const match=parseLocations(await r.json())[0];if(!match||distanceKm(cell,match)>.3)return null;const label={name:`Near ${match.areaName??match.name}`.slice(0,110),address:match.label};if(labels.size>=100)labels.delete(labels.keys().next().value!);labels.set(key,{...label,expires:Date.now()+3600000});return label;}catch{return null;}
+  try{
+   for(const radius of ['0.3','0.8']){
+    url.searchParams.set('radius',radius);url.searchParams.set('limit',radius==='0.3'?'1':'5');
+    const r=await fetch(url,{headers:{'User-Agent':'Sitebrief/1.0 (https://github.com/circuitstudioai/collab-scout)'},signal:AbortSignal.timeout(4000)});
+    if(!r.ok)continue;
+    const match=parseLocations(await r.json()).find(m=>distanceKm(cell,m)<=Number(radius));
+    if(!match)continue;
+    const label={name:`Near ${match.areaName??match.name}`.slice(0,110),address:match.label};
+    if(labels.size>=100)labels.delete(labels.keys().next().value!);labels.set(key,{...label,expires:Date.now()+3600000});return label;
+   }
+  }catch{/* Nearby Qloo street fallback below still applies. */}return null;
 }
 export async function exploreCity(brief:ExploreBrief,verified?:{references:Exploration['references'];trace:Trace[]}):Promise<Exploration>{
   brief={...brief,minimumPopularityPercentile:brief.minimumPopularityPercentile??20};
@@ -55,8 +65,11 @@ export async function exploreCity(brief:ExploreBrief,verified?:{references:Explo
   if(!selection.cells.length)throw new SiteError('Qloo returned no taste map points within this search radius. Try a wider radius, another city or different audience references. No areas have been invented.');
   const areas=await Promise.all(selection.selected.map(async(cell,index)=>{
     const [label,context]=await Promise.all([nameArea(cell), (async()=>{try{const raw=await get(`Nearby dining for area ${index+1}`,'/v2/insights',{'filter.type':'urn:entity:place','filter.location':`POINT(${cell.longitude} ${cell.latitude})`,'filter.location.radius':'1000','filter.tags':'urn:tag:genre:place:restaurant','signal.interests.entities':interests,take:'5'},'entities');return {available:true,venues:[...new Map(rows(raw,'entities').filter(v=>typeof v.entity_id==='string'&&typeof v.name==='string').map(v=>({id:String(v.entity_id),name:String(v.name),address:typeof record(v.properties).address==='string'?String(record(v.properties).address):undefined,affinity:typeof record(v.query).affinity==='number'?Number(record(v.query).affinity):null})).map(v=>[v.name.trim().toLowerCase(),v])).values()]};}catch{return {available:false,venues:[]};}})()]);
+    const street=context.venues.map(v=>streetFromAddress(v.address)).find(Boolean);
+    const fallback=street?{name:`Near ${street}`,address:`Street from nearby Qloo venue; verify the exact map point. ${brief.city}`} : null;
+    const named=label??fallback;
     trace.push({step:`Locate area ${index+1} on OpenStreetMap`,path:'Photon /reverse',params:{latitude:String(cell.latitude),longitude:String(cell.longitude)},status:label?'ok':'unavailable',count:label?1:0});
-    return {...cell,id:`area-${index+1}`,name:label?.name??`Unnamed map point (${cell.latitude.toFixed(4)}, ${cell.longitude.toFixed(4)})`,address:label?.address??null,nameAvailable:Boolean(label),lowerCount:selection.cells.filter(c=>c.affinity<cell.affinity).length,pointCount:selection.cells.length,distanceKm:distanceKm(brief.center,cell),venues:context.venues,contextAvailable:context.available};
+    return {...cell,id:`area-${index+1}`,name:named?.name??`Unnamed map point (${cell.latitude.toFixed(4)}, ${cell.longitude.toFixed(4)})`,address:named?.address??null,nameAvailable:Boolean(named),lowerCount:selection.cells.filter(c=>c.affinity<cell.affinity).length,pointCount:selection.cells.length,distanceKm:distanceKm(brief.center,cell),venues:context.venues,contextAvailable:context.available};
   }));
   return {createdAt:new Date().toISOString(),brief,references,cells:selection.cells,areas,trace,separationKm:selection.separationKm,allTied:selection.allTied,totalReturned:returned.length,rejected:selection.rejected.slice(0,3),rejectedCount:selection.rejected.length,eligibleCount:selection.eligibleCount,rankingMethod:selection.rankingMethod,popularityCoverage:selection.popularityCoverage,popularityRejectedCount:selection.popularityRejectedCount,screenedCount:selection.screenedCount};
 }
