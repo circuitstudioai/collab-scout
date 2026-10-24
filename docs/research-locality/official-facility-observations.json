@@ -1,0 +1,84 @@
+{
+  "observedAt": "2026-10-24T15:18:47.293799+00:00",
+  "lockedPoint": {
+    "latitude": 43.67546,
+    "longitude": -79.30824
+  },
+  "method": "Direct HTTPS inspection of original provider citation redirects and the official location-specific JSON used by the City page. Facility IDs/title/address bound. Coordinates belong to facilities, not separately named related parks. No research/model calls.",
+  "experimentalAuditRadiusKm": 1,
+  "observations": [
+    {
+      "id": 58,
+      "name": "Jimmie Simpson Recreation Centre",
+      "address": "870 Queen St E",
+      "latitude": 43.6604475847,
+      "longitude": -79.3453133539,
+      "dataUrl": "https://www.toronto.ca/data/parks/live/locations/58/info.json",
+      "officialRecordTimestamp": "2026-10-23 04:32:45",
+      "distanceFromLockedPointKm": 3.4174,
+      "citedPageBindings": [
+        {
+          "run": 1,
+          "sourceIndex": 9,
+          "sourceUrl": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEAe5kL_Vv8oKvnXEN68z1pu2y-DNdunaymyvavyJddWuSQOEmCJRtib2h148p0rhgGor6JGs8fnaBn9SdfW4BfXTzvM-EoKx2gtgqE8fRq5KOxewE5XNROa7zlPB_98cXTwoFHg4-gVA-sh3y5mrf9o1LAToNIR6Xi0c4Vy88JRoTRQUs5yedNSXecyqXKlM4KR9ApSMQkinf-pE3g-DAkJXoWSV2PzNVae0FpR3ianvoPqx8v2Ge18dO8MPpYzri9jW80UAh8y6RioPNmDte26RZZq53f",
+          "status": 200,
+          "resolvedUrl": "https://www.toronto.ca/explore-enjoy/parks-recreation/places-spaces/parks-and-recreation-facilities/location/?id=58&title=Jimmie-Simpson-Recreation-Centre"
+        }
+      ]
+    },
+    {
+      "id": 234,
+      "name": "Matty Eckler Recreation Centre",
+      "address": "953 Gerrard St E",
+      "latitude": 43.6679040188,
+      "longitude": -79.3395835221,
+      "dataUrl": "https://www.toronto.ca/data/parks/live/locations/234/info.json",
+      "officialRecordTimestamp": "2026-10-23 04:32:45",
+      "distanceFromLockedPointKm": 2.6572,
+      "citedPageBindings": [
+        {
+          "run": 1,
+          "sourceIndex": 11,
+          "sourceUrl": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH5OYXTRM9pSwxA89sPJt4Etj-iXOu95XzgqAvcq4vZtyuPKSMLddEvF3gObaK9pRHzLnxz2AUys7tjVi4Zw26MqZw2i8Zp3YJ4QzC_QH79Q-ELMGjofGPcrP5uYwkaRxYoudKYVcpTQuaucjfq_zHGKHwZ8ho2gyeB4ER7Nc_pK1WgQSQS4dJIOCEf7sgZlNmnN2gMa7JpPFcjyyvBFAznnAbCULsMwasN01Ites-ITZ04ddSd0KvqWYZCj2R21W9DCEFeq4UozAMMONoPW0bOeVUyB_k=",
+          "status": 200,
+          "resolvedUrl": "https://www.toronto.ca/explore-enjoy/parks-recreation/places-spaces/parks-and-recreation-facilities/location/?id=234&title=Matty-Eckler-Recreation-Centre"
+        },
+        {
+          "run": 5,
+          "sourceIndex": 8,
+          "sourceUrl": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGLI7EYXejt094NYYcfW6gPJC6oQewnw6GWEZ6mYSCrvWfOm6GBk0WcpidDFTdUdEuOB1Ll2XgE9tbLIi4JMYMm_E6lJuKsvDHg6PR3kJOh6OKjUiZGBAbk4DIo4aeSOrGC-m9JQX_o8TQfuVNDACBG2eQl7Qlsm-52gbH3VmO7gCuS3yJmlnObvxpcGAOfmbvP3NePQkSG0g4Xx2Wb9HponPORQ-DCc-MN7wWkCFRuguMkrzixv7JipCU7Xi4SY_8pDitaSCBKMa4R2PcHEVQCq4mTnoI=",
+          "status": 200,
+          "resolvedUrl": "https://www.toronto.ca/explore-enjoy/parks-recreation/places-spaces/parks-and-recreation-facilities/location/?id=234&title=Matty-Eckler-Recreation-Centre"
+        }
+      ]
+    }
+  ],
+  "failedOrOtherCitationResolutions": [
+    {
+      "run": 1,
+      "sourceIndex": 10,
+      "sourceUrl": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFhD4Grym-x38zqqW6N29eAz2ifQhLHNEM_XLIU9FNgCNXnmB43j_Hrau_uhloAjWkVOUWKOLxBbQlP1FcXAnKhRPTrqbZp8OiurNBY0VJKXy2UGvn-QMpC8O7aQL9aj7rm1Rj7BtdO9PVkPUvOq1ySzMussxbSEfH-MBgzd9Ta0iP16rqbmJM7--m7xa58EToWJUKznuFWKRsJGgeetBLqgfWVEIyuTtjRRbc1GNrf29vMaiYbU5eD4DyV0oslxCqxWPd0ctmUPY4EWgk-3w==",
+      "error": "HTTPError"
+    },
+    {
+      "run": 1,
+      "sourceIndex": 12,
+      "sourceUrl": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHoKmUDS_WiK5r7Oa_fFR-kyphtXnhZxSGB-QUwDyZ7-m4lk0psuujuaVZDQuLtyDVSJLBmJFaJ8kFIuVnJLFfhIvmTVc_xypA-EGbU_sTyZcs4R7EktZUCMjrCvIkzYDIqBsz5fTffucDzBhAhcFP6eTOC-g==",
+      "error": "HTTPError"
+    },
+    {
+      "run": 5,
+      "sourceIndex": 7,
+      "sourceUrl": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHN_tWTqyMNvoDq_rm321hUoZH_DSgo1GePgWoOlFATSHwMw8epiZssajRZeO6Tw4e0p-v7w5XtAEgKREtTd4SUpV6t7DLNh2cXoTunaytVwaGjqTUPBXD7uRKQB4HQaXcqlhiItYUEzsh-mJfNUVfXdofBoqzTg9EtynJvhvJCnkHvEbUNemxdI00TfYKnwflz0MKZgs2DVZsAlFtLPRcDuIUauQHTSAEzCQ7FRegxBFiotlcMvs_vuCcateUsY1QJioS_GfkgBBaDmv9w_g==",
+      "error": "HTTPError"
+    },
+    {
+      "run": 5,
+      "sourceIndex": 9,
+      "sourceUrl": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFkwAPFeRDCEj-Wg7ybhkJrz-ZDIYZVM1wdQGHY3yulpZ1FYmOIfi3d5dGKeoD4EqIzJzUXzh4uP_IV3rjFhDLa87r6_8r44h7KNsliI-meIdG5zvaRT69jqfmnFBU2_mbRkBgXYAvKupsEEWReqFZxnNnkXJgQ29MkoF7P9LeqmdlDPCJzXw==",
+      "status": 200,
+      "resolvedUrl": "https://www.caredove.com/thesecondmilecluboftoronto/service/detail/sid/4914"
+    }
+  ],
+  "limitations": "Official map points are not surveyed entrances or uncertainty bounds. This establishes negative locality evidence for activity in run-1 and run-5, not complete source support or review of the other thirteen retained findings. No runtime integration, product-wide radius policy, five-run acceptance or release approval."
+}
